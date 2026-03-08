@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { updateOrderStatus } from "@/lib/orders";
+import { getOrder, updateOrderStatus } from "@/lib/orders";
+import { sendShippedEmail } from "@/lib/email";
 
 type OrderStatus = "pending" | "paid" | "shipped";
 
@@ -26,6 +27,11 @@ export async function PATCH(
       );
     }
 
+    const existing = await getOrder(id);
+    if (!existing) {
+      return NextResponse.json({ error: "Order not found" }, { status: 404 });
+    }
+
     const updated = await updateOrderStatus({
       orderId: id,
       status,
@@ -34,6 +40,23 @@ export async function PATCH(
 
     if (!updated) {
       return NextResponse.json({ error: "Order not found" }, { status: 404 });
+    }
+
+    if (
+      status === "shipped" &&
+      trackingNumber?.trim() &&
+      existing.status !== "shipped"
+    ) {
+      try {
+        await sendShippedEmail({
+          orderId: updated.id,
+          customerName: updated.name,
+          customerEmail: updated.email,
+          trackingNumber: trackingNumber.trim(),
+        });
+      } catch (emailError) {
+        console.error("SHIPPED EMAIL ERROR:", emailError);
+      }
     }
 
     return NextResponse.json({ ok: true, order: updated });

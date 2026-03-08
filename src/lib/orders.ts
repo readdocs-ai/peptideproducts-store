@@ -145,7 +145,7 @@ async function getOrdersFromIndex(limit = 200) {
       if (!value || typeof value !== "string") return null;
       return normalizeOrder(JSON.parse(value));
     })
-    .filter(Boolean) as StoredOrder[];
+    .filter((order): order is StoredOrder => order !== null);
 }
 
 async function getOrdersByScanning(limit = 200) {
@@ -192,9 +192,20 @@ export async function listOrders(limit = 200) {
   );
 }
 
-export async function getRecentOrders(limit = 50) {
+export async function getRecentOrders(limit = 20) {
   const orders = await listOrders(limit);
   return orders.slice(0, limit);
+}
+
+export async function getOrderForCustomerLookup(orderId: string, email: string) {
+  const order = await getOrder(orderId);
+  if (!order) return null;
+
+  if (order.email.trim().toLowerCase() !== email.trim().toLowerCase()) {
+    return null;
+  }
+
+  return order;
 }
 
 export async function updateOrderStatus(params: {

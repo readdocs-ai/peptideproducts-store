@@ -29,13 +29,22 @@ type EmailOrderItem = {
   priceGBP: number;
 };
 
+type PaymentMethod = "bank_transfer" | "crypto";
+
 type SendOrderEmailsParams = {
   orderId: string;
   customerName: string;
   customerEmail: string;
-  paymentMethod: "bank_transfer" | "crypto";
+  paymentMethod: PaymentMethod;
   totalGBP: number;
   items: EmailOrderItem[];
+};
+
+type SendShippedEmailParams = {
+  orderId: string;
+  customerName: string;
+  customerEmail: string;
+  trackingNumber: string;
 };
 
 function formatGBP(value: number) {
@@ -54,7 +63,11 @@ function renderItems(items: EmailOrderItem[]) {
     .join("");
 }
 
-function getPaymentInstructionsHtml(orderId: string, paymentMethod: "bank_transfer" | "crypto", totalGBP: number) {
+function getPaymentInstructionsHtml(
+  orderId: string,
+  paymentMethod: PaymentMethod,
+  totalGBP: number
+) {
   if (paymentMethod === "bank_transfer") {
     return `
       <h2>Bank Transfer Instructions</h2>
@@ -64,9 +77,7 @@ function getPaymentInstructionsHtml(orderId: string, paymentMethod: "bank_transf
         <strong>Sort Code:</strong> ${PAYMENT_DETAILS.bank.sortCode}<br />
         <strong>Account Number:</strong> ${PAYMENT_DETAILS.bank.accountNumber}
       </p>
-      <p>
-        <strong>Payment Reference:</strong> ${orderId}
-      </p>
+      <p><strong>Payment Reference:</strong> ${orderId}</p>
       <p>Your order will be processed once payment is received.</p>
     `;
   }
@@ -106,6 +117,7 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
       <h2>Items Ordered</h2>
       <ul>${itemsHtml}</ul>
       ${instructionsHtml}
+      <p>If you need help, reply to info@peptideproducts.co.uk.</p>
     </div>
   `;
 
@@ -138,4 +150,26 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
       html: adminHtml,
     }),
   ]);
+}
+
+export async function sendShippedEmail(params: SendShippedEmailParams) {
+  const resend = getResend();
+
+  const customerHtml = `
+    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
+      <h1>Your order has shipped</h1>
+      <p>Hello ${params.customerName},</p>
+      <p>Your order <strong>${params.orderId}</strong> has now been shipped.</p>
+      <p><strong>Tracking Number:</strong> ${params.trackingNumber}</p>
+      <p>Thank you for your order.</p>
+      <p>If you need help, reply to info@peptideproducts.co.uk.</p>
+    </div>
+  `;
+
+  await resend.emails.send({
+    from: "Peptide Products <info@peptideproducts.co.uk>",
+    to: params.customerEmail,
+    subject: `Your order ${params.orderId} has shipped`,
+    html: customerHtml,
+  });
 }

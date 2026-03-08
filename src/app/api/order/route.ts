@@ -66,10 +66,14 @@ export async function POST(req: Request) {
       orderId: order.id,
       paymentMethod: order.paymentMethod,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("ORDER CREATE ERROR:", error);
+
     return Response.json(
-      { ok: false, error: "Unable to save your order right now." },
+      {
+        ok: false,
+        error: error?.message || "Unable to save your order right now.",
+      },
       { status: 500 }
     );
   }
