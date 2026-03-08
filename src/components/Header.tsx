@@ -31,10 +31,22 @@ export function Header() {
 
           <nav className="hidden items-center gap-6 md:flex">
             {nav.map((i) => (
-              <Link key={i.href} href={i.href} className="text-sm font-semibold text-slate hover:text-ink">
+              <Link
+                key={i.href}
+                href={i.href}
+                className="text-sm font-semibold text-slate hover:text-ink"
+              >
                 {i.label}
               </Link>
             ))}
+
+            {/* Order Status link added separately */}
+            <Link
+              href="/order-status"
+              className="text-sm font-semibold text-slate hover:text-ink"
+            >
+              Order Status
+            </Link>
           </nav>
 
           <Link
@@ -42,7 +54,10 @@ export function Header() {
             className="rounded-xl2 border border-line bg-paper px-3 py-2 text-sm font-extrabold shadow-soft hover:bg-mist"
             aria-label="Open cart"
           >
-            Cart <span className="ml-1 rounded-full bg-haze px-2 py-0.5 text-xs">{count}</span>
+            Cart{" "}
+            <span className="ml-1 rounded-full bg-haze px-2 py-0.5 text-xs">
+              {count}
+            </span>
           </Link>
         </div>
       </Container>
