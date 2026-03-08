@@ -1,7 +1,9 @@
-import { resend } from "@/lib/email";
+import { getResend } from "@/lib/email";
 
 export async function GET() {
   try {
+    const resend = getResend();
+
     await resend.emails.send({
       from: "info@peptideproducts.co.uk",
       to: "info@peptideproducts.co.uk",
@@ -12,6 +14,6 @@ export async function GET() {
     return Response.json({ success: true });
   } catch (error) {
     console.error(error);
-    return Response.json({ success: false });
+    return Response.json({ success: false, error: "Email send failed" }, { status: 500 });
   }
 }
