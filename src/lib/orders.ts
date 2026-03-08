@@ -88,6 +88,12 @@ export async function createOrder(input: {
     throw new Error("REDIS_URL is not configured");
   }
 
+  const indexType = await redis.type(ORDER_INDEX_KEY);
+
+  if (indexType !== "none" && indexType !== "list") {
+    await redis.del(ORDER_INDEX_KEY);
+  }
+
   const order: StoredOrder = {
     id: makeOrderId(),
     name: input.name,
@@ -120,10 +126,13 @@ export async function getOrder(orderId: string) {
   return normalizeOrder(JSON.parse(raw));
 }
 
-export async function listOrders() {
+async function getOrdersFromIndex(limit = 200) {
   if (!redis) return [];
 
-  const ids = await redis.lrange(ORDER_INDEX_KEY, 0, 199);
+  const keyType = await redis.type(ORDER_INDEX_KEY);
+  if (keyType !== "list") return [];
+
+  const ids = await redis.lrange(ORDER_INDEX_KEY, 0, limit - 1);
   if (!ids.length) return [];
 
   const pipeline = redis.pipeline();
@@ -139,8 +148,52 @@ export async function listOrders() {
     .filter(Boolean) as StoredOrder[];
 }
 
+async function getOrdersByScanning(limit = 200) {
+  if (!redis) return [];
+
+  const keys = await redis.keys("order:*");
+  if (!keys.length) return [];
+
+  const pipeline = redis.pipeline();
+  keys.forEach((key) => pipeline.get(key));
+  const results = await pipeline.exec();
+
+  const orders = (results || [])
+    .map((entry) => {
+      const value = entry?.[1];
+      if (!value || typeof value !== "string") return null;
+      return normalizeOrder(JSON.parse(value));
+    })
+    .filter((order): order is StoredOrder => order !== null);
+
+  return orders
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )
+    .slice(0, limit);
+}
+
+export async function listOrders(limit = 200) {
+  if (!redis) return [];
+
+  const indexedOrders = await getOrdersFromIndex(limit);
+  const scannedOrders = await getOrdersByScanning(limit);
+
+  const merged = new Map<string, StoredOrder>();
+
+  for (const order of [...indexedOrders, ...scannedOrders]) {
+    merged.set(order.id, order);
+  }
+
+  return Array.from(merged.values()).sort(
+    (a, b) =>
+      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+}
+
 export async function getRecentOrders(limit = 50) {
-  const orders = await listOrders();
+  const orders = await listOrders(limit);
   return orders.slice(0, limit);
 }
 
