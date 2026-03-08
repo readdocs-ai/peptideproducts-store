@@ -1,67 +1,76 @@
-import { NextResponse } from "next/server";
-import { makeOrderId, saveOrder, type StoredOrderItem } from "@/lib/orders";
+import { createOrder, PaymentMethod, StoredOrderItem } from "@/lib/orders";
+import { sendOrderEmails } from "@/lib/email";
 
-export const runtime = "nodejs";
-
-type Payload = {
-  name: string;
-  email: string;
-  shippingRegion: "UK" | "INTL";
-  subtotal: number;
-  shipping: number;
-  total: number;
-  items: StoredOrderItem[];
+type Body = {
+  name?: string;
+  email?: string;
+  shippingRegion?: "UK";
+  subtotal?: number;
+  shipping?: number;
+  total?: number;
+  items?: StoredOrderItem[];
+  paymentMethod?: PaymentMethod;
 };
 
-function bad(msg: string, status = 400) {
-  return NextResponse.json({ ok: false, error: msg }, { status });
-}
-
 export async function POST(req: Request) {
-  let data: Payload;
-
   try {
-    data = (await req.json()) as Payload;
-  } catch {
-    return bad("Invalid JSON payload");
+    const body = (await req.json()) as Body;
+
+    const name = body.name?.trim();
+    const email = body.email?.trim();
+    const shippingRegion = body.shippingRegion || "UK";
+    const subtotal = Number(body.subtotal || 0);
+    const shipping = Number(body.shipping || 0);
+    const total = Number(body.total || 0);
+    const items = Array.isArray(body.items) ? body.items : [];
+    const paymentMethod = body.paymentMethod || "bank_transfer";
+
+    if (!name || !email) {
+      return Response.json({ ok: false, error: "Name and email are required." }, { status: 400 });
+    }
+
+    if (!items.length) {
+      return Response.json({ ok: false, error: "Cart is empty." }, { status: 400 });
+    }
+
+    if (!["bank_transfer", "crypto"].includes(paymentMethod)) {
+      return Response.json({ ok: false, error: "Invalid payment method." }, { status: 400 });
+    }
+
+    const order = await createOrder({
+      name,
+      email,
+      shippingRegion,
+      subtotal,
+      shipping,
+      total,
+      items,
+      paymentMethod,
+    });
+
+    try {
+      await sendOrderEmails({
+        orderId: order.id,
+        customerName: order.name,
+        customerEmail: order.email,
+        paymentMethod: order.paymentMethod,
+        totalGBP: order.total,
+        items: order.items,
+      });
+    } catch (emailError) {
+      console.error("ORDER EMAIL ERROR:", emailError);
+    }
+
+    return Response.json({
+      ok: true,
+      orderId: order.id,
+      paymentMethod: order.paymentMethod,
+    });
+  } catch (error) {
+    console.error("ORDER CREATE ERROR:", error);
+    return Response.json(
+      { ok: false, error: "Unable to save your order right now." },
+      { status: 500 }
+    );
   }
-
-  const name = (data.name || "").trim();
-  const email = (data.email || "").trim();
-  const shippingRegion = data.shippingRegion;
-  const subtotal = Number(data.subtotal || 0);
-  const shipping = Number(data.shipping || 0);
-  const total = Number(data.total || 0);
-  const items = Array.isArray(data.items) ? data.items : [];
-
-  if (!name || !email || !items.length) {
-    return bad("Missing required order fields.");
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return bad("Please enter a valid email address.");
-  }
-
-  const orderId = makeOrderId();
-
-  await saveOrder({
-    id: orderId,
-    createdAt: Date.now(),
-    customerName: name,
-    customerEmail: email,
-    shippingRegion,
-    subtotal,
-    shipping,
-    total,
-    status: "pending",
-    paidAt: null,
-    shippedAt: null,
-    trackingNumber: null,
-    items,
-  });
-
-  return NextResponse.json({
-    ok: true,
-    orderId,
-  });
 }

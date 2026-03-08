@@ -1,53 +1,47 @@
 import { NextResponse } from "next/server";
-import { updateOrderStatus, type OrderStatus } from "@/lib/orders";
+import { updateOrderStatus } from "@/lib/orders";
 
-export const runtime = "nodejs";
+type OrderStatus = "pending" | "paid" | "shipped";
 
-const validStatuses: OrderStatus[] = ["pending", "paid", "shipped"];
-
-type Payload = {
-  status: OrderStatus;
-  trackingNumber?: string | null;
-};
-
-function bad(msg: string, status = 400) {
-  return NextResponse.json({ ok: false, error: msg }, { status });
-}
-
-export async function POST(
+export async function PATCH(
   req: Request,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
-  let data: Payload;
-
   try {
-    data = (await req.json()) as Payload;
-  } catch {
-    return bad("Invalid JSON payload");
+    const id = params.id;
+    const body = await req.json();
+
+    const status = body.status as OrderStatus;
+    const trackingNumber =
+      typeof body.trackingNumber === "string" ? body.trackingNumber : null;
+
+    if (!["pending", "paid", "shipped"].includes(status)) {
+      return NextResponse.json({ error: "Invalid status" }, { status: 400 });
+    }
+
+    if (status === "shipped" && !trackingNumber?.trim()) {
+      return NextResponse.json(
+        { error: "Tracking number is required for shipped orders" },
+        { status: 400 }
+      );
+    }
+
+    const updated = await updateOrderStatus({
+      orderId: id,
+      status,
+      trackingNumber,
+    });
+
+    if (!updated) {
+      return NextResponse.json({ error: "Order not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ ok: true, order: updated });
+  } catch (error) {
+    console.error("ORDER STATUS UPDATE ERROR:", error);
+    return NextResponse.json(
+      { error: "Failed to update order status" },
+      { status: 500 }
+    );
   }
-
-  const { id } = await params;
-  const status = data.status;
-  const trackingNumber =
-    typeof data.trackingNumber === "string" ? data.trackingNumber : null;
-
-  if (!validStatuses.includes(status)) {
-    return bad("Invalid order status.");
-  }
-
-  if (status === "shipped" && !trackingNumber?.trim()) {
-    return bad("Tracking number is required before marking an order as shipped.");
-  }
-
-  const updated = await updateOrderStatus({
-    id,
-    status,
-    trackingNumber,
-  });
-
-  if (!updated) {
-    return bad("Order not found.", 404);
-  }
-
-  return NextResponse.json({ ok: true, order: updated });
 }

@@ -8,129 +8,182 @@ export type StoredOrderItem = {
 };
 
 export type OrderStatus = "pending" | "paid" | "shipped";
+export type PaymentMethod = "bank_transfer" | "crypto";
 
 export type StoredOrder = {
   id: string;
-  createdAt: number;
-  customerName: string;
-  customerEmail: string;
-  shippingRegion: "UK" | "INTL";
+  name: string;
+  email: string;
+  shippingRegion: "UK";
   subtotal: number;
   shipping: number;
   total: number;
-  status: OrderStatus;
-  paidAt?: number | null;
-  shippedAt?: number | null;
-  trackingNumber?: string | null;
   items: StoredOrderItem[];
+  createdAt: string;
+  status: OrderStatus;
+  paymentMethod: PaymentMethod;
+  paidAt: string | null;
+  shippedAt: string | null;
+  trackingNumber: string | null;
 };
 
-let redis: Redis | null = null;
+const redisUrl = process.env.REDIS_URL || "";
+const redis = redisUrl ? new Redis(redisUrl) : null;
 
-function getRedis() {
-  if (!process.env.REDIS_URL) return null;
-  if (!redis) {
-    redis = new Redis(process.env.REDIS_URL);
+const ORDER_INDEX_KEY = "orders:index";
+
+function orderKey(orderId: string) {
+  return `order:${orderId}`;
+}
+
+function makeOrderId() {
+  const now = new Date();
+  const y = String(now.getFullYear()).slice(-2);
+  const m = String(now.getMonth() + 1).padStart(2, "0");
+  const d = String(now.getDate()).padStart(2, "0");
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let suffix = "";
+
+  for (let i = 0; i < 6; i += 1) {
+    suffix += chars[Math.floor(Math.random() * chars.length)];
   }
-  return redis;
+
+  return `PP-${y}${m}${d}-${suffix}`;
 }
 
-function randomId() {
-  return Math.random().toString(36).slice(2, 8).toUpperCase();
-}
-
-function normalizeOrder(order: StoredOrder): StoredOrder {
+function normalizeOrder(raw: Partial<StoredOrder>): StoredOrder {
   return {
-    ...order,
-    status: order.status ?? "pending",
-    paidAt: order.paidAt ?? null,
-    shippedAt: order.shippedAt ?? null,
-    trackingNumber: order.trackingNumber ?? null,
+    id: raw.id || "",
+    name: raw.name || "",
+    email: raw.email || "",
+    shippingRegion: "UK",
+    subtotal: raw.subtotal || 0,
+    shipping: raw.shipping || 0,
+    total: raw.total || 0,
+    items: raw.items || [],
+    createdAt: raw.createdAt || new Date().toISOString(),
+    status: raw.status || "pending",
+    paymentMethod: raw.paymentMethod || "bank_transfer",
+    paidAt: raw.paidAt ?? null,
+    shippedAt: raw.shippedAt ?? null,
+    trackingNumber: raw.trackingNumber ?? null,
   };
 }
 
-export function makeOrderId() {
-  const date = new Date();
-  const y = date.getFullYear().toString().slice(-2);
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-  return `PP-${y}${m}${d}-${randomId()}`;
-}
-
 export function isKvConfigured() {
-  return Boolean(process.env.REDIS_URL);
+  return Boolean(redis);
 }
 
-export async function saveOrder(order: StoredOrder) {
-  const client = getRedis();
-
-  if (!client) {
-    throw new Error("Redis is not configured. Missing REDIS_URL.");
+export async function createOrder(input: {
+  name: string;
+  email: string;
+  shippingRegion: "UK";
+  subtotal: number;
+  shipping: number;
+  total: number;
+  items: StoredOrderItem[];
+  paymentMethod: PaymentMethod;
+}) {
+  if (!redis) {
+    throw new Error("REDIS_URL is not configured");
   }
 
-  const normalized = normalizeOrder(order);
+  const order: StoredOrder = {
+    id: makeOrderId(),
+    name: input.name,
+    email: input.email,
+    shippingRegion: input.shippingRegion,
+    subtotal: input.subtotal,
+    shipping: input.shipping,
+    total: input.total,
+    items: input.items,
+    createdAt: new Date().toISOString(),
+    status: "pending",
+    paymentMethod: input.paymentMethod,
+    paidAt: null,
+    shippedAt: null,
+    trackingNumber: null,
+  };
 
-  await client.set(`order:${normalized.id}`, JSON.stringify(normalized));
-  await client.zadd("orders:index", String(normalized.createdAt), normalized.id);
+  await redis.set(orderKey(order.id), JSON.stringify(order));
+  await redis.lpush(ORDER_INDEX_KEY, order.id);
+
+  return order;
 }
 
-export async function getOrderById(id: string): Promise<StoredOrder | null> {
-  const client = getRedis();
+export async function getOrder(orderId: string) {
+  if (!redis) return null;
 
-  if (!client) {
-    return null;
-  }
-
-  const raw = await client.get(`order:${id}`);
-
+  const raw = await redis.get(orderKey(orderId));
   if (!raw) return null;
 
-  return normalizeOrder(JSON.parse(raw) as StoredOrder);
+  return normalizeOrder(JSON.parse(raw));
 }
 
-export async function getRecentOrders(limit = 50): Promise<StoredOrder[]> {
-  const client = getRedis();
+export async function listOrders() {
+  if (!redis) return [];
 
-  if (!client) {
-    return [];
-  }
-
-  const ids = await client.zrevrange("orders:index", 0, limit - 1);
-
+  const ids = await redis.lrange(ORDER_INDEX_KEY, 0, 199);
   if (!ids.length) return [];
 
-  const rawOrders = await Promise.all(ids.map((id) => client.get(`order:${id}`)));
+  const pipeline = redis.pipeline();
+  ids.forEach((id) => pipeline.get(orderKey(id)));
+  const results = await pipeline.exec();
 
-  return rawOrders
-    .filter(Boolean)
-    .map((raw) => normalizeOrder(JSON.parse(raw as string) as StoredOrder));
+  return (results || [])
+    .map((entry) => {
+      const value = entry?.[1];
+      if (!value || typeof value !== "string") return null;
+      return normalizeOrder(JSON.parse(value));
+    })
+    .filter(Boolean) as StoredOrder[];
 }
 
-export async function updateOrderStatus(input: {
-  id: string;
+export async function getRecentOrders(limit = 50) {
+  const orders = await listOrders();
+  return orders.slice(0, limit);
+}
+
+export async function updateOrderStatus(params: {
+  orderId: string;
   status: OrderStatus;
   trackingNumber?: string | null;
 }) {
-  const existing = await getOrderById(input.id);
-
-  if (!existing) {
-    return null;
+  if (!redis) {
+    throw new Error("REDIS_URL is not configured");
   }
 
-  const now = Date.now();
-  const trackingNumber = input.trackingNumber?.trim() || null;
+  const order = await getOrder(params.orderId);
+  if (!order) return null;
 
-  const updated: StoredOrder = normalizeOrder({
-    ...existing,
-    status: input.status,
+  const updated: StoredOrder = {
+    ...order,
+    status: params.status,
     paidAt:
-      input.status === "paid" || input.status === "shipped"
-        ? existing.paidAt ?? now
+      params.status === "paid" || params.status === "shipped"
+        ? order.paidAt || new Date().toISOString()
         : null,
-    shippedAt: input.status === "shipped" ? existing.shippedAt ?? now : null,
-    trackingNumber: input.status === "shipped" ? trackingNumber : null,
-  });
+    shippedAt:
+      params.status === "shipped"
+        ? order.shippedAt || new Date().toISOString()
+        : null,
+    trackingNumber:
+      params.status === "shipped"
+        ? params.trackingNumber?.trim() || order.trackingNumber || null
+        : null,
+  };
 
-  await saveOrder(updated);
+  if (params.status === "pending") {
+    updated.paidAt = null;
+    updated.shippedAt = null;
+    updated.trackingNumber = null;
+  }
+
+  if (params.status === "paid") {
+    updated.shippedAt = null;
+    updated.trackingNumber = null;
+  }
+
+  await redis.set(orderKey(order.id), JSON.stringify(updated));
   return updated;
 }

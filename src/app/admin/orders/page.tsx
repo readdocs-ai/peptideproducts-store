@@ -14,8 +14,9 @@ function formatGBP(n: number) {
   }).format(n);
 }
 
-function formatDate(ts: number) {
-  return new Date(ts).toLocaleString("en-GB", {
+function formatDate(value: string | number) {
+  const date = new Date(value);
+  return date.toLocaleString("en-GB", {
     dateStyle: "medium",
     timeStyle: "short",
   });
@@ -89,10 +90,10 @@ export default async function AdminOrdersPage() {
                               Customer
                             </div>
                             <div className="mt-2 text-sm text-ink">
-                              {order.customerName}
+                              {order.name}
                             </div>
                             <div className="mt-1 text-sm text-muted">
-                              {order.customerEmail}
+                              {order.email}
                             </div>
                           </div>
 
