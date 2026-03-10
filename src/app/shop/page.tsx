@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -23,21 +24,32 @@ export default function Shop() {
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <h1 className="text-3xl font-extrabold tracking-tight">Shop</h1>
-              <p className="mt-2 text-sm text-slate">Research supply catalog (demo). Not for human use.</p>
+              <p className="mt-2 text-sm text-slate">
+                Research supply catalog. Not for human use.
+              </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => setCat("All")}
-                className={`rounded-full px-4 py-2 text-sm font-extrabold border ${cat === "All" ? "bg-accent text-paper border-ink" : "bg-paper/80 text-slate border-line hover:bg-mist"}`}
+                className={`rounded-full px-4 py-2 text-sm font-extrabold border ${
+                  cat === "All"
+                    ? "bg-accent text-paper border-ink"
+                    : "bg-paper/80 text-slate border-line hover:bg-mist"
+                }`}
               >
                 All
               </button>
+
               {categories.map((c) => (
                 <button
                   key={c.key}
                   onClick={() => setCat(c.key)}
-                  className={`rounded-full px-4 py-2 text-sm font-extrabold border ${cat === c.key ? "bg-accent text-paper border-ink" : "bg-paper/80 text-slate border-line hover:bg-mist"}`}
+                  className={`rounded-full px-4 py-2 text-sm font-extrabold border ${
+                    cat === c.key
+                      ? "bg-accent text-paper border-ink"
+                      : "bg-paper/80 text-slate border-line hover:bg-mist"
+                  }`}
                 >
                   {c.key}
                 </button>
@@ -54,7 +66,11 @@ export default function Shop() {
           </div>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((p) => <ProductCard key={p.id} p={p} />)}
+            {filtered.map((p) => (
+              <Link key={p.id} href={`/shop/${p.id}`} className="block">
+                <ProductCard p={p} />
+              </Link>
+            ))}
           </div>
         </Container>
       </main>
