@@ -11,13 +11,41 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const p = products.find((x) => x.id === params.id);
   if (!p) return notFound();
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: p.name,
+    image: `https://peptideproducts.co.uk${p.image}`,
+    description: p.subtitle,
+    sku: p.id,
+    brand: {
+      "@type": "Brand",
+      name: "Peptide Products",
+    },
+    offers: {
+      "@type": "Offer",
+      url: `https://peptideproducts.co.uk/product/${p.id}`,
+      priceCurrency: "GBP",
+      price: p.priceGBP,
+      availability: "https://schema.org/InStock",
+    },
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+
       <Header />
       <main className="py-12">
         <Container>
           <div className="text-sm text-slate">
-            <Link href="/shop" className="hover:text-ink font-semibold">Shop</Link> <span className="mx-2">/</span> {p.name}
+            <Link href="/shop" className="font-semibold hover:text-ink">
+              Shop
+            </Link>{" "}
+            <span className="mx-2">/</span> {p.name}
           </div>
 
           <div className="mt-6 grid gap-8 lg:grid-cols-2">
@@ -33,11 +61,13 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                 <div className="text-sm font-bold text-slate">{p.subtitle}</div>
                 <h1 className="mt-2 text-4xl font-extrabold tracking-tight">{p.name}</h1>
 
-                <div className="mt-6 grid gap-4 rounded-xl2 bg-mist p-5 border border-line">
+                <div className="mt-6 grid gap-4 rounded-xl2 border border-line bg-mist p-5">
                   <div>
                     <div className="text-xs font-extrabold text-slate">Highlights</div>
                     <ul className="mt-2 grid gap-2 text-sm text-slate">
-                      {p.highlights.map((h) => <li key={h}>• {h}</li>)}
+                      {p.highlights.map((h) => (
+                        <li key={h}>• {h}</li>
+                      ))}
                     </ul>
                   </div>
 
@@ -45,7 +75,10 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     <div className="text-xs font-extrabold text-slate">Actives (label)</div>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {p.actives.map((a) => (
-                        <span key={a} className="rounded-full border border-line bg-paper px-3 py-1 text-xs font-semibold text-slate">
+                        <span
+                          key={a}
+                          className="rounded-full border border-line bg-paper px-3 py-1 text-xs font-semibold text-slate"
+                        >
                           {a}
                         </span>
                       ))}
@@ -55,7 +88,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   <div>
                     <div className="text-xs font-extrabold text-slate">Intended research use</div>
                     <ul className="mt-2 grid gap-2 text-sm text-slate">
-                      {p.intendedUse.map((u) => <li key={u}>• {u}</li>)}
+                      {p.intendedUse.map((u) => (
+                        <li key={u}>• {u}</li>
+                      ))}
                     </ul>
                   </div>
 
@@ -66,49 +101,50 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               </div>
             </div>
 
-<div className="mt-6 rounded-xl2 border border-line bg-white p-6 shadow-soft">
-  <h2 className="text-sm font-extrabold">Documentation</h2>
-  <p className="mt-2 text-sm text-muted">
-    Download supporting documents for this product (templates in this demo).
-  </p>
+            <div>
+              <div className="mt-6 rounded-xl2 border border-line bg-white p-6 shadow-soft">
+                <h2 className="text-sm font-extrabold">Documentation</h2>
+                <p className="mt-2 text-sm text-muted">
+                  Download supporting documents for this product.
+                </p>
 
-  <div className="mt-4 flex flex-wrap gap-3">
-    {p.coa ? (
-      <a
-        href={p.coa}
-        download
-        className="rounded-xl2 bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
-      >
-        Download COA
-      </a>
-    ) : (
-      <span className="rounded-xl2 border border-line bg-panel px-4 py-2 text-sm font-extrabold text-muted">
-        COA unavailable
-      </span>
-    )}
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {p.coa ? (
+                    <a
+                      href={p.coa}
+                      download
+                      className="rounded-xl2 bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+                    >
+                      Download COA
+                    </a>
+                  ) : (
+                    <span className="rounded-xl2 border border-line bg-panel px-4 py-2 text-sm font-extrabold text-muted">
+                      COA unavailable
+                    </span>
+                  )}
 
-    {p.sds ? (
-      <a
-        href={p.sds}
-        download
-        className="rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
-      >
-        Download SDS
-      </a>
-    ) : (
-      <span className="rounded-xl2 border border-line bg-panel px-4 py-2 text-sm font-extrabold text-muted">
-        SDS unavailable
-      </span>
-    )}
-  </div>
+                  {p.sds ? (
+                    <a
+                      href={p.sds}
+                      download
+                      className="rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                    >
+                      Download SDS
+                    </a>
+                  ) : (
+                    <span className="rounded-xl2 border border-line bg-panel px-4 py-2 text-sm font-extrabold text-muted">
+                      SDS unavailable
+                    </span>
+                  )}
+                </div>
 
-  <div className="mt-3 text-xs text-muted">
-    Research use only. Replace these PDFs with your official COA/SDS documents.
-  </div>
-</div>
+                <div className="mt-3 text-xs text-muted">
+                  Research use only.
+                </div>
+              </div>
 
-
-            <ProductBuyBox product={p} />
+              <ProductBuyBox product={p} />
+            </div>
           </div>
         </Container>
       </main>
