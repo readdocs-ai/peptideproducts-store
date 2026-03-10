@@ -5,7 +5,13 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: [
+        "/admin",
+        "/admin/",
+        "/api/",
+      ],
     },
-    sitemap: "https://peptideproducts.co.uk/sitemap.xml",
+    sitemap: "https://www.peptideproducts.co.uk/sitemap.xml",
+    host: "https://www.peptideproducts.co.uk",
   };
 }
