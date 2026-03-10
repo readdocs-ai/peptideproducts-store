@@ -16,11 +16,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = staticPages.map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: path === "" ? 1 : 0.7,
   }));
 
   const productRoutes = products.map((product) => ({
-    url: `${baseUrl}/shop/${product.id}`,
+    url: `${baseUrl}/product/${product.id}`,
     lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
   }));
 
   return [...staticRoutes, ...productRoutes];
