@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { products } from "@/data/products";
-import { ProductBuyBox } from "./ui";
+import { ProductBuyBox, ProductImageGallery } from "./ui";
 
 type Props = {
   params: { id: string };
@@ -29,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = `${p.name} | Peptide Products`;
   const description = `${p.subtitle}. ${p.pack}. Research supply only. View product details and documentation at Peptide Products.`;
   const url = `https://www.peptideproducts.co.uk/product/${p.id}`;
-  const image = `https://www.peptideproducts.co.uk${p.image}`;
+  const ogImage = `https://www.peptideproducts.co.uk${p.image}`;
 
   return {
     title,
@@ -45,9 +44,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: image,
+          url: ogImage,
           width: 1200,
-          height: 1200,
+          height: 630,
           alt: p.name,
         },
       ],
@@ -56,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [ogImage],
     },
   };
 }
@@ -65,18 +64,47 @@ export default function ProductPage({ params }: Props) {
   const p = getProduct(params.id);
   if (!p) return notFound();
 
+  const imageUrls = (p.gallery?.length ? p.gallery : [p.image]).map(
+    (src) => `https://www.peptideproducts.co.uk${src}`,
+  );
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: p.name,
-    image: [`https://www.peptideproducts.co.uk${p.image}`],
-    description: p.subtitle,
+    image: imageUrls,
+    description: `${p.subtitle}. ${p.notes}`,
     sku: p.id,
+    category: p.category,
     brand: {
       "@type": "Brand",
       name: "Peptide Products",
     },
-    category: p.category,
+    itemCondition: "https://schema.org/NewCondition",
+    audience: {
+      "@type": "Audience",
+      audienceType: "Laboratory and research buyers",
+    },
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "Pack size",
+        value: p.pack,
+      },
+      ...p.actives.map((active) => ({
+        "@type": "PropertyValue",
+        name: "Active",
+        value: active,
+      })),
+    ],
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "GB",
+      returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+      merchantReturnDays: 14,
+      returnMethod: "https://schema.org/ReturnByMail",
+      returnFees: "https://schema.org/FreeReturn",
+    },
     offers: {
       "@type": "Offer",
       url: `https://www.peptideproducts.co.uk/product/${p.id}`,
@@ -84,6 +112,18 @@ export default function ProductPage({ params }: Props) {
       price: p.priceGBP,
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
+      seller: {
+        "@type": "Organization",
+        name: "Peptide Products",
+        url: "https://www.peptideproducts.co.uk",
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: "GB",
+        },
+      },
     },
   };
 
@@ -106,17 +146,16 @@ export default function ProductPage({ params }: Props) {
           </div>
 
           <div className="mt-6 grid gap-8 lg:grid-cols-2">
-            <div className="overflow-hidden rounded-xl3 border border-line bg-paper/85 shadow-soft backdrop-blur">
-              <div className="relative aspect-square bg-haze">
-                <Image src={p.image} alt={p.name} fill className="object-cover" />
-                <div className="absolute left-4 top-4 rounded-full bg-paper/85 px-3 py-1 text-xs font-extrabold shadow-soft">
-                  {p.category}
-                </div>
-              </div>
+            <ProductImageGallery product={p} />
 
-              <div className="p-8">
+            <div>
+              <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
                 <div className="text-sm font-bold text-slate">{p.subtitle}</div>
                 <h1 className="mt-2 text-4xl font-extrabold tracking-tight">{p.name}</h1>
+                <p className="mt-3 text-sm text-muted">
+                  Structured data, richer OG sharing, and upgraded product imagery are now baked
+                  into this page while keeping the compliance language clear.
+                </p>
 
                 <div className="mt-6 grid gap-4 rounded-xl2 border border-line bg-mist p-5">
                   <div>
@@ -156,9 +195,7 @@ export default function ProductPage({ params }: Props) {
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div>
               <div className="mt-6 rounded-xl2 border border-line bg-white p-6 shadow-soft">
                 <h2 className="text-sm font-extrabold">Documentation</h2>
                 <p className="mt-2 text-sm text-muted">
@@ -198,7 +235,9 @@ export default function ProductPage({ params }: Props) {
                 <div className="mt-3 text-xs text-muted">Research use only.</div>
               </div>
 
-              <ProductBuyBox product={p} />
+              <div className="mt-6">
+                <ProductBuyBox product={p} />
+              </div>
             </div>
           </div>
         </Container>

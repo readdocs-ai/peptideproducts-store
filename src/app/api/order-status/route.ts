@@ -1,4 +1,5 @@
 import { getOrderForCustomerLookup } from "@/lib/orders";
+export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
   try {
