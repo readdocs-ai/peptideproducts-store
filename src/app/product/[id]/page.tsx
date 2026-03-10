@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,8 +8,61 @@ import { Container } from "@/components/Container";
 import { products } from "@/data/products";
 import { ProductBuyBox } from "./ui";
 
-export default function ProductPage({ params }: { params: { id: string } }) {
-  const p = products.find((x) => x.id === params.id);
+type Props = {
+  params: { id: string };
+};
+
+function getProduct(id: string) {
+  return products.find((x) => x.id === id);
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const p = getProduct(params.id);
+
+  if (!p) {
+    return {
+      title: "Product not found | Peptide Products",
+      description: "The requested product could not be found.",
+    };
+  }
+
+  const title = `${p.name} | Peptide Products`;
+  const description = `${p.subtitle}. ${p.pack}. Research supply only. View product details and documentation at Peptide Products.`;
+  const url = `https://www.peptideproducts.co.uk/product/${p.id}`;
+  const image = `https://www.peptideproducts.co.uk${p.image}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "Peptide Products",
+      type: "website",
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 1200,
+          alt: p.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
+  };
+}
+
+export default function ProductPage({ params }: Props) {
+  const p = getProduct(params.id);
   if (!p) return notFound();
 
   const schema = {
