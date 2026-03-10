@@ -15,19 +15,21 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: p.name,
-    image: `https://peptideproducts.co.uk${p.image}`,
+    image: [`https://www.peptideproducts.co.uk${p.image}`],
     description: p.subtitle,
     sku: p.id,
     brand: {
       "@type": "Brand",
       name: "Peptide Products",
     },
+    category: p.category,
     offers: {
       "@type": "Offer",
-      url: `https://peptideproducts.co.uk/product/${p.id}`,
+      url: `https://www.peptideproducts.co.uk/product/${p.id}`,
       priceCurrency: "GBP",
       price: p.priceGBP,
       availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
     },
   };
 
@@ -44,8 +46,9 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           <div className="text-sm text-slate">
             <Link href="/shop" className="font-semibold hover:text-ink">
               Shop
-            </Link>{" "}
-            <span className="mx-2">/</span> {p.name}
+            </Link>
+            <span className="mx-2">/</span>
+            {p.name}
           </div>
 
           <div className="mt-6 grid gap-8 lg:grid-cols-2">
@@ -138,9 +141,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                   )}
                 </div>
 
-                <div className="mt-3 text-xs text-muted">
-                  Research use only.
-                </div>
+                <div className="mt-3 text-xs text-muted">Research use only.</div>
               </div>
 
               <ProductBuyBox product={p} />
