@@ -67,7 +67,7 @@ export default function Shop() {
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((p) => (
-              <Link key={p.id} href={`/shop/${p.id}`} className="block">
+              <Link key={p.id} href={`/product/${p.id}`} className="block">
                 <ProductCard p={p} />
               </Link>
             ))}
