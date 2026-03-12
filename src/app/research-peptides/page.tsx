@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Peptide Products",
     images: [
       {
-        url: "https://www.peptideproducts.co.uk/products/meso-vitamin-c-alt.jpg",
+        url: "https://www.peptideproducts.co.uk/products/meso-vitamin-c-benefits.jpg",
         width: 1200,
         height: 900,
         alt: "Research peptides and laboratory compounds by Peptide Products",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Research Peptides UK | Laboratory Compounds for Scientific Study",
     description:
       "Research peptides and laboratory compounds for scientific study, with direct product routes and research-use-only positioning.",
-    images: ["https://www.peptideproducts.co.uk/products/meso-vitamin-c-alt.jpg"],
+    images: ["https://www.peptideproducts.co.uk/products/meso-vitamin-c-benefits.jpg"],
   },
 };
 
@@ -40,13 +40,13 @@ const featureCards = [
   {
     title: "Antioxidant research lines",
     copy: "Explore glutathione-led and vitamin C-led product lines used in analytical, formulation, and method-development workflows.",
-    image: "/products/meso-glutathione-alt-cropped.jpg",
+    image: "/products/meso-glutathione-alt.jpg",
     href: "/product/meso-glutathione",
   },
   {
     title: "Hydration and carrier blends",
     copy: "Review hydration-focused and carrier-oriented compounds presented with clearer product imagery and supporting product details.",
-    image: "/products/skinbooster-hyaluronic-acid-alt.jpg",
+    image: "/products/skinbooster-hyaluronic-alt.jpg",
     href: "/product/skinbooster-hyaluronic-acid",
   },
   {
@@ -73,7 +73,7 @@ const spotlightCards = [
   {
     title: "Vitamin C compound lines",
     copy: "Vitamin C-focused product lines help broaden antioxidant coverage across the catalogue.",
-    image: "/products/meso-vitamin-c-alt.jpg",
+    image: "/products/meso-vitamin-c-benefits.jpg",
     href: "/product/meso-vitamin-c",
   },
 ] as const;
@@ -168,7 +168,7 @@ export default function ResearchPeptidesPage() {
               <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
                 <div className="relative aspect-[16/9] bg-panel">
                   <Image
-                    src="/products/meso-vitamin-c-alt.jpg"
+                    src="/products/meso-vitamin-c-benefits.jpg"
                     alt="Research peptides and laboratory compounds"
                     fill
                     priority
