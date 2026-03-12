@@ -5,13 +5,27 @@ import Image from "next/image";
 import { Product } from "@/data/products";
 import { addToCart, formatGBP } from "@/lib/cart";
 
-export function ProductCard({ p }: { p: Product }) {
+export function ProductCard({
+  p,
+  imageOverride,
+}: {
+  p: Product;
+  imageOverride?: string;
+}) {
+  const displayImage = imageOverride ?? p.image;
+
   return (
     <div className="group overflow-hidden rounded-xl3 border border-line bg-paper/85 shadow-soft backdrop-blur">
       <Link href={`/product/${p.id}`} className="block">
-        <div className="relative aspect-square bg-haze">
-          <Image src={p.image} alt={p.name} fill className="object-cover" />
-          <div className="absolute left-3 top-3 rounded-full bg-paper/85 px-3 py-1 text-xs font-extrabold shadow-soft">
+        <div className="relative aspect-[4/3] bg-white">
+          <Image
+            src={displayImage}
+            alt={p.name}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-contain object-center p-3"
+          />
+          <div className="absolute left-3 top-3 rounded-full bg-paper/90 px-3 py-1 text-xs font-extrabold shadow-soft">
             {p.category}
           </div>
         </div>

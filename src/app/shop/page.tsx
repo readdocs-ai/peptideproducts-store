@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -67,9 +66,11 @@ export default function Shop() {
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((p) => (
-              <Link key={p.id} href={`/product/${p.id}`} className="block">
-                <ProductCard p={p} />
-              </Link>
+              <ProductCard
+                key={p.id}
+                p={p}
+                imageOverride={p.gallery?.[1] ?? p.image}
+              />
             ))}
           </div>
         </Container>

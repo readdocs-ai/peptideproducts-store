@@ -13,8 +13,8 @@ const config: Config = {
         line: "rgba(11,18,32,0.10)",
         bg: "#FFFFFF",
         panel: "#F6F8FB",
-        accent: "#2563EB",   // biotech blue
-        accent2: "#14B8A6",  // teal
+        accent: "#2563EB",
+        accent2: "#14B8A6",
         warn: "#F59E0B",
       },
       boxShadow: {
@@ -23,6 +23,7 @@ const config: Config = {
       },
       borderRadius: {
         xl2: "1.25rem",
+        xl3: "1.75rem",
       },
       fontFamily: {
         sans: ["ui-sans-serif", "system-ui", "Inter", "Segoe UI", "Roboto", "Helvetica", "Arial"],

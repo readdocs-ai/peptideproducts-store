@@ -6,7 +6,6 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { brand } from "@/theme/brand";
 import { products } from "@/data/products";
-import { ProductCard } from "@/components/ProductCard";
 
 export const metadata: Metadata = {
   title: "Research Peptides & Laboratory Compounds UK | Peptide Products",
@@ -44,36 +43,36 @@ const heroImage = "/home/home-hero-meso-glutathione.jpg";
 const categoryCards = [
   {
     title: "Hydration research blends",
-    copy: "Carrier and hydration-focused compounds for bench testing, formulation work, and analytical workflows.",
+    copy: "Explore hydration-led and carrier-focused product lines for formulation work and bench testing.",
     image: "/home/home-feature-skinbooster-hyaluronic-acid.jpg",
     href: "/product/skinbooster-hyaluronic-acid",
   },
   {
     title: "Firming peptide blends",
-    copy: "Elasticity and firmness-focused research lines for assay work and laboratory evaluation.",
+    copy: "Browse elasticity and firming-focused compounds presented with clearer product pages and imagery.",
     image: "/home/home-feature-meso-lift-firming.jpg",
     href: "/product/meso-lift-firming",
   },
   {
-    title: "Repair and regenerative compounds",
-    copy: "PDRN-led and regeneration-focused lines for research environments and method development.",
-    image: "/products/meso-pdrn-main.jpg",
+    title: "Repair and regenerative lines",
+    copy: "View regeneration-focused compounds for research environments, analytical review, and method development.",
+    image: "/products/meso-pdrn-alt-cropped.jpg",
     href: "/product/meso-pdrn",
   },
 ] as const;
 
-const trustCards = [
+const whyChooseCards = [
   {
-    title: "Research use only",
-    copy: "Products are supplied strictly for laboratory and scientific research purposes only.",
+    title: "Clear product pages",
+    copy: "Review pack size, pricing, imagery, and research notes before moving into the cart.",
   },
   {
-    title: "Documentation support",
-    copy: "COA and SDS files can be surfaced on supported product lines to support procurement and review.",
+    title: "Documentation where available",
+    copy: "Supported products can include COA and SDS files to help with internal review and procurement.",
   },
   {
-    title: "UK checkout and tracking",
-    copy: "Direct checkout flow, order status lookup, and email updates are already built into the storefront.",
+    title: "UK order tracking",
+    copy: "Track active orders and receive email updates through the live storefront.",
   },
 ] as const;
 
@@ -86,7 +85,7 @@ const faqItems = [
   {
     question: "Do you provide product documentation?",
     answer:
-      "Supported lines can include COA and SDS documentation to assist with internal review, handling, and procurement workflows.",
+      "Selected product lines can include COA and SDS documentation to support internal review and handling.",
   },
   {
     question: "Can I track an order after purchase?",
@@ -95,8 +94,19 @@ const faqItems = [
   },
 ] as const;
 
+function getProduct(id: string) {
+  return products.find((p) => p.id === id);
+}
+
 export default function Home() {
-  const featuredProducts = products.slice(0, 3);
+  const featuredProducts = [
+    getProduct("meso-glutathione"),
+    getProduct("skinbooster-hyaluronic-acid"),
+    getProduct("meso-lift-firming"),
+    getProduct("meso-collagen"),
+    getProduct("meso-pdrn"),
+    getProduct("meso-vitamin-c"),
+  ].filter(Boolean) as typeof products;
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -153,7 +163,7 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 text-xs font-semibold text-muted shadow-soft">
-                  Research use only • UK store • Selected lines support COA / SDS
+                  Research use only • UK store • Order tracking available
                   <span className="h-2 w-2 rounded-full bg-accent2" />
                 </div>
 
@@ -162,8 +172,8 @@ export default function Home() {
                 </h1>
 
                 <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">
-                  Browse research-grade product lines with clear documentation cues, direct product
-                  routes, and a cleaner path from discovery to checkout.
+                  Browse antioxidant, hydration, firming, and regenerative product lines with clear
+                  product pages and a faster path from discovery to checkout.
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
@@ -187,7 +197,7 @@ export default function Home() {
                     Research-use-only catalogue
                   </div>
                   <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft">
-                    Product documentation on supported lines
+                    Documentation on selected lines
                   </div>
                   <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft">
                     UK checkout, email updates, and order tracking
@@ -196,7 +206,7 @@ export default function Home() {
               </div>
 
               <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
-                <div className="relative aspect-[5/4] bg-panel">
+                <div className="relative aspect-[16/9] bg-panel">
                   <Image
                     src={heroImage}
                     alt="Meso Glutathione research compound by Peptide Products"
@@ -211,19 +221,18 @@ export default function Home() {
                 <div className="grid gap-4 border-t border-line p-5 sm:grid-cols-3">
                   <div>
                     <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
-                      Clear product pages
+                      Antioxidant-led line
                     </div>
                     <p className="mt-2 text-sm text-muted">
-                      Browse pack details, pricing, research notes, and direct routes to cart.
+                      A strong visual introduction to one of the store&apos;s key research products.
                     </p>
                   </div>
                   <div>
                     <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
-                      Compliance-first browsing
+                      Clearer browsing
                     </div>
                     <p className="mt-2 text-sm text-muted">
-                      Research-use-only positioning and supporting document cues are surfaced
-                      throughout the storefront.
+                      Move from category exploration into individual product pages more easily.
                     </p>
                   </div>
                   <div>
@@ -250,8 +259,7 @@ export default function Home() {
                   Shop by research category
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Explore hydration, firming, antioxidant, and regenerative compound lines with
-                  direct product routes from the homepage.
+                  Explore the main research areas represented across the catalogue.
                 </p>
               </div>
               <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
@@ -276,7 +284,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-5">
-                    <div className="text-lg font-extrabold tracking-tight">{card.title}</div>
+                    <h3 className="text-lg font-extrabold tracking-tight">{card.title}</h3>
                     <p className="mt-2 text-sm text-muted">{card.copy}</p>
                     <div className="mt-4 text-sm font-extrabold text-ink">View product →</div>
                   </div>
@@ -294,8 +302,7 @@ export default function Home() {
                   Featured peptide and compound lines
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Selected research products with direct add-to-cart routes and detailed product
-                  pages for faster browsing.
+                  Six core product lines shown with their primary pack imagery.
                 </p>
               </div>
               <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
@@ -303,9 +310,44 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {featuredProducts.map((p) => (
-                <ProductCard key={p.id} p={p} />
+                <Link
+                  key={p.id}
+                  href={`/product/${p.id}`}
+                  className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+                >
+                  <div className="relative aspect-[4/3] bg-panel">
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition duration-300 group-hover:scale-[1.02]"
+                    />
+                  </div>
+
+                  <div className="p-5">
+                    <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+                      {p.category}
+                    </div>
+                    <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-ink">
+                      {p.name}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted">{p.subtitle}</p>
+
+                    <div className="mt-5 flex items-end justify-between gap-4">
+                      <div>
+                        <div className="text-sm font-semibold text-muted">{p.pack}</div>
+                        <div className="mt-1 text-xl font-extrabold text-ink">
+                          £{p.priceGBP.toFixed(2)}
+                        </div>
+                      </div>
+
+                      <div className="text-sm font-extrabold text-ink">View product →</div>
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
           </Container>
@@ -314,7 +356,7 @@ export default function Home() {
         <section className="py-14">
           <Container>
             <div className="grid gap-6 lg:grid-cols-3">
-              {trustCards.map((item) => (
+              {whyChooseCards.map((item) => (
                 <div
                   key={item.title}
                   className="rounded-xl3 border border-line bg-white p-6 shadow-soft"
@@ -332,19 +374,25 @@ export default function Home() {
             <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
               <div>
                 <h2 className="text-2xl font-extrabold tracking-tight">
-                  Research peptides in a clearer buying environment
+                  Why laboratories use Peptide Products
                 </h2>
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  Peptide Products is structured to help laboratories, procurement teams, and
-                  research buyers move through product discovery more efficiently. Product pages are
-                  designed to surface pack size, pricing, gallery images, and core research notes
-                  while keeping compliance messaging visible throughout the experience.
+                  The site is designed to make product discovery simpler for research buyers,
+                  laboratories, and procurement teams. Product pages surface pack details, pricing,
+                  imagery, and research notes while keeping the overall browsing experience clear
+                  and straightforward.
                 </p>
                 <p className="mt-4 text-sm leading-7 text-muted">
-                  The site also supports checkout, order status tracking, and direct contact routes
-                  for wholesale or documentation-related enquiries, making it easier to manage
-                  repeat purchasing and internal review.
+                  The store also supports checkout, order status tracking, and direct contact routes
+                  for wholesale or documentation-related enquiries.
                 </p>
+
+                <Link
+                  href="/research-peptides"
+                  className="mt-6 inline-flex text-sm font-extrabold text-ink hover:text-accent"
+                >
+                  Read more about research peptides →
+                </Link>
               </div>
 
               <div className="rounded-xl3 border border-line bg-panel p-6">

@@ -9,10 +9,11 @@ export const brand = {
 } as const;
 
 export const nav = [
-  { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
-  { label: "Disclaimer", href: "/disclaimer" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Wholesale", href: "/wholesale" },
-  { label: "Contact", href: "/contact" },
-] as const;
+  { href: "/", label: "Home" },
+  { href: "/shop", label: "Shop" },
+  { href: "/research-peptides", label: "Research Peptides" },
+  { href: "/disclaimer", label: "Disclaimer" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/wholesale", label: "Wholesale" },
+  { href: "/contact", label: "Contact" },
+];
