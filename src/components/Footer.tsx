@@ -8,11 +8,16 @@ export function Footer() {
       <Container>
         <div className="grid gap-8 py-10 md:grid-cols-3">
           <div>
-            <div className="text-lg font-extrabold tracking-wide text-ink">{brand.name}</div>
-            <div className="mt-2 max-w-sm text-sm text-muted">{brand.description}</div>
+            <div className="text-lg font-extrabold tracking-wide text-ink">
+              {brand.name}
+            </div>
+            <div className="mt-2 max-w-sm text-sm text-muted">
+              {brand.description}
+            </div>
             <div className="mt-3 text-xs text-muted">{brand.domain}</div>
           </div>
 
+          {/* Policies */}
           <div className="text-sm">
             <div className="font-bold text-ink">Policies</div>
             <div className="mt-3 grid gap-2 text-muted">
@@ -23,11 +28,19 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Support + SEO Pages */}
           <div className="text-sm">
             <div className="font-bold text-ink">Support</div>
             <div className="mt-3 grid gap-2 text-muted">
               <Link href="/faq">FAQ</Link>
               <Link href="/contact">Contact</Link>
+
+              {/* SEO pages */}
+              <Link href="/research-peptides">Research peptides</Link>
+              <Link href="/research-peptides-uk">Research peptides UK</Link>
+              <Link href="/research-peptide-supplier-uk">
+                Research peptide supplier UK
+              </Link>
             </div>
           </div>
         </div>
