@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Research Peptides UK | Laboratory Compounds for Scientific Study",
     description:
-      "Research peptides and laboratory compounds for laboratory and scientific study, with direct links into core product lines.",
+      "Research peptides and laboratory compounds for laboratory and scientific study, including antioxidant, hydration, firming, and regenerative product lines.",
     url: "https://www.peptideproducts.co.uk/research-peptides",
     siteName: "Peptide Products",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Research Peptides UK | Laboratory Compounds for Scientific Study",
     description:
-      "Research peptides and laboratory compounds for scientific study, with direct product routes and research-use-only positioning.",
+      "Research peptides and laboratory compounds for scientific study, including antioxidant, hydration, firming, and regenerative product lines.",
     images: ["https://www.peptideproducts.co.uk/products/meso-vitamin-c-benefits.jpg"],
   },
 };
@@ -39,19 +39,19 @@ export const metadata: Metadata = {
 const featureCards = [
   {
     title: "Antioxidant research lines",
-    copy: "Explore glutathione-led and vitamin C-led product lines used in analytical, formulation, and method-development workflows.",
+    copy: "Glutathione and vitamin C compounds are widely studied in antioxidant, oxidative stress, and formulation-focused laboratory work.",
     image: "/products/meso-glutathione-alt.jpg",
     href: "/product/meso-glutathione",
   },
   {
     title: "Hydration and carrier blends",
-    copy: "Review hydration-focused and carrier-oriented compounds presented with clearer product imagery and supporting product details.",
+    copy: "Hyaluronic acid-based blends are commonly reviewed in hydration, carrier compatibility, and formulation research environments.",
     image: "/products/skinbooster-hyaluronic-alt.jpg",
     href: "/product/skinbooster-hyaluronic-acid",
   },
   {
     title: "Firming peptide compounds",
-    copy: "Browse firmness and elasticity-focused research blends with direct product routes for faster review.",
+    copy: "Firming and elasticity-focused peptide blends are used in analytical, structural, and formulation-led laboratory research.",
     image: "/products/meso-lift-firming-alt.jpg",
     href: "/product/meso-lift-firming",
   },
@@ -60,19 +60,19 @@ const featureCards = [
 const spotlightCards = [
   {
     title: "Regenerative product lines",
-    copy: "PDRN and collagen-oriented compounds support regeneration-focused research workflows and evaluation.",
+    copy: "PDRN-based compounds are often studied in repair, regeneration, and compatibility-focused research workflows.",
     image: "/products/meso-pdrn-alt.jpg",
     href: "/product/meso-pdrn",
   },
   {
     title: "Collagen-led booster blends",
-    copy: "Collagen-focused product lines can support compatibility review, formulation work, and related lab testing.",
+    copy: "Collagen-oriented compounds can be reviewed in regeneration, protein compatibility, and supportive formulation studies.",
     image: "/products/meso-collagen-alt.jpg",
     href: "/product/meso-collagen",
   },
   {
     title: "Vitamin C compound lines",
-    copy: "Vitamin C-focused product lines help broaden antioxidant coverage across the catalogue.",
+    copy: "Vitamin C-focused compounds are commonly included in antioxidant, brightening, and formulation-related laboratory research.",
     image: "/products/meso-vitamin-c-benefits.jpg",
     href: "/product/meso-vitamin-c",
   },
@@ -90,9 +90,9 @@ const faqItems = [
       "No. Products listed by Peptide Products are supplied strictly for laboratory and scientific research use only.",
   },
   {
-    question: "Can I move from this page into individual products?",
+    question: "Which types of compounds are included on this page?",
     answer:
-      "Yes. This page is designed to connect broader research-peptide search intent with individual product pages and product-specific information.",
+      "This page covers antioxidant, hydration, firming, regenerative, collagen-led, PDRN-based, and vitamin C-focused research compounds.",
   },
 ] as const;
 
@@ -143,9 +143,14 @@ export default function ResearchPeptidesPage() {
                 </h1>
 
                 <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">
-                  This page provides a clearer overview of the research peptide and compound lines
-                  available through Peptide Products, while linking directly into individual product
-                  pages for more detailed review.
+                  Research peptides cover a broad range of laboratory compounds including
+                  antioxidant-focused blends, hydration systems, firming peptide products, and
+                  regenerative lines such as collagen and PDRN-based compounds.
+                </p>
+
+                <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">
+                  These compounds are commonly reviewed in analytical workflows, formulation
+                  research, compatibility testing, and other laboratory study environments.
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
@@ -185,13 +190,14 @@ export default function ResearchPeptidesPage() {
           <Container>
             <div className="max-w-3xl">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Explore the main research areas across the catalogue
+                Core research peptide categories
               </h2>
               <p className="mt-3 text-sm leading-7 text-muted">
-                Peptide Products groups its catalogue around key areas including antioxidant-focused
-                compounds, hydration-oriented blends, firming peptide lines, and regenerative
-                product categories. This makes it easier for research buyers and laboratories to
-                move from broader search intent into specific product pages.
+                The research peptide category includes compounds studied for antioxidant activity,
+                hydration support, elasticity and firmness research, and regeneration-focused
+                workflows. Different compounds serve different laboratory interests, so category
+                browsing can help narrow down which products are most relevant to a specific line
+                of study.
               </p>
             </div>
 
@@ -230,19 +236,21 @@ export default function ResearchPeptidesPage() {
                   About research peptides
                 </h2>
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  Research peptides are laboratory compounds supplied for analytical, investigative,
-                  and formulation-related environments. A page like this helps connect broader
-                  keyword intent such as “research peptides UK” with the deeper product-level pages
-                  that hold pricing, pack details, documentation cues, and additional imagery.
+                  Research peptides are supplied for controlled scientific and laboratory settings
+                  where compounds are examined for analytical, biochemical, structural, or
+                  formulation-related purposes. Depending on the compound, research may focus on
+                  antioxidant activity, hydration behaviour, elasticity and firmness, or
+                  regeneration-related compatibility.
                 </p>
                 <p className="mt-4 text-sm leading-7 text-muted">
-                  For users, this acts as a clearer starting point before moving into individual
-                  lines like glutathione, hyaluronic acid, lift and firming blends, collagen
-                  boosters, PDRN compounds, and vitamin C products.
+                  In practical terms, that means one research line may focus on glutathione or
+                  vitamin C, while another may focus on hyaluronic acid, collagen, PDRN, or
+                  peptide-blend formulations. Each compound type brings a different laboratory
+                  interest and should be reviewed through its individual product details.
                 </p>
                 <p className="mt-4 text-sm leading-7 text-muted">
-                  For search visibility, this type of page strengthens topical relevance while
-                  improving internal linking across the catalogue.
+                  Buyers looking for research peptides often compare categories first, then move
+                  into specific products once the relevant compound type has been identified.
                 </p>
               </div>
 
@@ -254,8 +262,8 @@ export default function ResearchPeptidesPage() {
                 </p>
                 <p className="mt-4 text-sm leading-7 text-muted">
                   They are not intended for human consumption, medical treatment, or clinical use.
-                  Buyers should review product pages and supporting documents where available before
-                  ordering.
+                  Product handling, review, and use should remain within appropriate laboratory
+                  environments.
                 </p>
 
                 <div className="mt-6">
@@ -276,10 +284,11 @@ export default function ResearchPeptidesPage() {
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
                 <h2 className="text-2xl font-extrabold tracking-tight">
-                  Additional product lines
+                  Additional peptide and compound lines
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Explore more regenerative and antioxidant-focused products within the catalogue.
+                  Explore regenerative and antioxidant-focused compounds alongside collagen, PDRN,
+                  and vitamin C research products.
                 </p>
               </div>
               <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">

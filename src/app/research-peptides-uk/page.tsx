@@ -26,16 +26,19 @@ export default function ResearchPeptidesUK() {
             </h1>
 
             <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-              Research peptides are peptide-based laboratory compounds used in
-              analytical, formulation, and experimental environments. In the UK,
-              research peptide suppliers provide compounds that support
-              laboratory study, cellular research, and compound analysis.
+              Research peptides are laboratory compounds studied in analytical,
+              biochemical, and formulation-based research environments.
+              Scientists use peptide compounds to examine cellular behaviour,
+              compound stability, antioxidant activity, and compatibility in
+              controlled laboratory conditions.
             </p>
 
             <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-              Peptide Products provides research compounds including antioxidant,
-              hydration-focused, regenerative, and peptide-blend formulations
-              supplied strictly for scientific and laboratory investigation.
+              Common research areas include antioxidant compounds such as
+              glutathione and vitamin C, hydration systems built around
+              hyaluronic acid, regeneration-focused compounds like PDRN and
+              collagen, and peptide blends used in elasticity and structural
+              research workflows.
             </p>
           </Container>
         </section>
@@ -43,7 +46,7 @@ export default function ResearchPeptidesUK() {
         <section className="bg-white py-14">
           <Container>
             <h2 className="text-2xl font-extrabold tracking-tight">
-              Types of research peptides available
+              Types of research peptide compounds
             </h2>
 
             <div className="mt-8 grid gap-6 lg:grid-cols-2">
@@ -51,9 +54,9 @@ export default function ResearchPeptidesUK() {
               <div className="rounded-xl3 border border-line p-6">
                 <h3 className="text-lg font-extrabold">Antioxidant peptides</h3>
                 <p className="mt-3 text-sm text-muted">
-                  Antioxidant peptide compounds such as glutathione and vitamin
-                  C blends are widely studied in cellular protection and
-                  oxidative stress research environments.
+                  Glutathione and vitamin C compounds are frequently studied in
+                  oxidative stress, cellular protection, and antioxidant-related
+                  research environments.
                 </p>
 
                 <Link
@@ -67,8 +70,9 @@ export default function ResearchPeptidesUK() {
               <div className="rounded-xl3 border border-line p-6">
                 <h3 className="text-lg font-extrabold">Hydration compounds</h3>
                 <p className="mt-3 text-sm text-muted">
-                  Hyaluronic acid research compounds are studied in hydration
-                  and extracellular matrix research workflows.
+                  Hyaluronic acid-based compounds are often examined in
+                  hydration-related laboratory studies and extracellular matrix
+                  research.
                 </p>
 
                 <Link
@@ -82,8 +86,9 @@ export default function ResearchPeptidesUK() {
               <div className="rounded-xl3 border border-line p-6">
                 <h3 className="text-lg font-extrabold">Regenerative peptides</h3>
                 <p className="mt-3 text-sm text-muted">
-                  Compounds such as PDRN and collagen blends are studied in
-                  regenerative and cellular repair research settings.
+                  Compounds such as PDRN and collagen blends are reviewed in
+                  regeneration-focused research environments and compatibility
+                  studies.
                 </p>
 
                 <Link
@@ -97,8 +102,9 @@ export default function ResearchPeptidesUK() {
               <div className="rounded-xl3 border border-line p-6">
                 <h3 className="text-lg font-extrabold">Firming peptide blends</h3>
                 <p className="mt-3 text-sm text-muted">
-                  Firming-focused peptide blends combine compounds studied in
-                  elasticity and structural protein research environments.
+                  Firming peptide blends combine compounds studied in elasticity
+                  research, structural protein analysis, and formulation
+                  compatibility testing.
                 </p>
 
                 <Link
@@ -116,20 +122,21 @@ export default function ResearchPeptidesUK() {
         <section className="py-14">
           <Container>
             <h2 className="text-2xl font-extrabold tracking-tight">
-              What are research peptides used for?
+              How research peptides are studied
             </h2>
 
             <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-              Research peptides are used in laboratory environments to study
-              molecular interactions, cellular behaviour, and compound
-              compatibility. Scientists and research laboratories analyse these
-              compounds in controlled settings as part of experimental
-              investigation and scientific analysis.
+              Research peptides are examined in laboratory environments where
+              scientists analyse molecular interactions, cellular responses,
+              compound stability, and formulation compatibility. These studies
+              often involve analytical testing, experimental modelling, and
+              biochemical investigation.
             </p>
 
             <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-              Research peptides may also be examined during formulation testing,
-              compatibility studies, and compound stability research.
+              Depending on the compound type, research may focus on antioxidant
+              activity, hydration behaviour, regeneration-related compatibility,
+              or peptide interaction with structural proteins.
             </p>
           </Container>
         </section>
@@ -141,9 +148,9 @@ export default function ResearchPeptidesUK() {
             </h2>
 
             <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-              All products listed by Peptide Products are supplied strictly for
-              laboratory research use only. These compounds are not intended for
-              human consumption, medical treatment, or veterinary use.
+              All compounds listed on this site are supplied strictly for
+              laboratory research use. These products are not intended for human
+              consumption, medical treatment, or veterinary use.
             </p>
 
             <Link
