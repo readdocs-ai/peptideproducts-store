@@ -68,6 +68,10 @@ export default function ProductPage({ params }: Props) {
     (src) => `https://www.peptideproducts.co.uk${src}`,
   );
 
+  const relatedProducts = products
+    .filter((item) => item.id !== p.id && item.category === p.category)
+    .slice(0, 3);
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -135,6 +139,7 @@ export default function ProductPage({ params }: Props) {
       />
 
       <Header />
+
       <main className="py-12">
         <Container>
           <div className="text-sm text-slate">
@@ -153,8 +158,7 @@ export default function ProductPage({ params }: Props) {
                 <div className="text-sm font-bold text-slate">{p.subtitle}</div>
                 <h1 className="mt-2 text-4xl font-extrabold tracking-tight">{p.name}</h1>
                 <p className="mt-3 text-sm text-muted">
-                  Structured data, richer OG sharing, and upgraded product imagery are now baked
-                  into this page while keeping the compliance language clear.
+                  {p.pack}. Supplied strictly for laboratory and scientific research use only.
                 </p>
 
                 <div className="mt-6 grid gap-4 rounded-xl2 border border-line bg-mist p-5">
@@ -240,8 +244,76 @@ export default function ProductPage({ params }: Props) {
               </div>
             </div>
           </div>
+
+          <section className="mt-12 rounded-xl3 border border-line bg-white p-6 shadow-soft">
+            <h2 className="text-2xl font-extrabold tracking-tight">Research guides and related pages</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">
+              Explore broader research peptide topics and related compound pages for additional
+              laboratory context.
+            </p>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              <Link
+                href="/research-peptides"
+                className="rounded-xl2 border border-line bg-panel p-4 transition hover:border-ink/30 hover:bg-white"
+              >
+                <div className="text-sm font-extrabold text-ink">Research peptides</div>
+                <div className="mt-2 text-sm text-muted">
+                  Overview of antioxidant, hydration, firming, and regenerative compound lines.
+                </div>
+              </Link>
+
+              <Link
+                href="/research-peptides-uk"
+                className="rounded-xl2 border border-line bg-panel p-4 transition hover:border-ink/30 hover:bg-white"
+              >
+                <div className="text-sm font-extrabold text-ink">Research peptides UK</div>
+                <div className="mt-2 text-sm text-muted">
+                  UK-focused overview of common research peptide categories and laboratory uses.
+                </div>
+              </Link>
+
+              <Link
+                href="/research-peptide-supplier-uk"
+                className="rounded-xl2 border border-line bg-panel p-4 transition hover:border-ink/30 hover:bg-white"
+              >
+                <div className="text-sm font-extrabold text-ink">Research peptide supplier UK</div>
+                <div className="mt-2 text-sm text-muted">
+                  Learn more about peptide supply categories and related product lines.
+                </div>
+              </Link>
+
+              <div className="rounded-xl2 border border-line bg-panel p-4">
+                <div className="text-sm font-extrabold text-ink">Category</div>
+                <div className="mt-2 text-sm text-muted">{p.category}</div>
+              </div>
+            </div>
+
+            {relatedProducts.length > 0 ? (
+              <div className="mt-8">
+                <h3 className="text-lg font-extrabold tracking-tight">Related products</h3>
+                <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  {relatedProducts.map((item) => (
+                    <Link
+                      key={item.id}
+                      href={`/product/${item.id}`}
+                      className="rounded-xl2 border border-line bg-panel p-4 transition hover:border-ink/30 hover:bg-white"
+                    >
+                      <div className="text-xs font-extrabold uppercase tracking-wide text-slate">
+                        {item.category}
+                      </div>
+                      <div className="mt-2 text-base font-extrabold text-ink">{item.name}</div>
+                      <div className="mt-2 text-sm text-muted">{item.subtitle}</div>
+                      <div className="mt-3 text-sm font-extrabold text-ink">View product →</div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </section>
         </Container>
       </main>
+
       <Footer />
     </div>
   );
