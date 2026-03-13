@@ -61,6 +61,51 @@ export default function Page() {
         </Container>
       </main>
 
+      <section className="bg-white py-14">
+  <Container>
+    <h2 className="text-2xl font-extrabold tracking-tight">
+      Related research guides
+    </h2>
+
+    <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+
+      <Link href="/research-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Research peptides</div>
+        <p className="text-sm text-muted mt-2">
+          Overview of peptide compounds used in laboratory study.
+        </p>
+      </Link>
+
+      <Link href="/research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Research peptides UK</div>
+        <p className="text-sm text-muted mt-2">
+          Laboratory peptide compounds available to UK buyers.
+        </p>
+      </Link>
+
+      <Link href="/research-peptide-supplier-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Research peptide supplier UK</div>
+        <p className="text-sm text-muted mt-2">
+          Overview of peptide compound supply and research products.
+        </p>
+      </Link>
+
+      <Link href="/buy-research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Buy research peptides UK</div>
+      </Link>
+
+      <Link href="/laboratory-peptide-compounds" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Laboratory peptide compounds</div>
+      </Link>
+
+      <Link href="/peptide-products" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Peptide products</div>
+      </Link>
+
+    </div>
+  </Container>
+</section>
+
       <Footer />
     </div>
   );
