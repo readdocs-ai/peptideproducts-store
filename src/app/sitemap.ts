@@ -17,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/research-peptides-uk",
     "/research-peptide-supplier-uk",
 
+    // category pages
+    "/antioxidant-peptides",
+    "/hydration-peptides",
+    "/firming-peptides",
+    "/regenerative-peptides",
+
     // compound topic pages
     "/pdrn-research-peptide",
     "/glutathione-research-peptide",
@@ -39,6 +45,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
           path === "/research-peptides-uk" ||
           path === "/research-peptide-supplier-uk"
         ? 0.9
+        : path === "/antioxidant-peptides" ||
+          path === "/hydration-peptides" ||
+          path === "/firming-peptides" ||
+          path === "/regenerative-peptides"
+        ? 0.88
         : path === "/buy-research-peptides-uk" ||
           path === "/laboratory-peptide-compounds" ||
           path === "/peptide-products"

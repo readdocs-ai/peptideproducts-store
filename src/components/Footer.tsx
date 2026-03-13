@@ -47,6 +47,20 @@ export function Footer() {
                 Research peptide supplier UK
               </Link>
 
+              {/* Category pages */}
+              <Link href="/antioxidant-peptides">
+                Antioxidant peptides
+              </Link>
+              <Link href="/hydration-peptides">
+                Hydration peptides
+              </Link>
+              <Link href="/firming-peptides">
+                Firming peptides
+              </Link>
+              <Link href="/regenerative-peptides">
+                Regenerative peptides
+              </Link>
+
               {/* Compound research pages */}
               <Link href="/pdrn-research-peptide">PDRN research peptide</Link>
               <Link href="/glutathione-research-peptide">
