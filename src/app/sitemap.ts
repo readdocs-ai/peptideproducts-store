@@ -21,6 +21,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/pdrn-research-peptide",
     "/glutathione-research-peptide",
     "/hyaluronic-acid-peptide-research",
+
+    // buyer / commercial pages
+    "/buy-research-peptides-uk",
+    "/laboratory-peptide-compounds",
+    "/peptide-products",
   ];
 
   const staticRoutes = staticPages.map((path) => ({
@@ -34,6 +39,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
           path === "/research-peptides-uk" ||
           path === "/research-peptide-supplier-uk"
         ? 0.9
+        : path === "/buy-research-peptides-uk" ||
+          path === "/laboratory-peptide-compounds" ||
+          path === "/peptide-products"
+        ? 0.85
         : 0.7,
   }));
 

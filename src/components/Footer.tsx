@@ -30,7 +30,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Support + SEO */}
+          {/* Research + SEO pages */}
           <div className="text-sm">
             <div className="font-bold text-ink">Research</div>
 
@@ -40,20 +40,31 @@ export function Footer() {
               <Link href="/faq">FAQ</Link>
               <Link href="/contact">Contact</Link>
 
-              {/* Main research hub */}
+              {/* Research hubs */}
               <Link href="/research-peptides">Research peptides</Link>
               <Link href="/research-peptides-uk">Research peptides UK</Link>
               <Link href="/research-peptide-supplier-uk">
                 Research peptide supplier UK
               </Link>
 
-              {/* Compound topic pages */}
+              {/* Compound research pages */}
               <Link href="/pdrn-research-peptide">PDRN research peptide</Link>
               <Link href="/glutathione-research-peptide">
                 Glutathione research peptide
               </Link>
               <Link href="/hyaluronic-acid-peptide-research">
                 Hyaluronic acid peptide research
+              </Link>
+
+              {/* Buyer / commercial pages */}
+              <Link href="/buy-research-peptides-uk">
+                Buy research peptides UK
+              </Link>
+              <Link href="/laboratory-peptide-compounds">
+                Laboratory peptide compounds
+              </Link>
+              <Link href="/peptide-products">
+                Peptide products
               </Link>
 
             </div>
