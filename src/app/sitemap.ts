@@ -11,9 +11,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/wholesale",
     "/order-status",
     "/faq",
+
+    // SEO hub pages
     "/research-peptides",
     "/research-peptides-uk",
     "/research-peptide-supplier-uk",
+
+    // compound topic pages
+    "/pdrn-research-peptide",
+    "/glutathione-research-peptide",
+    "/hyaluronic-acid-peptide-research",
   ];
 
   const staticRoutes = staticPages.map((path) => ({
