@@ -76,56 +76,6 @@ const whyChooseCards = [
   },
 ] as const;
 
-<section className="py-14">
-  <Container>
-    <h2 className="text-2xl font-extrabold tracking-tight">
-      Research peptide guides
-    </h2>
-
-    <p className="mt-2 max-w-2xl text-sm text-muted">
-      Explore research background, compound categories, and laboratory study
-      areas across peptide product lines.
-    </p>
-
-    <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-
-      <Link href="/research-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Research peptides</div>
-        <p className="text-sm text-muted mt-2">
-          Overview of peptide compounds used in laboratory study.
-        </p>
-      </Link>
-
-      <Link href="/research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Research peptides UK</div>
-        <p className="text-sm text-muted mt-2">
-          Laboratory peptide compounds available to UK buyers.
-        </p>
-      </Link>
-
-      <Link href="/research-peptide-supplier-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Research peptide supplier UK</div>
-        <p className="text-sm text-muted mt-2">
-          Overview of peptide compound supply and laboratory research products.
-        </p>
-      </Link>
-
-      <Link href="/pdrn-research-peptide" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">PDRN research peptide</div>
-      </Link>
-
-      <Link href="/glutathione-research-peptide" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Glutathione research peptide</div>
-      </Link>
-
-      <Link href="/hyaluronic-acid-peptide-research" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Hyaluronic acid peptide research</div>
-      </Link>
-
-    </div>
-  </Container>
-</section>
-
 const faqItems = [
   {
     question: "Are these products for human use?",
@@ -196,39 +146,41 @@ export default function Home() {
     })),
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.peptideproducts.co.uk",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Research peptides",
+        item: "https://www.peptideproducts.co.uk/research-peptides",
+      },
+    ],
+  };
+
   return (
     <div>
       <Header />
 
       <main>
-       <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify([
-      organizationSchema,
-      websiteSchema,
-      faqSchema,
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: "https://www.peptideproducts.co.uk"
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Research peptides",
-            item: "https://www.peptideproducts.co.uk/research-peptides"
-          }
-        ]
-      }
-    ]),
-  }}
-/>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              organizationSchema,
+              websiteSchema,
+              faqSchema,
+              breadcrumbSchema,
+            ]),
+          }}
+        />
 
         <section className="relative overflow-hidden bg-hero pb-10 pt-8 lg:pb-16 lg:pt-12">
           <Container>
@@ -244,8 +196,9 @@ export default function Home() {
                 </h1>
 
                 <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">
-                  Browse antioxidant, hydration, firming, and regenerative product lines with clear
-                  product pages and a faster path from discovery to checkout.
+                  Browse antioxidant, hydration, firming, and regenerative peptide compounds studied
+                  in laboratory environments investigating molecular interaction, cellular response,
+                  and compound compatibility.
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
@@ -424,7 +377,6 @@ export default function Home() {
             </div>
           </Container>
         </section>
-        
 
         <section className="py-14">
           <Container>
@@ -441,106 +393,107 @@ export default function Home() {
             </div>
           </Container>
         </section>
+
         <section className="py-14">
-  <Container>
-    <div className="flex flex-wrap items-end justify-between gap-6">
-      <div>
-        <h2 className="text-2xl font-extrabold tracking-tight">
-          Research guides
-        </h2>
-        <p className="mt-2 max-w-2xl text-sm text-muted">
-          Explore core research peptide topics and move into the most relevant
-          compound pages.
-        </p>
-      </div>
+          <Container>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <h2 className="text-2xl font-extrabold tracking-tight">
+                  Research guides
+                </h2>
+                <p className="mt-2 max-w-2xl text-sm text-muted">
+                  Explore core research peptide topics and move into the most relevant compound
+                  pages.
+                </p>
+              </div>
 
-      <Link
-        href="/research-peptides"
-        className="text-sm font-extrabold text-ink/80 hover:text-ink"
-      >
-        View research hub →
-      </Link>
-    </div>
+              <Link
+                href="/research-peptides"
+                className="text-sm font-extrabold text-ink/80 hover:text-ink"
+              >
+                View research hub →
+              </Link>
+            </div>
 
-    <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-      <Link
-        href="/research-peptides"
-        className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-      >
-        <div className="text-sm font-extrabold text-ink">Research peptides</div>
-        <p className="mt-2 text-sm text-muted">
-          Overview of antioxidant, hydration, firming, and regenerative compound lines.
-        </p>
-      </Link>
+            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              <Link
+                href="/research-peptides"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">Research peptides</div>
+                <p className="mt-2 text-sm text-muted">
+                  Overview of antioxidant, hydration, firming, and regenerative compound lines.
+                </p>
+              </Link>
 
-      <Link
-        href="/pdrn-research-peptide"
-        className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-      >
-        <div className="text-sm font-extrabold text-ink">PDRN research peptide</div>
-        <p className="mt-2 text-sm text-muted">
-          Regeneration-focused compound research and related product links.
-        </p>
-      </Link>
+              <Link
+                href="/pdrn-research-peptide"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">PDRN research peptide</div>
+                <p className="mt-2 text-sm text-muted">
+                  Regeneration-focused compound research and related product links.
+                </p>
+              </Link>
 
-      <Link
-        href="/glutathione-research-peptide"
-        className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-      >
-        <div className="text-sm font-extrabold text-ink">Glutathione research peptide</div>
-        <p className="mt-2 text-sm text-muted">
-          Antioxidant compound research, oxidative stress studies, and laboratory use.
-        </p>
-      </Link>
+              <Link
+                href="/glutathione-research-peptide"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">Glutathione research peptide</div>
+                <p className="mt-2 text-sm text-muted">
+                  Antioxidant compound research, oxidative stress studies, and laboratory use.
+                </p>
+              </Link>
 
-      <Link
-        href="/hyaluronic-acid-peptide-research"
-        className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-      >
-        <div className="text-sm font-extrabold text-ink">Hyaluronic acid peptide research</div>
-        <p className="mt-2 text-sm text-muted">
-          Hydration-related compound research and extracellular matrix study.
-        </p>
-      </Link>
-    </div>
-  </Container>
-</section>
+              <Link
+                href="/hyaluronic-acid-peptide-research"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">
+                  Hyaluronic acid peptide research
+                </div>
+                <p className="mt-2 text-sm text-muted">
+                  Hydration-related compound research and extracellular matrix study.
+                </p>
+              </Link>
+            </div>
+          </Container>
+        </section>
 
-       <section className="bg-white py-14">
-  <Container>
-    <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
-      <div>
-        <h2 className="text-2xl font-extrabold tracking-tight">
-          Research compounds for laboratory investigation
-        </h2>
+        <section className="bg-white py-14">
+          <Container>
+            <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+              <div>
+                <h2 className="text-2xl font-extrabold tracking-tight">
+                  Research compounds for laboratory investigation
+                </h2>
 
-        <p className="mt-3 text-sm leading-7 text-muted">
-          Research laboratories and analytical teams study peptide compounds
-          to investigate cellular behaviour, antioxidant activity, molecular
-          signalling pathways, and compound stability under controlled
-          experimental conditions.
-        </p>
+                <p className="mt-3 text-sm leading-7 text-muted">
+                  Research laboratories and analytical teams study peptide compounds to investigate
+                  cellular behaviour, antioxidant activity, molecular signalling pathways, and
+                  compound stability under controlled experimental conditions.
+                </p>
 
-        <p className="mt-4 text-sm leading-7 text-muted">
-          Common areas of investigation include glutathione antioxidant
-          research, hyaluronic acid hydration systems, PDRN regeneration
-          compounds, collagen-focused blends, and peptide formulations used in
-          structural and compatibility studies.
-        </p>
+                <p className="mt-4 text-sm leading-7 text-muted">
+                  Common areas of investigation include glutathione antioxidant research,
+                  hyaluronic acid hydration systems, PDRN regeneration compounds, collagen-focused
+                  blends, and peptide formulations used in structural and compatibility studies.
+                </p>
 
-        <p className="mt-4 text-sm leading-7 text-muted">
-          These compound categories form the core of many laboratory peptide
-          research programmes and are widely analysed in biochemical,
-          formulation, and experimental research environments.
-        </p>
+                <p className="mt-4 text-sm leading-7 text-muted">
+                  These compound categories form the core of many laboratory peptide research
+                  programmes and are widely analysed in biochemical, formulation, and experimental
+                  research environments.
+                </p>
 
-        <Link
-          href="/research-peptides"
-          className="mt-6 inline-flex text-sm font-extrabold text-ink hover:text-accent"
-        >
-          Explore research peptide compounds →
-        </Link>
-      </div>
+                <Link
+                  href="/research-peptides"
+                  className="mt-6 inline-flex text-sm font-extrabold text-ink hover:text-accent"
+                >
+                  Explore research peptide compounds →
+                </Link>
+              </div>
 
               <div className="rounded-xl3 border border-line bg-panel p-6">
                 <h2 className="text-2xl font-extrabold tracking-tight">Common questions</h2>
