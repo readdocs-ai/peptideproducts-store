@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Research Peptide Supplier UK | Laboratory Peptide Compounds",
@@ -121,6 +122,17 @@ export default function ResearchPeptideSupplierUKPage() {
               <h1 className="mt-5 text-4xl font-extrabold tracking-tight md:text-5xl">
                 Research peptide supplier UK
               </h1>
+
+              <div className="mt-8 overflow-hidden rounded-xl3 border border-line">
+  <div className="relative aspect-[16/9]">
+    <Image
+      src="/products/meso-collagen-alt.jpg"
+      alt="PDRN research peptide compound"
+      fill
+      className="object-cover"
+    />
+  </div>
+</div>
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-muted md:text-base">
                 Peptide Products supplies research peptides and laboratory compounds in the UK,

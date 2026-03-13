@@ -142,6 +142,17 @@ export default function ResearchPeptidesPage() {
                   Research peptides for laboratory and scientific study
                 </h1>
 
+                <div className="mt-8 overflow-hidden rounded-xl3 border border-line">
+  <div className="relative aspect-[16/9]">
+    <Image
+      src="/products/meso-vitamin-c-alt.jpg"
+      alt="PDRN research peptide compound"
+      fill
+      className="object-cover"
+    />
+  </div>
+</div>
+
                 <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">
                   Research peptides cover a broad range of laboratory compounds including
                   antioxidant-focused blends, hydration systems, firming peptide products, and

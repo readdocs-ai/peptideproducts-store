@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Hyaluronic Acid Peptide Research | Laboratory Compound Study",
@@ -20,6 +21,17 @@ export default function Page() {
           <h1 className="text-4xl font-extrabold tracking-tight">
             Hyaluronic acid peptide research
           </h1>
+
+          <div className="mt-8 overflow-hidden rounded-xl3 border border-line">
+  <div className="relative aspect-[16/9]">
+    <Image
+      src="/products/skinbooster-hyaluronic-alt.jpg"
+      alt="PDRN research peptide compound"
+      fill
+      className="object-cover"
+    />
+  </div>
+</div>
 
           <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
             Hyaluronic acid compounds are studied in laboratory environments
