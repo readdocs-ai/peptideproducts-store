@@ -151,12 +151,34 @@ export default function Home() {
       <Header />
 
       <main>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([organizationSchema, websiteSchema, faqSchema]),
-          }}
-        />
+       <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify([
+      organizationSchema,
+      websiteSchema,
+      faqSchema,
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://www.peptideproducts.co.uk"
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Research peptides",
+            item: "https://www.peptideproducts.co.uk/research-peptides"
+          }
+        ]
+      }
+    ]),
+  }}
+/>
 
         <section className="relative overflow-hidden bg-hero pb-10 pt-8 lg:pb-16 lg:pt-12">
           <Container>

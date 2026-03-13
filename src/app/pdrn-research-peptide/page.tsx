@@ -16,6 +16,35 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://www.peptideproducts.co.uk"
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Research peptides",
+          item: "https://www.peptideproducts.co.uk/research-peptides"
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "PDRN research peptide",
+          item: "https://www.peptideproducts.co.uk/pdrn-research-peptide"
+        }
+      ]
+    }),
+  }}
+/>
       <Header />
 
       <main>
