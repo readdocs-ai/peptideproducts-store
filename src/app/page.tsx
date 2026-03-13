@@ -76,6 +76,56 @@ const whyChooseCards = [
   },
 ] as const;
 
+<section className="py-14">
+  <Container>
+    <h2 className="text-2xl font-extrabold tracking-tight">
+      Research peptide guides
+    </h2>
+
+    <p className="mt-2 max-w-2xl text-sm text-muted">
+      Explore research background, compound categories, and laboratory study
+      areas across peptide product lines.
+    </p>
+
+    <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+
+      <Link href="/research-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Research peptides</div>
+        <p className="text-sm text-muted mt-2">
+          Overview of peptide compounds used in laboratory study.
+        </p>
+      </Link>
+
+      <Link href="/research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Research peptides UK</div>
+        <p className="text-sm text-muted mt-2">
+          Laboratory peptide compounds available to UK buyers.
+        </p>
+      </Link>
+
+      <Link href="/research-peptide-supplier-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Research peptide supplier UK</div>
+        <p className="text-sm text-muted mt-2">
+          Overview of peptide compound supply and laboratory research products.
+        </p>
+      </Link>
+
+      <Link href="/pdrn-research-peptide" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">PDRN research peptide</div>
+      </Link>
+
+      <Link href="/glutathione-research-peptide" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Glutathione research peptide</div>
+      </Link>
+
+      <Link href="/hyaluronic-acid-peptide-research" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Hyaluronic acid peptide research</div>
+      </Link>
+
+    </div>
+  </Container>
+</section>
+
 const faqItems = [
   {
     question: "Are these products for human use?",
