@@ -352,6 +352,7 @@ export default function Home() {
             </div>
           </Container>
         </section>
+        
 
         <section className="py-14">
           <Container>
@@ -368,6 +369,70 @@ export default function Home() {
             </div>
           </Container>
         </section>
+        <section className="py-14">
+  <Container>
+    <div className="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <h2 className="text-2xl font-extrabold tracking-tight">
+          Research guides
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm text-muted">
+          Explore core research peptide topics and move into the most relevant
+          compound pages.
+        </p>
+      </div>
+
+      <Link
+        href="/research-peptides"
+        className="text-sm font-extrabold text-ink/80 hover:text-ink"
+      >
+        View research hub →
+      </Link>
+    </div>
+
+    <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <Link
+        href="/research-peptides"
+        className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+      >
+        <div className="text-sm font-extrabold text-ink">Research peptides</div>
+        <p className="mt-2 text-sm text-muted">
+          Overview of antioxidant, hydration, firming, and regenerative compound lines.
+        </p>
+      </Link>
+
+      <Link
+        href="/pdrn-research-peptide"
+        className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+      >
+        <div className="text-sm font-extrabold text-ink">PDRN research peptide</div>
+        <p className="mt-2 text-sm text-muted">
+          Regeneration-focused compound research and related product links.
+        </p>
+      </Link>
+
+      <Link
+        href="/glutathione-research-peptide"
+        className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+      >
+        <div className="text-sm font-extrabold text-ink">Glutathione research peptide</div>
+        <p className="mt-2 text-sm text-muted">
+          Antioxidant compound research, oxidative stress studies, and laboratory use.
+        </p>
+      </Link>
+
+      <Link
+        href="/hyaluronic-acid-peptide-research"
+        className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+      >
+        <div className="text-sm font-extrabold text-ink">Hyaluronic acid peptide research</div>
+        <p className="mt-2 text-sm text-muted">
+          Hydration-related compound research and extracellular matrix study.
+        </p>
+      </Link>
+    </div>
+  </Container>
+</section>
 
         <section className="bg-white py-14">
           <Container>
