@@ -299,7 +299,7 @@ export default function Home() {
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
                 <h2 className="text-2xl font-extrabold tracking-tight">
-                  Featured peptide and compound lines
+                  Research peptide compounds
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
                   Six core product lines shown with their primary pack imagery.
@@ -434,31 +434,41 @@ export default function Home() {
   </Container>
 </section>
 
-        <section className="bg-white py-14">
-          <Container>
-            <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
-              <div>
-                <h2 className="text-2xl font-extrabold tracking-tight">
-                  Why laboratories use Peptide Products
-                </h2>
-                <p className="mt-3 text-sm leading-7 text-muted">
-                  The site is designed to make product discovery simpler for research buyers,
-                  laboratories, and procurement teams. Product pages surface pack details, pricing,
-                  imagery, and research notes while keeping the overall browsing experience clear
-                  and straightforward.
-                </p>
-                <p className="mt-4 text-sm leading-7 text-muted">
-                  The store also supports checkout, order status tracking, and direct contact routes
-                  for wholesale or documentation-related enquiries.
-                </p>
+       <section className="bg-white py-14">
+  <Container>
+    <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+      <div>
+        <h2 className="text-2xl font-extrabold tracking-tight">
+          Research compounds for laboratory investigation
+        </h2>
 
-                <Link
-                  href="/research-peptides"
-                  className="mt-6 inline-flex text-sm font-extrabold text-ink hover:text-accent"
-                >
-                  Read more about research peptides →
-                </Link>
-              </div>
+        <p className="mt-3 text-sm leading-7 text-muted">
+          Research laboratories and analytical teams study peptide compounds
+          to investigate cellular behaviour, antioxidant activity, molecular
+          signalling pathways, and compound stability under controlled
+          experimental conditions.
+        </p>
+
+        <p className="mt-4 text-sm leading-7 text-muted">
+          Common areas of investigation include glutathione antioxidant
+          research, hyaluronic acid hydration systems, PDRN regeneration
+          compounds, collagen-focused blends, and peptide formulations used in
+          structural and compatibility studies.
+        </p>
+
+        <p className="mt-4 text-sm leading-7 text-muted">
+          These compound categories form the core of many laboratory peptide
+          research programmes and are widely analysed in biochemical,
+          formulation, and experimental research environments.
+        </p>
+
+        <Link
+          href="/research-peptides"
+          className="mt-6 inline-flex text-sm font-extrabold text-ink hover:text-accent"
+        >
+          Explore research peptide compounds →
+        </Link>
+      </div>
 
               <div className="rounded-xl3 border border-line bg-panel p-6">
                 <h2 className="text-2xl font-extrabold tracking-tight">Common questions</h2>

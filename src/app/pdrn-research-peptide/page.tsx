@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "PDRN Research Peptide | Laboratory Compound Overview",
   description:
     "Overview of PDRN research peptide compounds including laboratory study areas, regeneration-focused compound research, and related peptide product lines.",
+  alternates: {
+    canonical: "https://www.peptideproducts.co.uk/pdrn-research-peptide",
+  },
 };
 
 export default function Page() {
@@ -15,34 +18,117 @@ export default function Page() {
     <div>
       <Header />
 
-      <main className="py-14">
-        <Container>
-          <h1 className="text-4xl font-extrabold tracking-tight">
-            PDRN research peptide
-          </h1>
+      <main>
+        <section className="py-14">
+          <Container>
+            <h1 className="text-4xl font-extrabold tracking-tight">
+              PDRN research peptide
+            </h1>
 
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-            PDRN (Polydeoxyribonucleotide) is a compound studied in laboratory
-            environments investigating cellular regeneration, tissue response,
-            and molecular repair pathways.
-          </p>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
+              PDRN (Polydeoxyribonucleotide) is a compound studied in laboratory
+              environments investigating cellular regeneration, tissue response,
+              and molecular repair pathways.
+            </p>
 
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-            Research involving PDRN compounds often examines DNA fragment
-            signalling behaviour, cellular regeneration responses, and
-            extracellular matrix compatibility under controlled laboratory
-            conditions.
-          </p>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
+              Research involving PDRN compounds often examines DNA fragment
+              signalling behaviour, cellular regeneration responses, and
+              extracellular matrix compatibility under controlled laboratory
+              conditions.
+            </p>
 
-          <div className="mt-8">
-            <Link
-              href="/product/meso-pdrn"
-              className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white"
-            >
-              View PDRN research compound →
-            </Link>
-          </div>
-        </Container>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
+              In broader peptide research, PDRN-related compounds are commonly
+              grouped with regeneration-focused lines alongside collagen and
+              other supportive laboratory compounds used in compatibility and
+              formulation studies.
+            </p>
+
+            <div className="mt-8">
+              <Link
+                href="/product/meso-pdrn"
+                className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white"
+              >
+                View PDRN research compound →
+              </Link>
+            </div>
+          </Container>
+        </section>
+
+        <section className="bg-white py-14">
+          <Container>
+            <div className="max-w-3xl">
+              <h2 className="text-2xl font-extrabold tracking-tight">
+                PDRN in laboratory research
+              </h2>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                PDRN compounds are examined in controlled research environments
+                where scientists investigate regeneration-related responses,
+                compound interaction, and biochemical behaviour under laboratory
+                conditions.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Depending on the study design, research may focus on molecular
+                signalling, structural compatibility, tissue-response modelling,
+                or the role of regeneration-oriented compounds alongside
+                collagen and other peptide-related blends.
+              </p>
+            </div>
+          </Container>
+        </section>
+
+        <section className="py-14">
+          <Container>
+            <h2 className="text-2xl font-extrabold tracking-tight">
+              Related research pages
+            </h2>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              <Link
+                href="/research-peptides"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">Research peptides</div>
+                <p className="mt-2 text-sm text-muted">
+                  Core overview of peptide and compound categories.
+                </p>
+              </Link>
+
+              <Link
+                href="/research-peptides-uk"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">Research peptides UK</div>
+                <p className="mt-2 text-sm text-muted">
+                  UK-focused guide to research peptide compounds.
+                </p>
+              </Link>
+
+              <Link
+                href="/product/meso-pdrn"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">Meso PDRN</div>
+                <p className="mt-2 text-sm text-muted">
+                  View the related PDRN research compound product page.
+                </p>
+              </Link>
+
+              <Link
+                href="/product/meso-collagen"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">Meso Collagen</div>
+                <p className="mt-2 text-sm text-muted">
+                  Explore a related regenerative compound line.
+                </p>
+              </Link>
+            </div>
+          </Container>
+        </section>
       </main>
 
       <Footer />
