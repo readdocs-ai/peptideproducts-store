@@ -43,21 +43,21 @@ const heroImage = "/home/home-hero-meso-glutathione.jpg";
 const categoryCards = [
   {
     title: "Hydration research blends",
-    copy: "Explore hydration-led and carrier-focused product lines for formulation work and bench testing.",
+    copy: "Explore hydration-focused peptide compounds and hyaluronic acid research lines used in formulation and compatibility studies.",
     image: "/home/home-feature-skinbooster-hyaluronic-acid.jpg",
-    href: "/product/skinbooster-hyaluronic-acid",
+    href: "/hydration-peptides",
   },
   {
     title: "Firming peptide blends",
-    copy: "Browse elasticity and firming-focused compounds presented with clearer product pages and imagery.",
+    copy: "Browse elasticity and structure-focused peptide compounds studied in laboratory and formulation environments.",
     image: "/home/home-feature-meso-lift-firming.jpg",
-    href: "/product/meso-lift-firming",
+    href: "/firming-peptides",
   },
   {
     title: "Repair and regenerative lines",
-    copy: "View regeneration-focused compounds for research environments, analytical review, and method development.",
+    copy: "View regeneration-focused compounds including collagen and PDRN laboratory product lines.",
     image: "/products/meso-pdrn-alt-cropped.jpg",
-    href: "/product/meso-pdrn",
+    href: "/regenerative-peptides",
   },
 ] as const;
 
@@ -311,7 +311,7 @@ export default function Home() {
                   <div className="p-5">
                     <h3 className="text-lg font-extrabold tracking-tight">{card.title}</h3>
                     <p className="mt-2 text-sm text-muted">{card.copy}</p>
-                    <div className="mt-4 text-sm font-extrabold text-ink">View product →</div>
+                    <div className="mt-4 text-sm font-extrabold text-ink">View category →</div>
                   </div>
                 </Link>
               ))}
@@ -423,6 +423,46 @@ export default function Home() {
                 <div className="text-sm font-extrabold text-ink">Research peptides</div>
                 <p className="mt-2 text-sm text-muted">
                   Overview of antioxidant, hydration, firming, and regenerative compound lines.
+                </p>
+              </Link>
+
+              <Link
+                href="/antioxidant-peptides"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">Antioxidant peptides</div>
+                <p className="mt-2 text-sm text-muted">
+                  Glutathione and vitamin C research compounds used in antioxidant laboratory study.
+                </p>
+              </Link>
+
+              <Link
+                href="/hydration-peptides"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">Hydration peptides</div>
+                <p className="mt-2 text-sm text-muted">
+                  Hyaluronic acid and hydration-related compounds for formulation and compatibility research.
+                </p>
+              </Link>
+
+              <Link
+                href="/regenerative-peptides"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">Regenerative peptides</div>
+                <p className="mt-2 text-sm text-muted">
+                  PDRN and collagen-focused compounds studied in regeneration-related laboratory environments.
+                </p>
+              </Link>
+
+              <Link
+                href="/firming-peptides"
+                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+              >
+                <div className="text-sm font-extrabold text-ink">Firming peptides</div>
+                <p className="mt-2 text-sm text-muted">
+                  Elasticity and structure-focused peptide blends used in firming-related research.
                 </p>
               </Link>
 
