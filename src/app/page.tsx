@@ -231,7 +231,7 @@ export default function Home() {
               </div>
 
               <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
-                <div className="relative aspect-[16/9] bg-panel">
+                <div className="relative aspect-[16/7] bg-panel">
                   <Image
                     src={heroImage}
                     alt="Meso Glutathione research compound by Peptide Products"

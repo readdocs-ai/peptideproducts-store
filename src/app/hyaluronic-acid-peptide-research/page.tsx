@@ -22,8 +22,8 @@ export default function Page() {
             Hyaluronic acid peptide research
           </h1>
 
-          <div className="mt-8 overflow-hidden rounded-xl3 border border-line">
-  <div className="relative aspect-[16/9]">
+          <div className="mt-8 max-w-4xl overflow-hidden rounded-xl3 border border-line shadow-soft">
+  <div className="relative aspect-[16/7]">
     <Image
       src="/products/skinbooster-hyaluronic-alt.jpg"
       alt="PDRN research peptide compound"
