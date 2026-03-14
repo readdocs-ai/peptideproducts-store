@@ -63,16 +63,16 @@ const categoryCards = [
 
 const whyChooseCards = [
   {
-    title: "Clear product pages",
-    copy: "Review pack size, pricing, imagery, and research notes before moving into the cart.",
+    title: "Antioxidant and regeneration pathways",
+    copy: "Research programmes may examine glutathione, vitamin C, PDRN, and collagen compounds when studying oxidative stress response, molecular repair, and compatibility behaviour.",
   },
   {
-    title: "Documentation where available",
-    copy: "Supported products can include COA and SDS files to help with internal review and procurement.",
+    title: "Hydration and carrier systems",
+    copy: "Hydration-focused compounds such as hyaluronic acid blends are commonly reviewed in extracellular compatibility, formulation stability, and carrier-related laboratory work.",
   },
   {
-    title: "UK order tracking",
-    copy: "Track active orders and receive email updates through the live storefront.",
+    title: "Firming and structural research",
+    copy: "Firming peptide blends may be examined in structural protein interaction, elasticity-related investigation, and broader formulation testing environments.",
   },
 ] as const;
 
@@ -198,7 +198,7 @@ export default function Home() {
                 <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">
                   Browse antioxidant, hydration, firming, and regenerative peptide compounds studied
                   in laboratory environments investigating molecular interaction, cellular response,
-                  and compound compatibility.
+                  compound compatibility, and formulation behaviour.
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
@@ -249,15 +249,15 @@ export default function Home() {
                       Antioxidant-led line
                     </div>
                     <p className="mt-2 text-sm text-muted">
-                      A strong visual introduction to one of the store&apos;s key research products.
+                      Glutathione-focused compounds are commonly reviewed in oxidative stress and antioxidant-related laboratory work.
                     </p>
                   </div>
                   <div>
                     <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
-                      Clearer browsing
+                      Compound categories
                     </div>
                     <p className="mt-2 text-sm text-muted">
-                      Move from category exploration into individual product pages more easily.
+                      Explore hydration, firming, antioxidant, and regenerative peptide research lines.
                     </p>
                   </div>
                   <div>
@@ -284,7 +284,7 @@ export default function Home() {
                   Shop by research category
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Explore the main research areas represented across the catalogue.
+                  Explore the main research areas represented across antioxidant, hydration, firming, and regenerative compound lines.
                 </p>
               </div>
               <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
@@ -327,7 +327,7 @@ export default function Home() {
                   Research peptide compounds
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Six core product lines shown with their primary pack imagery.
+                  Six core compound lines shown with their primary pack imagery.
                 </p>
               </div>
               <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
