@@ -15,6 +15,21 @@ function getProduct(id: string) {
   return products.find((x) => x.id === id);
 }
 
+function getCategoryPage(category: string) {
+  switch (category) {
+    case "Antioxidants":
+      return { href: "/antioxidant-peptides", label: "Antioxidant peptides" };
+    case "Hydration":
+      return { href: "/hydration-peptides", label: "Hydration peptides" };
+    case "Firming":
+      return { href: "/firming-peptides", label: "Firming peptides" };
+    case "Regenerative":
+      return { href: "/regenerative-peptides", label: "Regenerative peptides" };
+    default:
+      return null;
+  }
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const p = getProduct(params.id);
 
@@ -71,6 +86,8 @@ export default function ProductPage({ params }: Props) {
   const relatedProducts = products
     .filter((item) => item.id !== p.id && item.category === p.category)
     .slice(0, 3);
+
+  const categoryPage = getCategoryPage(p.category);
 
   const schema = {
     "@context": "https://schema.org",
@@ -157,8 +174,18 @@ export default function ProductPage({ params }: Props) {
               <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
                 <div className="text-sm font-bold text-slate">{p.subtitle}</div>
                 <h1 className="mt-2 text-4xl font-extrabold tracking-tight">{p.name}</h1>
+
                 <p className="mt-3 text-sm text-muted">
-                  {p.pack}. Supplied strictly for laboratory and scientific research use only.
+                  {p.pack}. This compound is supplied for laboratory and scientific research use
+                  only and is intended for controlled analytical, biochemical, and formulation-based
+                  study environments.
+                </p>
+
+                <p className="mt-3 text-sm text-muted">
+                  Research interest in this product category may include molecular interaction,
+                  compound compatibility, structural behaviour, antioxidant activity, hydration
+                  response, or regeneration-focused investigation depending on the actives listed on
+                  the label.
                 </p>
 
                 <div className="mt-6 grid gap-4 rounded-xl2 border border-line bg-mist p-5">
@@ -283,10 +310,20 @@ export default function ProductPage({ params }: Props) {
                 </div>
               </Link>
 
-              <div className="rounded-xl2 border border-line bg-panel p-4">
-                <div className="text-sm font-extrabold text-ink">Category</div>
-                <div className="mt-2 text-sm text-muted">{p.category}</div>
-              </div>
+              {categoryPage ? (
+                <Link
+                  href={categoryPage.href}
+                  className="rounded-xl2 border border-line bg-panel p-4 transition hover:border-ink/30 hover:bg-white"
+                >
+                  <div className="text-sm font-extrabold text-ink">Category</div>
+                  <div className="mt-2 text-sm text-muted">{categoryPage.label}</div>
+                </Link>
+              ) : (
+                <div className="rounded-xl2 border border-line bg-panel p-4">
+                  <div className="text-sm font-extrabold text-ink">Category</div>
+                  <div className="mt-2 text-sm text-muted">{p.category}</div>
+                </div>
+              )}
             </div>
 
             {relatedProducts.length > 0 ? (
