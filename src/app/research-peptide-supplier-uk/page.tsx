@@ -124,15 +124,15 @@ export default function ResearchPeptideSupplierUKPage() {
               </h1>
 
               <div className="mt-8 overflow-hidden rounded-xl3 border border-line">
-  <div className="relative aspect-[16/9]">
-    <Image
-      src="/products/meso-collagen-alt.jpg"
-      alt="PDRN research peptide compound"
-      fill
-      className="object-cover"
-    />
-  </div>
-</div>
+                <div className="relative aspect-[16/9]">
+                  <Image
+                    src="/products/meso-collagen-alt.jpg"
+                    alt="Research peptide supplier UK laboratory compounds"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-muted md:text-base">
                 Peptide Products supplies research peptides and laboratory compounds in the UK,
@@ -261,6 +261,96 @@ export default function ResearchPeptideSupplierUKPage() {
 
         <section className="bg-white py-14">
           <Container>
+            <h2 className="text-2xl font-extrabold tracking-tight">
+              Related research guides
+            </h2>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              <Link
+                href="/research-peptides"
+                className="rounded-xl3 border border-line p-5 shadow-soft"
+              >
+                <div className="font-extrabold">Research peptides</div>
+                <p className="text-sm text-muted mt-2">
+                  Overview of peptide compounds used in laboratory study.
+                </p>
+              </Link>
+
+              <Link
+                href="/research-peptides-uk"
+                className="rounded-xl3 border border-line p-5 shadow-soft"
+              >
+                <div className="font-extrabold">Research peptides UK</div>
+                <p className="text-sm text-muted mt-2">
+                  Laboratory peptide compounds available to UK buyers.
+                </p>
+              </Link>
+
+              <Link
+                href="/antioxidant-peptides"
+                className="rounded-xl3 border border-line p-5 shadow-soft"
+              >
+                <div className="font-extrabold">Antioxidant peptides</div>
+                <p className="text-sm text-muted mt-2">
+                  Glutathione and vitamin C research compounds used in antioxidant laboratory study.
+                </p>
+              </Link>
+
+              <Link
+                href="/hydration-peptides"
+                className="rounded-xl3 border border-line p-5 shadow-soft"
+              >
+                <div className="font-extrabold">Hydration peptides</div>
+                <p className="text-sm text-muted mt-2">
+                  Hyaluronic acid and hydration-related compounds for formulation and compatibility research.
+                </p>
+              </Link>
+
+              <Link
+                href="/firming-peptides"
+                className="rounded-xl3 border border-line p-5 shadow-soft"
+              >
+                <div className="font-extrabold">Firming peptides</div>
+                <p className="text-sm text-muted mt-2">
+                  Elasticity and structure-focused peptide blends used in firming-related research.
+                </p>
+              </Link>
+
+              <Link
+                href="/regenerative-peptides"
+                className="rounded-xl3 border border-line p-5 shadow-soft"
+              >
+                <div className="font-extrabold">Regenerative peptides</div>
+                <p className="text-sm text-muted mt-2">
+                  PDRN and collagen-focused compounds studied in regeneration-related laboratory environments.
+                </p>
+              </Link>
+
+              <Link
+                href="/buy-research-peptides-uk"
+                className="rounded-xl3 border border-line p-5 shadow-soft"
+              >
+                <div className="font-extrabold">Buy research peptides UK</div>
+                <p className="text-sm text-muted mt-2">
+                  Buyer-focused page for research compounds available to UK laboratories and research teams.
+                </p>
+              </Link>
+
+              <Link
+                href="/laboratory-peptide-compounds"
+                className="rounded-xl3 border border-line p-5 shadow-soft"
+              >
+                <div className="font-extrabold">Laboratory peptide compounds</div>
+                <p className="text-sm text-muted mt-2">
+                  Broader overview of peptide compound types used in scientific research environments.
+                </p>
+              </Link>
+            </div>
+          </Container>
+        </section>
+
+        <section className="bg-white py-14">
+          <Container>
             <div className="max-w-3xl">
               <h2 className="text-2xl font-extrabold tracking-tight">
                 Common questions about UK research peptide supply
@@ -281,96 +371,6 @@ export default function ResearchPeptideSupplierUKPage() {
           </Container>
         </section>
       </main>
-
-      <section className="bg-white py-14">
-  <Container>
-    <h2 className="text-2xl font-extrabold tracking-tight">
-      Related research guides
-    </h2>
-
-    <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-
-      <Link href="/research-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Research peptides</div>
-        <p className="text-sm text-muted mt-2">
-          Overview of peptide compounds used in laboratory study.
-        </p>
-      </Link>
-
-      <Link href="/research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Research peptides UK</div>
-        <p className="text-sm text-muted mt-2">
-          Laboratory peptide compounds available to UK buyers.
-        </p>
-      </Link>
-
-      <Link href="/research-peptide-supplier-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Research peptide supplier UK</div>
-        <p className="text-sm text-muted mt-2">
-          Overview of peptide compound supply and research products.
-        </p>
-      </Link>
-
-      <Link href="/buy-research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Buy research peptides UK</div>
-      </Link>
-
-      <Link href="/laboratory-peptide-compounds" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Laboratory peptide compounds</div>
-      </Link>
-
-      <Link href="/peptide-products" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Peptide products</div>
-      </Link>
-
-    </div>
-  </Container>
-</section>
-
-<section className="bg-white py-14">
-  <Container>
-    <h2 className="text-2xl font-extrabold tracking-tight">
-      Related research guides
-    </h2>
-
-    <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-
-      <Link href="/research-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Research peptides</div>
-        <p className="text-sm text-muted mt-2">
-          Overview of peptide compounds used in laboratory study.
-        </p>
-      </Link>
-
-      <Link href="/research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Research peptides UK</div>
-        <p className="text-sm text-muted mt-2">
-          Laboratory peptide compounds available to UK buyers.
-        </p>
-      </Link>
-
-      <Link href="/research-peptide-supplier-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Research peptide supplier UK</div>
-        <p className="text-sm text-muted mt-2">
-          Overview of peptide compound supply and research products.
-        </p>
-      </Link>
-
-      <Link href="/buy-research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Buy research peptides UK</div>
-      </Link>
-
-      <Link href="/laboratory-peptide-compounds" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Laboratory peptide compounds</div>
-      </Link>
-
-      <Link href="/peptide-products" className="rounded-xl3 border border-line p-5 shadow-soft">
-        <div className="font-extrabold">Peptide products</div>
-      </Link>
-
-    </div>
-  </Container>
-</section>
 
       <Footer />
     </div>
