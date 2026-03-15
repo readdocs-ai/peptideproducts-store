@@ -17,7 +17,7 @@ export function ProductCard({
   return (
     <div className="group overflow-hidden rounded-xl3 border border-line bg-paper/85 shadow-soft backdrop-blur">
       <Link href={`/product/${p.id}`} className="block">
-        <div className="relative aspect-[4/3] bg-white">
+        <div className="relative w-full h-[420px] bg-panel">
           <Image
             src={displayImage}
             alt={p.name}

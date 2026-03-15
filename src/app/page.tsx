@@ -231,7 +231,7 @@ export default function Home() {
               </div>
 
               <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
-                <div className="relative aspect-[16/7] bg-panel">
+                <div className="relative w-full h-[420px]">
                   <Image
                     src={heroImage}
                     alt="Meso Glutathione research compound by Peptide Products"
@@ -299,7 +299,7 @@ export default function Home() {
                   href={card.href}
                   className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
                 >
-                  <div className="relative aspect-[4/3] bg-panel">
+                  <div className="relative w-full h-[420px] bg-panel">
                     <Image
                       src={card.image}
                       alt={card.title}
@@ -342,7 +342,7 @@ export default function Home() {
                   href={`/product/${p.id}`}
                   className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
                 >
-                  <div className="relative aspect-[4/3] bg-panel">
+                  <div className="relative w-full h-[420px] bg-panel">
                     <Image
                       src={p.image}
                       alt={p.name}

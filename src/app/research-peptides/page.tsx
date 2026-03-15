@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Peptide Products",
     images: [
       {
-        url: "https://www.peptideproducts.co.uk/products/meso-vitamin-c-benefits.jpg",
+        url: "https://www.peptideproducts.co.uk/products/meso-vitamin-c-main.jpg",
         width: 1200,
         height: 900,
         alt: "Research peptides and laboratory compounds by Peptide Products",
@@ -170,15 +170,15 @@ export default function ResearchPeptidesPage() {
                 </div>
               </div>
 
-              <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
-                <div className="relative aspect-[16/7] bg-panel">
+              <div className="max-w-3xl overflow-hidden rounded-xl3 border border-line bg-panel p-4 shadow-soft">
+                <div className="relative w-full h-[360px] bg-panel">
                   <Image
                     src="/products/meso-vitamin-c-benefits.jpg"
                     alt="Research peptides and laboratory compounds"
                     fill
                     priority
                     sizes="(min-width: 1024px) 46vw, 100vw"
-                    className="object-cover object-top"
+                    className="object-contain"
                   />
                 </div>
               </div>
@@ -208,7 +208,7 @@ export default function ResearchPeptidesPage() {
                   href={card.href}
                   className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
                 >
-                  <div className="relative aspect-[4/3] bg-panel">
+                  <div className="relative w-full h-[420px] bg-panel">
                     <Image
                       src={card.image}
                       alt={card.title}
@@ -303,7 +303,7 @@ export default function ResearchPeptidesPage() {
                   href={card.href}
                   className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
                 >
-                  <div className="relative aspect-[4/3] bg-panel">
+                  <div className="relative w-full h-[420px] bg-panel">
                     <Image
                       src={card.image}
                       alt={card.title}

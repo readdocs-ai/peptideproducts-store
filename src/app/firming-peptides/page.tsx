@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Peptide Products",
     images: [
       {
-        url: "https://www.peptideproducts.co.uk/products/meso-lift-firming-alt.jpg",
+        url: "https://www.peptideproducts.co.uk/products/meso-lift-firming-main.jpg",
         width: 1200,
         height: 900,
         alt: "Firming peptide compounds",
@@ -124,13 +124,13 @@ export default function FirmingPeptidesPage() {
               Firming peptides
             </h1>
 
-            <div className="mt-8 max-w-4xl overflow-hidden rounded-xl3 border border-line shadow-soft">
-              <div className="relative aspect-[16/7]">
+            <div className="mt-8 max-w-3xl overflow-hidden rounded-xl3 border border-line shadow-soft bg-panel p-4">
+              <div className="relative w-full h-[360px] bg-panel">
                 <Image
                   src="/products/meso-lift-firming-alt.jpg"
                   alt="Firming peptide compounds"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   priority
                 />
               </div>

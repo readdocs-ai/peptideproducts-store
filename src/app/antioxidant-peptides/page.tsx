@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Peptide Products",
     images: [
       {
-        url: "https://www.peptideproducts.co.uk/products/meso-glutathione-alt.jpg",
+        url: "https://www.peptideproducts.co.uk/products/meso-glutathione-main.jpg",
         width: 1200,
         height: 900,
         alt: "Antioxidant peptide compounds",
@@ -124,13 +124,13 @@ export default function AntioxidantPeptidesPage() {
               Antioxidant peptides
             </h1>
 
-            <div className="mt-8 max-w-4xl overflow-hidden rounded-xl3 border border-line shadow-soft">
-              <div className="relative aspect-[16/7]">
+            <div className="mt-8 max-w-3xl overflow-hidden rounded-xl3 border border-line shadow-soft bg-panel p-4">
+              <div className="relative w-full h-[360px] bg-panel">
                 <Image
                   src="/products/meso-glutathione-alt.jpg"
                   alt="Antioxidant peptide compounds"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   priority
                 />
               </div>

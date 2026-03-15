@@ -26,13 +26,13 @@ export default function ResearchPeptidesUK() {
               Research peptides UK
             </h1>
 
-            <div className="mt-8 max-w-4xl overflow-hidden rounded-xl3 border border-line shadow-soft">
-              <div className="relative aspect-[16/7]">
+            <div className="mt-8 max-w-3xl overflow-hidden rounded-xl3 border border-line shadow-soft bg-panel p-4">
+              <div className="relative w-full h-[360px] bg-panel">
                 <Image
-                  src="/products/meso-glutathione-alt.jpg"
+                  src="/products/meso-glutathione-main.jpg"
                   alt="Research peptides UK laboratory compounds"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
             </div>
