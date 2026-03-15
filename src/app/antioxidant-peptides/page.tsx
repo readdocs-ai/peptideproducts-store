@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Antioxidant Peptides | Glutathione and Vitamin C Research Compounds",
     description:
       "Explore antioxidant peptide compounds including glutathione and vitamin C laboratory research products.",
-    images: ["https://www.peptideproducts.co.uk/products/meso-glutathione-alt.jpg"],
+    images: ["https://www.peptideproducts.co.uk/products/meso-glutathione-main.jpg"],
   },
 };
 
@@ -108,11 +108,38 @@ export default function AntioxidantPeptidesPage() {
     })),
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.peptideproducts.co.uk",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Research peptides",
+        item: "https://www.peptideproducts.co.uk/research-peptides",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Antioxidant peptides",
+        item: "https://www.peptideproducts.co.uk/antioxidant-peptides",
+      },
+    ],
+  };
+
   return (
     <div>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([webPageSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([webPageSchema, faqSchema, breadcrumbSchema]),
+        }}
       />
 
       <Header />
@@ -127,7 +154,7 @@ export default function AntioxidantPeptidesPage() {
             <div className="mt-8 max-w-3xl overflow-hidden rounded-xl3 border border-line shadow-soft bg-panel p-4">
               <div className="relative w-full h-[360px] bg-panel">
                 <Image
-                  src="/products/meso-glutathione-alt.jpg"
+                  src="/products/meso-glutathione-main.jpg"
                   alt="Antioxidant peptide compounds"
                   fill
                   className="object-contain"
@@ -242,6 +269,20 @@ export default function AntioxidantPeptidesPage() {
           </Container>
         </section>
 
+        <section className="py-12">
+          <Container>
+            <div className="rounded-xl3 border border-line bg-panel p-6">
+              <h2 className="text-xl font-extrabold">Research peptide guides</h2>
+
+              <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
+                <Link href="/research-peptides">Research peptides</Link>
+                <Link href="/research-peptides-uk">Research peptides UK</Link>
+                <Link href="/research-peptide-supplier-uk">Research peptide supplier UK</Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         <section className="py-14">
           <Container>
             <div className="max-w-3xl">
@@ -268,22 +309,6 @@ export default function AntioxidantPeptidesPage() {
           </Container>
         </section>
       </main>
-
-      <section className="py-12">
-  <Container>
-    <div className="rounded-xl3 border border-line bg-panel p-6">
-      <h2 className="text-xl font-extrabold">Research peptide guides</h2>
-
-      <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
-
-        <Link href="/research-peptides">Research peptides</Link>
-        <Link href="/research-peptides-uk">Research peptides UK</Link>
-        <Link href="/research-peptide-supplier-uk">Research peptide supplier UK</Link>
-
-      </div>
-    </div>
-  </Container>
-</section>
 
       <Footer />
     </div>
