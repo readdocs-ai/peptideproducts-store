@@ -271,6 +271,22 @@ export default function FirmingPeptidesPage() {
         </section>
       </main>
 
+      <section className="py-12">
+  <Container>
+    <div className="rounded-xl3 border border-line bg-panel p-6">
+      <h2 className="text-xl font-extrabold">Research peptide guides</h2>
+
+      <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
+
+        <Link href="/research-peptides">Research peptides</Link>
+        <Link href="/research-peptides-uk">Research peptides UK</Link>
+        <Link href="/research-peptide-supplier-uk">Research peptide supplier UK</Link>
+
+      </div>
+    </div>
+  </Container>
+</section>
+
       <Footer />
     </div>
   );
