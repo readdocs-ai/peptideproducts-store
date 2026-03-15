@@ -27,6 +27,44 @@ export const metadata: Metadata = {
   },
 };
 
+<section className="mt-10">
+  <h2 className="text-2xl font-extrabold tracking-tight">
+    Core research peptide categories
+  </h2>
+
+  <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+
+    <Link href="/antioxidant-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
+      <div className="font-extrabold">Antioxidant peptides</div>
+      <p className="text-sm text-muted mt-2">
+        Glutathione and vitamin C research compounds studied for oxidative stress and antioxidant activity.
+      </p>
+    </Link>
+
+    <Link href="/hydration-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
+      <div className="font-extrabold">Hydration peptides</div>
+      <p className="text-sm text-muted mt-2">
+        Hyaluronic acid based compounds used in hydration and extracellular matrix research.
+      </p>
+    </Link>
+
+    <Link href="/firming-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
+      <div className="font-extrabold">Firming peptides</div>
+      <p className="text-sm text-muted mt-2">
+        Elasticity and structural peptide blends reviewed in firmness and compatibility research.
+      </p>
+    </Link>
+
+    <Link href="/regenerative-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
+      <div className="font-extrabold">Regenerative peptides</div>
+      <p className="text-sm text-muted mt-2">
+        Collagen and PDRN based compounds studied in regeneration and repair research environments.
+      </p>
+    </Link>
+
+  </div>
+</section>
+
 const productLinks = [
   {
     title: "Meso Glutathione",
