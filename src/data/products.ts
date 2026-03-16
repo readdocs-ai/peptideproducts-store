@@ -2,7 +2,8 @@ export type Category =
   | "Antioxidants"
   | "Hydration"
   | "Firming"
-  | "Regenerative";
+  | "Regenerative"
+  | "Metabolic";
 
 export type Product = {
   id: string;
@@ -39,6 +40,10 @@ export const categories: { key: Category; blurb: string }[] = [
   {
     key: "Regenerative",
     blurb: "Repair and regeneration research compounds.",
+  },
+  {
+    key: "Metabolic",
+    blurb: "Metabolic and investigational peptide compounds for laboratory research.",
   },
 ];
 
@@ -257,6 +262,40 @@ export const products: Product[] = [
       "Method development",
       "Antioxidant research",
       "Formulation testing",
+    ],
+
+    notes: "For research use only. Not for human or veterinary use.",
+  },
+
+  {
+    id: "retatrutide",
+    name: "Retatrutide",
+    subtitle: "40mg research peptide pen",
+    category: "Metabolic",
+    priceGBP: 150,
+    pack: "1 pre-filled pen • 40mg total",
+
+    image: "/products/retatrutide-main.jpg",
+
+    gallery: [
+      "/products/retatrutide-main.jpg",
+      "/products/retatrutide-alt.jpg",
+    ],
+
+    quickFacts: ["40mg total", "Single pen format", "Research supply"],
+
+    highlights: [
+      "Single 40mg pre-filled research pen",
+      "Laboratory research product positioning",
+      "Controlled scientific study supply",
+    ],
+
+    actives: ["Retatrutide 40mg"],
+
+    intendedUse: [
+      "Laboratory research",
+      "Analytical review",
+      "Controlled scientific study",
     ],
 
     notes: "For research use only. Not for human or veterinary use.",

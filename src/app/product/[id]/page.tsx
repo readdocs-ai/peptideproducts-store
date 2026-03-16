@@ -25,6 +25,8 @@ function getCategoryPage(category: string) {
       return { href: "/firming-peptides", label: "Firming peptides" };
     case "Regenerative":
       return { href: "/regenerative-peptides", label: "Regenerative peptides" };
+    case "Metabolic":
+      return { href: "/retatrutide-research-peptide", label: "Retatrutide research peptide" };
     default:
       return null;
   }
@@ -244,76 +246,123 @@ export default function ProductPage({ params }: Props) {
                 </p>
 
                 {p.id === "meso-glutathione" ? (
-  <p className="mt-3 text-sm text-muted">
-    Learn more about the scientific background of this compound in our{" "}
-    <Link href="/glutathione-research-peptide" className="font-semibold text-ink hover:text-accent">
-      glutathione research peptide guide
-    </Link>
-    , or explore the wider{" "}
-    <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
-      antioxidant peptides
-    </Link>{" "}
-    category.
-  </p>
-) : null}
+                  <p className="mt-3 text-sm text-muted">
+                    Learn more about the scientific background of this compound in our{" "}
+                    <Link
+                      href="/glutathione-research-peptide"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      glutathione research peptide guide
+                    </Link>
+                    , or explore the wider{" "}
+                    <Link
+                      href="/antioxidant-peptides"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      antioxidant peptides
+                    </Link>{" "}
+                    category.
+                  </p>
+                ) : null}
 
-{p.id === "skinbooster-hyaluronic-acid" ? (
-  <p className="mt-3 text-sm text-muted">
-    Learn more about the scientific background of this compound in our{" "}
-    <Link href="/hyaluronic-acid-peptide-research" className="font-semibold text-ink hover:text-accent">
-      hyaluronic acid peptide research guide
-    </Link>
-    , or explore the wider{" "}
-    <Link href="/hydration-peptides" className="font-semibold text-ink hover:text-accent">
-      hydration peptides
-    </Link>{" "}
-    category.
-  </p>
-) : null}
+                {p.id === "skinbooster-hyaluronic-acid" ? (
+                  <p className="mt-3 text-sm text-muted">
+                    Learn more about the scientific background of this compound in our{" "}
+                    <Link
+                      href="/hyaluronic-acid-peptide-research"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      hyaluronic acid peptide research guide
+                    </Link>
+                    , or explore the wider{" "}
+                    <Link
+                      href="/hydration-peptides"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      hydration peptides
+                    </Link>{" "}
+                    category.
+                  </p>
+                ) : null}
 
-{p.id === "meso-lift-firming" ? (
-  <p className="mt-3 text-sm text-muted">
-    Explore the broader research context for this compound in our{" "}
-    <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
-      firming peptides
-    </Link>{" "}
-    guide and related laboratory research pages.
-  </p>
-) : null}
+                {p.id === "meso-lift-firming" ? (
+                  <p className="mt-3 text-sm text-muted">
+                    Explore the broader research context for this compound in our{" "}
+                    <Link
+                      href="/firming-peptides"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      firming peptides
+                    </Link>{" "}
+                    guide and related laboratory research pages.
+                  </p>
+                ) : null}
 
-{p.id === "meso-collagen" ? (
-  <p className="mt-3 text-sm text-muted">
-    Explore the broader research context for this compound in our{" "}
-    <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
-      regenerative peptides
-    </Link>{" "}
-    guide and related regeneration-focused laboratory research pages.
-  </p>
-) : null}
+                {p.id === "meso-collagen" ? (
+                  <p className="mt-3 text-sm text-muted">
+                    Explore the broader research context for this compound in our{" "}
+                    <Link
+                      href="/regenerative-peptides"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      regenerative peptides
+                    </Link>{" "}
+                    guide and related regeneration-focused laboratory research pages.
+                  </p>
+                ) : null}
 
-{p.id === "meso-pdrn" ? (
-  <p className="mt-3 text-sm text-muted">
-    Learn more about the scientific background of this compound in our{" "}
-    <Link href="/pdrn-research-peptide" className="font-semibold text-ink hover:text-accent">
-      PDRN research peptide guide
-    </Link>
-    , or explore the wider{" "}
-    <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
-      regenerative peptides
-    </Link>{" "}
-    category.
-  </p>
-) : null}
+                {p.id === "meso-pdrn" ? (
+                  <p className="mt-3 text-sm text-muted">
+                    Learn more about the scientific background of this compound in our{" "}
+                    <Link
+                      href="/pdrn-research-peptide"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      PDRN research peptide guide
+                    </Link>
+                    , or explore the wider{" "}
+                    <Link
+                      href="/regenerative-peptides"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      regenerative peptides
+                    </Link>{" "}
+                    category.
+                  </p>
+                ) : null}
 
-{p.id === "meso-vitamin-c" ? (
-  <p className="mt-3 text-sm text-muted">
-    Explore the broader research context for this compound in our{" "}
-    <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
-      antioxidant peptides
-    </Link>{" "}
-    guide and related laboratory research pages.
-  </p>
-) : null}
+                {p.id === "meso-vitamin-c" ? (
+                  <p className="mt-3 text-sm text-muted">
+                    Explore the broader research context for this compound in our{" "}
+                    <Link
+                      href="/antioxidant-peptides"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      antioxidant peptides
+                    </Link>{" "}
+                    guide and related laboratory research pages.
+                  </p>
+                ) : null}
+
+                {p.id === "retatrutide" ? (
+                  <p className="mt-3 text-sm text-muted">
+                    Learn more about the scientific background of this compound in our{" "}
+                    <Link
+                      href="/retatrutide-research-peptide"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      retatrutide research peptide guide
+                    </Link>
+                    , or browse the wider{" "}
+                    <Link
+                      href="/research-peptides"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      research peptides
+                    </Link>{" "}
+                    section.
+                  </p>
+                ) : null}
 
                 {categoryPage ? (
                   <p className="mt-3 text-sm text-muted">
@@ -438,7 +487,7 @@ export default function ProductPage({ params }: Props) {
               >
                 <div className="text-sm font-extrabold text-ink">Research peptides</div>
                 <div className="mt-2 text-sm text-muted">
-                  Overview of antioxidant, hydration, firming, and regenerative
+                  Overview of antioxidant, hydration, firming, regenerative, and related
                   compound lines.
                 </div>
               </Link>
