@@ -6,14 +6,14 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
-  title: "Research Peptides UK | Laboratory Compounds for Scientific Study",
+  title: "Research Peptides | Laboratory Compounds for Scientific Study",
   description:
     "Explore research peptides and laboratory compounds for scientific study. Browse antioxidant, hydration, firming, and regenerative product lines at Peptide Products.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/research-peptides",
   },
   openGraph: {
-    title: "Research Peptides UK | Laboratory Compounds for Scientific Study",
+    title: "Research Peptides | Laboratory Compounds for Scientific Study",
     description:
       "Research peptides and laboratory compounds for laboratory and scientific study, including antioxidant, hydration, firming, and regenerative product lines.",
     url: "https://www.peptideproducts.co.uk/research-peptides",
@@ -29,50 +29,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Research Peptides UK | Laboratory Compounds for Scientific Study",
+    title: "Research Peptides | Laboratory Compounds for Scientific Study",
     description:
       "Research peptides and laboratory compounds for scientific study, including antioxidant, hydration, firming, and regenerative product lines.",
     images: ["https://www.peptideproducts.co.uk/products/meso-vitamin-c-benefits.jpg"],
   },
 };
-
-<section className="mt-10">
-  <h2 className="text-2xl font-extrabold tracking-tight">
-    Core research peptide categories
-  </h2>
-
-  <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-
-    <Link href="/antioxidant-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
-      <div className="font-extrabold">Antioxidant peptides</div>
-      <p className="text-sm text-muted mt-2">
-        Glutathione and vitamin C research compounds studied for oxidative stress and antioxidant activity.
-      </p>
-    </Link>
-
-    <Link href="/hydration-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
-      <div className="font-extrabold">Hydration peptides</div>
-      <p className="text-sm text-muted mt-2">
-        Hyaluronic acid based compounds used in hydration and extracellular matrix research.
-      </p>
-    </Link>
-
-    <Link href="/firming-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
-      <div className="font-extrabold">Firming peptides</div>
-      <p className="text-sm text-muted mt-2">
-        Elasticity and structural peptide blends reviewed in firmness and compatibility research.
-      </p>
-    </Link>
-
-    <Link href="/regenerative-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
-      <div className="font-extrabold">Regenerative peptides</div>
-      <p className="text-sm text-muted mt-2">
-        Collagen and PDRN based compounds studied in regeneration and repair research environments.
-      </p>
-    </Link>
-
-  </div>
-</section>
 
 const featureCards = [
   {
@@ -157,11 +119,32 @@ export default function ResearchPeptidesPage() {
     })),
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.peptideproducts.co.uk",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Research peptides",
+        item: "https://www.peptideproducts.co.uk/research-peptides",
+      },
+    ],
+  };
+
   return (
     <div>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([webPageSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([webPageSchema, faqSchema, breadcrumbSchema]),
+        }}
       />
 
       <Header />
@@ -209,7 +192,7 @@ export default function ResearchPeptidesPage() {
               </div>
 
               <div className="max-w-3xl overflow-hidden rounded-xl3 border border-line bg-panel p-4 shadow-soft">
-                <div className="relative w-full h-[360px] bg-panel">
+                <div className="relative h-[360px] w-full bg-panel">
                   <Image
                     src="/products/meso-vitamin-c-benefits.jpg"
                     alt="Research peptides and laboratory compounds"
@@ -246,7 +229,7 @@ export default function ResearchPeptidesPage() {
                   href={card.href}
                   className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
                 >
-                  <div className="relative w-full h-[420px] bg-panel">
+                  <div className="relative h-[420px] w-full bg-panel">
                     <Image
                       src={card.image}
                       alt={card.title}
@@ -266,7 +249,7 @@ export default function ResearchPeptidesPage() {
           </Container>
         </section>
 
-        <section className="bg-white py-14">
+        <section className="bg-white/80 py-14 backdrop-blur-sm">
           <Container>
             <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:items-start">
               <div>
@@ -292,7 +275,7 @@ export default function ResearchPeptidesPage() {
                 </p>
               </div>
 
-              <div className="rounded-xl3 border border-line bg-panel p-6">
+              <div className="rounded-xl3 border border-line bg-panel p-6 shadow-soft">
                 <h2 className="text-2xl font-extrabold tracking-tight">Research use only</h2>
                 <p className="mt-3 text-sm leading-7 text-muted">
                   All products listed by Peptide Products are supplied strictly for laboratory and
@@ -341,7 +324,7 @@ export default function ResearchPeptidesPage() {
                   href={card.href}
                   className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
                 >
-                  <div className="relative w-full h-[420px] bg-panel">
+                  <div className="relative h-[420px] w-full bg-panel">
                     <Image
                       src={card.image}
                       alt={card.title}
@@ -361,89 +344,65 @@ export default function ResearchPeptidesPage() {
           </Container>
         </section>
 
-        <section className="bg-white py-14">
+        <section className="bg-white/80 py-14 backdrop-blur-sm">
           <Container>
             <h2 className="text-2xl font-extrabold tracking-tight">
               Related research guides
             </h2>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              <Link
-                href="/research-peptides-uk"
-                className="rounded-xl3 border border-line p-5 shadow-soft"
-              >
-                <div className="font-extrabold">Research peptides UK</div>
-                <p className="text-sm text-muted mt-2">
+              <Link href="/research-peptides-uk" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Research peptides UK</div>
+                <p className="mt-2 text-sm text-muted">
                   Laboratory peptide compounds available to UK buyers.
                 </p>
               </Link>
 
-              <Link
-                href="/research-peptide-supplier-uk"
-                className="rounded-xl3 border border-line p-5 shadow-soft"
-              >
-                <div className="font-extrabold">Research peptide supplier UK</div>
-                <p className="text-sm text-muted mt-2">
+              <Link href="/research-peptide-supplier-uk" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Research peptide supplier UK</div>
+                <p className="mt-2 text-sm text-muted">
                   Overview of peptide compound supply and research products.
                 </p>
               </Link>
 
-              <Link
-                href="/antioxidant-peptides"
-                className="rounded-xl3 border border-line p-5 shadow-soft"
-              >
-                <div className="font-extrabold">Antioxidant peptides</div>
-                <p className="text-sm text-muted mt-2">
+              <Link href="/antioxidant-peptides" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Antioxidant peptides</div>
+                <p className="mt-2 text-sm text-muted">
                   Glutathione and vitamin C research compounds used in antioxidant laboratory study.
                 </p>
               </Link>
 
-              <Link
-                href="/hydration-peptides"
-                className="rounded-xl3 border border-line p-5 shadow-soft"
-              >
-                <div className="font-extrabold">Hydration peptides</div>
-                <p className="text-sm text-muted mt-2">
+              <Link href="/hydration-peptides" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Hydration peptides</div>
+                <p className="mt-2 text-sm text-muted">
                   Hyaluronic acid and hydration-related compounds for formulation and compatibility research.
                 </p>
               </Link>
 
-              <Link
-                href="/firming-peptides"
-                className="rounded-xl3 border border-line p-5 shadow-soft"
-              >
-                <div className="font-extrabold">Firming peptides</div>
-                <p className="text-sm text-muted mt-2">
+              <Link href="/firming-peptides" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Firming peptides</div>
+                <p className="mt-2 text-sm text-muted">
                   Elasticity and structure-focused peptide blends used in firming-related research.
                 </p>
               </Link>
 
-              <Link
-                href="/regenerative-peptides"
-                className="rounded-xl3 border border-line p-5 shadow-soft"
-              >
-                <div className="font-extrabold">Regenerative peptides</div>
-                <p className="text-sm text-muted mt-2">
+              <Link href="/regenerative-peptides" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Regenerative peptides</div>
+                <p className="mt-2 text-sm text-muted">
                   PDRN and collagen-focused compounds studied in regeneration-related laboratory environments.
                 </p>
               </Link>
 
-              <Link
-                href="/buy-research-peptides-uk"
-                className="rounded-xl3 border border-line p-5 shadow-soft"
-              >
-                <div className="font-extrabold">Buy research peptides UK</div>
-                <p className="text-sm text-muted mt-2">
+              <Link href="/buy-research-peptides-uk" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Buy research peptides UK</div>
+                <p className="mt-2 text-sm text-muted">
                   Buyer-focused page for research compounds available to UK laboratories and research teams.
                 </p>
               </Link>
 
-              <Link
-                href="/laboratory-peptide-compounds"
-                className="rounded-xl3 border border-line p-5 shadow-soft"
-              >
-                <div className="font-extrabold">Laboratory peptide compounds</div>
-                <p className="text-sm text-muted mt-2">
+              <Link href="/laboratory-peptide-compounds" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Laboratory peptide compounds</div>
+                <p className="mt-2 text-sm text-muted">
                   Broader overview of peptide compound types used in scientific research environments.
                 </p>
               </Link>
@@ -451,7 +410,7 @@ export default function ResearchPeptidesPage() {
           </Container>
         </section>
 
-        <section className="bg-white py-14">
+        <section className="bg-white/80 py-14 backdrop-blur-sm">
           <Container>
             <div className="max-w-3xl">
               <h2 className="text-2xl font-extrabold tracking-tight">
@@ -461,10 +420,7 @@ export default function ResearchPeptidesPage() {
 
             <div className="mt-8 grid gap-5">
               {faqItems.map((item) => (
-                <div
-                  key={item.question}
-                  className="rounded-xl3 border border-line bg-white p-6 shadow-soft"
-                >
+                <div key={item.question} className="surface-card p-6">
                   <h3 className="text-lg font-extrabold tracking-tight">{item.question}</h3>
                   <p className="mt-3 text-sm leading-7 text-muted">{item.answer}</p>
                 </div>
