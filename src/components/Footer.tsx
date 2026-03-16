@@ -130,6 +130,13 @@ export function Footer() {
                 Hyaluronic acid peptide research
               </Link>
 
+              <Link
+  href="/peptide-compounds-research"
+  className="text-sm text-muted hover:text-ink"
+>
+  Peptide compounds research
+</Link>
+
             </div>
           </div>
 
