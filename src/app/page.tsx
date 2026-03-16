@@ -182,36 +182,55 @@ export default function Home() {
           }}
         />
 
-        <section className="relative overflow-hidden bg-hero pb-10 pt-8 lg:pb-16 lg:pt-12">
+        <section className="relative overflow-hidden pb-12 pt-8 lg:pb-20 lg:pt-14">
+          <div className="pointer-events-none absolute inset-0 -z-10">
+            <div className="absolute left-[-120px] top-[-100px] h-[280px] w-[280px] rounded-full bg-accent/15 blur-3xl" />
+            <div className="absolute right-[-120px] top-[40px] h-[240px] w-[240px] rounded-full bg-accent2/15 blur-3xl" />
+            <div className="absolute bottom-[-80px] left-1/3 h-[220px] w-[220px] rounded-full bg-accent/10 blur-3xl" />
+          </div>
+
           <Container>
-            <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 text-xs font-semibold text-muted shadow-soft">
+                <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white/85 px-4 py-2 text-xs font-semibold text-muted shadow-soft backdrop-blur-sm">
                   Research use only • UK store • Order tracking available
                   <span className="h-2 w-2 rounded-full bg-accent2" />
                 </div>
 
-                <h1 className="mt-5 max-w-2xl text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
-                  Research peptides and laboratory compounds for scientific study.
+                <div className="mt-4 inline-flex items-center rounded-full bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft">
+                  Free next day UK delivery
+                </div>
+
+                <h1 className="mt-6 max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl lg:leading-[1.05]">
+                  <span className="block text-accent">Research peptides</span>
+                  <span className="block text-ink">and laboratory compounds</span>
+                  <span className="block text-ink">for scientific study.</span>
                 </h1>
 
-                <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">
+                <p className="mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg">
                   Browse antioxidant, hydration, firming, and regenerative peptide compounds studied
                   in laboratory environments investigating molecular interaction, cellular response,
                   compound compatibility, and formulation behaviour.
                 </p>
 
-                <div className="mt-7 flex flex-wrap gap-3">
+                <div className="mt-8 flex flex-wrap gap-3">
                   <Link
                     href="/shop"
-                    className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:bg-accent/90 hover:-translate-y-0.5"
+                    className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-accent/90"
                   >
                     Shop products
                   </Link>
 
                   <Link
+                    href="/research-peptides"
+                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
+                  >
+                    Explore research hub
+                  </Link>
+
+                  <Link
                     href="/wholesale"
-                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:bg-panel hover:-translate-y-0.5"
+                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
                   >
                     Wholesale enquiries
                   </Link>
@@ -230,45 +249,49 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
-                <div className="relative h-[420px] w-full bg-panel">
-                  <Image
-                    src={heroImage}
-                    alt="Meso Glutathione research compound by Peptide Products"
-                    fill
-                    priority
-                    fetchPriority="high"
-                    sizes="(min-width: 1024px) 46vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
+              <div className="relative">
+                <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
+                  <div className="relative h-[460px] w-full bg-panel">
+                    <Image
+                      src={heroImage}
+                      alt="Meso Glutathione research compound by Peptide Products"
+                      fill
+                      priority
+                      fetchPriority="high"
+                      sizes="(min-width: 1024px) 46vw, 100vw"
+                      className="object-cover"
+                    />
 
-                <div className="grid gap-4 border-t border-line p-5 sm:grid-cols-3">
-                  <div>
-                    <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
-                      Antioxidant-led line
-                    </div>
-                    <p className="mt-2 text-sm text-muted">
-                      Glutathione-focused compounds are commonly reviewed in oxidative stress and antioxidant-related laboratory work.
-                    </p>
+                    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink/30 to-transparent" />
                   </div>
-                  <div>
-                    <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
-                      Compound categories
+
+                  <div className="grid gap-4 border-t border-line p-5 sm:grid-cols-3">
+                    <div>
+                      <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+                        Antioxidant-led line
+                      </div>
+                      <p className="mt-2 text-sm text-muted">
+                        Glutathione-focused compounds are commonly reviewed in oxidative stress and antioxidant-related laboratory work.
+                      </p>
                     </div>
-                    <p className="mt-2 text-sm text-muted">
-                      Explore hydration, firming, antioxidant, and regenerative peptide research lines.
-                    </p>
-                  </div>
-                  <div>
-                    <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
-                      Support contact
+                    <div>
+                      <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+                        Compound categories
+                      </div>
+                      <p className="mt-2 text-sm text-muted">
+                        Explore hydration, firming, antioxidant, and regenerative peptide research lines.
+                      </p>
                     </div>
-                    <p className="mt-2 text-sm text-muted">
-                      {brand.supportEmail}
-                      <br />
-                      {brand.phone}
-                    </p>
+                    <div>
+                      <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+                        Support contact
+                      </div>
+                      <p className="mt-2 text-sm text-muted">
+                        {brand.supportEmail}
+                        <br />
+                        {brand.phone}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
