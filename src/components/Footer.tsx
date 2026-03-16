@@ -117,6 +117,10 @@ export function Footer() {
                 Glutathione research peptide
               </Link>
 
+              <Link href="/retatrutide-research-peptide" className="hover:text-ink">
+  Retatrutide research peptide
+</Link>
+
               <Link href="/hyaluronic-acid-peptide-research" className="hover:text-ink">
                 Hyaluronic acid peptide research
               </Link>

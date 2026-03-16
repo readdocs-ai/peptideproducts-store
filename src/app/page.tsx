@@ -500,6 +500,12 @@ export default function Home() {
             <h2 className="text-2xl font-extrabold tracking-tight">
               Research peptide guides
             </h2>
+            <Link href="/retatrutide-research-peptide" className="surface-card p-5">
+  <div className="font-extrabold text-ink">Retatrutide research peptide</div>
+  <p className="mt-2 text-sm text-muted">
+    Overview of the retatrutide peptide compound, GLP-1 and GIP receptor research context.
+  </p>
+</Link>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               <Link href="/research-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">

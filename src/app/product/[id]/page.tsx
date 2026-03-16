@@ -331,6 +331,20 @@ export default function ProductPage({ params }: Props) {
                   </p>
                 ) : null}
 
+                {p.id === "retatrutide" ? (
+  <p className="mt-3 text-sm text-muted">
+    Learn more about the scientific background of this compound in our{" "}
+    <Link
+      href="/retatrutide-research-peptide"
+      className="font-semibold text-ink hover:text-accent"
+    >
+      retatrutide research peptide guide
+    </Link>
+    , which explores GLP-1, GIP and glucagon receptor research context and
+    related peptide compound pages.
+  </p>
+) : null}
+
                 {p.id === "meso-vitamin-c" ? (
                   <p className="mt-3 text-sm text-muted">
                     Explore the broader research context for this compound in our{" "}
