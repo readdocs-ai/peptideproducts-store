@@ -108,11 +108,38 @@ export default function FirmingPeptidesPage() {
     })),
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.peptideproducts.co.uk",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Research peptides",
+        item: "https://www.peptideproducts.co.uk/research-peptides",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Firming peptides",
+        item: "https://www.peptideproducts.co.uk/firming-peptides",
+      },
+    ],
+  };
+
   return (
     <div>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([webPageSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([webPageSchema, faqSchema, breadcrumbSchema]),
+        }}
       />
 
       <Header />
@@ -198,7 +225,10 @@ export default function FirmingPeptidesPage() {
                 </p>
               </div>
 
-              <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
+              <Link
+                href="/shop"
+                className="text-sm font-extrabold text-ink/80 hover:text-ink"
+              >
                 View full catalogue →
               </Link>
             </div>
@@ -272,20 +302,20 @@ export default function FirmingPeptidesPage() {
       </main>
 
       <section className="py-12">
-  <Container>
-    <div className="rounded-xl3 border border-line bg-panel p-6">
-      <h2 className="text-xl font-extrabold">Research peptide guides</h2>
+        <Container>
+          <div className="rounded-xl3 border border-line bg-panel p-6">
+            <h2 className="text-xl font-extrabold">Research peptide guides</h2>
 
-      <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
-
-        <Link href="/research-peptides">Research peptides</Link>
-        <Link href="/research-peptides-uk">Research peptides UK</Link>
-        <Link href="/research-peptide-supplier-uk">Research peptide supplier UK</Link>
-
-      </div>
-    </div>
-  </Container>
-</section>
+            <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
+              <Link href="/research-peptides">Research peptides</Link>
+              <Link href="/research-peptides-uk">Research peptides UK</Link>
+              <Link href="/research-peptide-supplier-uk">
+                Research peptide supplier UK
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       <Footer />
     </div>

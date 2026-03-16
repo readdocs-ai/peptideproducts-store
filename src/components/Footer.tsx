@@ -4,90 +4,141 @@ import { brand } from "@/theme/brand";
 
 export function Footer() {
   return (
-    <footer className="mt-16 border-t border-line bg-white/70 backdrop-blur">
+    <footer className="mt-16 border-t border-line bg-panel">
       <Container>
-        <div className="grid gap-8 py-10 md:grid-cols-3">
-          
+
+        <div className="grid gap-10 py-12 md:grid-cols-4">
+
           {/* Brand */}
           <div>
-            <div className="text-lg font-extrabold tracking-wide text-ink">
+            <div className="text-lg font-extrabold text-ink">
               {brand.name}
             </div>
-            <div className="mt-2 max-w-sm text-sm text-muted">
+
+            <p className="mt-3 max-w-sm text-sm leading-7 text-muted">
               {brand.description}
+            </p>
+
+            <div className="mt-5 space-y-2 text-sm text-muted">
+              <div>{brand.domain}</div>
+              <div>{brand.supportEmail}</div>
+              <div>{brand.wholesale}</div>
             </div>
-            <div className="mt-3 text-xs text-muted">{brand.domain}</div>
           </div>
 
           {/* Policies */}
-          <div className="text-sm">
-            <div className="font-bold text-ink">Policies</div>
-            <div className="mt-3 grid gap-2 text-muted">
-              <Link href="/disclaimer">Research use disclaimer</Link>
-              <Link href="/shipping">Shipping & returns</Link>
-              <Link href="/terms">Terms & conditions</Link>
-              <Link href="/privacy">Privacy policy</Link>
+          <div>
+            <div className="font-bold text-ink">
+              Policies
+            </div>
+
+            <div className="mt-4 grid gap-3 text-sm text-muted">
+              <Link href="/disclaimer" className="hover:text-ink">
+                Research use disclaimer
+              </Link>
+
+              <Link href="/shipping" className="hover:text-ink">
+                Shipping & returns
+              </Link>
+
+              <Link href="/terms" className="hover:text-ink">
+                Terms & conditions
+              </Link>
+
+              <Link href="/privacy" className="hover:text-ink">
+                Privacy policy
+              </Link>
             </div>
           </div>
 
-          {/* Research + SEO pages */}
-          <div className="text-sm">
-            <div className="font-bold text-ink">Research</div>
+          {/* Research hubs */}
+          <div>
+            <div className="font-bold text-ink">
+              Research
+            </div>
 
-            <div className="mt-3 grid gap-2 text-muted">
+            <div className="mt-4 grid gap-3 text-sm text-muted">
 
-              {/* Support */}
-              <Link href="/faq">FAQ</Link>
-              <Link href="/contact">Contact</Link>
+              <Link href="/faq" className="hover:text-ink">
+                FAQ
+              </Link>
 
-              {/* Research hubs */}
-              <Link href="/research-peptides">Research peptides</Link>
-              <Link href="/research-peptides-uk">Research peptides UK</Link>
-              <Link href="/research-peptide-supplier-uk">
+              <Link href="/contact" className="hover:text-ink">
+                Contact
+              </Link>
+
+              <Link href="/research-peptides" className="hover:text-ink">
+                Research peptides
+              </Link>
+
+              <Link href="/research-peptides-uk" className="hover:text-ink">
+                Research peptides UK
+              </Link>
+
+              <Link href="/research-peptide-supplier-uk" className="hover:text-ink">
                 Research peptide supplier UK
               </Link>
 
-              {/* Category pages */}
-              <Link href="/antioxidant-peptides">
-                Antioxidant peptides
-              </Link>
-              <Link href="/hydration-peptides">
-                Hydration peptides
-              </Link>
-              <Link href="/firming-peptides">
-                Firming peptides
-              </Link>
-              <Link href="/regenerative-peptides">
-                Regenerative peptides
-              </Link>
-
-              {/* Compound research pages */}
-              <Link href="/pdrn-research-peptide">PDRN research peptide</Link>
-              <Link href="/glutathione-research-peptide">
-                Glutathione research peptide
-              </Link>
-              <Link href="/hyaluronic-acid-peptide-research">
-                Hyaluronic acid peptide research
-              </Link>
-
-              {/* Buyer / commercial pages */}
-              <Link href="/buy-research-peptides-uk">
+              <Link href="/buy-research-peptides-uk" className="hover:text-ink">
                 Buy research peptides UK
               </Link>
-              <Link href="/laboratory-peptide-compounds">
+
+              <Link href="/laboratory-peptide-compounds" className="hover:text-ink">
                 Laboratory peptide compounds
               </Link>
-              <Link href="/peptide-products">
+
+              <Link href="/peptide-products" className="hover:text-ink">
                 Peptide products
               </Link>
 
             </div>
           </div>
+
+          {/* Peptide categories + compound research */}
+          <div>
+            <div className="font-bold text-ink">
+              Peptide research
+            </div>
+
+            <div className="mt-4 grid gap-3 text-sm text-muted">
+
+              <Link href="/antioxidant-peptides" className="hover:text-ink">
+                Antioxidant peptides
+              </Link>
+
+              <Link href="/hydration-peptides" className="hover:text-ink">
+                Hydration peptides
+              </Link>
+
+              <Link href="/firming-peptides" className="hover:text-ink">
+                Firming peptides
+              </Link>
+
+              <Link href="/regenerative-peptides" className="hover:text-ink">
+                Regenerative peptides
+              </Link>
+
+              <Link href="/pdrn-research-peptide" className="hover:text-ink">
+                PDRN research peptide
+              </Link>
+
+              <Link href="/glutathione-research-peptide" className="hover:text-ink">
+                Glutathione research peptide
+              </Link>
+
+              <Link href="/hyaluronic-acid-peptide-research" className="hover:text-ink">
+                Hyaluronic acid peptide research
+              </Link>
+
+            </div>
+          </div>
+
         </div>
 
         <div className="border-t border-line py-6 text-xs text-muted">
           © {new Date().getFullYear()} {brand.name}. All rights reserved.
         </div>
+
       </Container>
     </footer>
   );

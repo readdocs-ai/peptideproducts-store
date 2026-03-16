@@ -204,34 +204,34 @@ export default function Home() {
                 <div className="mt-7 flex flex-wrap gap-3">
                   <Link
                     href="/shop"
-                    className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+                    className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:bg-accent/90 hover:-translate-y-0.5"
                   >
                     Shop products
                   </Link>
 
                   <Link
                     href="/wholesale"
-                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:bg-panel hover:-translate-y-0.5"
                   >
                     Wholesale enquiries
                   </Link>
                 </div>
 
                 <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft">
+                  <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft backdrop-blur-sm">
                     Research-use-only catalogue
                   </div>
-                  <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft">
+                  <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft backdrop-blur-sm">
                     Documentation on selected lines
                   </div>
-                  <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft">
+                  <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft backdrop-blur-sm">
                     UK checkout, email updates, and order tracking
                   </div>
                 </div>
               </div>
 
               <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
-                <div className="relative w-full h-[420px]">
+                <div className="relative h-[420px] w-full bg-panel">
                   <Image
                     src={heroImage}
                     alt="Meso Glutathione research compound by Peptide Products"
@@ -280,9 +280,7 @@ export default function Home() {
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
-                <h2 className="text-2xl font-extrabold tracking-tight">
-                  Shop by research category
-                </h2>
+                <h2 className="section-title">Shop by research category</h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
                   Explore the main research areas represented across antioxidant, hydration, firming, and regenerative compound lines.
                 </p>
@@ -297,9 +295,9 @@ export default function Home() {
                 <Link
                   key={card.title}
                   href={card.href}
-                  className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+                  className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:shadow-lift"
                 >
-                  <div className="relative w-full h-[420px] bg-panel">
+                  <div className="relative h-[420px] w-full bg-panel">
                     <Image
                       src={card.image}
                       alt={card.title}
@@ -319,13 +317,11 @@ export default function Home() {
           </Container>
         </section>
 
-        <section className="bg-white py-14">
+        <section className="bg-white/80 py-14 backdrop-blur-sm">
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
-                <h2 className="text-2xl font-extrabold tracking-tight">
-                  Research peptide compounds
-                </h2>
+                <h2 className="section-title">Research peptide compounds</h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
                   Six core compound lines shown with their primary pack imagery.
                 </p>
@@ -340,9 +336,9 @@ export default function Home() {
                 <Link
                   key={p.id}
                   href={`/product/${p.id}`}
-                  className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+                  className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:shadow-lift"
                 >
-                  <div className="relative w-full h-[420px] bg-panel">
+                  <div className="relative h-[420px] w-full bg-panel">
                     <Image
                       src={p.image}
                       alt={p.name}
@@ -382,10 +378,7 @@ export default function Home() {
           <Container>
             <div className="grid gap-6 lg:grid-cols-3">
               {whyChooseCards.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-xl3 border border-line bg-white p-6 shadow-soft"
-                >
+                <div key={item.title} className="surface-card p-6">
                   <h2 className="text-lg font-extrabold tracking-tight">{item.title}</h2>
                   <p className="mt-3 text-sm leading-6 text-muted">{item.copy}</p>
                 </div>
@@ -398,9 +391,7 @@ export default function Home() {
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
-                <h2 className="text-2xl font-extrabold tracking-tight">
-                  Research guides
-                </h2>
+                <h2 className="section-title">Research guides</h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
                   Explore core research peptide topics and move into the most relevant compound
                   pages.
@@ -416,80 +407,56 @@ export default function Home() {
             </div>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              <Link
-                href="/research-peptides"
-                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-              >
+              <Link href="/research-peptides" className="surface-card p-5">
                 <div className="text-sm font-extrabold text-ink">Research peptides</div>
                 <p className="mt-2 text-sm text-muted">
                   Overview of antioxidant, hydration, firming, and regenerative compound lines.
                 </p>
               </Link>
 
-              <Link
-                href="/antioxidant-peptides"
-                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-              >
+              <Link href="/antioxidant-peptides" className="surface-card p-5">
                 <div className="text-sm font-extrabold text-ink">Antioxidant peptides</div>
                 <p className="mt-2 text-sm text-muted">
                   Glutathione and vitamin C research compounds used in antioxidant laboratory study.
                 </p>
               </Link>
 
-              <Link
-                href="/hydration-peptides"
-                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-              >
+              <Link href="/hydration-peptides" className="surface-card p-5">
                 <div className="text-sm font-extrabold text-ink">Hydration peptides</div>
                 <p className="mt-2 text-sm text-muted">
                   Hyaluronic acid and hydration-related compounds for formulation and compatibility research.
                 </p>
               </Link>
 
-              <Link
-                href="/regenerative-peptides"
-                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-              >
+              <Link href="/regenerative-peptides" className="surface-card p-5">
                 <div className="text-sm font-extrabold text-ink">Regenerative peptides</div>
                 <p className="mt-2 text-sm text-muted">
                   PDRN and collagen-focused compounds studied in regeneration-related laboratory environments.
                 </p>
               </Link>
 
-              <Link
-                href="/firming-peptides"
-                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-              >
+              <Link href="/firming-peptides" className="surface-card p-5">
                 <div className="text-sm font-extrabold text-ink">Firming peptides</div>
                 <p className="mt-2 text-sm text-muted">
                   Elasticity and structure-focused peptide blends used in firming-related research.
                 </p>
               </Link>
 
-              <Link
-                href="/pdrn-research-peptide"
-                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-              >
+              <Link href="/pdrn-research-peptide" className="surface-card p-5">
                 <div className="text-sm font-extrabold text-ink">PDRN research peptide</div>
                 <p className="mt-2 text-sm text-muted">
                   Regeneration-focused compound research and related product links.
                 </p>
               </Link>
 
-              <Link
-                href="/glutathione-research-peptide"
-                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-              >
+              <Link href="/glutathione-research-peptide" className="surface-card p-5">
                 <div className="text-sm font-extrabold text-ink">Glutathione research peptide</div>
                 <p className="mt-2 text-sm text-muted">
                   Antioxidant compound research, oxidative stress studies, and laboratory use.
                 </p>
               </Link>
 
-              <Link
-                href="/hyaluronic-acid-peptide-research"
-                className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
-              >
+              <Link href="/hyaluronic-acid-peptide-research" className="surface-card p-5">
                 <div className="text-sm font-extrabold text-ink">
                   Hyaluronic acid peptide research
                 </div>
@@ -501,13 +468,11 @@ export default function Home() {
           </Container>
         </section>
 
-        <section className="bg-white py-14">
+        <section className="bg-white/80 py-14 backdrop-blur-sm">
           <Container>
             <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
               <div>
-                <h2 className="text-2xl font-extrabold tracking-tight">
-                  Research compounds for laboratory investigation
-                </h2>
+                <h2 className="section-title">Research compounds for laboratory investigation</h2>
 
                 <p className="mt-3 text-sm leading-7 text-muted">
                   Research laboratories and analytical teams study peptide compounds to investigate
@@ -535,7 +500,7 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="rounded-xl3 border border-line bg-panel p-6">
+              <div className="rounded-xl3 border border-line bg-panel p-6 shadow-soft">
                 <h2 className="text-2xl font-extrabold tracking-tight">Common questions</h2>
                 <div className="mt-6 grid gap-5">
                   {faqItems.map((item) => (
