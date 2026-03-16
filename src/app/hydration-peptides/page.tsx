@@ -151,8 +151,8 @@ export default function HydrationPeptidesPage() {
               Hydration peptides
             </h1>
 
-            <div className="mt-8 max-w-3xl overflow-hidden rounded-xl3 border border-line shadow-soft bg-panel p-4">
-              <div className="relative w-full h-[360px] bg-panel">
+            <div className="mt-8 max-w-3xl overflow-hidden rounded-xl3 border border-line bg-panel p-4 shadow-soft">
+              <div className="relative h-[360px] w-full bg-panel">
                 <Image
                   src="/products/skinbooster-hyaluronic-alt.jpg"
                   alt="Hydration peptide compounds"
@@ -167,14 +167,40 @@ export default function HydrationPeptidesPage() {
               Hydration peptides and related laboratory compounds are studied in
               controlled research environments investigating molecular hydration
               behaviour, extracellular interaction, and compatibility across
-              formulation systems.
+              formulation systems. Within scientific research settings, these
+              compounds are often reviewed as part of broader studies focused on
+              moisture retention, formulation structure, and peptide-system
+              stability in controlled environments.
             </p>
 
             <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
               Research laboratories frequently analyse hydration-focused
               compounds such as hyaluronic acid blends when examining stability,
               carrier behaviour, structural compatibility, and formulation
-              performance under experimental conditions.
+              performance under experimental conditions. This work often overlaps
+              with wider{" "}
+              <Link href="/research-peptides" className="font-semibold text-ink hover:text-accent">
+                research peptides
+              </Link>{" "}
+              investigations, where hydration-related compounds are compared
+              with structural, antioxidant, or regenerative lines.
+            </p>
+
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
+              In laboratory use, hydration-focused compounds may be assessed for
+              how they interact within support systems, how stable they remain
+              under test conditions, and how effectively they fit within wider
+              compatibility-focused research. This makes the category relevant to
+              researchers exploring both standalone hydration studies and
+              connected work involving{" "}
+              <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
+                firming peptides
+              </Link>{" "}
+              or{" "}
+              <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
+                regenerative peptides
+              </Link>
+              .
             </p>
 
             <div className="mt-8">
@@ -188,9 +214,9 @@ export default function HydrationPeptidesPage() {
           </Container>
         </section>
 
-        <section className="bg-white py-14">
+        <section className="bg-white/80 py-14 backdrop-blur-sm">
           <Container>
-            <div className="max-w-3xl">
+            <div className="max-w-4xl">
               <h2 className="text-2xl font-extrabold tracking-tight">
                 Hydration compound research
               </h2>
@@ -199,13 +225,138 @@ export default function HydrationPeptidesPage() {
                 Hydration-related laboratory compounds are commonly examined in
                 research environments investigating moisture retention systems,
                 extracellular matrix compatibility, structural interaction, and
-                compound stability.
+                compound stability. These research pathways may include
+                controlled studies of hydration behaviour, support-system
+                response, and peptide interaction under laboratory conditions.
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
                 Hyaluronic acid-based products and related peptide blends may be
                 analysed during formulation development, compatibility testing,
-                and hydration-focused laboratory workflows.
+                and hydration-focused laboratory workflows. In many scientific
+                settings, this work is connected with neighbouring categories
+                such as{" "}
+                <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
+                  antioxidant peptides
+                </Link>{" "}
+                and{" "}
+                <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
+                  firming peptides
+                </Link>
+                , especially where researchers are comparing behaviour across
+                different compound types.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Hydration-related peptide research can also involve analysis of
+                texture support, formulation structure, and compound fit within
+                wider study frameworks. These investigations are useful where
+                laboratories need to understand how hydration-oriented compounds
+                behave over time, under varied conditions, or alongside broader
+                peptide systems used in scientific investigation.
+              </p>
+            </div>
+          </Container>
+        </section>
+
+        <section className="py-14">
+          <Container>
+            <div className="max-w-4xl">
+              <h2 className="text-2xl font-extrabold tracking-tight">
+                Laboratory research applications of hydration peptides
+              </h2>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Laboratory research applications involving hydration peptides may
+                include formulation behaviour testing, moisture-support studies,
+                and controlled evaluation of extracellular compatibility across
+                peptide systems. In these research settings, hydration-focused
+                compounds are often reviewed for their interaction with support
+                structures, carriers, and broader compatibility environments.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                A common area of investigation involves hyaluronic acid-based
+                compounds such as{" "}
+                <Link
+                  href="/product/skinbooster-hyaluronic-acid"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  Skinbooster Hyaluronic Acid
+                </Link>
+                , where laboratories may examine hydration-related behaviour,
+                matrix compatibility, and structural interaction within
+                controlled studies. This type of work can also be reviewed
+                alongside wider{" "}
+                <Link
+                  href="/laboratory-peptide-compounds"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  laboratory peptide compounds
+                </Link>{" "}
+                research to compare how hydration-supportive lines behave in
+                relation to other compound classes.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                In many scientific workflows, hydration-focused compounds are
+                not studied alone. Researchers may compare them with
+                firming-oriented blends, structural peptide lines, or
+                regeneration-focused compounds in order to understand how they
+                behave across controlled formulation environments. This kind of
+                comparison strengthens research quality and helps laboratories
+                evaluate compound compatibility more effectively.
+              </p>
+            </div>
+          </Container>
+        </section>
+
+        <section className="bg-white/80 py-14 backdrop-blur-sm">
+          <Container>
+            <div className="max-w-4xl">
+              <h2 className="text-2xl font-extrabold tracking-tight">
+                Peptide compatibility and formulation stability studies
+              </h2>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Peptide compatibility studies are central to hydration-related
+                research. Laboratories may analyse how a hydration-focused blend
+                behaves within different formulation systems, how stable it
+                remains during controlled testing, and how it interacts with
+                surrounding support matrices. This may involve reviewing
+                moisture-related behaviour, formulation stability, and the
+                consistency of compound performance under observation.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Formulation stability work can also overlap with broader
+                hydration-focused research topics explored through{" "}
+                <Link
+                  href="/hyaluronic-acid-peptide-research"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  hyaluronic acid peptide research
+                </Link>{" "}
+                and{" "}
+                <Link
+                  href="/peptide-products"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  peptide products
+                </Link>
+                . Linking related pages in this way helps users move through
+                relevant topic areas while strengthening site structure for
+                search visibility.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                In practical laboratory terms, stability research may involve
+                assessing whether hydration-supportive compounds remain suitable
+                for extended observation, whether their formulation systems stay
+                consistent, and whether peptide behaviour remains compatible
+                across different experimental set-ups. These are all important
+                considerations in research-only environments focused on
+                scientific investigation rather than human use.
               </p>
             </div>
           </Container>
@@ -237,7 +388,7 @@ export default function HydrationPeptidesPage() {
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+                  className="surface-card p-5"
                 >
                   <div className="text-lg font-extrabold tracking-tight text-ink">
                     {item.title}
@@ -252,23 +403,112 @@ export default function HydrationPeptidesPage() {
           </Container>
         </section>
 
-        <section className="bg-white py-14">
+        <section className="bg-white/80 py-14 backdrop-blur-sm">
           <Container>
-            <h2 className="text-2xl font-extrabold tracking-tight">
-              Related research guides
-            </h2>
+            <div className="max-w-4xl">
+              <h2 className="text-2xl font-extrabold tracking-tight">
+                Related research peptide categories
+              </h2>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Hydration peptides form part of a broader peptide research
+                structure that includes antioxidant, firming, and regenerative
+                compound lines. For researchers comparing formulation
+                behaviour, compatibility response, or controlled stability
+                across multiple compound types, it is often useful to move
+                between related categories rather than viewing hydration-focused
+                lines alone. That is why this page also connects naturally to{" "}
+                <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
+                  antioxidant peptides
+                </Link>
+                ,{" "}
+                <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
+                  firming peptides
+                </Link>
+                , and{" "}
+                <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
+                  regenerative peptides
+                </Link>
+                .
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                This type of internal topic structure helps users find relevant
+                laboratory research areas quickly while supporting stronger site
+                architecture for search engines. It reinforces that hydration
+                compounds are part of a larger scientific catalogue including
+                detailed product pages, category hubs, and broader informational
+                guides focused on controlled investigation and research use.
+              </p>
+            </div>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {guideCards.map((item) => (
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="rounded-xl3 border border-line bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift"
+                  className="surface-card p-5"
                 >
                   <div className="font-extrabold text-ink">{item.title}</div>
                   <p className="mt-2 text-sm text-muted">{item.copy}</p>
                 </Link>
               ))}
+
+              <Link href="/antioxidant-peptides" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Antioxidant peptides</div>
+                <p className="mt-2 text-sm text-muted">
+                  Explore glutathione and vitamin C laboratory compounds studied
+                  in antioxidant-related research environments.
+                </p>
+              </Link>
+
+              <Link href="/firming-peptides" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Firming peptides</div>
+                <p className="mt-2 text-sm text-muted">
+                  Review elasticity and structure-focused peptide compounds used
+                  in compatibility and formulation studies.
+                </p>
+              </Link>
+
+              <Link href="/regenerative-peptides" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Regenerative peptides</div>
+                <p className="mt-2 text-sm text-muted">
+                  Browse regeneration-focused lines including collagen and PDRN
+                  laboratory research compounds.
+                </p>
+              </Link>
+            </div>
+          </Container>
+        </section>
+
+        <section className="py-14">
+          <Container>
+            <div className="max-w-4xl">
+              <h2 className="text-2xl font-extrabold tracking-tight">
+                Research use only and laboratory context
+              </h2>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                All hydration peptide compounds listed on this site are supplied
+                strictly for laboratory and scientific research use only. They
+                are not intended for human consumption, medical use, or personal
+                application. This research-only positioning is central to the
+                category and supports clear scientific context across the wider{" "}
+                <Link href="/research-peptides-uk" className="font-semibold text-ink hover:text-accent">
+                  research peptides UK
+                </Link>{" "}
+                section of the site.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Maintaining this laboratory context is important for both users
+                and search structure. Product pages, guides, and category
+                content are designed to support scientific review, controlled
+                investigation, and research navigation rather than general
+                consumer use. This gives the site a clearer topical focus and
+                helps keep all content aligned with laboratory study and
+                scientific investigation.
+              </p>
             </div>
           </Container>
         </section>
@@ -283,10 +523,7 @@ export default function HydrationPeptidesPage() {
 
             <div className="mt-8 grid gap-5">
               {faqItems.map((item) => (
-                <div
-                  key={item.question}
-                  className="rounded-xl3 border border-line bg-white p-6 shadow-soft"
-                >
+                <div key={item.question} className="surface-card p-6">
                   <h3 className="text-lg font-extrabold tracking-tight">
                     {item.question}
                   </h3>
@@ -310,6 +547,12 @@ export default function HydrationPeptidesPage() {
               <Link href="/research-peptides-uk">Research peptides UK</Link>
               <Link href="/research-peptide-supplier-uk">
                 Research peptide supplier UK
+              </Link>
+              <Link href="/laboratory-peptide-compounds">
+                Laboratory peptide compounds
+              </Link>
+              <Link href="/buy-research-peptides-uk">
+                Buy research peptides UK
               </Link>
             </div>
           </div>
