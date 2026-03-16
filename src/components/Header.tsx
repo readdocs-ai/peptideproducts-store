@@ -16,6 +16,8 @@ const researchLinks = [
   { href: "/laboratory-peptide-compounds", label: "Laboratory peptide compounds" },
 ] as const;
 
+const hiddenNavHrefs = new Set(["/research-peptides", "/faq", "/disclaimer"]);
+
 export function Header() {
   const [count, setCount] = useState(0);
   const [scrolled, setScrolled] = useState(false);
@@ -50,16 +52,18 @@ export function Header() {
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
-            {nav.map((i) => (
-              <Link
-                key={i.href}
-                href={i.href}
-                className="group relative text-sm font-semibold text-muted transition hover:text-ink"
-              >
-                {i.label}
-                <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
-              </Link>
-            ))}
+            {nav
+              .filter((i) => !hiddenNavHrefs.has(i.href))
+              .map((i) => (
+                <Link
+                  key={i.href}
+                  href={i.href}
+                  className="group relative text-sm font-semibold text-muted transition hover:text-ink"
+                >
+                  {i.label}
+                  <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+                </Link>
+              ))}
 
             <div className="group relative">
               <button

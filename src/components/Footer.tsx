@@ -6,14 +6,10 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-line bg-panel">
       <Container>
-
         <div className="grid gap-10 py-12 md:grid-cols-4">
-
           {/* Brand */}
           <div>
-            <div className="text-lg font-extrabold text-ink">
-              {brand.name}
-            </div>
+            <div className="text-lg font-extrabold text-ink">{brand.name}</div>
 
             <p className="mt-3 max-w-sm text-sm leading-7 text-muted">
               {brand.description}
@@ -28,9 +24,7 @@ export function Footer() {
 
           {/* Policies */}
           <div>
-            <div className="font-bold text-ink">
-              Policies
-            </div>
+            <div className="font-bold text-ink">Policies</div>
 
             <div className="mt-4 grid gap-3 text-sm text-muted">
               <Link href="/disclaimer" className="hover:text-ink">
@@ -48,27 +42,28 @@ export function Footer() {
               <Link href="/privacy" className="hover:text-ink">
                 Privacy policy
               </Link>
+
+              <Link href="/faq" className="hover:text-ink">
+                FAQ
+              </Link>
             </div>
           </div>
 
           {/* Research hubs */}
           <div>
-            <div className="font-bold text-ink">
-              Research
-            </div>
+            <div className="font-bold text-ink">Research</div>
 
             <div className="mt-4 grid gap-3 text-sm text-muted">
-
-              <Link href="/faq" className="hover:text-ink">
-                FAQ
-              </Link>
-
               <Link href="/contact" className="hover:text-ink">
                 Contact
               </Link>
 
               <Link href="/research-peptides" className="hover:text-ink">
                 Research peptides
+              </Link>
+
+              <Link href="/peptide-compounds-research" className="hover:text-ink">
+                Peptide compounds research
               </Link>
 
               <Link href="/research-peptides-uk" className="hover:text-ink">
@@ -90,18 +85,14 @@ export function Footer() {
               <Link href="/peptide-products" className="hover:text-ink">
                 Peptide products
               </Link>
-
             </div>
           </div>
 
           {/* Peptide categories + compound research */}
           <div>
-            <div className="font-bold text-ink">
-              Peptide research
-            </div>
+            <div className="font-bold text-ink">Peptide research</div>
 
             <div className="mt-4 grid gap-3 text-sm text-muted">
-
               <Link href="/antioxidant-peptides" className="hover:text-ink">
                 Antioxidant peptides
               </Link>
@@ -129,23 +120,13 @@ export function Footer() {
               <Link href="/hyaluronic-acid-peptide-research" className="hover:text-ink">
                 Hyaluronic acid peptide research
               </Link>
-
-              <Link
-  href="/peptide-compounds-research"
-  className="text-sm text-muted hover:text-ink"
->
-  Peptide compounds research
-</Link>
-
             </div>
           </div>
-
         </div>
 
         <div className="border-t border-line py-6 text-xs text-muted">
           © {new Date().getFullYear()} {brand.name}. All rights reserved.
         </div>
-
       </Container>
     </footer>
   );
