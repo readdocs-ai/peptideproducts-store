@@ -491,6 +491,34 @@ export default function Home() {
           </Container>
         </section>
 
+        <section className="py-14 bg-white">
+  <Container>
+    <h2 className="text-2xl font-extrabold tracking-tight">
+      Research peptide guides
+    </h2>
+
+    <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+
+      <Link href="/research-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Research peptides</div>
+      </Link>
+
+      <Link href="/research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Research peptides UK</div>
+      </Link>
+
+      <Link href="/research-peptide-supplier-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Research peptide supplier UK</div>
+      </Link>
+
+      <Link href="/buy-research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
+        <div className="font-extrabold">Buy research peptides UK</div>
+      </Link>
+
+    </div>
+  </Container>
+</section>
+
         <section className="bg-white/80 py-14 backdrop-blur-sm">
           <Container>
             <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
