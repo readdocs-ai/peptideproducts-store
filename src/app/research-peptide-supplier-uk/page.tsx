@@ -184,6 +184,38 @@ export default function ResearchPeptideSupplierUKPage() {
                 while also guiding visitors toward the most relevant category and product pages.
               </p>
 
+              <p className="mt-4 max-w-3xl text-sm leading-7 text-muted md:text-base">
+  Explore the main research areas through{" "}
+  <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
+    antioxidant peptides
+  </Link>
+  ,{" "}
+  <Link href="/hydration-peptides" className="font-semibold text-ink hover:text-accent">
+    hydration peptides
+  </Link>
+  ,{" "}
+  <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
+    firming peptides
+  </Link>
+  , and{" "}
+  <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
+    regenerative peptides
+  </Link>
+  , or browse wider guides such as{" "}
+  <Link href="/research-peptides-uk" className="font-semibold text-ink hover:text-accent">
+    research peptides UK
+  </Link>
+  ,{" "}
+  <Link href="/buy-research-peptides-uk" className="font-semibold text-ink hover:text-accent">
+    buy research peptides UK
+  </Link>
+  , and{" "}
+  <Link href="/laboratory-peptide-compounds" className="font-semibold text-ink hover:text-accent">
+    laboratory peptide compounds
+  </Link>
+  .
+</p>
+
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link
                   href="/shop"

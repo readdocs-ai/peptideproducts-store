@@ -7,6 +7,15 @@ import { Logo } from "./Logo";
 import { nav } from "@/theme/brand";
 import { cartCount, readCart } from "@/lib/cart";
 
+const researchLinks = [
+  { href: "/research-peptides", label: "Research peptides" },
+  { href: "/peptide-compounds-research", label: "Peptide compounds research" },
+  { href: "/research-peptides-uk", label: "Research peptides UK" },
+  { href: "/research-peptide-supplier-uk", label: "Research peptide supplier UK" },
+  { href: "/buy-research-peptides-uk", label: "Buy research peptides UK" },
+  { href: "/laboratory-peptide-compounds", label: "Laboratory peptide compounds" },
+] as const;
+
 export function Header() {
   const [count, setCount] = useState(0);
   const [scrolled, setScrolled] = useState(false);
@@ -51,6 +60,35 @@ export function Header() {
                 <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
+
+            <div className="group relative">
+              <button
+                type="button"
+                className="group relative text-sm font-semibold text-muted transition hover:text-ink"
+                aria-label="Open research menu"
+              >
+                Research
+                <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+              </button>
+
+              <div className="invisible absolute left-0 top-full z-50 mt-4 w-[280px] rounded-xl2 border border-line bg-white p-3 opacity-0 shadow-lift transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                <div className="mb-2 px-2 text-xs font-extrabold uppercase tracking-wide text-muted">
+                  Research guides
+                </div>
+
+                <div className="grid gap-1">
+                  {researchLinks.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="rounded-xl2 px-3 py-2 text-sm font-semibold text-muted transition hover:bg-panel hover:text-ink"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             <Link
               href="/order-status"

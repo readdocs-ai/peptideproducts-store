@@ -165,6 +165,38 @@ export default function Page() {
               internal topic coverage for search visibility.
             </p>
 
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
+  Explore connected site sections including{" "}
+  <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
+    antioxidant peptides
+  </Link>
+  ,{" "}
+  <Link href="/hydration-peptides" className="font-semibold text-ink hover:text-accent">
+    hydration peptides
+  </Link>
+  ,{" "}
+  <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
+    firming peptides
+  </Link>
+  , and{" "}
+  <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
+    regenerative peptides
+  </Link>
+  , or move into broader guides such as{" "}
+  <Link href="/research-peptides-uk" className="font-semibold text-ink hover:text-accent">
+    research peptides UK
+  </Link>
+  ,{" "}
+  <Link href="/buy-research-peptides-uk" className="font-semibold text-ink hover:text-accent">
+    buy research peptides UK
+  </Link>
+  , and{" "}
+  <Link href="/peptide-compounds-research" className="font-semibold text-ink hover:text-accent">
+    peptide compounds research
+  </Link>
+  .
+</p>
+
             <div className="mt-8">
               <Link
                 href="/research-peptides"

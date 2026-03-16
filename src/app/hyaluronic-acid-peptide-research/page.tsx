@@ -166,6 +166,30 @@ export default function Page() {
               well as specific product-level investigation.
             </p>
 
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
+  Explore related laboratory areas including{" "}
+  <Link href="/hydration-peptides" className="font-semibold text-ink hover:text-accent">
+    hydration peptides
+  </Link>
+  ,{" "}
+  <Link href="/research-peptides" className="font-semibold text-ink hover:text-accent">
+    research peptides
+  </Link>
+  ,{" "}
+  <Link href="/research-peptides-uk" className="font-semibold text-ink hover:text-accent">
+    research peptides UK
+  </Link>
+  , and{" "}
+  <Link href="/laboratory-peptide-compounds" className="font-semibold text-ink hover:text-accent">
+    laboratory peptide compounds
+  </Link>
+  , or browse related product and category pages such as{" "}
+  <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
+    firming peptides
+  </Link>
+  .
+</p>
+
             <div className="mt-8">
               <Link
                 href="/product/skinbooster-hyaluronic-acid"

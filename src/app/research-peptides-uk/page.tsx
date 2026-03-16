@@ -162,6 +162,38 @@ export default function ResearchPeptidesUK() {
               scientific research sections across the site.
             </p>
 
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
+  Explore core laboratory categories including{" "}
+  <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
+    antioxidant peptides
+  </Link>
+  ,{" "}
+  <Link href="/hydration-peptides" className="font-semibold text-ink hover:text-accent">
+    hydration peptides
+  </Link>
+  ,{" "}
+  <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
+    firming peptides
+  </Link>
+  , and{" "}
+  <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
+    regenerative peptides
+  </Link>
+  , or move into broader support pages such as{" "}
+  <Link href="/research-peptide-supplier-uk" className="font-semibold text-ink hover:text-accent">
+    research peptide supplier UK
+  </Link>
+  ,{" "}
+  <Link href="/buy-research-peptides-uk" className="font-semibold text-ink hover:text-accent">
+    buy research peptides UK
+  </Link>
+  , and{" "}
+  <Link href="/peptide-compounds-research" className="font-semibold text-ink hover:text-accent">
+    peptide compounds research
+  </Link>
+  .
+</p>
+
             <section className="mt-10">
               <h2 className="text-2xl font-extrabold tracking-tight">
                 Core research peptide categories

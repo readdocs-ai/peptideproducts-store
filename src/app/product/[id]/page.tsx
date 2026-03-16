@@ -243,6 +243,78 @@ export default function ProductPage({ params }: Props) {
                   investigation depending on the actives listed on the label.
                 </p>
 
+                {p.id === "meso-glutathione" ? (
+  <p className="mt-3 text-sm text-muted">
+    Learn more about the scientific background of this compound in our{" "}
+    <Link href="/glutathione-research-peptide" className="font-semibold text-ink hover:text-accent">
+      glutathione research peptide guide
+    </Link>
+    , or explore the wider{" "}
+    <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
+      antioxidant peptides
+    </Link>{" "}
+    category.
+  </p>
+) : null}
+
+{p.id === "skinbooster-hyaluronic-acid" ? (
+  <p className="mt-3 text-sm text-muted">
+    Learn more about the scientific background of this compound in our{" "}
+    <Link href="/hyaluronic-acid-peptide-research" className="font-semibold text-ink hover:text-accent">
+      hyaluronic acid peptide research guide
+    </Link>
+    , or explore the wider{" "}
+    <Link href="/hydration-peptides" className="font-semibold text-ink hover:text-accent">
+      hydration peptides
+    </Link>{" "}
+    category.
+  </p>
+) : null}
+
+{p.id === "meso-lift-firming" ? (
+  <p className="mt-3 text-sm text-muted">
+    Explore the broader research context for this compound in our{" "}
+    <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
+      firming peptides
+    </Link>{" "}
+    guide and related laboratory research pages.
+  </p>
+) : null}
+
+{p.id === "meso-collagen" ? (
+  <p className="mt-3 text-sm text-muted">
+    Explore the broader research context for this compound in our{" "}
+    <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
+      regenerative peptides
+    </Link>{" "}
+    guide and related regeneration-focused laboratory research pages.
+  </p>
+) : null}
+
+{p.id === "meso-pdrn" ? (
+  <p className="mt-3 text-sm text-muted">
+    Learn more about the scientific background of this compound in our{" "}
+    <Link href="/pdrn-research-peptide" className="font-semibold text-ink hover:text-accent">
+      PDRN research peptide guide
+    </Link>
+    , or explore the wider{" "}
+    <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
+      regenerative peptides
+    </Link>{" "}
+    category.
+  </p>
+) : null}
+
+{p.id === "meso-vitamin-c" ? (
+  <p className="mt-3 text-sm text-muted">
+    Explore the broader research context for this compound in our{" "}
+    <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
+      antioxidant peptides
+    </Link>{" "}
+    guide and related laboratory research pages.
+  </p>
+) : null}
+
                 {categoryPage ? (
                   <p className="mt-3 text-sm text-muted">
                     This product sits within the{" "}

@@ -183,6 +183,38 @@ export default function Page() {
               understand the wider topic cluster around peptide compounds.
             </p>
 
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
+  Explore related topic areas including{" "}
+  <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
+    antioxidant peptides
+  </Link>
+  ,{" "}
+  <Link href="/hydration-peptides" className="font-semibold text-ink hover:text-accent">
+    hydration peptides
+  </Link>
+  ,{" "}
+  <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
+    firming peptides
+  </Link>
+  , and{" "}
+  <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
+    regenerative peptides
+  </Link>
+  , as well as broader guides such as{" "}
+  <Link href="/research-peptides-uk" className="font-semibold text-ink hover:text-accent">
+    research peptides UK
+  </Link>
+  ,{" "}
+  <Link href="/research-peptide-supplier-uk" className="font-semibold text-ink hover:text-accent">
+    research peptide supplier UK
+  </Link>
+  , and{" "}
+  <Link href="/laboratory-peptide-compounds" className="font-semibold text-ink hover:text-accent">
+    laboratory peptide compounds
+  </Link>
+  .
+</p>
+
             <div className="mt-8">
               <Link
                 href="/research-peptides"

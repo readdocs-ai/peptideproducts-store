@@ -165,6 +165,30 @@ export default function Page() {
               structure of the site.
             </p>
 
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
+  Explore related laboratory areas including{" "}
+  <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
+    antioxidant peptides
+  </Link>
+  ,{" "}
+  <Link href="/research-peptides" className="font-semibold text-ink hover:text-accent">
+    research peptides
+  </Link>
+  ,{" "}
+  <Link href="/research-peptides-uk" className="font-semibold text-ink hover:text-accent">
+    research peptides UK
+  </Link>
+  , and{" "}
+  <Link href="/laboratory-peptide-compounds" className="font-semibold text-ink hover:text-accent">
+    laboratory peptide compounds
+  </Link>
+  , or view related product pages such as{" "}
+  <Link href="/product/meso-vitamin-c" className="font-semibold text-ink hover:text-accent">
+    Meso Vitamin C
+  </Link>
+  .
+</p>
+
             <div className="mt-8">
               <Link
                 href="/product/meso-glutathione"

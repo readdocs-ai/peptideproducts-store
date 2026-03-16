@@ -151,6 +151,45 @@ export default function Page() {
               formulation studies.
             </p>
 
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
+              Explore related laboratory areas including{" "}
+              <Link
+                href="/regenerative-peptides"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                regenerative peptides
+              </Link>
+              ,{" "}
+              <Link
+                href="/research-peptides"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                research peptides
+              </Link>
+              ,{" "}
+              <Link
+                href="/research-peptides-uk"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                research peptides UK
+              </Link>
+              , and{" "}
+              <Link
+                href="/laboratory-peptide-compounds"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                laboratory peptide compounds
+              </Link>
+              , or view related product pages such as{" "}
+              <Link
+                href="/product/meso-collagen"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                Meso Collagen
+              </Link>
+              .
+            </p>
+
             <div className="mt-8">
               <Link
                 href="/product/meso-pdrn"
@@ -194,14 +233,18 @@ export default function Page() {
 
             <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               <Link href="/research-peptides" className="surface-card p-5">
-                <div className="text-sm font-extrabold text-ink">Research peptides</div>
+                <div className="text-sm font-extrabold text-ink">
+                  Research peptides
+                </div>
                 <p className="mt-2 text-sm text-muted">
                   Core overview of peptide and compound categories.
                 </p>
               </Link>
 
               <Link href="/research-peptides-uk" className="surface-card p-5">
-                <div className="text-sm font-extrabold text-ink">Research peptides UK</div>
+                <div className="text-sm font-extrabold text-ink">
+                  Research peptides UK
+                </div>
                 <p className="mt-2 text-sm text-muted">
                   UK-focused guide to research peptide compounds.
                 </p>
@@ -215,7 +258,9 @@ export default function Page() {
               </Link>
 
               <Link href="/product/meso-collagen" className="surface-card p-5">
-                <div className="text-sm font-extrabold text-ink">Meso Collagen</div>
+                <div className="text-sm font-extrabold text-ink">
+                  Meso Collagen
+                </div>
                 <p className="mt-2 text-sm text-muted">
                   Explore a related regenerative compound line.
                 </p>
@@ -246,31 +291,46 @@ export default function Page() {
               </p>
             </Link>
 
-            <Link href="/research-peptide-supplier-uk" className="surface-card p-5">
-              <div className="font-extrabold text-ink">Research peptide supplier UK</div>
+            <Link
+              href="/research-peptide-supplier-uk"
+              className="surface-card p-5"
+            >
+              <div className="font-extrabold text-ink">
+                Research peptide supplier UK
+              </div>
               <p className="mt-2 text-sm text-muted">
                 Overview of peptide compound supply and research products.
               </p>
             </Link>
 
             <Link href="/buy-research-peptides-uk" className="surface-card p-5">
-              <div className="font-extrabold text-ink">Buy research peptides UK</div>
+              <div className="font-extrabold text-ink">
+                Buy research peptides UK
+              </div>
               <p className="mt-2 text-sm text-muted">
-                Buyer-focused guide linking into the main peptide categories and product lines.
+                Buyer-focused guide linking into the main peptide categories and
+                product lines.
               </p>
             </Link>
 
-            <Link href="/laboratory-peptide-compounds" className="surface-card p-5">
-              <div className="font-extrabold text-ink">Laboratory peptide compounds</div>
+            <Link
+              href="/laboratory-peptide-compounds"
+              className="surface-card p-5"
+            >
+              <div className="font-extrabold text-ink">
+                Laboratory peptide compounds
+              </div>
               <p className="mt-2 text-sm text-muted">
-                Broader overview of peptide compound types used in scientific research environments.
+                Broader overview of peptide compound types used in scientific
+                research environments.
               </p>
             </Link>
 
             <Link href="/peptide-products" className="surface-card p-5">
               <div className="font-extrabold text-ink">Peptide products</div>
               <p className="mt-2 text-sm text-muted">
-                Browse broader peptide product categories and connected research pages.
+                Browse broader peptide product categories and connected research
+                pages.
               </p>
             </Link>
           </div>
@@ -288,8 +348,12 @@ export default function Page() {
           <div className="mt-8 grid gap-5">
             {faqItems.map((item) => (
               <div key={item.question} className="surface-card p-6">
-                <h3 className="text-lg font-extrabold tracking-tight">{item.question}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted">{item.answer}</p>
+                <h3 className="text-lg font-extrabold tracking-tight">
+                  {item.question}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-muted">
+                  {item.answer}
+                </p>
               </div>
             ))}
           </div>
