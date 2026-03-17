@@ -20,10 +20,10 @@ export const metadata: Metadata = {
     siteName: "Peptide Products",
     images: [
       {
-        url: "https://www.peptideproducts.co.uk/products/retatrutide-main.jpg",
+        url: "https://www.peptideproducts.co.uk/products/retatrutide-40mg-uk.jpg",
         width: 1200,
         height: 900,
-        alt: "Retatrutide research peptide compound",
+        alt: "Buy retatrutide 40mg UK research peptide pen",
       },
     ],
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Retatrutide Research Peptide | GLP-1 GIP Glucagon Compound",
     description:
       "Retatrutide research peptide overview including laboratory research context and the related 40mg research peptide pen.",
-    images: ["https://www.peptideproducts.co.uk/products/retatrutide-main.jpg"],
+    images: ["https://www.peptideproducts.co.uk/products/retatrutide-40mg-uk.jpg"],
   },
 };
 
@@ -123,8 +123,8 @@ export default function Page() {
             <div className="mt-8 max-w-3xl overflow-hidden rounded-xl3 border border-line bg-panel p-4 shadow-soft">
               <div className="relative h-[360px] w-full bg-panel">
                 <Image
-                  src="/products/retatrutide-main.jpg"
-                  alt="Retatrutide 40mg research peptide pen"
+                  src="/products/retatrutide-40mg-uk.jpg"
+                  alt="Buy retatrutide 40mg UK research peptide pen"
                   fill
                   className="object-contain"
                   priority

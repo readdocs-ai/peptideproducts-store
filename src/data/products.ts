@@ -275,12 +275,12 @@ export const products: Product[] = [
     priceGBP: 150,
     pack: "1 pre-filled pen • 40mg total",
 
-    image: "/products/retatrutide-main.jpg",
+    image: "/products/retatrutide-40mg-uk.jpg",
 
-    gallery: [
-      "/products/retatrutide-main.jpg",
-      "/products/retatrutide-alt.jpg",
-    ],
+gallery: [
+  "/products/retatrutide-40mg-uk.jpg",
+  "/products/retatrutide-40mg-pen.jpg",
+],
 
     quickFacts: ["40mg total", "Single pen format", "Research supply"],
 

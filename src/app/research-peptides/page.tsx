@@ -167,6 +167,11 @@ export default function ResearchPeptidesPage() {
                   Research peptides cover a broad range of laboratory compounds including
                   antioxidant-focused blends, hydration systems, firming peptide products, and
                   regenerative lines such as collagen and PDRN-based compounds.
+
+                  Retatrutide is a developing peptide compound increasingly studied in metabolic and receptor pathway research. For laboratories seeking to buy retatrutide in the UK, access to a structured product listing and supporting research documentation is essential.
+                  <Link href="/buy-retatrutide-uk">
+  buy retatrutide UK
+</Link>
                 </p>
 
                 <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">

@@ -6,11 +6,33 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
-  title: "Buy Retatrutide UK | Research Peptide Supplier",
+  title: "Buy Retatrutide UK | 40mg Research Peptide Pen | Peptide Products",
   description:
     "Buy Retatrutide research peptide in the UK. Explore the 40mg research peptide pen, laboratory compound context, and supporting research pages.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/buy-retatrutide-uk",
+  },
+  openGraph: {
+    title: "Buy Retatrutide UK | 40mg Research Peptide Pen | Peptide Products",
+    description:
+      "Buy Retatrutide research peptide in the UK. Explore the 40mg research peptide pen, laboratory compound context, and supporting research pages.",
+    url: "https://www.peptideproducts.co.uk/buy-retatrutide-uk",
+    siteName: "Peptide Products",
+    images: [
+      {
+        url: "https://www.peptideproducts.co.uk/products/retatrutide-40mg-uk.jpg",
+        width: 1200,
+        height: 900,
+        alt: "Buy retatrutide 40mg UK research peptide pen",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Buy Retatrutide UK | 40mg Research Peptide Pen | Peptide Products",
+    description:
+      "Buy Retatrutide research peptide in the UK. Explore the 40mg research peptide pen and supporting research pages.",
+    images: ["https://www.peptideproducts.co.uk/products/retatrutide-40mg-uk.jpg"],
   },
 };
 
@@ -20,12 +42,19 @@ export default function Page() {
       <Header />
 
       <main>
-        {/* HERO */}
         <section className="py-14">
           <Container>
             <h1 className="text-4xl font-extrabold tracking-tight">
               Buy Retatrutide UK
             </h1>
+
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
+              Buy retatrutide in the UK with fast delivery and research-grade
+              supply. This 40mg retatrutide peptide pen is provided for
+              laboratory and scientific research use, supporting analytical and
+              investigational workflows involving GLP-1, GIP and glucagon
+              receptor pathways.
+            </p>
 
             <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
               Explore Retatrutide as a laboratory research peptide compound
@@ -34,16 +63,35 @@ export default function Page() {
               research content.
             </p>
 
-            <div className="mt-8 overflow-hidden rounded-xl3 border border-line bg-panel p-4 shadow-soft max-w-3xl">
+            <div className="mt-8 max-w-3xl overflow-hidden rounded-xl3 border border-line bg-panel p-4 shadow-soft">
               <div className="relative h-[360px] w-full">
                 <Image
-                  src="/products/retatrutide-main.jpg"
-                  alt="Retatrutide 40mg research peptide pen"
+                  src="/products/retatrutide-40mg-uk.jpg"
+                  alt="Buy retatrutide 40mg UK research peptide pen"
                   fill
                   className="object-contain"
+                  priority
                 />
               </div>
             </div>
+
+            <p className="mt-6 max-w-3xl text-sm leading-7 text-muted">
+              For broader scientific context, read our{" "}
+              <Link
+                href="/retatrutide-research-peptide"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                retatrutide research peptide
+              </Link>{" "}
+              guide, or go directly to the{" "}
+              <Link
+                href="/product/retatrutide"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                retatrutide 40mg product listing
+              </Link>
+              .
+            </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -63,7 +111,6 @@ export default function Page() {
           </Container>
         </section>
 
-        {/* CONTENT */}
         <section className="bg-white/80 py-14 backdrop-blur-sm">
           <Container>
             <div className="max-w-4xl">
@@ -76,7 +123,7 @@ export default function Page() {
                 peptide compound supplied for laboratory and scientific
                 investigation. The product is presented as part of a broader
                 peptide research catalogue covering antioxidant, hydration,
-                firming, and regenerative compound lines.
+                firming, regenerative, and selected specialist compound lines.
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
@@ -107,7 +154,6 @@ export default function Page() {
           </Container>
         </section>
 
-        {/* RELATED LINKS */}
         <section className="py-14">
           <Container>
             <h2 className="text-2xl font-extrabold tracking-tight">

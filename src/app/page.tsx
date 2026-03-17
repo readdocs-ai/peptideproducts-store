@@ -215,6 +215,52 @@ export default function Home() {
                   compatibility, and formulation behaviour.
                 </p>
 
+                <p className="mt-4 max-w-2xl text-base leading-8 text-muted md:text-lg">
+                  Explore broader site sections including{" "}
+                  <Link
+                    href="/research-peptides"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    research peptides
+                  </Link>
+                  ,{" "}
+                  <Link
+                    href="/research-peptides-uk"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    research peptides UK
+                  </Link>
+                  ,{" "}
+                  <Link
+                    href="/buy-research-peptides-uk"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    buy research peptides UK
+                  </Link>
+                  ,{" "}
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    buy retatrutide UK
+                  </Link>
+                  ,{" "}
+                  <Link
+                    href="/laboratory-peptide-compounds"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    laboratory peptide compounds
+                  </Link>
+                  , and newer compound pages such as{" "}
+                  <Link
+                    href="/retatrutide-research-peptide"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    retatrutide research peptide
+                  </Link>
+                  .
+                </p>
+
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
                     href="/shop"
@@ -341,8 +387,6 @@ export default function Home() {
             </div>
           </Container>
         </section>
-
-        
 
         <section className="bg-white/80 py-14 backdrop-blur-sm">
           <Container>
@@ -500,25 +544,20 @@ export default function Home() {
             <h2 className="text-2xl font-extrabold tracking-tight">
               Research peptide guides
             </h2>
-            <Link href="/retatrutide-research-peptide" className="surface-card p-5">
-  <div className="font-extrabold text-ink">Retatrutide research peptide</div>
-  <p className="mt-2 text-sm text-muted">
-    Overview of the retatrutide peptide compound, GLP-1 and GIP receptor research context.
-  </p>
-</Link>
-
-<Link href="/buy-retatrutide-uk" className="surface-card p-5">
-  <div className="text-sm font-extrabold text-ink">
-    Buy Retatrutide UK
-  </div>
-  <p className="mt-2 text-sm text-muted">
-    Purchase retatrutide 40mg research peptide with UK delivery and laboratory supply positioning.
-  </p>
-</Link>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              <Link href="/research-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
-                <div className="font-extrabold">Research peptides</div>
+              <Link href="/retatrutide-research-peptide" className="rounded-xl3 border border-line p-5 shadow-soft">
+                <div className="font-extrabold">Retatrutide research peptide</div>
+                <p className="mt-2 text-sm text-muted">
+                  Overview of the retatrutide peptide compound, GLP-1 and GIP receptor research context.
+                </p>
+              </Link>
+
+              <Link href="/buy-retatrutide-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
+                <div className="font-extrabold">Buy Retatrutide UK</div>
+                <p className="mt-2 text-sm text-muted">
+                  Purchase retatrutide 40mg research peptide with UK delivery and laboratory supply positioning.
+                </p>
               </Link>
 
               <Link href="/research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
@@ -527,6 +566,10 @@ export default function Home() {
 
               <Link href="/research-peptide-supplier-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
                 <div className="font-extrabold">Research peptide supplier UK</div>
+              </Link>
+
+              <Link href="/research-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
+                <div className="font-extrabold">Research peptides</div>
               </Link>
 
               <Link href="/buy-research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
