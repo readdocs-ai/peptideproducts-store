@@ -78,6 +78,10 @@ export function Footer() {
                 Buy research peptides UK
               </Link>
 
+              <Link href="/buy-retatrutide-uk" className="hover:text-ink">
+  Buy Retatrutide UK
+</Link>
+
               <Link href="/laboratory-peptide-compounds" className="hover:text-ink">
                 Laboratory peptide compounds
               </Link>
@@ -124,6 +128,10 @@ export function Footer() {
               <Link href="/hyaluronic-acid-peptide-research" className="hover:text-ink">
                 Hyaluronic acid peptide research
               </Link>
+
+              <Link href="/buy-retatrutide-uk">
+Buy Retatrutide UK
+</Link>
             </div>
           </div>
         </div>
