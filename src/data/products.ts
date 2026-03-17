@@ -157,45 +157,6 @@ export const products: Product[] = [
     notes: "For research use only. Not for human or veterinary use.",
   },
 
-
-{
-  id: "retatrutide",
-  name: "Retatrutide",
-  subtitle: "Retatrutide 40mg research peptide pen",
-  category: "Regenerative",
-  priceGBP: 150,
-  pack: "1 pen • 40mg",
-
-  image: "/products/retatrutide-main.jpg",
-
-  gallery: [
-    "/products/retatrutide-main.jpg",
-    "/products/retatrutide-alt.jpg",
-  ],
-
-  quickFacts: [
-    "40mg research peptide pen",
-    "Triple receptor peptide compound",
-    "Laboratory research supply",
-  ],
-
-  highlights: [
-    "Retatrutide peptide research compound",
-    "Associated with GLP-1, GIP and glucagon receptor study",
-    "Supplied as a 40mg laboratory research pen",
-  ],
-
-  actives: ["Retatrutide peptide compound"],
-
-  intendedUse: [
-    "Laboratory peptide research",
-    "Analytical compound investigation",
-    "Scientific peptide study environments",
-  ],
-
-  notes: "For research use only. Not for human or veterinary use.",
-}
-
   {
     id: "meso-collagen",
     name: "Meso Collagen Skin Booster",
