@@ -12,28 +12,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/order-status",
     "/faq",
 
-    // SEO hub pages
     "/research-peptides",
     "/research-peptides-uk",
     "/research-peptide-supplier-uk",
 
-    // category pages
     "/antioxidant-peptides",
     "/hydration-peptides",
     "/firming-peptides",
     "/regenerative-peptides",
 
-  // compound topic pages
-"/pdrn-research-peptide",
-"/glutathione-research-peptide",
-"/hyaluronic-acid-peptide-research",
-"/retatrutide-research-peptide",
+    "/pdrn-research-peptide",
+    "/glutathione-research-peptide",
+    "/hyaluronic-acid-peptide-research",
+    "/retatrutide-research-peptide",
 
-// buyer / commercial pages
-"/buy-research-peptides-uk",
-"/buy-retatrutide-uk",
-"/laboratory-peptide-compounds",
-"/peptide-products",
+    "/buy-research-peptides-uk",
+    "/buy-retatrutide-uk",
+    "/laboratory-peptide-compounds",
+    "/peptide-products",
+  ];
 
   const staticRoutes = staticPages.map((path) => ({
     url: `${baseUrl}${path}`,
@@ -44,19 +41,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ? 1
         : path === "/research-peptides" ||
           path === "/research-peptides-uk" ||
-          path === "/research-peptide-supplier-uk"
+          path === "/research-peptide-supplier-uk" ||
+          path === "/retatrutide-research-peptide" ||
+          path === "/buy-retatrutide-uk"
         ? 0.9
         : path === "/antioxidant-peptides" ||
           path === "/hydration-peptides" ||
           path === "/firming-peptides" ||
           path === "/regenerative-peptides"
         ? 0.88
-       : path === "/buy-research-peptides-uk" ||
-  path === "/buy-retatrutide-uk" ||
-  path === "/retatrutide-research-peptide" ||
-  path === "/laboratory-peptide-compounds" ||
-  path === "/peptide-products"
-? 0.9
+        : path === "/buy-research-peptides-uk" ||
+          path === "/laboratory-peptide-compounds" ||
+          path === "/peptide-products"
+        ? 0.85
         : 0.7,
   }));
 
