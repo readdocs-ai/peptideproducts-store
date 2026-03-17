@@ -507,6 +507,15 @@ export default function Home() {
   </p>
 </Link>
 
+<Link href="/buy-retatrutide-uk" className="surface-card p-5">
+  <div className="text-sm font-extrabold text-ink">
+    Buy Retatrutide UK
+  </div>
+  <p className="mt-2 text-sm text-muted">
+    Purchase retatrutide 40mg research peptide with UK delivery and laboratory supply positioning.
+  </p>
+</Link>
+
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               <Link href="/research-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
                 <div className="font-extrabold">Research peptides</div>
