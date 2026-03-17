@@ -23,16 +23,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/firming-peptides",
     "/regenerative-peptides",
 
-    // compound topic pages
-    "/pdrn-research-peptide",
-    "/glutathione-research-peptide",
-    "/hyaluronic-acid-peptide-research",
+  // compound topic pages
+"/pdrn-research-peptide",
+"/glutathione-research-peptide",
+"/hyaluronic-acid-peptide-research",
+"/retatrutide-research-peptide",
 
-    // buyer / commercial pages
-    "/buy-research-peptides-uk",
-    "/laboratory-peptide-compounds",
-    "/peptide-products",
-  ];
+// buyer / commercial pages
+"/buy-research-peptides-uk",
+"/buy-retatrutide-uk",
+"/laboratory-peptide-compounds",
+"/peptide-products",
 
   const staticRoutes = staticPages.map((path) => ({
     url: `${baseUrl}${path}`,
@@ -50,10 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
           path === "/firming-peptides" ||
           path === "/regenerative-peptides"
         ? 0.88
-        : path === "/buy-research-peptides-uk" ||
-          path === "/laboratory-peptide-compounds" ||
-          path === "/peptide-products"
-        ? 0.85
+       : path === "/buy-research-peptides-uk" ||
+  path === "/buy-retatrutide-uk" ||
+  path === "/retatrutide-research-peptide" ||
+  path === "/laboratory-peptide-compounds" ||
+  path === "/peptide-products"
+? 0.9
         : 0.7,
   }));
 
