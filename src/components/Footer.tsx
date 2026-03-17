@@ -129,9 +129,7 @@ export function Footer() {
                 Hyaluronic acid peptide research
               </Link>
 
-              <Link href="/buy-retatrutide-uk">
-Buy Retatrutide UK
-</Link>
+             
             </div>
           </div>
         </div>
