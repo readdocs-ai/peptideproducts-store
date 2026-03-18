@@ -29,6 +29,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     "/buy-research-peptides-uk",
     "/buy-retatrutide-uk",
+    "/what-is-retatrutide", // ✅ NEW PAGE
+
     "/laboratory-peptide-compounds",
     "/peptide-products",
   ];
@@ -40,13 +42,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (path === "") {
       priority = 1;
       changeFrequency = "daily";
-    } else if (
+    } 
+    else if (
       path === "/buy-retatrutide-uk" ||
       path === "/retatrutide-research-peptide"
     ) {
       priority = 0.95;
       changeFrequency = "daily";
-    } else if (
+    } 
+    else if (path === "/what-is-retatrutide") {
+      priority = 0.92; // ✅ HIGH SUPPORT PAGE
+      changeFrequency = "weekly";
+    }
+    else if (
       path === "/research-peptides" ||
       path === "/research-peptides-uk" ||
       path === "/research-peptide-supplier-uk" ||
@@ -54,7 +62,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ) {
       priority = 0.9;
       changeFrequency = "weekly";
-    } else if (
+    } 
+    else if (
       path === "/antioxidant-peptides" ||
       path === "/hydration-peptides" ||
       path === "/firming-peptides" ||
@@ -64,7 +73,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ) {
       priority = 0.85;
       changeFrequency = "weekly";
-    } else if (
+    } 
+    else if (
       path === "/pdrn-research-peptide" ||
       path === "/glutathione-research-peptide" ||
       path === "/hyaluronic-acid-peptide-research"
