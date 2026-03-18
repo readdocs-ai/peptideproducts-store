@@ -10,6 +10,7 @@ export function ProductImageGallery({ product }: { product: Product }) {
   const gallery = product.gallery?.length ? product.gallery : [product.image];
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selected = gallery[selectedIndex];
+  const inStock = product.stockStatus === "in_stock";
 
   const getImageAlt = (index: number, isThumbnail = false) => {
     if (product.id === "retatrutide") {
@@ -80,8 +81,15 @@ export function ProductImageGallery({ product }: { product: Product }) {
               {product.category}
             </div>
 
-            <div className="absolute right-4 top-4 rounded-full border border-line bg-white/90 px-3 py-1 text-xs font-extrabold text-ink shadow-soft">
-              {selectedIndex + 1} / {gallery.length}
+            <div
+              className={
+                "absolute right-4 top-4 rounded-full px-3 py-1 text-xs font-extrabold shadow-soft " +
+                (inStock
+                  ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+                  : "border border-red-200 bg-red-50 text-red-700")
+              }
+            >
+              {inStock ? "In stock" : "Sold out"}
             </div>
 
             <div className="absolute bottom-4 right-4 rounded-full border border-line bg-white/90 px-3 py-1 text-[11px] font-extrabold text-ink shadow-soft">
@@ -102,6 +110,7 @@ export function ProductImageGallery({ product }: { product: Product }) {
 export function ProductBuyBox({ product }: { product: Product }) {
   const [qty, setQty] = useState(1);
   const total = useMemo(() => product.priceGBP * qty, [product.priceGBP, qty]);
+  const inStock = product.stockStatus === "in_stock";
 
   return (
     <aside className="h-fit rounded-xl3 border border-line bg-paper/85 p-6 shadow-soft backdrop-blur">
@@ -113,6 +122,29 @@ export function ProductBuyBox({ product }: { product: Product }) {
         <div className="rounded-xl2 border border-line bg-haze px-3 py-2 text-xs font-extrabold text-slate">
           Research supply
         </div>
+      </div>
+
+      <div className="mt-4">
+        <div
+          className={
+            "inline-flex rounded-full px-3 py-1 text-xs font-extrabold " +
+            (inStock
+              ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+              : "border border-red-200 bg-red-50 text-red-700")
+          }
+        >
+          {inStock ? "In stock — ready to order" : "Sold out — currently unavailable"}
+        </div>
+
+        {inStock ? (
+          <div className="mt-2 text-xs text-slate">
+            Dispatch from UK • Fast delivery available
+          </div>
+        ) : (
+          <div className="mt-2 text-xs text-slate">
+            This product is temporarily unavailable.
+          </div>
+        )}
       </div>
 
       {product.quickFacts?.length ? (
@@ -133,14 +165,26 @@ export function ProductBuyBox({ product }: { product: Product }) {
         <div className="mt-2 flex items-center gap-2">
           <button
             type="button"
-            className="h-10 w-10 rounded-xl2 border border-line bg-paper font-extrabold hover:bg-mist"
+            disabled={!inStock}
+            className={
+              "h-10 w-10 rounded-xl2 border border-line font-extrabold " +
+              (inStock
+                ? "bg-paper hover:bg-mist"
+                : "cursor-not-allowed bg-mist text-slate/50")
+            }
             onClick={() => setQty((q) => Math.max(1, q - 1))}
           >
             −
           </button>
           <input
-            className="h-10 w-16 rounded-xl2 border border-line bg-mist text-center font-extrabold outline-none focus:ring-2 focus:ring-aqua/40"
+            className={
+              "h-10 w-16 rounded-xl2 border border-line text-center font-extrabold outline-none " +
+              (inStock
+                ? "bg-mist focus:ring-2 focus:ring-aqua/40"
+                : "bg-mist text-slate/50")
+            }
             value={qty}
+            disabled={!inStock}
             onChange={(e) => {
               const n = Number(e.target.value);
               if (Number.isFinite(n)) setQty(Math.min(99, Math.max(1, Math.floor(n))));
@@ -149,7 +193,13 @@ export function ProductBuyBox({ product }: { product: Product }) {
           />
           <button
             type="button"
-            className="h-10 w-10 rounded-xl2 border border-line bg-paper font-extrabold hover:bg-mist"
+            disabled={!inStock}
+            className={
+              "h-10 w-10 rounded-xl2 border border-line font-extrabold " +
+              (inStock
+                ? "bg-paper hover:bg-mist"
+                : "cursor-not-allowed bg-mist text-slate/50")
+            }
             onClick={() => setQty((q) => Math.min(99, q + 1))}
           >
             +
@@ -159,10 +209,18 @@ export function ProductBuyBox({ product }: { product: Product }) {
 
       <button
         type="button"
-        className="mt-6 w-full rounded-xl2 bg-accent px-4 py-3 text-sm font-extrabold text-paper shadow-glow hover:opacity-95"
-        onClick={() => addToCart(product.id, qty)}
+        disabled={!inStock}
+        className={
+          "mt-6 w-full rounded-xl2 px-4 py-3 text-sm font-extrabold shadow-glow transition " +
+          (inStock
+            ? "bg-accent text-paper hover:opacity-95"
+            : "cursor-not-allowed bg-red-100 text-red-700")
+        }
+        onClick={() => {
+          if (inStock) addToCart(product.id, qty);
+        }}
       >
-        Add to cart — {formatGBP(total)}
+        {inStock ? `Add to cart — ${formatGBP(total)}` : "Sold out"}
       </button>
 
       <div className="mt-3 text-xs text-slate">

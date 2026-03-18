@@ -423,6 +423,16 @@ export default function Home() {
                     <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
                       {p.category}
                     </div>
+                    <div
+  className={
+    "inline-flex rounded-full px-3 py-1 text-[11px] font-extrabold mb-2 " +
+    (p.stockStatus === "in_stock"
+      ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+      : "border border-red-200 bg-red-50 text-red-700")
+  }
+>
+  {p.stockStatus === "in_stock" ? "In stock" : "Sold out"}
+</div>
                     <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-ink">
                       {p.name}
                     </h3>
