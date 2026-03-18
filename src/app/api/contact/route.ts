@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
-import { getTransport, getFromAddress, CONTACT_TO } from "@/lib/mailer";
+import { Resend } from "resend";
 
 export const runtime = "nodejs";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 type Payload = {
   name: string;
@@ -36,17 +38,8 @@ export async function POST(req: Request) {
     return bad("Please enter a valid email address.");
   }
 
-  const transport = getTransport();
-  if (!transport) {
-    console.error("Contact form error: missing SMTP env vars", {
-      hasHost: !!process.env.SMTP_HOST,
-      hasPort: !!process.env.SMTP_PORT,
-      hasUser: !!process.env.SMTP_USER,
-      hasPass: !!process.env.SMTP_PASS,
-      hasFrom: !!process.env.SMTP_FROM,
-    });
-
-    return bad("Email is not configured yet (missing SMTP env vars).", 500);
+  if (!process.env.RESEND_API_KEY) {
+    return bad("Email is not configured yet (missing RESEND_API_KEY).", 500);
   }
 
   const text = [
@@ -60,38 +53,34 @@ export async function POST(req: Request) {
   ].join("\n");
 
   try {
-    console.log("Contact form mail attempt", {
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      user: process.env.SMTP_USER,
-      from: getFromAddress(),
-      to: CONTACT_TO,
-    });
-
-    await transport.verify();
-    console.log("SMTP verify passed");
-
-    const info = await transport.sendMail({
-      from: getFromAddress(),
-      to: CONTACT_TO,
+    const adminEmail = await resend.emails.send({
+      from: "Peptide Products <info@peptideproducts.co.uk>",
+      to: ["info@peptideproducts.co.uk"],
       replyTo: email,
       subject: `[Contact] ${subject}`,
       text,
     });
 
-    console.log("Contact form email sent", {
-      messageId: info.messageId,
-      response: info.response,
+    await resend.emails.send({
+      from: "Peptide Products <info@peptideproducts.co.uk>",
+      to: [email],
+      subject: "We received your message",
+      text: [
+        `Hi ${name},`,
+        "",
+        "Thanks for contacting Peptide Products.",
+        "We’ve received your message and will respond shortly.",
+        "",
+        "— Peptide Products",
+      ].join("\n"),
     });
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, id: adminEmail.data?.id || null });
   } catch (error: any) {
-    console.error("Contact form send failed:", {
+    console.error("Resend contact form failed:", {
       message: error?.message,
-      code: error?.code,
-      command: error?.command,
-      response: error?.response,
-      responseCode: error?.responseCode,
+      name: error?.name,
+      statusCode: error?.statusCode,
     });
 
     return bad("Failed to send email. Please try again shortly.", 500);
