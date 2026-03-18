@@ -1,94 +1,85 @@
-import Image from "next/image";
-import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Container } from "@/components/Container";
-import { products } from "@/data/products";
-import { formatGBP } from "@/lib/cart";
+import { ShopClient } from "./ShopClient";
 
-type Props = {
-  params: { id: string };
+export const metadata: Metadata = {
+  title: "Shop Research Peptides | Laboratory Compounds UK | Peptide Products",
+  description:
+    "Browse research peptides and laboratory compounds in the UK including antioxidant, hydration, firming, regenerative, and retatrutide-related products supplied for scientific study.",
+  alternates: {
+    canonical: "https://www.peptideproducts.co.uk/shop",
+  },
+  openGraph: {
+    title: "Shop Research Peptides | Laboratory Compounds UK | Peptide Products",
+    description:
+      "Browse research peptides and laboratory compounds in the UK including antioxidant, hydration, firming, regenerative, and retatrutide-related products supplied for scientific study.",
+    url: "https://www.peptideproducts.co.uk/shop",
+    siteName: "Peptide Products",
+    images: [
+      {
+        url: "https://www.peptideproducts.co.uk/products/retatrutide-40mg-uk.jpg",
+        width: 1200,
+        height: 900,
+        alt: "Shop research peptides and laboratory compounds",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shop Research Peptides | Laboratory Compounds UK | Peptide Products",
+    description:
+      "Browse research peptides and laboratory compounds in the UK including antioxidant, hydration, firming, regenerative, and retatrutide-related products supplied for scientific study.",
+    images: ["https://www.peptideproducts.co.uk/products/retatrutide-40mg-uk.jpg"],
+  },
 };
 
-export default function ProductPage({ params }: Props) {
-  const product = products.find((p) => p.id === params.id);
-
-  if (!product) {
-    notFound();
-  }
-
-  const schema = {
+export default function ShopPage() {
+  const webPageSchema = {
     "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    image: `https://peptideproducts.co.uk${product.image}`,
-    description: product.subtitle,
-    sku: product.id,
-    brand: {
-      "@type": "Brand",
+    "@type": "WebPage",
+    name: "Shop Research Peptides",
+    url: "https://www.peptideproducts.co.uk/shop",
+    description:
+      "Browse research peptides and laboratory compounds in the UK including antioxidant, hydration, firming, regenerative, and retatrutide-related products supplied for scientific study.",
+    isPartOf: {
+      "@type": "WebSite",
       name: "Peptide Products",
-    },
-    offers: {
-      "@type": "Offer",
-      url: `https://peptideproducts.co.uk/shop/${product.id}`,
-      priceCurrency: "GBP",
-      price: product.priceGBP,
-      availability: "https://schema.org/InStock",
+      url: "https://www.peptideproducts.co.uk",
     },
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.peptideproducts.co.uk",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Shop",
+        item: "https://www.peptideproducts.co.uk/shop",
+      },
+    ],
+  };
+
   return (
-    <>
+    <div>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([webPageSchema, breadcrumbSchema]),
+        }}
       />
 
       <Header />
-
-      <main className="py-12">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-2">
-            <div className="relative aspect-square overflow-hidden rounded-xl2 border border-line bg-panel">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-              />
-            </div>
-
-            <div>
-              <div className="text-sm font-bold uppercase tracking-wide text-muted">
-                {product.subtitle}
-              </div>
-
-              <h1 className="mt-2 text-3xl font-extrabold text-ink">
-                {product.name}
-              </h1>
-
-              <div className="mt-4 text-2xl font-extrabold text-accent">
-                {formatGBP(product.priceGBP)}
-              </div>
-
-              <div className="mt-4 text-sm text-muted">{product.pack}</div>
-
-              {"category" in product ? (
-                <div className="mt-2 text-sm text-muted">
-                  Category: {product.category}
-                </div>
-              ) : null}
-
-              <div className="mt-6 rounded-xl2 border border-line bg-panel p-4 text-sm text-muted">
-                Research supply only. Not for human use.
-              </div>
-            </div>
-          </div>
-        </Container>
-      </main>
-
+      <ShopClient />
       <Footer />
-    </>
+    </div>
   );
 }

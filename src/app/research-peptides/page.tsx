@@ -8,14 +8,14 @@ import { Container } from "@/components/Container";
 export const metadata: Metadata = {
   title: "Research Peptides | Laboratory Compounds for Scientific Study",
   description:
-    "Explore research peptides and laboratory compounds for scientific study. Browse antioxidant, hydration, firming, and regenerative product lines at Peptide Products.",
+    "Explore research peptides and laboratory compounds for scientific study. Browse antioxidant, hydration, firming, regenerative, and retatrutide-related research pages at Peptide Products.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/research-peptides",
   },
   openGraph: {
     title: "Research Peptides | Laboratory Compounds for Scientific Study",
     description:
-      "Research peptides and laboratory compounds for laboratory and scientific study, including antioxidant, hydration, firming, and regenerative product lines.",
+      "Research peptides and laboratory compounds for laboratory and scientific study, including antioxidant, hydration, firming, regenerative, and retatrutide-related research pages.",
     url: "https://www.peptideproducts.co.uk/research-peptides",
     siteName: "Peptide Products",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Research Peptides | Laboratory Compounds for Scientific Study",
     description:
-      "Research peptides and laboratory compounds for scientific study, including antioxidant, hydration, firming, and regenerative product lines.",
+      "Research peptides and laboratory compounds for scientific study, including antioxidant, hydration, firming, regenerative, and retatrutide-related research pages.",
     images: ["https://www.peptideproducts.co.uk/products/meso-vitamin-c-benefits.jpg"],
   },
 };
@@ -92,7 +92,7 @@ const faqItems = [
   {
     question: "Which types of compounds are included on this page?",
     answer:
-      "This page covers antioxidant, hydration, firming, regenerative, collagen-led, PDRN-based, and vitamin C-focused research compounds.",
+      "This page covers antioxidant, hydration, firming, regenerative, collagen-led, PDRN-based, vitamin C-focused, and selected retatrutide-related research content.",
   },
 ] as const;
 
@@ -104,6 +104,11 @@ export default function ResearchPeptidesPage() {
     url: "https://www.peptideproducts.co.uk/research-peptides",
     description:
       "Research peptides and laboratory compounds for scientific study from Peptide Products.",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Peptide Products",
+      url: "https://www.peptideproducts.co.uk",
+    },
   };
 
   const faqSchema = {
@@ -167,11 +172,32 @@ export default function ResearchPeptidesPage() {
                   Research peptides cover a broad range of laboratory compounds including
                   antioxidant-focused blends, hydration systems, firming peptide products, and
                   regenerative lines such as collagen and PDRN-based compounds.
+                </p>
 
-                  Retatrutide is a developing peptide compound increasingly studied in metabolic and receptor pathway research. For laboratories seeking to buy retatrutide in the UK, access to a structured product listing and supporting research documentation is essential.
-                  <Link href="/buy-retatrutide-uk">
-  buy retatrutide UK
-</Link>
+                <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">
+                  Retatrutide is a developing peptide compound increasingly studied in metabolic
+                  and receptor pathway research. For laboratories looking to{" "}
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    buy retatrutide UK
+                  </Link>
+                  , this research hub supports discovery by linking directly to the{" "}
+                  <Link
+                    href="/retatrutide-research-peptide"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    retatrutide research peptide
+                  </Link>{" "}
+                  guide and the main{" "}
+                  <Link
+                    href="/product/retatrutide"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    Retatrutide product page
+                  </Link>
+                  .
                 </p>
 
                 <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">
@@ -180,36 +206,40 @@ export default function ResearchPeptidesPage() {
                 </p>
 
                 <p className="mt-4 max-w-2xl text-base text-muted md:text-lg">
-  Explore related laboratory categories including{" "}
-  <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
-    antioxidant peptides
-  </Link>
-  ,{" "}
-  <Link href="/hydration-peptides" className="font-semibold text-ink hover:text-accent">
-    hydration peptides
-  </Link>
-  ,{" "}
-  <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
-    firming peptides
-  </Link>
-  , and{" "}
-  <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
-    regenerative peptides
-  </Link>
-  . You can also browse broader guides such as{" "}
-  <Link href="/research-peptides-uk" className="font-semibold text-ink hover:text-accent">
-    research peptides UK
-  </Link>
-  ,{" "}
-  <Link href="/research-peptide-supplier-uk" className="font-semibold text-ink hover:text-accent">
-    research peptide supplier UK
-  </Link>
-  , and{" "}
-  <Link href="/laboratory-peptide-compounds" className="font-semibold text-ink hover:text-accent">
-    laboratory peptide compounds
-  </Link>
-  .
-</p>
+                  Explore related laboratory categories including{" "}
+                  <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
+                    antioxidant peptides
+                  </Link>
+                  ,{" "}
+                  <Link href="/hydration-peptides" className="font-semibold text-ink hover:text-accent">
+                    hydration peptides
+                  </Link>
+                  ,{" "}
+                  <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
+                    firming peptides
+                  </Link>
+                  , and{" "}
+                  <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
+                    regenerative peptides
+                  </Link>
+                  . You can also browse broader guides such as{" "}
+                  <Link href="/research-peptides-uk" className="font-semibold text-ink hover:text-accent">
+                    research peptides UK
+                  </Link>
+                  ,{" "}
+                  <Link href="/research-peptide-supplier-uk" className="font-semibold text-ink hover:text-accent">
+                    research peptide supplier UK
+                  </Link>
+                  ,{" "}
+                  <Link href="/buy-research-peptides-uk" className="font-semibold text-ink hover:text-accent">
+                    buy research peptides UK
+                  </Link>
+                  , and{" "}
+                  <Link href="/laboratory-peptide-compounds" className="font-semibold text-ink hover:text-accent">
+                    laboratory peptide compounds
+                  </Link>
+                  .
+                </p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
                   <Link
@@ -217,6 +247,13 @@ export default function ResearchPeptidesPage() {
                     className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
                   >
                     Browse products
+                  </Link>
+
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                  >
+                    Buy Retatrutide UK
                   </Link>
 
                   <Link
@@ -244,6 +281,86 @@ export default function ResearchPeptidesPage() {
           </Container>
         </section>
 
+        <section className="pb-6">
+          <Container>
+            <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft lg:p-8">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <div className="max-w-3xl">
+                  <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-muted">
+                    Featured metabolic research pathway
+                  </div>
+                  <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
+                    Retatrutide research and product discovery
+                  </h2>
+                  <p className="mt-3 text-sm leading-7 text-muted md:text-base">
+                    This hub supports users exploring retatrutide-related content by linking into
+                    the{" "}
+                    <Link
+                      href="/retatrutide-research-peptide"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      retatrutide research peptide
+                    </Link>{" "}
+                    guide, the{" "}
+                    <Link
+                      href="/buy-retatrutide-uk"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      Buy Retatrutide UK
+                    </Link>{" "}
+                    page, and the main{" "}
+                    <Link
+                      href="/product/retatrutide"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      Retatrutide product page
+                    </Link>
+                    .
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/retatrutide-research-peptide"
+                    className="rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+                  >
+                    Retatrutide research peptide
+                  </Link>
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                  >
+                    Buy Retatrutide UK
+                  </Link>
+                </div>
+              </div>
+
+              <div className="mt-6 grid gap-4 md:grid-cols-3">
+                <Link href="/retatrutide-research-peptide" className="rounded-xl2 border border-line bg-panel p-4">
+                  <div className="text-sm font-extrabold text-ink">Retatrutide research peptide</div>
+                  <p className="mt-2 text-sm text-muted">
+                    Topic-focused supporting page for retatrutide research context and internal relevance.
+                  </p>
+                </Link>
+
+                <Link href="/buy-retatrutide-uk" className="rounded-xl2 border border-line bg-panel p-4">
+                  <div className="text-sm font-extrabold text-ink">Buy Retatrutide UK</div>
+                  <p className="mt-2 text-sm text-muted">
+                    Main UK landing page supporting retatrutide purchase-intent discovery.
+                  </p>
+                </Link>
+
+                <Link href="/product/retatrutide" className="rounded-xl2 border border-line bg-panel p-4">
+                  <div className="text-sm font-extrabold text-ink">Retatrutide product page</div>
+                  <p className="mt-2 text-sm text-muted">
+                    Direct route into the Retatrutide 40mg product listing for research buyers.
+                  </p>
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+
         <section className="py-14">
           <Container>
             <div className="max-w-3xl">
@@ -252,10 +369,10 @@ export default function ResearchPeptidesPage() {
               </h2>
               <p className="mt-3 text-sm leading-7 text-muted">
                 The research peptide category includes compounds studied for antioxidant activity,
-                hydration support, elasticity and firmness research, and regeneration-focused
-                workflows. Different compounds serve different laboratory interests, so category
-                browsing can help narrow down which products are most relevant to a specific line
-                of study.
+                hydration support, elasticity and firmness research, regeneration-focused
+                workflows, and selected metabolic research pathways. Different compounds serve
+                different laboratory interests, so category browsing can help narrow down which
+                products are most relevant to a specific line of study.
               </p>
             </div>
 
@@ -297,18 +414,41 @@ export default function ResearchPeptidesPage() {
                   Research peptides are supplied for controlled scientific and laboratory settings
                   where compounds are examined for analytical, biochemical, structural, or
                   formulation-related purposes. Depending on the compound, research may focus on
-                  antioxidant activity, hydration behaviour, elasticity and firmness, or
-                  regeneration-related compatibility.
+                  antioxidant activity, hydration behaviour, elasticity and firmness, regeneration,
+                  or receptor-related pathway investigation.
                 </p>
                 <p className="mt-4 text-sm leading-7 text-muted">
                   In practical terms, that means one research line may focus on glutathione or
-                  vitamin C, while another may focus on hyaluronic acid, collagen, PDRN, or
-                  peptide-blend formulations. Each compound type brings a different laboratory
-                  interest and should be reviewed through its individual product details.
+                  vitamin C, while another may focus on hyaluronic acid, collagen, PDRN, peptide
+                  blend formulations, or emerging compounds such as retatrutide. Each compound type
+                  brings a different laboratory interest and should be reviewed through its
+                  individual product details and supporting research pages.
                 </p>
                 <p className="mt-4 text-sm leading-7 text-muted">
                   Buyers looking for research peptides often compare categories first, then move
-                  into specific products once the relevant compound type has been identified.
+                  into specific products once the relevant compound type has been identified. Users
+                  researching retatrutide can move from this hub into{" "}
+                  <Link
+                    href="/retatrutide-research-peptide"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    retatrutide research peptide
+                  </Link>
+                  ,{" "}
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    Buy Retatrutide UK
+                  </Link>
+                  , and the{" "}
+                  <Link
+                    href="/product/retatrutide"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    Retatrutide product page
+                  </Link>
+                  .
                 </p>
               </div>
 
@@ -324,12 +464,18 @@ export default function ResearchPeptidesPage() {
                   environments.
                 </p>
 
-                <div className="mt-6">
+                <div className="mt-6 flex flex-wrap gap-3">
                   <Link
                     href="/shop"
                     className="inline-flex rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
                   >
                     Shop research products
+                  </Link>
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="inline-flex rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                  >
+                    Buy Retatrutide UK
                   </Link>
                 </div>
               </div>
@@ -346,7 +492,7 @@ export default function ResearchPeptidesPage() {
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
                   Explore regenerative and antioxidant-focused compounds alongside collagen, PDRN,
-                  and vitamin C research products.
+                  vitamin C, and broader supporting research products.
                 </p>
               </div>
               <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
@@ -441,6 +587,34 @@ export default function ResearchPeptidesPage() {
                 <div className="font-extrabold text-ink">Laboratory peptide compounds</div>
                 <p className="mt-2 text-sm text-muted">
                   Broader overview of peptide compound types used in scientific research environments.
+                </p>
+              </Link>
+
+              <Link href="/retatrutide-research-peptide" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Retatrutide research peptide</div>
+                <p className="mt-2 text-sm text-muted">
+                  Supporting guide for retatrutide research context and topic relevance.
+                </p>
+              </Link>
+
+              <Link href="/buy-retatrutide-uk" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Buy Retatrutide UK</div>
+                <p className="mt-2 text-sm text-muted">
+                  Main UK-focused retatrutide landing page connecting research intent to product discovery.
+                </p>
+              </Link>
+
+              <Link href="/product/retatrutide" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Retatrutide product page</div>
+                <p className="mt-2 text-sm text-muted">
+                  Direct route to the Retatrutide 40mg product listing.
+                </p>
+              </Link>
+
+              <Link href="/" className="surface-card p-5">
+                <div className="font-extrabold text-ink">Homepage</div>
+                <p className="mt-2 text-sm text-muted">
+                  Return to the main site hub for products, categories, and research pages.
                 </p>
               </Link>
             </div>
