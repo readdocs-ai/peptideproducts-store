@@ -1,16 +1,23 @@
-import { permanentRedirect } from "next/navigation";
-import { products } from "@/data/products";
+import type { Metadata } from "next";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { ShopClient } from "./ShopClient";
 
-type Props = {
-  params: { id: string };
+export const metadata: Metadata = {
+  title: "Shop Research Peptides | Laboratory Compounds UK | Peptide Products",
+  description:
+    "Browse research peptides and laboratory compounds in the UK including antioxidant, hydration, firming, regenerative, and retatrutide-related products supplied for scientific study.",
+  alternates: {
+    canonical: "https://www.peptideproducts.co.uk/shop",
+  },
 };
 
-export default function ShopProductRedirectPage({ params }: Props) {
-  const product = products.find((p) => p.id === params.id);
-
-  if (!product) {
-    permanentRedirect("/shop");
-  }
-
-  permanentRedirect(`/product/${params.id}`);
+export default function ShopPage() {
+  return (
+    <div>
+      <Header />
+      <ShopClient />
+      <Footer />
+    </div>
+  );
 }

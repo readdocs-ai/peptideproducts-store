@@ -393,7 +393,14 @@ export default function Home() {
                     >
                       retatrutide research peptide
                     </Link>{" "}
-                    supporting content, and the live{" "}
+                    supporting content, the new{" "}
+                    <Link
+                      href="/what-is-retatrutide"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      what is retatrutide
+                    </Link>{" "}
+                    informational page, and the live{" "}
                     <Link
                       href="/product/retatrutide"
                       className="font-semibold text-ink hover:text-accent"
@@ -421,7 +428,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="mt-6 grid gap-4 md:grid-cols-3">
+              <div className="mt-6 grid gap-4 md:grid-cols-4">
                 <Link href="/buy-retatrutide-uk" className="rounded-xl2 border border-line bg-panel p-4">
                   <div className="text-sm font-extrabold text-ink">Buy Retatrutide UK</div>
                   <p className="mt-2 text-sm text-muted">
@@ -436,6 +443,13 @@ export default function Home() {
                   <div className="text-sm font-extrabold text-ink">Retatrutide research peptide</div>
                   <p className="mt-2 text-sm text-muted">
                     Supporting research content that strengthens topical relevance around retatrutide.
+                  </p>
+                </Link>
+
+                <Link href="/what-is-retatrutide" className="rounded-xl2 border border-line bg-panel p-4">
+                  <div className="text-sm font-extrabold text-ink">What is Retatrutide?</div>
+                  <p className="mt-2 text-sm text-muted">
+                    Informational support page expanding the retatrutide topic cluster.
                   </p>
                 </Link>
 
@@ -575,7 +589,14 @@ export default function Home() {
                 >
                   retatrutide research peptide
                 </Link>{" "}
-                content, or go straight to the{" "}
+                content, read the{" "}
+                <Link
+                  href="/what-is-retatrutide"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  what is retatrutide
+                </Link>{" "}
+                page, or go straight to the{" "}
                 <Link
                   href="/product/retatrutide"
                   className="font-semibold text-ink hover:text-accent"
@@ -703,6 +724,13 @@ export default function Home() {
                 </p>
               </Link>
 
+              <Link href="/what-is-retatrutide" className="rounded-xl3 border border-line p-5 shadow-soft">
+                <div className="font-extrabold">What is Retatrutide?</div>
+                <p className="mt-2 text-sm text-muted">
+                  Informational support page explaining retatrutide in broad laboratory research context.
+                </p>
+              </Link>
+
               <Link href="/research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
                 <div className="font-extrabold">Research peptides UK</div>
                 <p className="mt-2 text-sm text-muted">
@@ -787,7 +815,14 @@ export default function Home() {
                   >
                     retatrutide research peptide
                   </Link>{" "}
-                  page and the{" "}
+                  page, the{" "}
+                  <Link
+                    href="/what-is-retatrutide"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    what is retatrutide
+                  </Link>{" "}
+                  page, and the{" "}
                   <Link
                     href="/product/retatrutide"
                     className="font-semibold text-ink hover:text-accent"
