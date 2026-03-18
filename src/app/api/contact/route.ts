@@ -16,6 +16,7 @@ function bad(msg: string, status = 400) {
 
 export async function POST(req: Request) {
   let data: Payload;
+
   try {
     data = (await req.json()) as Payload;
   } catch {
@@ -27,11 +28,18 @@ export async function POST(req: Request) {
   const subject = (data.subject || "").trim();
   const message = (data.message || "").trim();
 
-  if (!name || !email || !subject || !message) return bad("All fields are required.");
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return bad("Please enter a valid email address.");
+  if (!name || !email || !subject || !message) {
+    return bad("All fields are required.");
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return bad("Please enter a valid email address.");
+  }
 
   const transport = getTransport();
-  if (!transport) return bad("Email is not configured yet (missing SMTP env vars).", 500);
+  if (!transport) {
+    return bad("Email is not configured yet (missing SMTP env vars).", 500);
+  }
 
   const text = [
     "New contact message",
@@ -43,13 +51,18 @@ export async function POST(req: Request) {
     message,
   ].join("\n");
 
-  await transport.sendMail({
-    from: getFromAddress(),
-    to: CONTACT_TO,
-    replyTo: email,
-    subject: `[Contact] ${subject}`,
-    text,
-  });
+  try {
+    await transport.sendMail({
+      from: getFromAddress(),
+      to: CONTACT_TO,
+      replyTo: email,
+      subject: `[Contact] ${subject}`,
+      text,
+    });
 
-  return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    console.error("Contact form send failed:", error);
+    return bad("Failed to send email. Please try again shortly.", 500);
+  }
 }

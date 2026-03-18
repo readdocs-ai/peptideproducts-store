@@ -7,7 +7,9 @@ import { Container } from "@/components/Container";
 import { FormStatus } from "@/components/FormStatus";
 
 export default function Contact() {
-  const [status, setStatus] = useState<{ type: "idle" | "ok" | "err"; message?: string }>({ type: "idle" });
+  const [status, setStatus] = useState<{ type: "idle" | "ok" | "err"; message?: string }>({
+    type: "idle",
+  });
   const [loading, setLoading] = useState(false);
 
   const [name, setName] = useState("");
@@ -26,8 +28,19 @@ export default function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, subject, message }),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Failed to send");
+
+      const raw = await res.text();
+      let data: any = {};
+
+      try {
+        data = raw ? JSON.parse(raw) : {};
+      } catch {
+        data = {};
+      }
+
+      if (!res.ok) {
+        throw new Error(data?.error || "Failed to send");
+      }
 
       setStatus({ type: "ok" });
       setName("");
@@ -49,7 +62,8 @@ export default function Contact() {
           <div className="max-w-3xl rounded-xl2 border border-line bg-white p-8 shadow-soft">
             <h1 className="text-3xl font-extrabold tracking-tight">Contact us</h1>
             <p className="mt-2 text-sm text-muted">
-              Email is delivered to <span className="font-semibold text-ink">info@peptideproducts.co.uk</span>.
+              Email is delivered to{" "}
+              <span className="font-semibold text-ink">info@peptideproducts.co.uk</span>.
               Wholesale enquiries should use the Wholesale page for faster handling.
             </p>
 
@@ -103,7 +117,10 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={loading}
-                className={"rounded-xl2 px-6 py-3 text-sm font-extrabold text-white shadow-soft " + (loading ? "bg-accent/70" : "bg-accent hover:bg-accent/90")}
+                className={
+                  "rounded-xl2 px-6 py-3 text-sm font-extrabold text-white shadow-soft " +
+                  (loading ? "bg-accent/70" : "bg-accent hover:bg-accent/90")
+                }
               >
                 {loading ? "Sending…" : "Send message"}
               </button>
