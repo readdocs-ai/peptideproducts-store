@@ -17,7 +17,7 @@ export function getTransport() {
 }
 
 export function getFromAddress() {
-  return process.env.SMTP_FROM || "Peptide Products <info@peptideproducts.co.uk>";
+  return process.env.SMTP_FROM || process.env.SMTP_USER || "info@peptideproducts.co.uk";
 }
 
 export const CONTACT_TO = "info@peptideproducts.co.uk";
