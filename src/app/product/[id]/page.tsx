@@ -42,8 +42,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${p.name} | Research Peptide Compound UK`;
-  const description = `${p.subtitle}. ${p.pack}. Research supply only. View product details, documentation, and related peptide research pages at Peptide Products.`;
+  const isRetatrutide = p.id === "retatrutide";
+
+  const title = isRetatrutide
+    ? "Retatrutide 40mg | Buy Retatrutide UK Research Peptide"
+    : `${p.name} | Research Peptide Compound UK`;
+
+  const description = isRetatrutide
+    ? `Buy Retatrutide UK research peptide. ${p.pack}. Research supply only. View product details, laboratory guidance, documentation, and related retatrutide research pages at Peptide Products.`
+    : `${p.subtitle}. ${p.pack}. Research supply only. View product details, documentation, and related peptide research pages at Peptide Products.`;
+
   const url = `https://www.peptideproducts.co.uk/product/${p.id}`;
   const ogImage = `https://www.peptideproducts.co.uk${p.image}`;
 
@@ -81,6 +89,8 @@ export default function ProductPage({ params }: Props) {
   const p = getProduct(params.id);
   if (!p) return notFound();
 
+  const isRetatrutide = p.id === "retatrutide";
+
   const imageUrls = (p.gallery?.length ? p.gallery : [p.image]).map(
     (src) => `https://www.peptideproducts.co.uk${src}`,
   );
@@ -96,8 +106,11 @@ export default function ProductPage({ params }: Props) {
     "@type": "Product",
     name: p.name,
     image: imageUrls,
-    description: `${p.subtitle}. ${p.pack}. ${p.notes}`,
+    description: isRetatrutide
+      ? `${p.subtitle}. ${p.pack}. Research supply only. Buy retatrutide UK research peptide with product details, documentation, and related research content.`
+      : `${p.subtitle}. ${p.pack}. ${p.notes}`,
     sku: p.id,
+    mpn: p.id,
     category: p.category,
     brand: {
       "@type": "Brand",
@@ -113,6 +126,11 @@ export default function ProductPage({ params }: Props) {
         "@type": "PropertyValue",
         name: "Pack size",
         value: p.pack,
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Stock status",
+        value: p.stockStatus === "in_stock" ? "In stock" : "Sold out",
       },
       ...p.actives.map((active) => ({
         "@type": "PropertyValue",
@@ -134,7 +152,10 @@ export default function ProductPage({ params }: Props) {
       url: `https://www.peptideproducts.co.uk/product/${p.id}`,
       priceCurrency: "GBP",
       price: p.priceGBP,
-      availability: "https://schema.org/InStock",
+      availability:
+        p.stockStatus === "in_stock"
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock",
       itemCondition: "https://schema.org/NewCondition",
       seller: {
         "@type": "Organization",
@@ -231,6 +252,17 @@ export default function ProductPage({ params }: Props) {
                 <h1 className="mt-2 text-4xl font-extrabold tracking-tight">
                   {p.name}
                 </h1>
+
+                <div
+                  className={
+                    "mt-4 inline-flex rounded-full px-3 py-1 text-xs font-extrabold " +
+                    (p.stockStatus === "in_stock"
+                      ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+                      : "border border-red-200 bg-red-50 text-red-700")
+                  }
+                >
+                  {p.stockStatus === "in_stock" ? "In stock" : "Sold out"}
+                </div>
 
                 <p className="mt-3 text-sm text-muted">
                   {p.pack}. This compound is supplied for laboratory and scientific
@@ -332,18 +364,45 @@ export default function ProductPage({ params }: Props) {
                 ) : null}
 
                 {p.id === "retatrutide" ? (
-  <p className="mt-3 text-sm text-muted">
-    Learn more about the scientific background of this compound in our{" "}
-    <Link
-      href="/retatrutide-research-peptide"
-      className="font-semibold text-ink hover:text-accent"
-    >
-      retatrutide research peptide guide
-    </Link>
-    , which explores GLP-1, GIP and glucagon receptor research context and
-    related peptide compound pages.
-  </p>
-) : null}
+                  <>
+                    <p className="mt-3 text-sm text-muted">
+                      Learn more about the scientific background of this compound in our{" "}
+                      <Link
+                        href="/retatrutide-research-peptide"
+                        className="font-semibold text-ink hover:text-accent"
+                      >
+                        retatrutide research peptide guide
+                      </Link>
+                      , which explores GLP-1, GIP and glucagon receptor research context and
+                      related peptide compound pages.
+                    </p>
+
+                    <p className="mt-3 text-sm text-muted">
+                      Visitors looking to{" "}
+                      <Link
+                        href="/buy-retatrutide-uk"
+                        className="font-semibold text-ink hover:text-accent"
+                      >
+                        buy retatrutide UK
+                      </Link>{" "}
+                      can also use this product page alongside our{" "}
+                      <Link
+                        href="/retatrutide-research-peptide"
+                        className="font-semibold text-ink hover:text-accent"
+                      >
+                        retatrutide research peptide
+                      </Link>{" "}
+                      content and the wider{" "}
+                      <Link
+                        href="/research-peptides"
+                        className="font-semibold text-ink hover:text-accent"
+                      >
+                        research peptides
+                      </Link>{" "}
+                      section.
+                    </p>
+                  </>
+                ) : null}
 
                 {p.id === "meso-vitamin-c" ? (
                   <p className="mt-3 text-sm text-muted">
@@ -355,26 +414,6 @@ export default function ProductPage({ params }: Props) {
                       antioxidant peptides
                     </Link>{" "}
                     guide and related laboratory research pages.
-                  </p>
-                ) : null}
-
-                {p.id === "retatrutide" ? (
-                  <p className="mt-3 text-sm text-muted">
-                    Learn more about the scientific background of this compound in our{" "}
-                    <Link
-                      href="/retatrutide-research-peptide"
-                      className="font-semibold text-ink hover:text-accent"
-                    >
-                      retatrutide research peptide guide
-                    </Link>
-                    , or browse the wider{" "}
-                    <Link
-                      href="/research-peptides"
-                      className="font-semibold text-ink hover:text-accent"
-                    >
-                      research peptides
-                    </Link>{" "}
-                    section.
                   </p>
                 ) : null}
 
@@ -548,11 +587,62 @@ export default function ProductPage({ params }: Props) {
               )}
             </div>
 
+            {isRetatrutide ? (
+              <div className="mt-8 rounded-xl2 border border-line bg-panel p-5">
+                <h3 className="text-lg font-extrabold tracking-tight text-ink">
+                  Buy Retatrutide UK research pathway
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-muted">
+                  This page supports users looking to{" "}
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    buy retatrutide UK
+                  </Link>{" "}
+                  by linking product intent with the{" "}
+                  <Link
+                    href="/retatrutide-research-peptide"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    retatrutide research peptide
+                  </Link>{" "}
+                  guide and the broader{" "}
+                  <Link
+                    href="/research-peptides-uk"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    research peptides UK
+                  </Link>{" "}
+                  content cluster.
+                </p>
+
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="rounded-xl2 bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+                  >
+                    Buy Retatrutide UK
+                  </Link>
+                  <Link
+                    href="/retatrutide-research-peptide"
+                    className="rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                  >
+                    Retatrutide research peptide
+                  </Link>
+                </div>
+              </div>
+            ) : null}
+
             {relatedProducts.length > 0 ? (
               <div className="mt-8">
                 <h3 className="text-lg font-extrabold tracking-tight">
                   Related products
                 </h3>
+                <p className="mt-2 text-sm text-muted">
+                  Explore more products from the same research category.
+                </p>
+
                 <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                   {relatedProducts.map((item) => (
                     <Link
@@ -563,6 +653,18 @@ export default function ProductPage({ params }: Props) {
                       <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
                         {item.category}
                       </div>
+
+                      <div
+                        className={
+                          "mt-2 inline-flex rounded-full px-2.5 py-1 text-[11px] font-extrabold " +
+                          (item.stockStatus === "in_stock"
+                            ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+                            : "border border-red-200 bg-red-50 text-red-700")
+                        }
+                      >
+                        {item.stockStatus === "in_stock" ? "In stock" : "Sold out"}
+                      </div>
+
                       <div className="mt-2 text-base font-extrabold text-ink">
                         {item.name}
                       </div>

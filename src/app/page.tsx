@@ -261,12 +261,32 @@ export default function Home() {
                   .
                 </p>
 
+                <p className="mt-4 max-w-2xl text-base leading-8 text-muted md:text-lg">
+                  For laboratories specifically looking to{" "}
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    buy retatrutide UK
+                  </Link>
+                  , our core content pathway connects the homepage, research hub, supporting
+                  compound pages, and the main product listing to create a clearer route into
+                  the most relevant retatrutide research content.
+                </p>
+
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
                     href="/shop"
                     className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-accent/90"
                   >
                     Shop products
+                  </Link>
+
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
+                  >
+                    Buy Retatrutide UK
                   </Link>
 
                   <Link
@@ -342,6 +362,89 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <section className="pb-6">
+          <Container>
+            <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft lg:p-8">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                <div className="max-w-3xl">
+                  <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-muted">
+                    Featured research pathway
+                  </div>
+                  <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
+                    Buy Retatrutide UK — research content, supporting pages, and product access
+                  </h2>
+                  <p className="mt-3 text-sm leading-7 text-muted md:text-base">
+                    Our homepage directly supports users looking to{" "}
+                    <Link
+                      href="/buy-retatrutide-uk"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      buy retatrutide UK
+                    </Link>{" "}
+                    by linking into the main money page, the{" "}
+                    <Link
+                      href="/retatrutide-research-peptide"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      retatrutide research peptide
+                    </Link>{" "}
+                    supporting content, and the live{" "}
+                    <Link
+                      href="/product/retatrutide"
+                      className="font-semibold text-ink hover:text-accent"
+                    >
+                      retatrutide product page
+                    </Link>
+                    . This helps visitors move from research intent to product discovery more
+                    clearly.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-accent/90"
+                  >
+                    Buy Retatrutide UK
+                  </Link>
+                  <Link
+                    href="/product/retatrutide"
+                    className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
+                  >
+                    View Retatrutide Product
+                  </Link>
+                </div>
+              </div>
+
+              <div className="mt-6 grid gap-4 md:grid-cols-3">
+                <Link href="/buy-retatrutide-uk" className="rounded-xl2 border border-line bg-panel p-4">
+                  <div className="text-sm font-extrabold text-ink">Buy Retatrutide UK</div>
+                  <p className="mt-2 text-sm text-muted">
+                    Main page for retatrutide-related purchase intent and UK-focused internal linking.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/retatrutide-research-peptide"
+                  className="rounded-xl2 border border-line bg-panel p-4"
+                >
+                  <div className="text-sm font-extrabold text-ink">Retatrutide research peptide</div>
+                  <p className="mt-2 text-sm text-muted">
+                    Supporting research content that strengthens topical relevance around retatrutide.
+                  </p>
+                </Link>
+
+                <Link href="/product/retatrutide" className="rounded-xl2 border border-line bg-panel p-4">
+                  <div className="text-sm font-extrabold text-ink">Retatrutide product page</div>
+                  <p className="mt-2 text-sm text-muted">
+                    Direct route into the product listing for users ready to review the compound page.
+                  </p>
+                </Link>
               </div>
             </div>
           </Container>
@@ -424,15 +527,15 @@ export default function Home() {
                       {p.category}
                     </div>
                     <div
-  className={
-    "inline-flex rounded-full px-3 py-1 text-[11px] font-extrabold mb-2 " +
-    (p.stockStatus === "in_stock"
-      ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
-      : "border border-red-200 bg-red-50 text-red-700")
-  }
->
-  {p.stockStatus === "in_stock" ? "In stock" : "Sold out"}
-</div>
+                      className={
+                        "inline-flex rounded-full px-3 py-1 text-[11px] font-extrabold mb-2 " +
+                        (p.stockStatus === "in_stock"
+                          ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+                          : "border border-red-200 bg-red-50 text-red-700")
+                      }
+                    >
+                      {p.stockStatus === "in_stock" ? "In stock" : "Sold out"}
+                    </div>
                     <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-ink">
                       {p.name}
                     </h3>
@@ -451,6 +554,36 @@ export default function Home() {
                   </div>
                 </Link>
               ))}
+            </div>
+
+            <div className="mt-8 rounded-xl3 border border-line bg-panel p-6 shadow-soft">
+              <h3 className="text-xl font-extrabold tracking-tight text-ink">
+                Looking to buy retatrutide UK?
+              </h3>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">
+                You can move directly from the homepage into the{" "}
+                <Link
+                  href="/buy-retatrutide-uk"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  buy retatrutide UK
+                </Link>{" "}
+                page, review the{" "}
+                <Link
+                  href="/retatrutide-research-peptide"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  retatrutide research peptide
+                </Link>{" "}
+                content, or go straight to the{" "}
+                <Link
+                  href="/product/retatrutide"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  retatrutide product listing
+                </Link>
+                .
+              </p>
             </div>
           </Container>
         </section>
@@ -572,18 +705,44 @@ export default function Home() {
 
               <Link href="/research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
                 <div className="font-extrabold">Research peptides UK</div>
+                <p className="mt-2 text-sm text-muted">
+                  UK-focused peptide research content and supporting compound category pathways.
+                </p>
               </Link>
 
               <Link href="/research-peptide-supplier-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
                 <div className="font-extrabold">Research peptide supplier UK</div>
+                <p className="mt-2 text-sm text-muted">
+                  Supplier-focused internal page supporting discovery for UK peptide research buyers.
+                </p>
               </Link>
 
               <Link href="/research-peptides" className="rounded-xl3 border border-line p-5 shadow-soft">
                 <div className="font-extrabold">Research peptides</div>
+                <p className="mt-2 text-sm text-muted">
+                  Core hub page linking category research content, products, and supporting guides.
+                </p>
               </Link>
 
               <Link href="/buy-research-peptides-uk" className="rounded-xl3 border border-line p-5 shadow-soft">
                 <div className="font-extrabold">Buy research peptides UK</div>
+                <p className="mt-2 text-sm text-muted">
+                  Purchase-intent page supporting broader peptide keywords and internal authority flow.
+                </p>
+              </Link>
+
+              <Link href="/laboratory-peptide-compounds" className="rounded-xl3 border border-line p-5 shadow-soft">
+                <div className="font-extrabold">Laboratory peptide compounds</div>
+                <p className="mt-2 text-sm text-muted">
+                  Supporting laboratory-focused content for compound discovery and topical relevance.
+                </p>
+              </Link>
+
+              <Link href="/product/retatrutide" className="rounded-xl3 border border-line p-5 shadow-soft">
+                <div className="font-extrabold">Retatrutide product page</div>
+                <p className="mt-2 text-sm text-muted">
+                  Direct internal link to the retatrutide product listing for research buyers.
+                </p>
               </Link>
             </div>
           </Container>
@@ -611,6 +770,31 @@ export default function Home() {
                   These compound categories form the core of many laboratory peptide research
                   programmes and are widely analysed in biochemical, formulation, and experimental
                   research environments.
+                </p>
+
+                <p className="mt-4 text-sm leading-7 text-muted">
+                  Users looking to{" "}
+                  <Link
+                    href="/buy-retatrutide-uk"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    buy retatrutide UK
+                  </Link>{" "}
+                  can also explore the{" "}
+                  <Link
+                    href="/retatrutide-research-peptide"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    retatrutide research peptide
+                  </Link>{" "}
+                  page and the{" "}
+                  <Link
+                    href="/product/retatrutide"
+                    className="font-semibold text-ink hover:text-accent"
+                  >
+                    retatrutide product page
+                  </Link>{" "}
+                  to move from research reading into product review more efficiently.
                 </p>
 
                 <Link

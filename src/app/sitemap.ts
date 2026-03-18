@@ -3,6 +3,7 @@ import { products } from "@/data/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.peptideproducts.co.uk";
+  const now = new Date();
 
   const staticPages = [
     "",
@@ -32,37 +33,64 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/peptide-products",
   ];
 
-  const staticRoutes = staticPages.map((path) => ({
-    url: `${baseUrl}${path}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority:
-      path === ""
-        ? 1
-        : path === "/research-peptides" ||
-          path === "/research-peptides-uk" ||
-          path === "/research-peptide-supplier-uk" ||
-          path === "/retatrutide-research-peptide" ||
-          path === "/buy-retatrutide-uk"
-        ? 0.9
-        : path === "/antioxidant-peptides" ||
-          path === "/hydration-peptides" ||
-          path === "/firming-peptides" ||
-          path === "/regenerative-peptides"
-        ? 0.88
-        : path === "/buy-research-peptides-uk" ||
-          path === "/laboratory-peptide-compounds" ||
-          path === "/peptide-products"
-        ? 0.85
-        : 0.7,
-  }));
+  const staticRoutes = staticPages.map((path) => {
+    let priority = 0.7;
+    let changeFrequency: "daily" | "weekly" | "monthly" = "weekly";
 
-  const productRoutes = products.map((product) => ({
-    url: `${baseUrl}/product/${product.id}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.9,
-  }));
+    if (path === "") {
+      priority = 1;
+      changeFrequency = "daily";
+    } else if (
+      path === "/buy-retatrutide-uk" ||
+      path === "/retatrutide-research-peptide"
+    ) {
+      priority = 0.95;
+      changeFrequency = "daily";
+    } else if (
+      path === "/research-peptides" ||
+      path === "/research-peptides-uk" ||
+      path === "/research-peptide-supplier-uk" ||
+      path === "/buy-research-peptides-uk"
+    ) {
+      priority = 0.9;
+      changeFrequency = "weekly";
+    } else if (
+      path === "/antioxidant-peptides" ||
+      path === "/hydration-peptides" ||
+      path === "/firming-peptides" ||
+      path === "/regenerative-peptides" ||
+      path === "/laboratory-peptide-compounds" ||
+      path === "/peptide-products"
+    ) {
+      priority = 0.85;
+      changeFrequency = "weekly";
+    } else if (
+      path === "/pdrn-research-peptide" ||
+      path === "/glutathione-research-peptide" ||
+      path === "/hyaluronic-acid-peptide-research"
+    ) {
+      priority = 0.84;
+      changeFrequency = "weekly";
+    }
+
+    return {
+      url: `${baseUrl}${path}`,
+      lastModified: now,
+      changeFrequency,
+      priority,
+    };
+  });
+
+  const productRoutes = products.map((product) => {
+    const isRetatrutide = product.id === "retatrutide";
+
+    return {
+      url: `${baseUrl}/product/${product.id}`,
+      lastModified: now,
+      changeFrequency: isRetatrutide ? ("daily" as const) : ("weekly" as const),
+      priority: isRetatrutide ? 0.95 : 0.88,
+    };
+  });
 
   return [...staticRoutes, ...productRoutes];
 }
