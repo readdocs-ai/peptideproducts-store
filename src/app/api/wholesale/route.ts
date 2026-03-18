@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
-import { getTransport, getFromAddress, CONTACT_TO } from "@/lib/mailer";
+import { Resend } from "resend";
 
 export const runtime = "nodejs";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 type Payload = {
   name: string;
@@ -18,6 +20,7 @@ function bad(msg: string, status = 400) {
 
 export async function POST(req: Request) {
   let data: Payload;
+
   try {
     data = (await req.json()) as Payload;
   } catch {
@@ -31,11 +34,17 @@ export async function POST(req: Request) {
   const products = (data.products || "").trim();
   const message = (data.message || "").trim();
 
-  if (!name || !email || !message) return bad("Name, email and message are required.");
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return bad("Please enter a valid email address.");
+  if (!name || !email || !message) {
+    return bad("Name, email and message are required.");
+  }
 
-  const transport = getTransport();
-  if (!transport) return bad("Email is not configured yet (missing SMTP env vars).", 500);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return bad("Please enter a valid email address.");
+  }
+
+  if (!process.env.RESEND_API_KEY) {
+    return bad("Email is not configured yet (missing RESEND_API_KEY).", 500);
+  }
 
   const text = [
     "New wholesale enquiry",
@@ -49,13 +58,37 @@ export async function POST(req: Request) {
     message,
   ].join("\n");
 
-  await transport.sendMail({
-    from: getFromAddress(),
-    to: CONTACT_TO,
-    replyTo: email,
-    subject: `[Wholesale] Enquiry from ${name}${company ? ` (${company})` : ""}`,
-    text,
-  });
+  try {
+    const adminEmail = await resend.emails.send({
+      from: "Peptide Products <info@peptideproducts.co.uk>",
+      to: ["info@peptideproducts.co.uk"],
+      replyTo: email,
+      subject: `[Wholesale] Enquiry from ${name}${company ? ` (${company})` : ""}`,
+      text,
+    });
 
-  return NextResponse.json({ ok: true });
+    await resend.emails.send({
+      from: "Peptide Products <info@peptideproducts.co.uk>",
+      to: [email],
+      subject: "We received your wholesale enquiry",
+      text: [
+        `Hi ${name},`,
+        "",
+        "Thanks for contacting Peptide Products.",
+        "We’ve received your wholesale enquiry and will respond shortly.",
+        "",
+        "— Peptide Products",
+      ].join("\n"),
+    });
+
+    return NextResponse.json({ ok: true, id: adminEmail.data?.id || null });
+  } catch (error: any) {
+    console.error("Resend wholesale form failed:", {
+      message: error?.message,
+      name: error?.name,
+      statusCode: error?.statusCode,
+    });
+
+    return bad("Failed to send email. Please try again shortly.", 500);
+  }
 }
