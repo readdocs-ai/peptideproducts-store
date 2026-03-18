@@ -268,19 +268,21 @@ export const products: Product[] = [
   },
 
   {
+
+  
     id: "retatrutide",
     name: "Retatrutide",
-    subtitle: "40mg research peptide pen",
+    subtitle: "Retatrutide 40mg research peptide pen",
     category: "Metabolic",
     priceGBP: 150,
     pack: "1 pre-filled pen • 40mg total",
 
     image: "/products/retatrutide-40mg-uk.jpg",
 
-gallery: [
-  "/products/retatrutide-40mg-uk.jpg",
-  "/products/retatrutide-40mg-pen.jpg",
-],
+    gallery: [
+      "/products/retatrutide-40mg-uk.jpg",
+      "/products/retatrutide-40mg-pen.jpg",
+    ],
 
     quickFacts: ["40mg total", "Single pen format", "Research supply"],
 

@@ -11,6 +11,25 @@ export function ProductImageGallery({ product }: { product: Product }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selected = gallery[selectedIndex];
 
+  const getImageAlt = (index: number, isThumbnail = false) => {
+    if (product.id === "retatrutide") {
+      const retatrutideAlts = [
+        "Buy retatrutide 40mg UK research peptide pen",
+        "Retatrutide 40mg research peptide pen product image",
+      ];
+
+      const baseAlt =
+        retatrutideAlts[index] ||
+        `Retatrutide 40mg research peptide pen image ${index + 1}`;
+
+      return isThumbnail ? `${baseAlt} thumbnail` : baseAlt;
+    }
+
+    return isThumbnail
+      ? `${product.name} thumbnail ${index + 1}`
+      : `${product.name} image ${index + 1}`;
+  };
+
   return (
     <div className="grid gap-4 lg:grid-cols-[96px_minmax(0,1fr)]">
       <div className="order-2 lg:order-1">
@@ -32,7 +51,7 @@ export function ProductImageGallery({ product }: { product: Product }) {
               >
                 <Image
                   src={src}
-                  alt={`${product.name} thumbnail ${index + 1}`}
+                  alt={getImageAlt(index, true)}
                   fill
                   sizes="96px"
                   className="object-cover object-top"
@@ -48,7 +67,7 @@ export function ProductImageGallery({ product }: { product: Product }) {
           <div className="relative aspect-square overflow-hidden bg-panel group">
             <Image
               src={selected}
-              alt={product.name}
+              alt={getImageAlt(selectedIndex)}
               fill
               priority
               sizes="(min-width: 1024px) 50vw, 100vw"
