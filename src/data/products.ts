@@ -20,6 +20,7 @@ export type Product = {
   actives: string[];
   intendedUse: string[];
   notes: string;
+  stockStatus: "in_stock" | "sold_out";
   coa?: string;
   sds?: string;
 };
@@ -75,6 +76,9 @@ export const products: Product[] = [
 
     actives: ["Glutathione", "Ascorbic Acid (Vitamin C)"],
 
+    stockStatus: "sold_out",
+
+
     intendedUse: [
       "In-vitro testing",
       "Analytical workflows",
@@ -110,6 +114,9 @@ export const products: Product[] = [
     ],
 
     actives: ["Hyaluronic Acid", "Niacinamide", "Glutathione"],
+
+   stockStatus: "sold_out",
+
 
     intendedUse: [
       "Formulation testing",
@@ -148,6 +155,9 @@ export const products: Product[] = [
 
     actives: ["Firming peptide complex", "Antioxidant support blend"],
 
+    stockStatus: "sold_out",
+
+
     intendedUse: [
       "Peptide assays",
       "Analytical testing",
@@ -184,6 +194,9 @@ export const products: Product[] = [
     ],
 
     actives: ["Hydrolyzed Collagen", "Supportive carrier blend"],
+
+    stockStatus: "sold_out",
+
 
     intendedUse: [
       "Protein analysis",
@@ -222,6 +235,9 @@ export const products: Product[] = [
 
     actives: ["PDRN (Polydeoxyribonucleotide)"],
 
+    stockStatus: "sold_out",
+
+
     intendedUse: [
       "Bench research",
       "Analytical characterization",
@@ -258,6 +274,9 @@ export const products: Product[] = [
 
     actives: ["Ascorbic Acid (Vitamin C)"],
 
+    stockStatus: "sold_out",
+
+
     intendedUse: [
       "Method development",
       "Antioxidant research",
@@ -266,10 +285,7 @@ export const products: Product[] = [
 
     notes: "For research use only. Not for human or veterinary use.",
   },
-
   {
-
-  
     id: "retatrutide",
     name: "Retatrutide",
     subtitle: "Retatrutide 40mg research peptide pen",
@@ -301,5 +317,11 @@ export const products: Product[] = [
     ],
 
     notes: "For research use only. Not for human or veterinary use.",
+    stockStatus: "in_stock",
   },
 ];
+  
+
+  
+   
+  
