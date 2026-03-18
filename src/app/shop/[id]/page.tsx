@@ -35,48 +35,8 @@ export const metadata: Metadata = {
 };
 
 export default function ShopPage() {
-  const webPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "Shop Research Peptides",
-    url: "https://www.peptideproducts.co.uk/shop",
-    description:
-      "Browse research peptides and laboratory compounds in the UK including antioxidant, hydration, firming, regenerative, and retatrutide-related products supplied for scientific study.",
-    isPartOf: {
-      "@type": "WebSite",
-      name: "Peptide Products",
-      url: "https://www.peptideproducts.co.uk",
-    },
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://www.peptideproducts.co.uk",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Shop",
-        item: "https://www.peptideproducts.co.uk/shop",
-      },
-    ],
-  };
-
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([webPageSchema, breadcrumbSchema]),
-        }}
-      />
-
       <Header />
       <ShopClient />
       <Footer />
