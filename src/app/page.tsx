@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { brand } from "@/theme/brand";
 import { products } from "@/data/products";
+import { ShopClient } from "@/components/ShopClient";
 
 export const metadata: Metadata = {
   title: "Research Peptides & Laboratory Compounds UK | Peptide Products",
