@@ -267,11 +267,8 @@ export const products: Product[] = [
     category: "Metabolic",
     priceGBP: 45,
     pack: "1 vial x 10mg lyophilised powder",
-    image: "/products/melanotan-mt2-10mg-main.jpg",
-    gallery: [
-      "/products/melanotan-mt2-10mg-a.jpg",
-      "/products/melanotan-mt2-10mg-b.jpg",
-    ],
+    image: "/products/melanotan-mt2-10mg.webp",
+    gallery: ["/products/melanotan-mt2-10mg.webp"],
     quickFacts: ["10mg vial", "Lyophilised powder", "Research supply"],
     highlights: [
       "MT-2 research peptide",
@@ -295,11 +292,8 @@ export const products: Product[] = [
     category: "Metabolic",
     priceGBP: 55,
     pack: "1 vial x 10mg lyophilised powder",
-    image: "/products/selank-sk10-10mg-main.jpg",
-    gallery: [
-      "/products/selank-sk10-10mg-a.jpg",
-      "/products/selank-sk10-10mg-b.jpg",
-    ],
+    image: "/products/selank-sk10-10mg.webp",
+    gallery: ["/products/selank-sk10-10mg.webp"],
     quickFacts: ["10mg vial", "Research peptide", "Lyophilised powder"],
     highlights: [
       "Selank SK10 research compound",
@@ -317,24 +311,21 @@ export const products: Product[] = [
   },
 
   {
-    id: "sk5-5mg",
-    name: "SK5 5mg",
-    subtitle: "SK5 research peptide vial",
+    id: "selank-sk5-5mg",
+    name: "Selank SK5 5mg",
+    subtitle: "Selank research peptide vial",
     category: "Metabolic",
     priceGBP: 39,
     pack: "1 vial x 5mg lyophilised powder",
-    image: "/products/sk5-5mg-main.jpg",
-    gallery: [
-      "/products/sk5-5mg-a.jpg",
-      "/products/sk5-5mg-b.jpg",
-    ],
+    image: "/products/selank-sk5-5mg.webp",
+    gallery: ["/products/selank-sk5-5mg.webp"],
     quickFacts: ["5mg vial", "Research peptide", "Compact format"],
     highlights: [
-      "SK5 research compound",
+      "Selank SK5 research compound",
       "Single 5mg vial",
       "Controlled laboratory supply",
     ],
-    actives: ["SK5 5mg"],
+    actives: ["Selank SK5 5mg"],
     intendedUse: [
       "Pilot research",
       "Analytical testing",
@@ -345,17 +336,14 @@ export const products: Product[] = [
   },
 
   {
-    id: "bpc157-5mg",
+    id: "bpc-157-5mg",
     name: "BPC-157 5mg",
     subtitle: "BPC-157 research peptide vial",
     category: "Regenerative",
     priceGBP: 42,
     pack: "1 vial x 5mg lyophilised powder",
-    image: "/products/bpc157-5mg-main.jpg",
-    gallery: [
-      "/products/bpc157-5mg-a.jpg",
-      "/products/bpc157-5mg-b.jpg",
-    ],
+    image: "/products/bpc-157-5mg.webp",
+    gallery: ["/products/bpc-157-5mg.webp"],
     quickFacts: ["5mg vial", "Lyophilised powder", "Research peptide"],
     highlights: [
       "BPC-157 research compound",
@@ -373,17 +361,14 @@ export const products: Product[] = [
   },
 
   {
-    id: "bpc157-10mg",
+    id: "bpc-157-10mg",
     name: "BPC-157 10mg",
     subtitle: "BPC-157 research peptide vial",
     category: "Regenerative",
     priceGBP: 69,
     pack: "1 vial x 10mg lyophilised powder",
-    image: "/products/bpc157-10mg-main.jpg",
-    gallery: [
-      "/products/bpc157-10mg-a.jpg",
-      "/products/bpc157-10mg-b.jpg",
-    ],
+    image: "/products/bpc-157-10mg.webp",
+    gallery: ["/products/bpc-157-10mg.webp"],
     quickFacts: ["10mg vial", "Research peptide", "Higher strength"],
     highlights: [
       "BPC-157 research compound",
@@ -401,17 +386,39 @@ export const products: Product[] = [
   },
 
   {
+    id: "tirzepatide-tr30-30mg",
+    name: "Tirzepatide TR30 30mg",
+    subtitle: "Tirzepatide research peptide vial",
+    category: "Metabolic",
+    priceGBP: 139,
+    pack: "1 vial x 30mg lyophilised powder",
+    image: "/products/tirzepatide-tr30-30mg.webp",
+    gallery: ["/products/tirzepatide-tr30-30mg.webp"],
+    quickFacts: ["30mg vial", "TR30 format", "Research supply"],
+    highlights: [
+      "Tirzepatide TR30 research compound",
+      "Single 30mg laboratory vial",
+      "Premium peptide supply format",
+    ],
+    actives: ["Tirzepatide 30mg"],
+    intendedUse: [
+      "Laboratory research",
+      "Analytical review",
+      "Controlled metabolic pathway study",
+    ],
+    notes: "For research use only. Not for human or veterinary use.",
+    stockStatus: "in_stock",
+  },
+
+  {
     id: "tirzepatide-tr40-40mg",
     name: "Tirzepatide TR40 40mg",
     subtitle: "Tirzepatide research peptide vial",
     category: "Metabolic",
     priceGBP: 165,
     pack: "1 vial x 40mg lyophilised powder",
-    image: "/products/tirzepatide-tr40-40mg-main.jpg",
-    gallery: [
-      "/products/tirzepatide-tr40-40mg-a.jpg",
-      "/products/tirzepatide-tr40-40mg-b.jpg",
-    ],
+    image: "/products/tirzepatide-tr40-40mg.webp",
+    gallery: ["/products/tirzepatide-tr40-40mg.webp"],
     quickFacts: ["40mg vial", "TR40 format", "Research supply"],
     highlights: [
       "Tirzepatide TR40 research compound",
@@ -435,11 +442,8 @@ export const products: Product[] = [
     category: "Regenerative",
     priceGBP: 59,
     pack: "1 vial x 50mg lyophilised powder",
-    image: "/products/ghk-cu-50mg-main.jpg",
-    gallery: [
-      "/products/ghk-cu-50mg-a.jpg",
-      "/products/ghk-cu-50mg-b.jpg",
-    ],
+    image: "/products/ghk-cu-50mg.webp",
+    gallery: ["/products/ghk-cu-50mg.webp"],
     quickFacts: ["50mg vial", "Copper peptide", "Lyophilised powder"],
     highlights: [
       "GHK-CU copper peptide compound",
@@ -463,11 +467,8 @@ export const products: Product[] = [
     category: "Regenerative",
     priceGBP: 89,
     pack: "1 vial x 100mg lyophilised powder",
-    image: "/products/ghk-cu-100mg-main.jpg",
-    gallery: [
-      "/products/ghk-cu-100mg-a.jpg",
-      "/products/ghk-cu-100mg-b.jpg",
-    ],
+    image: "/products/ghk-cu-100mg.webp",
+    gallery: ["/products/ghk-cu-100mg.webp"],
     quickFacts: ["100mg vial", "Copper peptide", "Research supply"],
     highlights: [
       "GHK-CU copper peptide compound",
@@ -485,17 +486,39 @@ export const products: Product[] = [
   },
 
   {
+    id: "ml-10-10mg",
+    name: "ML-10 10mg",
+    subtitle: "ML-10 research peptide vial",
+    category: "Metabolic",
+    priceGBP: 49,
+    pack: "1 vial x 10mg lyophilised powder",
+    image: "/products/ml-10-10mg.webp",
+    gallery: ["/products/ml-10-10mg.webp"],
+    quickFacts: ["10mg vial", "Lyophilised powder", "Research supply"],
+    highlights: [
+      "ML-10 research compound",
+      "Single 10mg vial format",
+      "Laboratory peptide supply",
+    ],
+    actives: ["ML-10 10mg"],
+    intendedUse: [
+      "Laboratory peptide research",
+      "Analytical review",
+      "Controlled scientific study",
+    ],
+    notes: "For research use only. Not for human or veterinary use.",
+    stockStatus: "in_stock",
+  },
+
+  {
     id: "nad-500mg",
     name: "NAD 500mg",
     subtitle: "Nicotinamide adenine dinucleotide research vial",
     category: "Metabolic",
     priceGBP: 64,
     pack: "1 vial x 500mg lyophilised powder",
-    image: "/products/nad-500mg-main.jpg",
-    gallery: [
-      "/products/nad-500mg-a.jpg",
-      "/products/nad-500mg-b.jpg",
-    ],
+    image: "/products/nad-500mg.webp",
+    gallery: ["/products/nad-500mg.webp"],
     quickFacts: ["500mg vial", "Lyophilised powder", "Research supply"],
     highlights: [
       "NAD research compound",
@@ -519,11 +542,8 @@ export const products: Product[] = [
     category: "Metabolic",
     priceGBP: 109,
     pack: "1 vial x 1000mg lyophilised powder",
-    image: "/products/nad-1000mg-main.jpg",
-    gallery: [
-      "/products/nad-1000mg-a.jpg",
-      "/products/nad-1000mg-b.jpg",
-    ],
+    image: "/products/nad-1000mg.webp",
+    gallery: ["/products/nad-1000mg.webp"],
     quickFacts: ["1000mg vial", "Higher strength", "Research supply"],
     highlights: [
       "NAD research compound",
@@ -541,17 +561,64 @@ export const products: Product[] = [
   },
 
   {
+    id: "glutathione-500mg",
+    name: "Glutathione 500mg",
+    subtitle: "Glutathione research vial",
+    category: "Antioxidants",
+    priceGBP: 39,
+    pack: "1 vial x 500mg powder",
+    image: "/products/glutathione-500mg.webp",
+    gallery: ["/products/glutathione-500mg.webp"],
+    quickFacts: ["500mg vial", "Antioxidant compound", "Research supply"],
+    highlights: [
+      "Glutathione antioxidant compound",
+      "Single 500mg vial format",
+      "Laboratory antioxidant research presentation",
+    ],
+    actives: ["Glutathione 500mg"],
+    intendedUse: [
+      "Laboratory antioxidant research",
+      "Analytical review",
+      "Controlled compound study",
+    ],
+    notes: "For research use only. Not for human or veterinary use.",
+    stockStatus: "in_stock",
+  },
+
+  {
+    id: "glutathione-1000mg",
+    name: "Glutathione 1000mg",
+    subtitle: "Glutathione research vial",
+    category: "Antioxidants",
+    priceGBP: 59,
+    pack: "1 vial x 1000mg powder",
+    image: "/products/glutathione-1000mg.webp",
+    gallery: ["/products/glutathione-1000mg.webp"],
+    quickFacts: ["1000mg vial", "Antioxidant compound", "Research supply"],
+    highlights: [
+      "Glutathione antioxidant compound",
+      "Single 1000mg vial format",
+      "Laboratory antioxidant research presentation",
+    ],
+    actives: ["Glutathione 1000mg"],
+    intendedUse: [
+      "Laboratory antioxidant research",
+      "Analytical review",
+      "Controlled compound study",
+    ],
+    notes: "For research use only. Not for human or veterinary use.",
+    stockStatus: "in_stock",
+  },
+
+  {
     id: "glutathione-1500mg",
     name: "Glutathione 1500mg",
     subtitle: "High-strength glutathione research vial",
     category: "Antioxidants",
     priceGBP: 74,
     pack: "1 vial x 1500mg powder",
-    image: "/products/glutathione-1500mg-main.jpg",
-    gallery: [
-      "/products/glutathione-1500mg-a.jpg",
-      "/products/glutathione-1500mg-b.jpg",
-    ],
+    image: "/products/glutathione-1500mg.webp",
+    gallery: ["/products/glutathione-1500mg.webp"],
     quickFacts: ["1500mg vial", "Antioxidant compound", "Research supply"],
     highlights: [
       "High-strength glutathione compound",
@@ -575,11 +642,8 @@ export const products: Product[] = [
     category: "Hydration",
     priceGBP: 9,
     pack: "1 vial x 3ml sterile liquid",
-    image: "/products/bac-water-3ml-main.jpg",
-    gallery: [
-      "/products/bac-water-3ml-a.jpg",
-      "/products/bac-water-3ml-b.jpg",
-    ],
+    image: "/products/bac-water-3ml.webp",
+    gallery: ["/products/bac-water-3ml.webp"],
     quickFacts: ["3ml vial", "Sterile liquid", "Support supply"],
     highlights: [
       "Bacteriostatic water support vial",
@@ -603,11 +667,8 @@ export const products: Product[] = [
     category: "Hydration",
     priceGBP: 14,
     pack: "1 vial x 10ml sterile liquid",
-    image: "/products/bac-water-10ml-main.jpg",
-    gallery: [
-      "/products/bac-water-10ml-a.jpg",
-      "/products/bac-water-10ml-b.jpg",
-    ],
+    image: "/products/bac-water-10ml.webp",
+    gallery: ["/products/bac-water-10ml.webp"],
     quickFacts: ["10ml vial", "Sterile liquid", "Support supply"],
     highlights: [
       "Bacteriostatic water support vial",
