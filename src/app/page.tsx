@@ -6,7 +6,6 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { brand } from "@/theme/brand";
 import { products } from "@/data/products";
-import { ShopClient } from "@/components/ShopClient";
 
 export const metadata: Metadata = {
   title: "Research Peptides & Laboratory Compounds UK | Peptide Products",
@@ -56,7 +55,7 @@ const categoryCards = [
   },
   {
     title: "Repair and regenerative lines",
-    copy: "View regeneration-focused compounds including collagen and PDRN laboratory product lines.",
+    copy: "View regeneration-focused compounds including collagen, PDRN, BPC-157, and GHK-CU laboratory product lines.",
     image: "/products/meso-pdrn-alt-cropped.jpg",
     href: "/regenerative-peptides",
   },
@@ -65,11 +64,11 @@ const categoryCards = [
 const whyChooseCards = [
   {
     title: "Antioxidant and regeneration pathways",
-    copy: "Research programmes may examine glutathione, vitamin C, PDRN, and collagen compounds when studying oxidative stress response, molecular repair, and compatibility behaviour.",
+    copy: "Research programmes may examine glutathione, vitamin C, PDRN, collagen, GHK-CU, and related compounds when studying oxidative stress response, molecular repair, and compatibility behaviour.",
   },
   {
     title: "Hydration and carrier systems",
-    copy: "Hydration-focused compounds such as hyaluronic acid blends are commonly reviewed in extracellular compatibility, formulation stability, and carrier-related laboratory work.",
+    copy: "Hydration-focused compounds such as hyaluronic acid blends and bacteriostatic support liquids are commonly reviewed in extracellular compatibility, formulation stability, and laboratory preparation workflows.",
   },
   {
     title: "Firming and structural research",
@@ -102,12 +101,14 @@ function getProduct(id: string) {
 export default function Home() {
   const featuredProducts = [
     getProduct("retatrutide"),
-    getProduct("meso-glutathione"),
-    getProduct("skinbooster-hyaluronic-acid"),
-    getProduct("meso-lift-firming"),
-    getProduct("meso-collagen"),
-    getProduct("meso-pdrn"),
-    getProduct("meso-vitamin-c"),
+    getProduct("tirzepatide-tr40-40mg"),
+    getProduct("ghk-cu-100mg"),
+    getProduct("bpc157-10mg"),
+    getProduct("nad-1000mg"),
+    getProduct("glutathione-1500mg"),
+    getProduct("bac-water-10ml"),
+    getProduct("melanotan-mt2-10mg"),
+    getProduct("selank-sk10-10mg"),
   ].filter(Boolean) as typeof products;
 
   const organizationSchema = {
@@ -348,7 +349,7 @@ export default function Home() {
                         Compound categories
                       </div>
                       <p className="mt-2 text-sm text-muted">
-                        Explore hydration, firming, antioxidant, regenerative, and selected specialist research lines.
+                        Explore hydration, firming, antioxidant, regenerative, metabolic, and selected specialist research lines.
                       </p>
                     </div>
                     <div>
@@ -510,9 +511,9 @@ export default function Home() {
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
-                <h2 className="section-title">Research peptide compounds</h2>
+                <h2 className="section-title">Featured research products</h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Seven core compound lines shown with their primary pack imagery.
+                  Selected products from the live catalogue, including metabolic, regenerative, antioxidant, and support compounds.
                 </p>
               </div>
               <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
@@ -667,7 +668,7 @@ export default function Home() {
               <Link href="/regenerative-peptides" className="surface-card p-5">
                 <div className="text-sm font-extrabold text-ink">Regenerative peptides</div>
                 <p className="mt-2 text-sm text-muted">
-                  PDRN and collagen-focused compounds studied in regeneration-related laboratory environments.
+                  PDRN, collagen, BPC-157, and GHK-CU compounds studied in regeneration-related laboratory environments.
                 </p>
               </Link>
 
@@ -792,7 +793,8 @@ export default function Home() {
                 <p className="mt-4 text-sm leading-7 text-muted">
                   Common areas of investigation include glutathione antioxidant research,
                   hyaluronic acid hydration systems, PDRN regeneration compounds, collagen-focused
-                  blends, and peptide formulations used in structural and compatibility studies.
+                  blends, BPC-157, GHK-CU, NAD, and peptide formulations used in structural,
+                  metabolic, and compatibility studies.
                 </p>
 
                 <p className="mt-4 text-sm leading-7 text-muted">
