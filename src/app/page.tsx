@@ -185,286 +185,187 @@ export default function Home() {
           }}
         />
 
-        <section className="relative overflow-hidden pb-12 pt-8 lg:pb-20 lg:pt-14">
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute left-[-120px] top-[-100px] h-[280px] w-[280px] rounded-full bg-accent/15 blur-3xl" />
-            <div className="absolute right-[-120px] top-[40px] h-[240px] w-[240px] rounded-full bg-accent2/15 blur-3xl" />
-            <div className="absolute bottom-[-80px] left-1/3 h-[220px] w-[220px] rounded-full bg-accent/10 blur-3xl" />
+ <section className="relative overflow-hidden pb-12 pt-8 lg:pb-20 lg:pt-14">
+  <div className="pointer-events-none absolute inset-0 -z-10">
+    <div className="absolute left-[-120px] top-[-100px] h-[280px] w-[280px] rounded-full bg-accent/15 blur-3xl" />
+    <div className="absolute right-[-120px] top-[40px] h-[240px] w-[240px] rounded-full bg-accent2/15 blur-3xl" />
+    <div className="absolute bottom-[-80px] left-1/3 h-[220px] w-[220px] rounded-full bg-accent/10 blur-3xl" />
+  </div>
+
+  <Container>
+    <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+      <div>
+        <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white/85 px-4 py-2 text-xs font-semibold text-muted shadow-soft backdrop-blur-sm">
+          Research use only • UK store • Order tracking available
+          <span className="h-2 w-2 rounded-full bg-accent2" />
+        </div>
+
+        <div className="mt-4 inline-flex items-center rounded-full bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft">
+          Free next day UK delivery
+        </div>
+
+        <h1 className="mt-6 max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl lg:leading-[1.05]">
+          <span className="block text-accent">Research peptides</span>
+          <span className="block text-ink">and laboratory compounds</span>
+          <span className="block text-ink">for scientific study.</span>
+        </h1>
+
+        <p className="mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg">
+          Browse antioxidant, hydration, firming, regenerative, and selected
+          specialist peptide compounds studied in laboratory environments
+          investigating molecular interaction, cellular response, compound
+          compatibility, and formulation behaviour.
+        </p>
+
+        <p className="mt-4 max-w-2xl text-base leading-8 text-muted md:text-lg">
+          Explore broader site sections including{" "}
+          <Link
+            href="/research-peptides"
+            className="font-semibold text-ink hover:text-accent"
+          >
+            research peptides
+          </Link>
+          ,{" "}
+          <Link
+            href="/research-peptides-uk"
+            className="font-semibold text-ink hover:text-accent"
+          >
+            research peptides UK
+          </Link>
+          ,{" "}
+          <Link
+            href="/buy-research-peptides-uk"
+            className="font-semibold text-ink hover:text-accent"
+          >
+            buy research peptides UK
+          </Link>
+          ,{" "}
+          <Link
+            href="/buy-retatrutide-uk"
+            className="font-semibold text-ink hover:text-accent"
+          >
+            buy retatrutide UK
+          </Link>
+          ,{" "}
+          <Link
+            href="/laboratory-peptide-compounds"
+            className="font-semibold text-ink hover:text-accent"
+          >
+            laboratory peptide compounds
+          </Link>
+          , and newer compound pages such as{" "}
+          <Link
+            href="/retatrutide-research-peptide"
+            className="font-semibold text-ink hover:text-accent"
+          >
+            retatrutide research peptide
+          </Link>
+          .
+        </p>
+
+        <p className="mt-4 max-w-2xl text-base leading-8 text-muted md:text-lg">
+          For laboratories specifically looking to{" "}
+          <Link
+            href="/buy-retatrutide-uk"
+            className="font-semibold text-ink hover:text-accent"
+          >
+            buy retatrutide UK
+          </Link>
+          , our core content pathway connects the homepage, research hub, supporting
+          compound pages, and the main product listing to create a clearer route into
+          the most relevant retatrutide research content.
+        </p>
+
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            href="/shop"
+            className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-accent/90"
+          >
+            Shop products
+          </Link>
+
+          <Link
+            href="/buy-retatrutide-uk"
+            className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
+          >
+            Buy Retatrutide UK
+          </Link>
+
+          <Link
+            href="/research-peptides"
+            className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
+          >
+            Explore research hub
+          </Link>
+
+          <Link
+            href="/wholesale"
+            className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
+          >
+            Wholesale enquiries
+          </Link>
+        </div>
+
+        <div className="mt-8 grid gap-3 sm:grid-cols-3">
+          <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft backdrop-blur-sm">
+            Research-use-only catalogue
+          </div>
+          <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft backdrop-blur-sm">
+            Documentation on selected lines
+          </div>
+          <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft backdrop-blur-sm">
+            UK checkout, email updates, and order tracking
+          </div>
+        </div>
+      </div>
+
+      <div className="relative">
+        <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
+          <div className="relative h-[560px] w-full bg-[#f7f9fc]">
+            <Image
+              src="/home/home-full-vial-set.webp"
+              alt="Peptide Products full research compound range"
+              fill
+              priority
+              fetchPriority="high"
+              sizes="(min-width: 1024px) 46vw, 100vw"
+              className="object-contain object-center"
+            />
           </div>
 
-          <Container>
-            <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white/85 px-4 py-2 text-xs font-semibold text-muted shadow-soft backdrop-blur-sm">
-                  Research use only • UK store • Order tracking available
-                  <span className="h-2 w-2 rounded-full bg-accent2" />
-                </div>
-
-                <div className="mt-4 inline-flex items-center rounded-full bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft">
-                  Free next day UK delivery
-                </div>
-
-                <h1 className="mt-6 max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl lg:leading-[1.05]">
-                  <span className="block text-accent">Research peptides</span>
-                  <span className="block text-ink">and laboratory compounds</span>
-                  <span className="block text-ink">for scientific study.</span>
-                </h1>
-
-                <p className="mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg">
-                  Browse antioxidant, hydration, firming, regenerative, and selected
-                  specialist peptide compounds studied in laboratory environments
-                  investigating molecular interaction, cellular response, compound
-                  compatibility, and formulation behaviour.
-                </p>
-
-                <p className="mt-4 max-w-2xl text-base leading-8 text-muted md:text-lg">
-                  Explore broader site sections including{" "}
-                  <Link
-                    href="/research-peptides"
-                    className="font-semibold text-ink hover:text-accent"
-                  >
-                    research peptides
-                  </Link>
-                  ,{" "}
-                  <Link
-                    href="/research-peptides-uk"
-                    className="font-semibold text-ink hover:text-accent"
-                  >
-                    research peptides UK
-                  </Link>
-                  ,{" "}
-                  <Link
-                    href="/buy-research-peptides-uk"
-                    className="font-semibold text-ink hover:text-accent"
-                  >
-                    buy research peptides UK
-                  </Link>
-                  ,{" "}
-                  <Link
-                    href="/buy-retatrutide-uk"
-                    className="font-semibold text-ink hover:text-accent"
-                  >
-                    buy retatrutide UK
-                  </Link>
-                  ,{" "}
-                  <Link
-                    href="/laboratory-peptide-compounds"
-                    className="font-semibold text-ink hover:text-accent"
-                  >
-                    laboratory peptide compounds
-                  </Link>
-                  , and newer compound pages such as{" "}
-                  <Link
-                    href="/retatrutide-research-peptide"
-                    className="font-semibold text-ink hover:text-accent"
-                  >
-                    retatrutide research peptide
-                  </Link>
-                  .
-                </p>
-
-                <p className="mt-4 max-w-2xl text-base leading-8 text-muted md:text-lg">
-                  For laboratories specifically looking to{" "}
-                  <Link
-                    href="/buy-retatrutide-uk"
-                    className="font-semibold text-ink hover:text-accent"
-                  >
-                    buy retatrutide UK
-                  </Link>
-                  , our core content pathway connects the homepage, research hub, supporting
-                  compound pages, and the main product listing to create a clearer route into
-                  the most relevant retatrutide research content.
-                </p>
-
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link
-                    href="/shop"
-                    className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-accent/90"
-                  >
-                    Shop products
-                  </Link>
-
-                  <Link
-                    href="/buy-retatrutide-uk"
-                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
-                  >
-                    Buy Retatrutide UK
-                  </Link>
-
-                  <Link
-                    href="/research-peptides"
-                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
-                  >
-                    Explore research hub
-                  </Link>
-
-                  <Link
-                    href="/wholesale"
-                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
-                  >
-                    Wholesale enquiries
-                  </Link>
-                </div>
-
-                <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft backdrop-blur-sm">
-                    Research-use-only catalogue
-                  </div>
-                  <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft backdrop-blur-sm">
-                    Documentation on selected lines
-                  </div>
-                  <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft backdrop-blur-sm">
-                    UK checkout, email updates, and order tracking
-                  </div>
-                </div>
+          <div className="grid gap-4 border-t border-line p-5 sm:grid-cols-3">
+            <div>
+              <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+                Complete product range
               </div>
-
-              <div className="relative">
-                <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
-                  <div className="relative h-[460px] w-full bg-panel">
-                    <Image
-                      src={heroImage}
-                      alt="Meso Glutathione research compound by Peptide Products"
-                      fill
-                      priority
-                      fetchPriority="high"
-                      sizes="(min-width: 1024px) 46vw, 100vw"
-                      className="object-cover"
-                    />
-
-                    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink/30 to-transparent" />
-                  </div>
-
-                  <div className="grid gap-4 border-t border-line p-5 sm:grid-cols-3">
-                    <div>
-                      <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
-                        Antioxidant-led line
-                      </div>
-                      <p className="mt-2 text-sm text-muted">
-                        Glutathione-focused compounds are commonly reviewed in oxidative stress and antioxidant-related laboratory work.
-                      </p>
-                    </div>
-                    <div>
-                      <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
-                        Compound categories
-                      </div>
-                      <p className="mt-2 text-sm text-muted">
-                        Explore hydration, firming, antioxidant, regenerative, metabolic, and selected specialist research lines.
-                      </p>
-                    </div>
-                    <div>
-                      <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
-                        Support contact
-                      </div>
-                      <p className="mt-2 text-sm text-muted">
-                        {brand.supportEmail}
-                        <br />
-                        {brand.phone}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <p className="mt-2 text-sm text-muted">
+                View a broader peptide and laboratory compound range in one premium catalogue image.
+              </p>
             </div>
-          </Container>
-        </section>
-
-        <section className="pb-6">
-          <Container>
-            <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft lg:p-8">
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                <div className="max-w-3xl">
-                  <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-muted">
-                    Featured research pathway
-                  </div>
-                  <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
-                    Buy Retatrutide UK — research content, supporting pages, and product access
-                  </h2>
-                  <p className="mt-3 text-sm leading-7 text-muted md:text-base">
-                    Our homepage directly supports users looking to{" "}
-                    <Link
-                      href="/buy-retatrutide-uk"
-                      className="font-semibold text-ink hover:text-accent"
-                    >
-                      buy retatrutide UK
-                    </Link>{" "}
-                    by linking into the main money page, the{" "}
-                    <Link
-                      href="/retatrutide-research-peptide"
-                      className="font-semibold text-ink hover:text-accent"
-                    >
-                      retatrutide research peptide
-                    </Link>{" "}
-                    supporting content, the new{" "}
-                    <Link
-                      href="/what-is-retatrutide"
-                      className="font-semibold text-ink hover:text-accent"
-                    >
-                      what is retatrutide
-                    </Link>{" "}
-                    informational page, and the live{" "}
-                    <Link
-                      href="/product/retatrutide"
-                      className="font-semibold text-ink hover:text-accent"
-                    >
-                      retatrutide product page
-                    </Link>
-                    . This helps visitors move from research intent to product discovery more
-                    clearly.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-3">
-                  <Link
-                    href="/buy-retatrutide-uk"
-                    className="rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-accent/90"
-                  >
-                    Buy Retatrutide UK
-                  </Link>
-                  <Link
-                    href="/product/retatrutide"
-                    className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
-                  >
-                    View Retatrutide Product
-                  </Link>
-                </div>
+            <div>
+              <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+                Research categories
               </div>
-
-              <div className="mt-6 grid gap-4 md:grid-cols-4">
-                <Link href="/buy-retatrutide-uk" className="rounded-xl2 border border-line bg-panel p-4">
-                  <div className="text-sm font-extrabold text-ink">Buy Retatrutide UK</div>
-                  <p className="mt-2 text-sm text-muted">
-                    Main page for retatrutide-related purchase intent and UK-focused internal linking.
-                  </p>
-                </Link>
-
-                <Link
-                  href="/retatrutide-research-peptide"
-                  className="rounded-xl2 border border-line bg-panel p-4"
-                >
-                  <div className="text-sm font-extrabold text-ink">Retatrutide research peptide</div>
-                  <p className="mt-2 text-sm text-muted">
-                    Supporting research content that strengthens topical relevance around retatrutide.
-                  </p>
-                </Link>
-
-                <Link href="/what-is-retatrutide" className="rounded-xl2 border border-line bg-panel p-4">
-                  <div className="text-sm font-extrabold text-ink">What is Retatrutide?</div>
-                  <p className="mt-2 text-sm text-muted">
-                    Informational support page expanding the retatrutide topic cluster.
-                  </p>
-                </Link>
-
-                <Link href="/product/retatrutide" className="rounded-xl2 border border-line bg-panel p-4">
-                  <div className="text-sm font-extrabold text-ink">Retatrutide product page</div>
-                  <p className="mt-2 text-sm text-muted">
-                    Direct route into the product listing for users ready to review the compound page.
-                  </p>
-                </Link>
-              </div>
+              <p className="mt-2 text-sm text-muted">
+                Explore hydration, firming, antioxidant, regenerative, and metabolic research lines.
+              </p>
             </div>
-          </Container>
-        </section>
+            <div>
+              <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+                Support contact
+              </div>
+              <p className="mt-2 text-sm text-muted">
+                {brand.supportEmail}
+                <br />
+                {brand.phone}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
 
         <section className="py-14">
           <Container>
@@ -480,97 +381,105 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="mt-8 grid gap-6 lg:grid-cols-3">
-              {categoryCards.map((card) => (
-                <Link
-                  key={card.title}
-                  href={card.href}
-                  className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:shadow-lift"
-                >
-                  <div className="relative h-[420px] w-full bg-panel">
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      fill
-                      sizes="(min-width: 1024px) 33vw, 100vw"
-                      className="object-cover transition duration-300 group-hover:scale-[1.02]"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-extrabold tracking-tight">{card.title}</h3>
-                    <p className="mt-2 text-sm text-muted">{card.copy}</p>
-                    <div className="mt-4 text-sm font-extrabold text-ink">View category →</div>
-                  </div>
-                </Link>
-              ))}
+           <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+  {featuredProducts.map((p) => (
+    <Link
+      key={p.id}
+      href={`/product/${p.id}`}
+      className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:shadow-lift"
+    >
+      <div className="relative h-[420px] w-full bg-panel">
+        <Image
+          src={p.image}
+          alt={p.name}
+          fill
+          sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition duration-300 group-hover:scale-[1.02]"
+        />
+      </div>
+
+      <div className="p-5">
+        <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+          {p.category}
+        </div>
+        <div
+          className={
+            "inline-flex rounded-full px-3 py-1 text-[11px] font-extrabold mb-2 " +
+            (p.stockStatus === "in_stock"
+              ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+              : "border border-red-200 bg-red-50 text-red-700")
+          }
+        >
+          {p.stockStatus === "in_stock" ? "In stock" : "Sold out"}
+        </div>
+        <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-ink">
+          {p.name}
+        </h3>
+        <p className="mt-2 text-sm text-muted">{p.subtitle}</p>
+
+        <div className="mt-5 flex items-end justify-between gap-4">
+          <div>
+            <div className="text-sm font-semibold text-muted">{p.pack}</div>
+            <div className="mt-1 text-xl font-extrabold text-ink">
+              £{p.priceGBP.toFixed(2)}
             </div>
-          </Container>
-        </section>
+          </div>
 
-        <section className="bg-white/80 py-14 backdrop-blur-sm">
-          <Container>
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <h2 className="section-title">Featured research products</h2>
-                <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Selected products from the live catalogue, including metabolic, regenerative, antioxidant, and support compounds.
-                </p>
-              </div>
-              <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
-                Browse all products →
-              </Link>
-            </div>
+          <div className="text-sm font-extrabold text-ink">View product →</div>
+        </div>
+      </div>
+    </Link>
+  ))}
 
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-              {featuredProducts.map((p) => (
-                <Link
-                  key={p.id}
-                  href={`/product/${p.id}`}
-                  className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:shadow-lift"
-                >
-                  <div className="relative h-[420px] w-full bg-panel">
-                    <Image
-                      src={p.image}
-                      alt={p.name}
-                      fill
-                      sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition duration-300 group-hover:scale-[1.02]"
-                    />
-                  </div>
+  <Link
+    href="/product/ghk-cu-100mg"
+    className="group overflow-hidden rounded-xl3 border-2 border-accent bg-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:shadow-lift"
+  >
+    <div className="relative h-[420px] w-full bg-panel">
+      <Image
+        src="/products/ghk-cu-100mg-feature.webp"
+        alt="GHK-CU 100mg research peptide vial"
+        fill
+        sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+        className="object-contain object-center p-6"
+      />
+    </div>
 
-                  <div className="p-5">
-                    <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
-                      {p.category}
-                    </div>
-                    <div
-                      className={
-                        "inline-flex rounded-full px-3 py-1 text-[11px] font-extrabold mb-2 " +
-                        (p.stockStatus === "in_stock"
-                          ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
-                          : "border border-red-200 bg-red-50 text-red-700")
-                      }
-                    >
-                      {p.stockStatus === "in_stock" ? "In stock" : "Sold out"}
-                    </div>
-                    <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-ink">
-                      {p.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted">{p.subtitle}</p>
+    <div className="p-5">
+      <div className="text-xs font-extrabold uppercase tracking-wide text-accent">
+        Regenerative • Featured
+      </div>
 
-                    <div className="mt-5 flex items-end justify-between gap-4">
-                      <div>
-                        <div className="text-sm font-semibold text-muted">{p.pack}</div>
-                        <div className="mt-1 text-xl font-extrabold text-ink">
-                          £{p.priceGBP.toFixed(2)}
-                        </div>
-                      </div>
+      <div className="inline-flex rounded-full px-3 py-1 text-[11px] font-extrabold mb-2 border border-emerald-200 bg-emerald-50 text-emerald-700">
+        In stock
+      </div>
 
-                      <div className="text-sm font-extrabold text-ink">View product →</div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+      <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-ink">
+        GHK-CU 100mg
+      </h3>
+
+      <p className="mt-2 text-sm text-muted">
+        Copper peptide research compound
+      </p>
+
+      <div className="mt-5 flex items-end justify-between gap-4">
+        <div>
+          <div className="text-sm font-semibold text-muted">
+            1 vial x 100mg lyophilised powder
+          </div>
+          <div className="mt-1 text-xl font-extrabold text-ink">
+            £89.00
+          </div>
+        </div>
+
+        <div className="text-sm font-extrabold text-ink">
+          View product →
+        </div>
+      </div>
+    </div>
+  </Link>
+</div>
+
 
             <div className="mt-8 rounded-xl3 border border-line bg-panel p-6 shadow-soft">
               <h3 className="text-xl font-extrabold tracking-tight text-ink">
