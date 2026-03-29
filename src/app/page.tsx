@@ -481,55 +481,97 @@ export default function Home() {
 </div>
 
 
-            <div className="mt-8 rounded-xl3 border border-line bg-panel p-6 shadow-soft">
-              <h3 className="text-xl font-extrabold tracking-tight text-ink">
-                Looking to buy retatrutide UK?
-              </h3>
-              <p className="mt-3 max-w-3xl text-sm leading-7 text-muted">
-                You can move directly from the homepage into the{" "}
-                <Link
-                  href="/buy-retatrutide-uk"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  buy retatrutide UK
-                </Link>{" "}
-                page, review the{" "}
-                <Link
-                  href="/retatrutide-research-peptide"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  retatrutide research peptide
-                </Link>{" "}
-                content, read the{" "}
-                <Link
-                  href="/what-is-retatrutide"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  what is retatrutide
-                </Link>{" "}
-                page, or go straight to the{" "}
-                <Link
-                  href="/product/retatrutide"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  retatrutide product listing
-                </Link>
-                .
-              </p>
-            </div>
-          </Container>
-        </section>
+     <div className="mt-10 rounded-xl3 border border-line bg-white p-6 shadow-soft">
+  <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+    <div>
+      <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-accent">
+        Featured compound
+      </div>
 
-        <section className="py-14">
-          <Container>
-            <div className="grid gap-6 lg:grid-cols-3">
-              {whyChooseCards.map((item) => (
-                <div key={item.title} className="surface-card p-6">
-                  <h2 className="text-lg font-extrabold tracking-tight">{item.title}</h2>
-                  <p className="mt-3 text-sm leading-6 text-muted">{item.copy}</p>
-                </div>
-              ))}
-            </div>
+      <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
+        Buy Retatrutide UK
+      </h3>
+
+      <p className="mt-4 max-w-2xl text-sm leading-7 text-muted md:text-base">
+        Premium Retatrutide 40mg research peptide supplied for laboratory and
+        scientific research use only.
+      </p>
+
+      <p className="mt-4 max-w-2xl text-sm leading-7 text-muted md:text-base">
+        View the product page, explore supporting research content, and move
+        directly into the wider peptide catalogue from one clear route.
+      </p>
+
+      <div className="mt-6 flex flex-wrap gap-3">
+        <Link
+          href="/product/retatrutide"
+          className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+        >
+          View Retatrutide 40mg
+        </Link>
+
+        <Link
+          href="/retatrutide-research-peptide"
+          className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+        >
+          Read research guide
+        </Link>
+
+        <Link
+          href="/buy-retatrutide-uk"
+          className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+        >
+          Buy Retatrutide UK
+        </Link>
+      </div>
+
+      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">
+          Research use only
+        </div>
+        <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">
+          UK supply route
+        </div>
+        <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">
+          Direct product access
+        </div>
+      </div>
+    </div>
+
+    <div className="rounded-xl2 border border-line bg-panel p-5">
+      <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+        Product snapshot
+      </div>
+
+      <div className="mt-3 text-lg font-extrabold text-ink">
+        Retatrutide 40mg
+      </div>
+
+      <div className="mt-1 text-sm text-muted">
+        1 pre-filled pen • laboratory supply
+      </div>
+
+      <div className="mt-4 inline-flex rounded-full px-3 py-1 text-[11px] font-extrabold border border-emerald-200 bg-emerald-50 text-emerald-700">
+        In stock
+      </div>
+
+      <div className="mt-5 text-2xl font-extrabold text-ink">
+        £150.00
+      </div>
+
+      <div className="mt-2 text-sm text-muted">
+        Research-use-only product listing
+      </div>
+
+      <Link
+        href="/product/retatrutide"
+        className="mt-5 inline-block w-full text-center rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+      >
+        View product →
+      </Link>
+    </div>
+  </div>
+</div>
           </Container>
         </section>
 
