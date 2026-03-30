@@ -70,7 +70,7 @@ export const products: Product[] = [
       "Laboratory research supply",
     ],
     actives: ["Glutathione", "Ascorbic Acid (Vitamin C)"],
-    stockStatus: "sold_out",
+    stockStatus: "in_stock",
     intendedUse: [
       "In-vitro testing",
       "Analytical workflows",
@@ -100,7 +100,7 @@ export const products: Product[] = [
       "Laboratory supply",
     ],
     actives: ["Hyaluronic Acid", "Niacinamide", "Glutathione"],
-    stockStatus: "sold_out",
+    stockStatus: "in_stock",
     intendedUse: [
       "Formulation testing",
       "Bench analysis",
@@ -131,7 +131,7 @@ export const products: Product[] = [
       "Laboratory research supply",
     ],
     actives: ["Firming peptide complex", "Antioxidant support blend"],
-    stockStatus: "sold_out",
+    stockStatus: "in_stock",
     intendedUse: [
       "Peptide assays",
       "Analytical testing",
@@ -162,7 +162,7 @@ export const products: Product[] = [
       "Laboratory supply",
     ],
     actives: ["Hydrolyzed Collagen", "Supportive carrier blend"],
-    stockStatus: "sold_out",
+    stockStatus: "in_stock",
     intendedUse: [
       "Protein analysis",
       "Stability testing",
@@ -193,7 +193,7 @@ export const products: Product[] = [
       "Laboratory supply",
     ],
     actives: ["PDRN (Polydeoxyribonucleotide)"],
-    stockStatus: "sold_out",
+    stockStatus: "in_stock",
     intendedUse: [
       "Bench research",
       "Analytical characterization",
@@ -223,7 +223,7 @@ export const products: Product[] = [
       "Laboratory supply",
     ],
     actives: ["Ascorbic Acid (Vitamin C)"],
-    stockStatus: "sold_out",
+    stockStatus: "in_stock",
     intendedUse: [
       "Method development",
       "Antioxidant research",
