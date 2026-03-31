@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `${p.name} | Research Peptide Compound UK`;
 
   const description = isRetatrutide
-    ? `Buy Retatrutide UK research peptide. ${p.pack}. Research supply only. View product details, laboratory guidance, documentation, and related retatrutide research pages at Peptide Products.`
+    ? `Buy Retatrutide UK research peptide. ${p.pack}. Research supply only. View product details, documentation, and related retatrutide research pages at Peptide Products.`
     : `${p.subtitle}. ${p.pack}. Research supply only. View product details, documentation, and related peptide research pages at Peptide Products.`;
 
   const url = `https://www.peptideproducts.co.uk/product/${p.id}`;
@@ -107,7 +107,7 @@ export default function ProductPage({ params }: Props) {
     name: p.name,
     image: imageUrls,
     description: isRetatrutide
-      ? `${p.subtitle}. ${p.pack}. Research supply only. Buy retatrutide UK research peptide with product details, documentation, and related research content.`
+      ? `${p.subtitle}. ${p.pack}. Research supply only. Buy Retatrutide UK research peptide with product details, documentation, and related research content.`
       : `${p.subtitle}. ${p.pack}. ${p.notes}`,
     sku: p.id,
     mpn: p.id,
@@ -265,28 +265,27 @@ export default function ProductPage({ params }: Props) {
                 </div>
 
                 <p className="mt-3 text-sm text-muted">
-                  {p.pack}. This compound is supplied for laboratory and scientific
-                  research use only and is intended for controlled analytical,
-                  biochemical, and formulation-based study environments.
+                  {p.pack}. Supplied strictly for laboratory and scientific research
+                  use only.
                 </p>
 
                 <p className="mt-3 text-sm text-muted">
-                  Research interest in this product category may include molecular
-                  interaction, compound compatibility, structural behaviour,
-                  antioxidant activity, hydration response, or regeneration-focused
-                  investigation depending on the actives listed on the label.
+                  This product may be reviewed in controlled analytical,
+                  biochemical, formulation, compatibility, structural, or
+                  pathway-related research environments depending on the active
+                  compound listed on the label.
                 </p>
 
                 {p.id === "meso-glutathione" ? (
                   <p className="mt-3 text-sm text-muted">
-                    Learn more about the scientific background of this compound in our{" "}
+                    Explore more context in our{" "}
                     <Link
                       href="/glutathione-research-peptide"
                       className="font-semibold text-ink hover:text-accent"
                     >
                       glutathione research peptide guide
-                    </Link>
-                    , or explore the wider{" "}
+                    </Link>{" "}
+                    or browse the wider{" "}
                     <Link
                       href="/antioxidant-peptides"
                       className="font-semibold text-ink hover:text-accent"
@@ -299,14 +298,14 @@ export default function ProductPage({ params }: Props) {
 
                 {p.id === "skinbooster-hyaluronic-acid" ? (
                   <p className="mt-3 text-sm text-muted">
-                    Learn more about the scientific background of this compound in our{" "}
+                    Explore more context in our{" "}
                     <Link
                       href="/hyaluronic-acid-peptide-research"
                       className="font-semibold text-ink hover:text-accent"
                     >
                       hyaluronic acid peptide research guide
-                    </Link>
-                    , or explore the wider{" "}
+                    </Link>{" "}
+                    or browse the wider{" "}
                     <Link
                       href="/hydration-peptides"
                       className="font-semibold text-ink hover:text-accent"
@@ -319,7 +318,7 @@ export default function ProductPage({ params }: Props) {
 
                 {p.id === "meso-lift-firming" ? (
                   <p className="mt-3 text-sm text-muted">
-                    Explore the broader research context for this compound in our{" "}
+                    Explore the broader context in our{" "}
                     <Link
                       href="/firming-peptides"
                       className="font-semibold text-ink hover:text-accent"
@@ -332,27 +331,27 @@ export default function ProductPage({ params }: Props) {
 
                 {p.id === "meso-collagen" ? (
                   <p className="mt-3 text-sm text-muted">
-                    Explore the broader research context for this compound in our{" "}
+                    Explore the broader context in our{" "}
                     <Link
                       href="/regenerative-peptides"
                       className="font-semibold text-ink hover:text-accent"
                     >
                       regenerative peptides
                     </Link>{" "}
-                    guide and related regeneration-focused laboratory research pages.
+                    guide and related regeneration-focused research pages.
                   </p>
                 ) : null}
 
                 {p.id === "meso-pdrn" ? (
                   <p className="mt-3 text-sm text-muted">
-                    Learn more about the scientific background of this compound in our{" "}
+                    Learn more in our{" "}
                     <Link
                       href="/pdrn-research-peptide"
                       className="font-semibold text-ink hover:text-accent"
                     >
                       PDRN research peptide guide
-                    </Link>
-                    , or explore the wider{" "}
+                    </Link>{" "}
+                    or browse the wider{" "}
                     <Link
                       href="/regenerative-peptides"
                       className="font-semibold text-ink hover:text-accent"
@@ -366,15 +365,15 @@ export default function ProductPage({ params }: Props) {
                 {p.id === "retatrutide" ? (
                   <>
                     <p className="mt-3 text-sm text-muted">
-                      Learn more about the scientific background of this compound in our{" "}
+                      Learn more in our{" "}
                       <Link
                         href="/retatrutide-research-peptide"
                         className="font-semibold text-ink hover:text-accent"
                       >
                         retatrutide research peptide guide
                       </Link>
-                      , which explores GLP-1, GIP and glucagon receptor research context and
-                      related peptide compound pages.
+                      , which covers related GLP-1, GIP, and glucagon pathway
+                      research context.
                     </p>
 
                     <p className="mt-3 text-sm text-muted">
@@ -385,14 +384,14 @@ export default function ProductPage({ params }: Props) {
                       >
                         buy retatrutide UK
                       </Link>{" "}
-                      can also use this product page alongside our{" "}
+                      can also use this product page alongside the{" "}
                       <Link
-                        href="/retatrutide-research-peptide"
+                        href="/buy-retatrutide-uk"
                         className="font-semibold text-ink hover:text-accent"
                       >
-                        retatrutide research peptide
+                        dedicated UK route
                       </Link>{" "}
-                      content and the wider{" "}
+                      and the wider{" "}
                       <Link
                         href="/research-peptides"
                         className="font-semibold text-ink hover:text-accent"
@@ -406,14 +405,14 @@ export default function ProductPage({ params }: Props) {
 
                 {p.id === "meso-vitamin-c" ? (
                   <p className="mt-3 text-sm text-muted">
-                    Explore the broader research context for this compound in our{" "}
+                    Explore the broader context in our{" "}
                     <Link
                       href="/antioxidant-peptides"
                       className="font-semibold text-ink hover:text-accent"
                     >
                       antioxidant peptides
                     </Link>{" "}
-                    guide and related laboratory research pages.
+                    guide and related research pages.
                   </p>
                 ) : null}
 
@@ -433,7 +432,7 @@ export default function ProductPage({ params }: Props) {
                     >
                       research peptides
                     </Link>{" "}
-                    content and related laboratory compound pages.
+                    content.
                   </p>
                 ) : null}
 

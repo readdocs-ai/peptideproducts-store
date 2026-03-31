@@ -8,14 +8,14 @@ import { Container } from "@/components/Container";
 export const metadata: Metadata = {
   title: "Retatrutide Research Peptide | GLP-1 GIP Glucagon Compound",
   description:
-    "Retatrutide research peptide overview including GLP-1, GIP and glucagon receptor activity, laboratory research context, and links to the Retatrutide 40mg product page and Buy Retatrutide UK page.",
+    "Retatrutide research peptide overview including laboratory research context, related GLP-1, GIP and glucagon pathway discussion, and links to the Retatrutide 40mg product page and Buy Retatrutide UK page.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/retatrutide-research-peptide",
   },
   openGraph: {
     title: "Retatrutide Research Peptide | GLP-1 GIP Glucagon Compound",
     description:
-      "Retatrutide research peptide overview including GLP-1, GIP and glucagon receptor activity, laboratory research context, and links to the Retatrutide 40mg product page and Buy Retatrutide UK page.",
+      "Retatrutide research peptide overview including laboratory research context and links to the Retatrutide 40mg product page and Buy Retatrutide UK page.",
     url: "https://www.peptideproducts.co.uk/retatrutide-research-peptide",
     siteName: "Peptide Products",
     images: [
@@ -38,17 +38,17 @@ export const metadata: Metadata = {
 
 const faqItems = [
   {
-    question: "What is retatrutide research peptide content focused on?",
+    question: "What is Retatrutide research peptide content focused on?",
     answer:
-      "Retatrutide research peptide content focuses on laboratory compound context, peptide research structure, receptor-related scientific discussion, and navigation toward the related product page and supporting site pages.",
+      "This page gives a laboratory-focused overview of Retatrutide, related pathway discussion, and direct access to the product page and supporting site pages.",
   },
   {
-    question: "What is retatrutide commonly described as in research context?",
+    question: "How is Retatrutide commonly described in research context?",
     answer:
-      "In research context, retatrutide is commonly described as a peptide compound associated with GLP-1, GIP, and glucagon receptor activity within controlled scientific study discussion.",
+      "Retatrutide is commonly discussed as a peptide compound associated with GLP-1, GIP, and glucagon pathway research in controlled laboratory settings.",
   },
   {
-    question: "Is retatrutide supplied for human use?",
+    question: "Is Retatrutide supplied for human use?",
     answer:
       "No. All products listed on this site are supplied strictly for laboratory and scientific research use only.",
   },
@@ -61,7 +61,7 @@ export default function Page() {
     name: "Retatrutide Research Peptide",
     url: "https://www.peptideproducts.co.uk/retatrutide-research-peptide",
     description:
-      "Retatrutide research peptide overview including GLP-1, GIP and glucagon receptor activity, laboratory research context, and links to the Retatrutide 40mg product page and Buy Retatrutide UK page.",
+      "Retatrutide research peptide overview including laboratory research context and links to the Retatrutide 40mg product page and Buy Retatrutide UK page.",
     isPartOf: {
       "@type": "WebSite",
       name: "Peptide Products",
@@ -145,11 +145,10 @@ export default function Page() {
                 Retatrutide research peptide
               </h1>
 
-              <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-                Retatrutide is presented here as a laboratory research peptide
-                compound within a controlled scientific study framework. On this
-                site, this page acts as a supporting information hub connected to
-                the{" "}
+              <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
+                Retatrutide is presented on this site as a laboratory research
+                peptide compound. This page gives a simple overview of the topic
+                and connects directly to the{" "}
                 <Link
                   href="/product/retatrutide"
                   className="font-semibold text-ink hover:text-accent"
@@ -166,11 +165,11 @@ export default function Page() {
                 page, and broader peptide research content.
               </p>
 
-              <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-                In research discussion, retatrutide is commonly associated with
-                GLP-1, GIP, and glucagon receptor activity. This page is designed
-                to support topical coverage, internal linking, and laboratory
-                navigation rather than consumer or treatment-led positioning.
+              <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
+                In research discussion, Retatrutide is commonly associated with
+                GLP-1, GIP, and glucagon pathway activity. This page is intended
+                to support laboratory-focused reading and make it easier to move
+                into the most relevant product and category pages.
               </p>
 
               <div className="mt-8 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
@@ -187,29 +186,30 @@ export default function Page() {
                 </div>
 
                 <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
-                  <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-muted">
-                    Retatrutide research cluster
+                  <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-accent">
+                    Related product path
                   </div>
+
                   <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-ink">
-                    Move from research context to product and purchase-intent pages
+                    Move from research overview to product page
                   </h2>
+
                   <p className="mt-3 text-sm leading-7 text-muted">
-                    This supporting page helps users researching retatrutide move
-                    naturally into the{" "}
+                    Use this page to move directly into the{" "}
                     <Link
                       href="/product/retatrutide"
                       className="font-semibold text-ink hover:text-accent"
                     >
                       Retatrutide 40mg product page
                     </Link>{" "}
-                    and the{" "}
+                    or the dedicated{" "}
                     <Link
                       href="/buy-retatrutide-uk"
                       className="font-semibold text-ink hover:text-accent"
                     >
                       Buy Retatrutide UK
                     </Link>{" "}
-                    page.
+                    route.
                   </p>
 
                   <div className="mt-6 flex flex-wrap gap-3">
@@ -230,56 +230,17 @@ export default function Page() {
 
                   <div className="mt-6 grid gap-3">
                     <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
-                      Supports retatrutide topical relevance
+                      Research-use-only compound
                     </div>
                     <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
-                      Links research intent to product discovery
+                      Product page and UK route available
                     </div>
                     <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
-                      Strengthens internal SEO cluster
+                      Part of the wider peptide research catalogue
                     </div>
                   </div>
                 </div>
               </div>
-
-              <p className="mt-8 max-w-3xl text-sm leading-7 text-muted">
-                Explore connected research pages including{" "}
-                <Link
-                  href="/research-peptides"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  research peptides
-                </Link>
-                ,{" "}
-                <Link
-                  href="/research-peptides-uk"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  research peptides UK
-                </Link>
-                ,{" "}
-                <Link
-                  href="/research-peptide-supplier-uk"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  research peptide supplier UK
-                </Link>
-                ,{" "}
-                <Link
-                  href="/buy-research-peptides-uk"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  buy research peptides UK
-                </Link>
-                , and{" "}
-                <Link
-                  href="/laboratory-peptide-compounds"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  laboratory peptide compounds
-                </Link>
-                .
-              </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
@@ -295,6 +256,13 @@ export default function Page() {
                 >
                   Buy Retatrutide UK →
                 </Link>
+
+                <Link
+                  href="/research-peptides"
+                  className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                >
+                  Explore research peptides →
+                </Link>
               </div>
             </div>
           </Container>
@@ -308,19 +276,16 @@ export default function Page() {
               </h2>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                Retatrutide-related content is positioned on this site within a
-                research-only laboratory framework. The purpose of this page is
-                to help users understand where the compound sits within the wider
-                peptide research structure and how it connects to related
-                informational and product-level pages.
+                Retatrutide-related content on this site sits within a
+                research-only laboratory framework. The page helps users
+                understand where the compound fits within the wider peptide
+                structure and how it connects to product and category pages.
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                Topic interest around retatrutide frequently includes references
-                to GLP-1, GIP, and glucagon receptor pathways in scientific
-                discussion. Within this site structure, that topic relevance is
-                used to support broader peptide authority and guide users toward
-                the{" "}
+                Topic interest around Retatrutide often includes references to
+                GLP-1, GIP, and glucagon pathway activity in scientific
+                discussion. Here, that context supports a clearer route into the{" "}
                 <Link
                   href="/product/retatrutide"
                   className="font-semibold text-ink hover:text-accent"
@@ -338,7 +303,7 @@ export default function Page() {
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                For wider context, users can also explore{" "}
+                For broader context, you can also explore{" "}
                 <Link
                   href="/research-peptides"
                   className="font-semibold text-ink hover:text-accent"
@@ -358,9 +323,8 @@ export default function Page() {
                   className="font-semibold text-ink hover:text-accent"
                 >
                   laboratory peptide compounds
-                </Link>{" "}
-                as part of the broader research cluster supporting product and
-                category visibility.
+                </Link>
+                .
               </p>
             </div>
           </Container>
@@ -398,7 +362,7 @@ export default function Page() {
               <Link href="/buy-retatrutide-uk" className="surface-card p-5">
                 <div className="text-sm font-extrabold text-ink">Buy Retatrutide UK</div>
                 <p className="mt-2 text-sm text-muted">
-                  Main purchase-intent page supporting retatrutide UK discovery.
+                  Main UK-focused page supporting Retatrutide discovery.
                 </p>
               </Link>
 
@@ -428,7 +392,7 @@ export default function Page() {
                   Buy research peptides UK
                 </div>
                 <p className="mt-2 text-sm text-muted">
-                  Commercial-intent supporting page for broader peptide terms.
+                  Broader purchase-intent page supporting peptide product discovery.
                 </p>
               </Link>
 
@@ -471,19 +435,19 @@ export default function Page() {
           <Container>
             <div className="max-w-4xl">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Product and guide structure
+                How this page fits the product path
               </h2>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                A strong research site structure connects topic-led pages with
-                product pages, rather than relying on isolated listings. This
-                page supports that structure by linking informational content
-                with the related{" "}
+                A strong research page structure connects topic-led reading with
+                product pages rather than leaving product listings isolated. This
+                page supports that structure by linking Retatrutide research
+                context with the related{" "}
                 <Link
                   href="/product/retatrutide"
                   className="font-semibold text-ink hover:text-accent"
                 >
-                  Retatrutide 40mg research peptide pen
+                  product page
                 </Link>{" "}
                 and the{" "}
                 <Link
@@ -492,82 +456,13 @@ export default function Page() {
                 >
                   Buy Retatrutide UK
                 </Link>{" "}
-                page.
+                route.
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                This type of internal linking helps search engines understand
-                the relationship between research content, commercial pages, and
-                the wider site hierarchy. It also gives users a cleaner route
-                from research-style browsing into the specific page or product
-                they are looking for.
+                It also gives users a cleaner path from research-style browsing
+                into the specific page or product they are looking for.
               </p>
-            </div>
-          </Container>
-        </section>
-
-        <section className="bg-white/80 py-14 backdrop-blur-sm">
-          <Container>
-            <h2 className="text-2xl font-extrabold tracking-tight">
-              Related research guides
-            </h2>
-
-            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              <Link href="/research-peptides" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Research peptides</div>
-                <p className="mt-2 text-sm text-muted">
-                  Overview of peptide compounds used in laboratory study.
-                </p>
-              </Link>
-
-              <Link href="/research-peptides-uk" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Research peptides UK</div>
-                <p className="mt-2 text-sm text-muted">
-                  Laboratory peptide compounds available to UK buyers.
-                </p>
-              </Link>
-
-              <Link
-                href="/research-peptide-supplier-uk"
-                className="surface-card p-5"
-              >
-                <div className="font-extrabold text-ink">
-                  Research peptide supplier UK
-                </div>
-                <p className="mt-2 text-sm text-muted">
-                  Overview of peptide compound supply and research products.
-                </p>
-              </Link>
-
-              <Link href="/buy-research-peptides-uk" className="surface-card p-5">
-                <div className="font-extrabold text-ink">
-                  Buy research peptides UK
-                </div>
-                <p className="mt-2 text-sm text-muted">
-                  Commercial-intent guide linking into the main peptide
-                  categories and product lines.
-                </p>
-              </Link>
-
-              <Link
-                href="/laboratory-peptide-compounds"
-                className="surface-card p-5"
-              >
-                <div className="font-extrabold text-ink">
-                  Laboratory peptide compounds
-                </div>
-                <p className="mt-2 text-sm text-muted">
-                  Broader overview of peptide compound types used in scientific
-                  research environments.
-                </p>
-              </Link>
-
-              <Link href="/buy-retatrutide-uk" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Buy Retatrutide UK</div>
-                <p className="mt-2 text-sm text-muted">
-                  Main retatrutide UK landing page connecting research intent to product discovery.
-                </p>
-              </Link>
             </div>
           </Container>
         </section>
@@ -576,7 +471,7 @@ export default function Page() {
           <Container>
             <div className="max-w-3xl">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Common questions about Retatrutide research peptide content
+                Common questions about Retatrutide research peptide
               </h2>
             </div>
 

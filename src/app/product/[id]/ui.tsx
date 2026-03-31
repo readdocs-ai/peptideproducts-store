@@ -15,7 +15,7 @@ export function ProductImageGallery({ product }: { product: Product }) {
   const getImageAlt = (index: number, isThumbnail = false) => {
     if (product.id === "retatrutide") {
       const retatrutideAlts = [
-        "Buy retatrutide 40mg UK research peptide pen",
+        "Retatrutide 40mg UK research peptide pen",
         "Retatrutide 40mg research peptide pen product image",
       ];
 
@@ -98,7 +98,7 @@ export function ProductImageGallery({ product }: { product: Product }) {
           </div>
 
           <div className="flex items-center justify-between border-t border-line px-4 py-3 text-xs text-muted">
-            <div>Main product gallery</div>
+            <div>Product gallery</div>
             <div>{product.name}</div>
           </div>
         </div>
@@ -111,13 +111,16 @@ export function ProductBuyBox({ product }: { product: Product }) {
   const [qty, setQty] = useState(1);
   const total = useMemo(() => product.priceGBP * qty, [product.priceGBP, qty]);
   const inStock = product.stockStatus === "in_stock";
+  const isRetatrutide = product.id === "retatrutide";
 
   return (
     <aside className="h-fit rounded-xl3 border border-line bg-paper/85 p-6 shadow-soft backdrop-blur">
       <div className="flex items-baseline justify-between gap-4">
         <div>
           <div className="text-sm text-slate">{product.pack}</div>
-          <div className="mt-1 text-2xl font-extrabold">{formatGBP(product.priceGBP)}</div>
+          <div className="mt-1 text-2xl font-extrabold">
+            {formatGBP(product.priceGBP)}
+          </div>
         </div>
         <div className="rounded-xl2 border border-line bg-haze px-3 py-2 text-xs font-extrabold text-slate">
           Research supply
@@ -145,6 +148,12 @@ export function ProductBuyBox({ product }: { product: Product }) {
             This product is temporarily unavailable.
           </div>
         )}
+
+        {isRetatrutide ? (
+          <div className="mt-3 text-xs font-bold text-accent">
+            High-demand product
+          </div>
+        ) : null}
       </div>
 
       {product.quickFacts?.length ? (
@@ -224,8 +233,8 @@ export function ProductBuyBox({ product }: { product: Product }) {
       </button>
 
       <div className="mt-3 text-xs text-slate">
-        You’ll be asked to confirm <span className="font-bold text-ink">research use only</span> at
-        checkout.
+        You’ll be asked to confirm{" "}
+        <span className="font-bold text-ink">research use only</span> at checkout.
       </div>
 
       <div className="mt-6 rounded-xl2 border border-line bg-mist p-4 text-xs text-slate">
@@ -234,6 +243,23 @@ export function ProductBuyBox({ product }: { product: Product }) {
           Not for human or veterinary use. Handle only in a suitable laboratory environment.
         </div>
       </div>
+
+      {isRetatrutide ? (
+        <div className="mt-6 rounded-xl2 border border-line bg-white p-4 text-xs text-slate">
+          <div className="font-extrabold text-ink">Related Retatrutide pages</div>
+          <div className="mt-2 flex flex-wrap gap-3">
+            <Link href="/buy-retatrutide-uk" className="font-bold text-ink hover:text-accent">
+              Buy Retatrutide UK
+            </Link>
+            <Link
+              href="/retatrutide-research-peptide"
+              className="font-bold text-ink hover:text-accent"
+            >
+              Research guide
+            </Link>
+          </div>
+        </div>
+      ) : null}
 
       <div className="mt-6 flex items-center justify-between text-sm">
         <Link href="/shop" className="font-extrabold text-slate hover:text-ink">
