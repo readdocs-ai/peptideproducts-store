@@ -1,0 +1,106 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Container } from "@/components/Container";
+
+export const metadata: Metadata = {
+  title: "Retatrutide Price UK | Research Peptide Cost",
+  description:
+    "Explore Retatrutide price UK research peptide supply, product access, availability, and related laboratory content.",
+  alternates: {
+    canonical: "https://www.peptideproducts.co.uk/retatrutide-price-uk",
+  },
+};
+
+export default function Page() {
+  return (
+    <div>
+      <Header />
+
+      <main className="py-14">
+        <Container>
+          <h1 className="text-4xl font-extrabold tracking-tight">
+            Retatrutide Price UK
+          </h1>
+
+          <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
+            Retatrutide UK pricing varies depending on supply route, product format,
+            and laboratory sourcing. This page supports users looking for
+            retatrutide price UK and directs to the official product listing.
+          </p>
+
+          <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
+            You can view the current price and availability directly on the{" "}
+            <Link
+              href="/product/retatrutide"
+              className="font-semibold text-ink hover:text-accent"
+            >
+              Retatrutide 40mg product page
+            </Link>
+            , or use the{" "}
+            <Link
+              href="/buy-retatrutide-uk"
+              className="font-semibold text-ink hover:text-accent"
+            >
+              Buy Retatrutide UK
+            </Link>{" "}
+            page for a clearer purchase route.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/product/retatrutide"
+              className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white"
+            >
+              View price →
+            </Link>
+
+            <Link
+              href="/buy-retatrutide-uk"
+              className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink"
+            >
+              Buy Retatrutide UK →
+            </Link>
+          </div>
+
+          <h2 className="mt-10 text-2xl font-extrabold tracking-tight">
+            Related pages
+          </h2>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              href="/retatrutide-uk"
+              className="font-semibold text-ink hover:text-accent"
+            >
+              Retatrutide UK
+            </Link>
+
+            <Link
+              href="/retatrutide-research-peptide"
+              className="font-semibold text-ink hover:text-accent"
+            >
+              Retatrutide research peptide
+            </Link>
+
+            <Link
+              href="/where-to-buy-retatrutide-uk"
+              className="font-semibold text-ink hover:text-accent"
+            >
+              Where to buy Retatrutide UK
+            </Link>
+
+            <Link
+              href="/retatrutide-vs-semaglutide"
+              className="font-semibold text-ink hover:text-accent"
+            >
+              Retatrutide vs Semaglutide
+            </Link>
+          </div>
+        </Container>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}

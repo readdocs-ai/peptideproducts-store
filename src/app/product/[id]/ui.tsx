@@ -149,12 +149,11 @@ export function ProductBuyBox({ product }: { product: Product }) {
           </div>
         )}
 
-        {isRetatrutide ? (
-          <div className="mt-3 text-xs font-bold text-accent">
-            High-demand product
-          </div>
-        ) : null}
-      </div>
+       {isRetatrutide ? (
+  <div className="mt-3 rounded-xl2 border border-line bg-white p-3 text-xs font-bold text-ink">
+    Retatrutide is currently one of our most in-demand research products.
+  </div>
+) : null}
 
       {product.quickFacts?.length ? (
         <div className="mt-6 grid gap-2">

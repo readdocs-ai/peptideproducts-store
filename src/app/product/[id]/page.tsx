@@ -265,16 +265,49 @@ export default function ProductPage({ params }: Props) {
                 </div>
 
                 <p className="mt-3 text-sm text-muted">
-                  {p.pack}. Supplied strictly for laboratory and scientific research
-                  use only.
-                </p>
+  {p.pack}. Supplied strictly for laboratory and scientific research use only.
+</p>
 
-                <p className="mt-3 text-sm text-muted">
-                  This product may be reviewed in controlled analytical,
-                  biochemical, formulation, compatibility, structural, or
-                  pathway-related research environments depending on the active
-                  compound listed on the label.
-                </p>
+{isRetatrutide ? (
+  <>
+    <p className="mt-3 text-sm text-muted">
+      Retatrutide 40mg is one of the leading products in our metabolic research
+      range, with a direct route from this page into the wider{" "}
+      <Link
+        href="/buy-retatrutide-uk"
+        className="font-semibold text-ink hover:text-accent"
+      >
+        Buy Retatrutide UK
+      </Link>{" "}
+      pathway and supporting{" "}
+      <Link
+        href="/retatrutide-research-peptide"
+        className="font-semibold text-ink hover:text-accent"
+      >
+        research guide
+      </Link>
+      .
+    </p>
+
+    <div className="mt-4 grid gap-3 sm:grid-cols-3">
+      <div className="rounded-xl2 border border-line bg-panel p-3 text-xs font-extrabold text-ink">
+        Research use only
+      </div>
+      <div className="rounded-xl2 border border-line bg-panel p-3 text-xs font-extrabold text-ink">
+        UK dispatch available
+      </div>
+      <div className="rounded-xl2 border border-line bg-panel p-3 text-xs font-extrabold text-ink">
+        Direct product access
+      </div>
+    </div>
+  </>
+) : (
+  <p className="mt-3 text-sm text-muted">
+    This product may be reviewed in controlled analytical, biochemical,
+    formulation, compatibility, structural, or pathway-related research
+    environments depending on the active compound listed on the label.
+  </p>
+)}
 
                 {p.id === "meso-glutathione" ? (
                   <p className="mt-3 text-sm text-muted">
@@ -362,46 +395,64 @@ export default function ProductPage({ params }: Props) {
                   </p>
                 ) : null}
 
-                {p.id === "retatrutide" ? (
-                  <>
-                    <p className="mt-3 text-sm text-muted">
-                      Learn more in our{" "}
-                      <Link
-                        href="/retatrutide-research-peptide"
-                        className="font-semibold text-ink hover:text-accent"
-                      >
-                        retatrutide research peptide guide
-                      </Link>
-                      , which covers related GLP-1, GIP, and glucagon pathway
-                      research context.
-                    </p>
+              {p.id === "retatrutide" ? (
+  <div className="mt-4 rounded-xl2 border border-line bg-panel p-5">
+    <h2 className="text-lg font-extrabold tracking-tight text-ink">
+      Retatrutide UK product pathway
+    </h2>
 
-                    <p className="mt-3 text-sm text-muted">
-                      Visitors looking to{" "}
-                      <Link
-                        href="/buy-retatrutide-uk"
-                        className="font-semibold text-ink hover:text-accent"
-                      >
-                        buy retatrutide UK
-                      </Link>{" "}
-                      can also use this product page alongside the{" "}
-                      <Link
-                        href="/buy-retatrutide-uk"
-                        className="font-semibold text-ink hover:text-accent"
-                      >
-                        dedicated UK route
-                      </Link>{" "}
-                      and the wider{" "}
-                      <Link
-                        href="/research-peptides"
-                        className="font-semibold text-ink hover:text-accent"
-                      >
-                        research peptides
-                      </Link>{" "}
-                      section.
-                    </p>
-                  </>
-                ) : null}
+    <p className="mt-3 text-sm leading-7 text-muted">
+      This product page is the main route for users looking to review
+      Retatrutide 40mg pricing, stock status, and laboratory product details.
+    </p>
+
+    <p className="mt-3 text-sm leading-7 text-muted">
+      You can also explore the{" "}
+      <Link
+        href="/buy-retatrutide-uk"
+        className="font-semibold text-ink hover:text-accent"
+      >
+        Buy Retatrutide UK
+      </Link>{" "}
+      page, the{" "}
+      <Link
+        href="/retatrutide-research-peptide"
+        className="font-semibold text-ink hover:text-accent"
+      >
+        retatrutide research peptide
+      </Link>{" "}
+      guide, and the{" "}
+      <Link
+        href="/what-is-retatrutide"
+        className="font-semibold text-ink hover:text-accent"
+      >
+        what is retatrutide
+      </Link>{" "}
+      page for broader context.
+    </p>
+
+    <div className="mt-4 flex flex-wrap gap-3">
+      <Link
+        href="/buy-retatrutide-uk"
+        className="rounded-xl2 bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+      >
+        Buy Retatrutide UK
+      </Link>
+      <Link
+        href="/retatrutide-research-peptide"
+        className="rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+      >
+        Research guide
+      </Link>
+      <Link
+        href="/what-is-retatrutide"
+        className="rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+      >
+        What is Retatrutide?
+      </Link>
+    </div>
+  </div>
+) : null}
 
                 {p.id === "meso-vitamin-c" ? (
                   <p className="mt-3 text-sm text-muted">

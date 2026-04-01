@@ -494,6 +494,7 @@ export default function Home() {
                   <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-accent">
                     Featured compound
                   </div>
+                  <Link href="/retatrutide-uk">Retatrutide UK</Link>
 
                   <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
                     Buy Retatrutide UK

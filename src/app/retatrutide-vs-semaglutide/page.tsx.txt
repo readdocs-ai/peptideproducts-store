@@ -1,0 +1,168 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Container } from "@/components/Container";
+
+export const metadata: Metadata = {
+  title: "Retatrutide vs Semaglutide | Research Peptide Comparison",
+  description:
+    "Compare Retatrutide vs Semaglutide in a laboratory research context, with links to related Retatrutide pages and product access.",
+  alternates: {
+    canonical: "https://www.peptideproducts.co.uk/retatrutide-vs-semaglutide",
+  },
+};
+
+export default function Page() {
+  return (
+    <div>
+      <Header />
+
+      <main className="py-14">
+        <Container>
+          <div className="max-w-5xl">
+            <div className="text-sm text-muted">
+              <Link href="/" className="font-semibold hover:text-ink">
+                Home
+              </Link>
+              <span className="mx-2">/</span>
+              Retatrutide vs Semaglutide
+            </div>
+
+            <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
+              Retatrutide vs Semaglutide
+            </h1>
+
+            <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
+              Retatrutide and Semaglutide are both discussed in metabolic research
+              settings, but they are not identical compounds. This page provides a
+              simple laboratory-focused comparison for users exploring Retatrutide
+              alongside broader peptide research topics.
+            </p>
+
+            <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
+              If you are specifically looking for Retatrutide product access, you can
+              go directly to the{" "}
+              <Link
+                href="/product/retatrutide"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                Retatrutide 40mg product page
+              </Link>{" "}
+              or the dedicated{" "}
+              <Link
+                href="/buy-retatrutide-uk"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                Buy Retatrutide UK
+              </Link>{" "}
+              page.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/product/retatrutide"
+                className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white"
+              >
+                View Retatrutide →
+              </Link>
+
+              <Link
+                href="/buy-retatrutide-uk"
+                className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink"
+              >
+                Buy Retatrutide UK →
+              </Link>
+
+              <Link
+                href="/retatrutide-research-peptide"
+                className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink"
+              >
+                Read research guide →
+              </Link>
+            </div>
+
+            <section className="mt-12 rounded-xl3 border border-line bg-white p-6 shadow-soft">
+              <h2 className="text-2xl font-extrabold tracking-tight text-ink">
+                Research comparison overview
+              </h2>
+
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <div className="rounded-xl2 border border-line bg-panel p-5">
+                  <div className="text-lg font-extrabold text-ink">
+                    Retatrutide
+                  </div>
+                  <p className="mt-3 text-sm leading-7 text-muted">
+                    Retatrutide is commonly discussed in relation to multiple
+                    metabolic pathway topics, including GLP-1, GIP, and glucagon
+                    pathway research context.
+                  </p>
+                </div>
+
+                <div className="rounded-xl2 border border-line bg-panel p-5">
+                  <div className="text-lg font-extrabold text-ink">
+                    Semaglutide
+                  </div>
+                  <p className="mt-3 text-sm leading-7 text-muted">
+                    Semaglutide is another peptide compound frequently referenced in
+                    metabolic research discussions and comparison-based content.
+                  </p>
+                </div>
+              </div>
+
+              <p className="mt-6 text-sm leading-7 text-muted">
+                This page is intended only as a broad research-content comparison and
+                not as human-use guidance. All products on this site are listed
+                strictly for laboratory and scientific research use only.
+              </p>
+            </section>
+
+            <section className="mt-12">
+              <h2 className="text-2xl font-extrabold tracking-tight">
+                Related Retatrutide pages
+              </h2>
+
+              <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                <Link href="/product/retatrutide" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">Retatrutide product</div>
+                  <p className="mt-2 text-sm text-muted">
+                    View the Retatrutide 40mg product listing.
+                  </p>
+                </Link>
+
+                <Link href="/buy-retatrutide-uk" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">Buy Retatrutide UK</div>
+                  <p className="mt-2 text-sm text-muted">
+                    UK-focused page supporting Retatrutide product discovery.
+                  </p>
+                </Link>
+
+                <Link href="/retatrutide-research-peptide" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">
+                    Retatrutide research peptide
+                  </div>
+                  <p className="mt-2 text-sm text-muted">
+                    Read the main Retatrutide research overview.
+                  </p>
+                </Link>
+
+                <Link href="/retatrutide-uk" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">Retatrutide UK</div>
+                  <p className="mt-2 text-sm text-muted">
+                    Explore Retatrutide UK availability and related pages.
+                  </p>
+                </Link>
+              </div>
+            </section>
+
+            <p className="mt-10 max-w-3xl text-xs text-muted">
+              Research use only. Not for human or veterinary use.
+            </p>
+          </div>
+        </Container>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
