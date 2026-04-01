@@ -141,7 +141,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
 
         {inStock ? (
           <div className="mt-2 text-xs text-slate">
-            Dispatch from UK • Fast delivery available
+            UK dispatch available • Fast delivery options
           </div>
         ) : (
           <div className="mt-2 text-xs text-slate">
@@ -149,11 +149,12 @@ export function ProductBuyBox({ product }: { product: Product }) {
           </div>
         )}
 
-       {isRetatrutide ? (
-  <div className="mt-3 rounded-xl2 border border-line bg-white p-3 text-xs font-bold text-ink">
-    Retatrutide is currently one of our most in-demand research products.
-  </div>
-) : null}
+        {isRetatrutide ? (
+          <div className="mt-3 rounded-xl2 border border-line bg-white p-3 text-xs font-bold text-ink">
+            Retatrutide is currently one of our most in-demand research products.
+          </div>
+        ) : null}
+      </div>
 
       {product.quickFacts?.length ? (
         <div className="mt-6 grid gap-2">
@@ -195,7 +196,9 @@ export function ProductBuyBox({ product }: { product: Product }) {
             disabled={!inStock}
             onChange={(e) => {
               const n = Number(e.target.value);
-              if (Number.isFinite(n)) setQty(Math.min(99, Math.max(1, Math.floor(n))));
+              if (Number.isFinite(n)) {
+                setQty(Math.min(99, Math.max(1, Math.floor(n))));
+              }
             }}
             inputMode="numeric"
           />

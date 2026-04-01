@@ -551,6 +551,47 @@ export default function Home() {
                       Buy Retatrutide UK
                     </Link>
                   </div>
+                  {/* RETATRUTIDE SEO CLUSTER BOOST */}
+<div className="mt-12 rounded-xl3 border border-line bg-white p-6 shadow-soft">
+  <h3 className="text-2xl font-extrabold tracking-tight text-ink">
+    Retatrutide UK research and buying guides
+  </h3>
+
+  <p className="mt-3 max-w-2xl text-sm text-muted">
+    Explore Retatrutide research, pricing, availability, and UK supply routes.
+    These pages are designed to help users move from research into product access.
+  </p>
+
+  <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+    <Link href="/buy-retatrutide-uk" className="surface-card p-5">
+      <div className="font-extrabold text-ink">Buy Retatrutide UK</div>
+      <p className="mt-2 text-sm text-muted">
+        Direct purchase-intent page linking to product and supply routes.
+      </p>
+    </Link>
+
+    <Link href="/retatrutide-price-uk" className="surface-card p-5">
+      <div className="font-extrabold text-ink">Retatrutide price UK</div>
+      <p className="mt-2 text-sm text-muted">
+        Explore pricing, availability, and product access.
+      </p>
+    </Link>
+
+    <Link href="/where-to-buy-retatrutide-uk" className="surface-card p-5">
+      <div className="font-extrabold text-ink">Where to buy Retatrutide UK</div>
+      <p className="mt-2 text-sm text-muted">
+        Navigate supply routes and trusted product pages.
+      </p>
+    </Link>
+
+    <Link href="/retatrutide-vs-semaglutide" className="surface-card p-5">
+      <div className="font-extrabold text-ink">Retatrutide vs Semaglutide</div>
+      <p className="mt-2 text-sm text-muted">
+        Comparison page supporting research and discovery intent.
+      </p>
+    </Link>
+  </div>
+</div>
 
                   <div className="mt-6 grid gap-3 sm:grid-cols-3">
                     <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">
