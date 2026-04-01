@@ -40,22 +40,22 @@ export const metadata: Metadata = {
 
 const categoryCards = [
   {
-    title: "Hydration research blends",
-    copy: "Hydration-focused compounds, hyaluronic acid lines, and support liquids for laboratory workflows.",
-    image: "/home/home-feature-skinbooster-hyaluronic-acid.jpg",
-    href: "/hydration-peptides",
+    title: "Metabolic research peptides",
+    copy: "Explore Retatrutide, Tirzepatide, Melanotan, Selank, ML-10, and NAD research product lines.",
+    image: "/products/retatrutide-40mg-uk.jpg",
+    href: "/research-peptides",
   },
   {
-    title: "Firming peptide blends",
-    copy: "Elasticity and structure-focused peptide compounds used in formulation and compatibility research.",
-    image: "/home/home-feature-meso-lift-firming.jpg",
-    href: "/firming-peptides",
-  },
-  {
-    title: "Repair and regenerative lines",
-    copy: "Regenerative compound lines including collagen, PDRN, BPC-157, and GHK-CU.",
-    image: "/products/meso-pdrn-alt-cropped.jpg",
+    title: "Regenerative peptide compounds",
+    copy: "Browse regenerative research compounds including BPC-157 and GHK-CU laboratory product lines.",
+    image: "/products/ghk-cu-100mg.webp",
     href: "/regenerative-peptides",
+  },
+  {
+    title: "Hydration and support liquids",
+    copy: "View bacteriostatic water support products used in laboratory preparation and reconstitution workflows.",
+    image: "/products/bac-water-10ml.webp",
+    href: "/hydration-peptides",
   },
 ] as const;
 
@@ -494,7 +494,7 @@ export default function Home() {
                   <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-accent">
                     Featured compound
                   </div>
-                  <Link href="/retatrutide-uk">Retatrutide UK</Link>
+                  
 
                   <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
                     Buy Retatrutide UK
@@ -662,64 +662,62 @@ export default function Home() {
             </div>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              <Link href="/research-peptides" className="surface-card p-5">
-                <div className="text-sm font-extrabold text-ink">Research peptides</div>
-                <p className="mt-2 text-sm text-muted">
-                  Overview of antioxidant, hydration, firming, regenerative, and metabolic compound lines.
-                </p>
-              </Link>
+  <Link href="/research-peptides" className="surface-card p-5">
+    <div className="text-sm font-extrabold text-ink">Research peptides</div>
+    <p className="mt-2 text-sm text-muted">
+      Overview of metabolic, regenerative, antioxidant, and support compound lines.
+    </p>
+  </Link>
 
-              <Link href="/antioxidant-peptides" className="surface-card p-5">
-                <div className="text-sm font-extrabold text-ink">Antioxidant peptides</div>
-                <p className="mt-2 text-sm text-muted">
-                  Glutathione and vitamin C research compounds used in antioxidant laboratory study.
-                </p>
-              </Link>
+  <Link href="/antioxidant-peptides" className="surface-card p-5">
+    <div className="text-sm font-extrabold text-ink">Antioxidant peptides</div>
+    <p className="mt-2 text-sm text-muted">
+      Glutathione research compounds used in antioxidant laboratory study.
+    </p>
+  </Link>
 
-              <Link href="/hydration-peptides" className="surface-card p-5">
-                <div className="text-sm font-extrabold text-ink">Hydration peptides</div>
-                <p className="mt-2 text-sm text-muted">
-                  Hyaluronic acid and hydration-related compounds for formulation and compatibility research.
-                </p>
-              </Link>
+  <Link href="/hydration-peptides" className="surface-card p-5">
+    <div className="text-sm font-extrabold text-ink">Hydration peptides</div>
+    <p className="mt-2 text-sm text-muted">
+      Bacteriostatic water and related support liquids for laboratory preparation.
+    </p>
+  </Link>
 
-              <Link href="/regenerative-peptides" className="surface-card p-5">
-                <div className="text-sm font-extrabold text-ink">Regenerative peptides</div>
-                <p className="mt-2 text-sm text-muted">
-                  PDRN, collagen, BPC-157, and GHK-CU compounds studied in regeneration-related laboratory environments.
-                </p>
-              </Link>
+  <Link href="/regenerative-peptides" className="surface-card p-5">
+    <div className="text-sm font-extrabold text-ink">Regenerative peptides</div>
+    <p className="mt-2 text-sm text-muted">
+      BPC-157 and GHK-CU compounds studied in regeneration-related laboratory environments.
+    </p>
+  </Link>
 
-              <Link href="/firming-peptides" className="surface-card p-5">
-                <div className="text-sm font-extrabold text-ink">Firming peptides</div>
-                <p className="mt-2 text-sm text-muted">
-                  Elasticity and structure-focused peptide blends used in firming-related research.
-                </p>
-              </Link>
+  <Link href="/retatrutide-research-peptide" className="surface-card p-5">
+    <div className="text-sm font-extrabold text-ink">Retatrutide research peptide</div>
+    <p className="mt-2 text-sm text-muted">
+      Research overview covering Retatrutide and related product pathways.
+    </p>
+  </Link>
 
-              <Link href="/pdrn-research-peptide" className="surface-card p-5">
-                <div className="text-sm font-extrabold text-ink">PDRN research peptide</div>
-                <p className="mt-2 text-sm text-muted">
-                  Regeneration-focused compound research and related product links.
-                </p>
-              </Link>
+  <Link href="/what-is-retatrutide" className="surface-card p-5">
+    <div className="text-sm font-extrabold text-ink">What is Retatrutide?</div>
+    <p className="mt-2 text-sm text-muted">
+      Introductory Retatrutide page for laboratory-focused readers.
+    </p>
+  </Link>
 
-              <Link href="/glutathione-research-peptide" className="surface-card p-5">
-                <div className="text-sm font-extrabold text-ink">Glutathione research peptide</div>
-                <p className="mt-2 text-sm text-muted">
-                  Antioxidant compound research, oxidative stress studies, and laboratory use.
-                </p>
-              </Link>
+  <Link href="/retatrutide-price-uk" className="surface-card p-5">
+    <div className="text-sm font-extrabold text-ink">Retatrutide price UK</div>
+    <p className="mt-2 text-sm text-muted">
+      Explore pricing, availability, and linked product access.
+    </p>
+  </Link>
 
-              <Link href="/hyaluronic-acid-peptide-research" className="surface-card p-5">
-                <div className="text-sm font-extrabold text-ink">
-                  Hyaluronic acid peptide research
-                </div>
-                <p className="mt-2 text-sm text-muted">
-                  Hydration-related compound research and extracellular matrix study.
-                </p>
-              </Link>
-            </div>
+  <Link href="/where-to-buy-retatrutide-uk" className="surface-card p-5">
+    <div className="text-sm font-extrabold text-ink">Where to buy Retatrutide UK</div>
+    <p className="mt-2 text-sm text-muted">
+      Direct route into the main Retatrutide product and related UK pages.
+    </p>
+  </Link>
+</div>
           </Container>
         </section>
 
@@ -772,8 +770,8 @@ export default function Home() {
                 </p>
 
                 <p className="mt-4 text-sm leading-7 text-muted">
-                  Common areas of investigation include glutathione antioxidant research, hydration systems, PDRN and collagen lines, BPC-157, GHK-CU, NAD, metabolic compounds, and related peptide support products.
-                </p>
+  Common areas of investigation include glutathione antioxidant research, bacteriostatic support liquids, BPC-157, GHK-CU, NAD, Retatrutide, Tirzepatide, and related metabolic peptide compounds.
+</p>
 
                 <p className="mt-4 text-sm leading-7 text-muted">
                   If you are specifically exploring{" "}
