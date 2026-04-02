@@ -28,6 +28,24 @@ export default function CartPage() {
 
   const subtotal = cartTotalGBP(items, products);
   const total = subtotal;
+  const handleStripeCheckout = async () => {
+  const res = await fetch("/api/checkout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ items }),
+  });
+
+  const data = await res.json();
+
+  if (data.url) {
+    window.location.href = data.url;
+    return;
+  }
+
+  alert(data.error || "Unable to start checkout.");
+};
 
   return (
     <div>
@@ -127,12 +145,12 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                <Link
-                  href="/checkout"
-                  className="mt-6 inline-flex w-full justify-center rounded-xl2 bg-accent px-4 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
-                >
-                  Continue to checkout
-                </Link>
+                <button
+  onClick={handleStripeCheckout}
+  className="mt-6 inline-flex w-full justify-center rounded-xl2 bg-accent px-4 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+>
+  Pay securely by card
+</button>
               </aside>
             </div>
           )}
