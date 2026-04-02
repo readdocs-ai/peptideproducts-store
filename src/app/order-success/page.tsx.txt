@@ -1,9 +1,17 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
+import { clearCart } from "@/lib/cart";
 
 export default function OrderSuccessPage() {
+  useEffect(() => {
+    clearCart();
+  }, []);
+
   return (
     <div>
       <Header />
@@ -19,7 +27,8 @@ export default function OrderSuccessPage() {
             </p>
 
             <p className="mt-4 text-sm leading-7 text-muted">
-              We recommend keeping your confirmation email for your records.
+              Your cart has now been cleared. Please keep your Stripe confirmation
+              email for your records.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
