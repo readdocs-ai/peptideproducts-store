@@ -33,7 +33,7 @@ export async function POST(req: Request) {
       return Response.json({ ok: false, error: "Cart is empty." }, { status: 400 });
     }
 
-    if (!["bank_transfer", "crypto"].includes(paymentMethod)) {
+    if (!["bank_transfer", "crypto", "card"].includes(paymentMethod)) {
       return Response.json({ ok: false, error: "Invalid payment method." }, { status: 400 });
     }
 

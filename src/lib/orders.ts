@@ -8,7 +8,7 @@ export type StoredOrderItem = {
 };
 
 export type OrderStatus = "pending" | "paid" | "shipped";
-export type PaymentMethod = "bank_transfer" | "crypto";
+export type PaymentMethod = "bank_transfer" | "crypto" | "card";
 
 export type StoredOrder = {
   id: string;
@@ -25,6 +25,7 @@ export type StoredOrder = {
   paidAt: string | null;
   shippedAt: string | null;
   trackingNumber: string | null;
+  stripeSessionId: string | null;
 };
 
 const redisUrl = process.env.REDIS_URL || "";
@@ -67,6 +68,7 @@ function normalizeOrder(raw: Partial<StoredOrder>): StoredOrder {
     paidAt: raw.paidAt ?? null,
     shippedAt: raw.shippedAt ?? null,
     trackingNumber: raw.trackingNumber ?? null,
+    stripeSessionId: raw.stripeSessionId ?? null,
   };
 }
 
@@ -83,6 +85,7 @@ export async function createOrder(input: {
   total: number;
   items: StoredOrderItem[];
   paymentMethod: PaymentMethod;
+  stripeSessionId?: string | null;
 }) {
   if (!redis) {
     throw new Error("REDIS_URL is not configured");
@@ -109,6 +112,7 @@ export async function createOrder(input: {
     paidAt: null,
     shippedAt: null,
     trackingNumber: null,
+    stripeSessionId: input.stripeSessionId ?? null,
   };
 
   await redis.set(orderKey(order.id), JSON.stringify(order));
@@ -206,6 +210,11 @@ export async function getOrderForCustomerLookup(orderId: string, email: string) 
   }
 
   return order;
+}
+
+export async function getOrderByStripeSessionId(sessionId: string) {
+  const orders = await listOrders(500);
+  return orders.find((order) => order.stripeSessionId === sessionId) || null;
 }
 
 export async function updateOrderStatus(params: {

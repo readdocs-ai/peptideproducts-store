@@ -29,7 +29,7 @@ type EmailOrderItem = {
   priceGBP: number;
 };
 
-type PaymentMethod = "bank_transfer" | "crypto";
+type PaymentMethod = "bank_transfer" | "crypto" | "card";
 
 type SendOrderEmailsParams = {
   orderId: string;
@@ -82,16 +82,31 @@ function getPaymentInstructionsHtml(
     `;
   }
 
+  if (paymentMethod === "crypto") {
+    return `
+      <h2>Cryptocurrency Payment Instructions</h2>
+      <p>Please send payment for <strong>${formatGBP(totalGBP)}</strong> using one of the options below.</p>
+      <p><strong>Bitcoin (BTC):</strong><br />${PAYMENT_DETAILS.crypto.btc}</p>
+      <p><strong>Ethereum (ETH):</strong><br />${PAYMENT_DETAILS.crypto.eth}</p>
+      <p><strong>USDT (ERC20 only):</strong><br />${PAYMENT_DETAILS.crypto.usdtErc20}</p>
+      <p><strong>Payment Reference:</strong> ${orderId}</p>
+      <p><strong>Important:</strong> Only send USDT on the ERC20 network.</p>
+      <p>Your order will be processed after payment is received and confirmed.</p>
+    `;
+  }
+
   return `
-    <h2>Cryptocurrency Payment Instructions</h2>
-    <p>Please send payment for <strong>${formatGBP(totalGBP)}</strong> using one of the options below.</p>
-    <p><strong>Bitcoin (BTC):</strong><br />${PAYMENT_DETAILS.crypto.btc}</p>
-    <p><strong>Ethereum (ETH):</strong><br />${PAYMENT_DETAILS.crypto.eth}</p>
-    <p><strong>USDT (ERC20 only):</strong><br />${PAYMENT_DETAILS.crypto.usdtErc20}</p>
-    <p><strong>Payment Reference:</strong> ${orderId}</p>
-    <p><strong>Important:</strong> Only send USDT on the ERC20 network.</p>
-    <p>Your order will be processed after payment is received and confirmed.</p>
+    <h2>Card Payment Received</h2>
+    <p>We have received your card payment for <strong>${formatGBP(totalGBP)}</strong>.</p>
+    <p><strong>Order Number:</strong> ${orderId}</p>
+    <p>Your order is now being prepared.</p>
   `;
+}
+
+function getPaymentMethodLabel(paymentMethod: PaymentMethod) {
+  if (paymentMethod === "bank_transfer") return "Bank Transfer";
+  if (paymentMethod === "crypto") return "Cryptocurrency";
+  return "Card";
 }
 
 export async function sendOrderEmails(params: SendOrderEmailsParams) {
@@ -111,9 +126,9 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
       <p>Your order has been received.</p>
       <p><strong>Order Number:</strong> ${params.orderId}</p>
       <p><strong>Total:</strong> ${formatGBP(params.totalGBP)}</p>
-      <p><strong>Payment Method:</strong> ${
-        params.paymentMethod === "bank_transfer" ? "Bank Transfer" : "Cryptocurrency"
-      }</p>
+      <p><strong>Payment Method:</strong> ${getPaymentMethodLabel(
+        params.paymentMethod
+      )}</p>
       <h2>Items Ordered</h2>
       <ul>${itemsHtml}</ul>
       ${instructionsHtml}
@@ -128,9 +143,9 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
       <p><strong>Customer:</strong> ${params.customerName}</p>
       <p><strong>Email:</strong> ${params.customerEmail}</p>
       <p><strong>Total:</strong> ${formatGBP(params.totalGBP)}</p>
-      <p><strong>Payment Method:</strong> ${
-        params.paymentMethod === "bank_transfer" ? "Bank Transfer" : "Cryptocurrency"
-      }</p>
+      <p><strong>Payment Method:</strong> ${getPaymentMethodLabel(
+        params.paymentMethod
+      )}</p>
       <h2>Items Ordered</h2>
       <ul>${itemsHtml}</ul>
     </div>
