@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
+import { sendOrderEmails } from "@/lib/email";
 import { products } from "@/data/products";
 import {
   createOrder,
@@ -26,11 +27,17 @@ export async function POST(req: Request) {
   const signature = req.headers.get("stripe-signature");
 
   if (!signature) {
-    return NextResponse.json({ error: "Missing Stripe signature" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Missing Stripe signature" },
+      { status: 400 }
+    );
   }
 
   if (!process.env.STRIPE_WEBHOOK_SECRET) {
-    return NextResponse.json({ error: "Missing webhook secret" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Missing webhook secret" },
+      { status: 500 }
+    );
   }
 
   let event: Stripe.Event;
@@ -56,9 +63,10 @@ export async function POST(req: Request) {
         return NextResponse.json({ ok: true, duplicate: true });
       }
 
-      const lineItemsResponse = await stripe.checkout.sessions.listLineItems(session.id, {
-        limit: 100,
-      });
+      const lineItemsResponse = await stripe.checkout.sessions.listLineItems(
+        session.id,
+        { limit: 100 }
+      );
 
       const productByPriceId = priceIdToProductMap();
 
@@ -115,11 +123,27 @@ export async function POST(req: Request) {
         orderId: order.id,
         status: "paid",
       });
+
+      try {
+        await sendOrderEmails({
+          orderId: order.id,
+          customerName: order.name,
+          customerEmail: order.email,
+          paymentMethod: order.paymentMethod,
+          totalGBP: order.total,
+          items: order.items,
+        });
+      } catch (emailError) {
+        console.error("STRIPE ORDER EMAIL ERROR:", emailError);
+      }
     }
 
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("Stripe webhook processing error:", error);
-    return NextResponse.json({ error: "Webhook processing failed" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Webhook processing failed" },
+      { status: 500 }
+    );
   }
 }
