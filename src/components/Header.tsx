@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { nav } from "@/theme/brand";
@@ -20,9 +21,11 @@ const researchLinks = [
 const hiddenNavHrefs = new Set(["/research-peptides", "/faq", "/disclaimer"]);
 
 export function Header() {
+  const pathname = usePathname();
   const [count, setCount] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [toast, setToast] = useState<{ name: string; qty: number } | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const productMap = useMemo(
     () => new Map(products.map((product) => [product.id, product.name])),
@@ -62,6 +65,10 @@ export function Header() {
     const timer = window.setTimeout(() => setToast(null), 4000);
     return () => window.clearTimeout(timer);
   }, [toast]);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   return (
     <>
@@ -128,38 +135,92 @@ export function Header() {
               </Link>
             </nav>
 
-            <Link
-              href="/cart"
-              className="flex items-center gap-2 rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-semibold shadow-soft transition hover:bg-panel"
-              aria-label="Open cart"
-            >
-              Cart
-              <span className="flex h-6 min-w-[24px] items-center justify-center rounded-full bg-accent px-2 text-xs font-bold text-white">
-                {count}
-              </span>
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/cart"
+                className="flex items-center gap-2 rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-semibold shadow-soft transition hover:bg-panel"
+                aria-label="Open cart"
+              >
+                Cart
+                <span className="flex h-6 min-w-[24px] items-center justify-center rounded-full bg-accent px-2 text-xs font-bold text-white">
+                  {count}
+                </span>
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => setMobileOpen((v) => !v)}
+                className="inline-flex items-center justify-center rounded-xl2 border border-line bg-white px-3 py-2 text-sm font-extrabold text-ink shadow-soft md:hidden"
+                aria-label="Toggle menu"
+                aria-expanded={mobileOpen}
+              >
+                Menu
+              </button>
+            </div>
           </div>
+
+          {mobileOpen ? (
+            <div className="border-t border-line py-4 md:hidden">
+              <div className="grid gap-2">
+                {nav
+                  .filter((i) => !hiddenNavHrefs.has(i.href))
+                  .map((i) => (
+                    <Link
+                      key={i.href}
+                      href={i.href}
+                      className="rounded-xl2 px-3 py-3 text-sm font-semibold text-ink transition hover:bg-panel"
+                    >
+                      {i.label}
+                    </Link>
+                  ))}
+
+                <Link
+                  href="/order-status"
+                  className="rounded-xl2 px-3 py-3 text-sm font-semibold text-ink transition hover:bg-panel"
+                >
+                  Order Status
+                </Link>
+
+                <div className="mt-2 rounded-xl2 border border-line bg-panel p-3">
+                  <div className="mb-2 text-xs font-extrabold uppercase tracking-wide text-muted">
+                    Research guides
+                  </div>
+                  <div className="grid gap-1">
+                    {researchLinks.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="rounded-xl2 px-3 py-2 text-sm font-semibold text-ink transition hover:bg-white"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : null}
         </Container>
       </header>
 
       {toast ? (
-        <div className="fixed bottom-4 right-4 z-[60] w-[min(92vw,360px)] rounded-xl3 border border-line bg-white p-4 shadow-lift">
+        <div className="fixed bottom-4 right-4 z-[60] w-[min(92vw,380px)] rounded-xl3 border border-line bg-white p-4 shadow-lift">
           <div className="text-sm font-extrabold text-ink">Added to cart</div>
           <p className="mt-1 text-sm text-muted">
             {toast.qty} × {toast.name}
           </p>
-          <div className="mt-4 flex gap-3">
+          <div className="mt-4 grid grid-cols-2 gap-3">
             <Link
               href="/cart"
-              className="inline-flex flex-1 justify-center rounded-xl2 bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+              className="inline-flex justify-center rounded-xl2 bg-accent px-4 py-2.5 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
             >
               View cart
             </Link>
             <Link
-              href="/shop"
-              className="inline-flex flex-1 justify-center rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+              href="/checkout"
+              className="inline-flex justify-center rounded-xl2 border border-line bg-white px-4 py-2.5 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
             >
-              Keep shopping
+              Checkout
             </Link>
           </div>
         </div>

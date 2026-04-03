@@ -17,9 +17,9 @@ export function ShopClient() {
   const activeCategory = categories.find((c) => c.key === cat);
 
   return (
-    <main className="py-12">
+    <main className="py-10 lg:py-12">
       <Container>
-        <div className="flex flex-wrap items-end justify-between gap-6">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-line bg-paper/80 px-4 py-2 text-xs font-semibold text-slate shadow-soft">
               Research supply catalogue
@@ -31,15 +31,19 @@ export function ShopClient() {
             </h1>
 
             <p className="mt-3 text-sm leading-7 text-slate">
-              Browse the main product range and move directly into product pages without extra scrolling. All products listed on this site are supplied strictly for laboratory and scientific research use only.
+              Browse the main product range and move directly into product pages.
+              All products listed on this site are supplied strictly for laboratory
+              and scientific research use only.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setCat("All")}
-              className={`rounded-full px-4 py-2 text-sm font-extrabold border ${
-                cat === "All" ? "bg-accent text-white border-accent" : "bg-paper/80 text-slate border-line hover:bg-mist"
+              className={`rounded-full px-4 py-2 text-sm font-extrabold border transition ${
+                cat === "All"
+                  ? "bg-accent text-white border-accent"
+                  : "bg-white text-ink border-line hover:bg-panel"
               }`}
             >
               All
@@ -49,8 +53,10 @@ export function ShopClient() {
               <button
                 key={c.key}
                 onClick={() => setCat(c.key)}
-                className={`rounded-full px-4 py-2 text-sm font-extrabold border ${
-                  cat === c.key ? "bg-accent text-white border-accent" : "bg-paper/80 text-slate border-line hover:bg-mist"
+                className={`rounded-full px-4 py-2 text-sm font-extrabold border transition ${
+                  cat === c.key
+                    ? "bg-accent text-white border-accent"
+                    : "bg-white text-ink border-line hover:bg-panel"
                 }`}
               >
                 {c.key}
@@ -59,17 +65,27 @@ export function ShopClient() {
           </div>
         </div>
 
-        <div className="mt-6 rounded-xl2 border border-line bg-panel p-4 text-sm text-slate">
+        <div className="mt-5 rounded-xl2 border border-line bg-panel p-4 text-sm text-slate">
           {cat === "All" ? (
-            <p>Showing the full research product range. Use the category buttons above to filter products faster.</p>
+            <p>
+              Showing the full research product range. Use the category buttons above
+              to filter products faster.
+            </p>
           ) : (
             <p>
-              <span className="font-semibold text-ink">{cat}</span>: {activeCategory?.blurb}
+              <span className="font-semibold text-ink">{cat}</span>:{" "}
+              {activeCategory?.blurb}
             </p>
           )}
         </div>
 
-        <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">
+        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((p) => (
+            <ProductCard key={p.id} p={p} imageOverride={p.gallery?.[1] ?? p.image} />
+          ))}
+        </div>
+
+        <section className="mt-10 rounded-xl3 border border-line bg-white p-6 shadow-soft">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-slate">
@@ -79,7 +95,8 @@ export function ShopClient() {
                 Retatrutide product discovery
               </h2>
               <p className="mt-3 text-sm leading-7 text-slate">
-                Looking for the most viewed product on the site? Go straight to the Retatrutide 40mg product page or the Buy Retatrutide UK landing page.
+                Looking for the most viewed product on the site? Go straight to the
+                Retatrutide 40mg product page or the Buy Retatrutide UK page.
               </p>
             </div>
 
@@ -99,12 +116,6 @@ export function ShopClient() {
             </div>
           </div>
         </section>
-
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => (
-            <ProductCard key={p.id} p={p} imageOverride={p.gallery?.[1] ?? p.image} />
-          ))}
-        </div>
       </Container>
     </main>
   );

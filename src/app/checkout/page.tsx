@@ -127,14 +127,17 @@ export default function Checkout() {
   return (
     <div>
       <Header />
-      <main className="py-12">
+
+      <main className="py-10 lg:py-12">
         <Container>
-          <div className="mx-auto max-w-5xl rounded-[1.75rem] border border-line bg-white p-8 shadow-soft lg:p-10">
+          <div className="mx-auto max-w-5xl rounded-[1.75rem] border border-line bg-white p-6 shadow-soft lg:p-10">
             <h1 className="text-3xl font-extrabold tracking-tight text-ink">
               Checkout
             </h1>
+
             <p className="mt-2 text-sm text-muted">
-              Review your order details and complete your order.
+              Use this page for bank transfer or cryptocurrency orders. For card
+              payment, return to cart and use the secure Stripe checkout button.
             </p>
 
             {orderId ? (
@@ -143,9 +146,11 @@ export default function Checkout() {
                   <div className="text-2xl font-extrabold text-ink">
                     Order received
                   </div>
+
                   <div className="mt-3 text-sm text-muted">
                     Order reference
                   </div>
+
                   <div className="mt-2 text-3xl font-extrabold tracking-tight text-accent">
                     {orderId}
                   </div>
@@ -164,6 +169,7 @@ export default function Checkout() {
                       <div className="text-lg font-extrabold text-ink">
                         Bank Transfer Instructions
                       </div>
+
                       <div className="mt-4 grid gap-2 text-sm text-muted">
                         <div>
                           <span className="font-extrabold text-ink">
@@ -196,6 +202,7 @@ export default function Checkout() {
                           {orderId}
                         </div>
                       </div>
+
                       <p className="mt-4 text-sm text-muted">
                         Please use your order number as the payment reference.
                         Your order will be processed once payment is received.
@@ -247,19 +254,26 @@ export default function Checkout() {
                     </div>
                   )}
 
-                  <div className="mt-6 text-sm text-muted">
-                    Track your order here:
+                  <div className="mt-6 flex flex-wrap gap-3">
                     <Link
                       href="/order-status"
-                      className="ml-2 font-extrabold text-accent hover:underline"
+                      className="rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
                     >
-                      Check Order Status
+                      Check order status
+                    </Link>
+
+                    <Link
+                      href="/shop"
+                      className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                    >
+                      Continue shopping
                     </Link>
                   </div>
                 </div>
 
                 <div className="rounded-xl2 border border-line bg-panel p-6">
                   <div className="text-lg font-extrabold text-ink">Summary</div>
+
                   <div className="mt-4 grid gap-2 text-sm text-muted">
                     <div className="flex justify-between">
                       <span>Subtotal</span>
@@ -284,6 +298,7 @@ export default function Checkout() {
                     <div className="text-sm font-extrabold text-ink">
                       Items ordered
                     </div>
+
                     <div className="mt-3 space-y-3">
                       {orderItems.map((item) => (
                         <div
@@ -306,6 +321,39 @@ export default function Checkout() {
             ) : (
               <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
                 <div className="space-y-6">
+                  <div className="rounded-xl2 border border-line bg-panel p-5">
+                    <div className="text-lg font-extrabold text-ink">
+                      Alternative payment checkout
+                    </div>
+                    <p className="mt-3 text-sm leading-7 text-muted">
+                      This page is for customers choosing bank transfer or
+                      cryptocurrency. If you want to pay by card, return to your{" "}
+                      <Link
+                        href="/cart"
+                        className="font-semibold text-ink hover:text-accent"
+                      >
+                        cart
+                      </Link>{" "}
+                      and use the secure Stripe checkout button.
+                    </p>
+
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      <Link
+                        href="/cart"
+                        className="rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+                      >
+                        Return to cart
+                      </Link>
+
+                      <Link
+                        href="/shop"
+                        className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                      >
+                        Continue shopping
+                      </Link>
+                    </div>
+                  </div>
+
                   <div>
                     <label className="block text-sm font-extrabold text-ink">
                       Full name
@@ -336,6 +384,7 @@ export default function Checkout() {
                     <div className="text-lg font-extrabold text-ink">
                       Payment method
                     </div>
+
                     <div className="mt-4 grid gap-3">
                       <label className="flex cursor-pointer items-start gap-3 rounded-xl2 border border-line bg-white p-4">
                         <input
@@ -350,7 +399,7 @@ export default function Checkout() {
                             Bank Transfer
                           </div>
                           <div className="mt-1 text-sm text-muted">
-                            Pay by UK bank transfer after placing your order.
+                            Place your order now and pay by UK bank transfer.
                           </div>
                         </div>
                       </label>
@@ -368,8 +417,8 @@ export default function Checkout() {
                             Cryptocurrency
                           </div>
                           <div className="mt-1 text-sm text-muted">
-                            Pay with BTC, ETH or USDT (ERC20 only) after placing
-                            your order.
+                            Place your order now and pay with BTC, ETH or USDT
+                            (ERC20 only).
                           </div>
                         </div>
                       </label>
@@ -380,6 +429,7 @@ export default function Checkout() {
                     <div className="text-lg font-extrabold text-ink">
                       Items ordered
                     </div>
+
                     {orderItems.length === 0 ? (
                       <div className="mt-4 text-sm text-muted">
                         Your cart is empty.
@@ -400,6 +450,7 @@ export default function Checkout() {
                                 sizes="80px"
                               />
                             </div>
+
                             <div className="min-w-0">
                               <div className="text-xs font-bold uppercase tracking-wide text-muted">
                                 {item.subtitle}
@@ -414,6 +465,7 @@ export default function Checkout() {
                                 Quantity: {item.qty}
                               </div>
                             </div>
+
                             <div className="text-left text-sm font-extrabold text-ink sm:text-right">
                               {formatGBP(item.priceGBP * item.qty)}
                             </div>
@@ -426,6 +478,7 @@ export default function Checkout() {
 
                 <aside className="h-fit rounded-xl2 border border-line bg-panel p-6">
                   <div className="text-lg font-extrabold text-ink">Summary</div>
+
                   <div className="mt-4 grid gap-2 text-sm text-muted">
                     <div className="flex justify-between">
                       <span>Subtotal</span>
@@ -476,6 +529,7 @@ export default function Checkout() {
               >
                 ← Back to cart
               </Link>
+
               <Link
                 href="/shop"
                 className="font-extrabold text-ink hover:underline"
@@ -486,6 +540,7 @@ export default function Checkout() {
           </div>
         </Container>
       </main>
+
       <Footer />
     </div>
   );

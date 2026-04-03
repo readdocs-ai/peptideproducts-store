@@ -35,19 +35,19 @@ export const metadata: Metadata = {
 const categoryCards = [
   {
     title: "Metabolic research peptides",
-    copy: "Explore Retatrutide, Tirzepatide, Melanotan, Selank, ML-10, and NAD product lines.",
+    copy: "Retatrutide, Tirzepatide, Melanotan, Selank, ML-10, and NAD product lines.",
     image: "/products/retatrutide-40mg-uk.jpg",
     href: "/research-peptides",
   },
   {
     title: "Regenerative compounds",
-    copy: "Browse BPC-157 and GHK-CU research compounds and related regeneration-focused products.",
+    copy: "BPC-157 and GHK-CU research compounds with regeneration-focused product lines.",
     image: "/products/ghk-cu-100mg.webp",
     href: "/regenerative-peptides",
   },
   {
     title: "Hydration and support products",
-    copy: "View bacteriostatic water and support liquids used in laboratory preparation workflows.",
+    copy: "Bacteriostatic water and support liquids used in laboratory preparation workflows.",
     image: "/products/bac-water-10ml.webp",
     href: "/hydration-peptides",
   },
@@ -135,31 +135,31 @@ export default function Home() {
           }}
         />
 
-        <section className="relative overflow-hidden pb-12 pt-8 lg:pb-16 lg:pt-12">
+        <section className="relative overflow-hidden pb-10 pt-8 lg:pb-14 lg:pt-10">
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute left-[-120px] top-[-100px] h-[280px] w-[280px] rounded-full bg-accent/15 blur-3xl" />
-            <div className="absolute right-[-120px] top-[40px] h-[240px] w-[240px] rounded-full bg-accent2/15 blur-3xl" />
+            <div className="absolute left-[-120px] top-[-100px] h-[260px] w-[260px] rounded-full bg-accent/15 blur-3xl" />
+            <div className="absolute right-[-120px] top-[40px] h-[220px] w-[220px] rounded-full bg-accent2/15 blur-3xl" />
           </div>
 
           <Container>
-            <div className="grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-center">
+            <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white/85 px-4 py-2 text-xs font-semibold text-muted shadow-soft backdrop-blur-sm">
                   Research use only • UK store • Secure checkout
                   <span className="h-2 w-2 rounded-full bg-accent2" />
                 </div>
 
-                <h1 className="mt-6 max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl lg:leading-[1.05]">
+                <h1 className="mt-5 max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl lg:leading-[1.05]">
                   <span className="block text-accent">Research peptides</span>
                   <span className="block text-ink">and laboratory compounds</span>
                   <span className="block text-ink">for scientific study</span>
                 </h1>
 
-                <p className="mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg">
+                <p className="mt-4 max-w-2xl text-base leading-7 text-muted md:text-lg">
                   Shop the main product range, go straight to Retatrutide, and move into secure checkout with fewer clicks.
                 </p>
 
-                <div className="mt-8 flex flex-wrap gap-3">
+                <div className="mt-6 flex flex-wrap gap-3">
                   <Link
                     href="/shop"
                     className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-accent/90"
@@ -175,7 +175,7 @@ export default function Home() {
                   </Link>
                 </div>
 
-                <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                <div className="mt-6 grid gap-3 sm:grid-cols-3">
                   <div className="rounded-xl2 border border-line bg-white/85 p-4 text-sm font-semibold text-ink shadow-soft backdrop-blur-sm">
                     Secure Stripe checkout
                   </div>
@@ -190,7 +190,7 @@ export default function Home() {
 
               <div className="relative">
                 <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
-                  <div className="relative h-[420px] w-full bg-[#f7f9fc] md:h-[520px]">
+                  <div className="relative h-[320px] w-full bg-[#f7f9fc] md:h-[420px] lg:h-[460px]">
                     <Image
                       src="/home/home-full-vial-set.webp"
                       alt="Peptide Products full research compound range"
@@ -207,59 +207,21 @@ export default function Home() {
           </Container>
         </section>
 
-        <section className="py-14">
+        <section className="bg-white/80 py-10 backdrop-blur-sm lg:py-14">
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
-                <h2 className="section-title">Shop by category</h2>
+                <h2 className="section-title">Best sellers</h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Start with the main product categories and go directly into the products that matter.
+                  Start with the products customers are already viewing most.
                 </p>
               </div>
               <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
-                View full catalogue →
+                Browse all products →
               </Link>
             </div>
 
-            <div className="mt-8 grid gap-6 lg:grid-cols-3">
-              {categoryCards.map((card) => (
-                <Link
-                  key={card.title}
-                  href={card.href}
-                  className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:shadow-lift"
-                >
-                  <div className="relative h-[280px] w-full bg-panel md:h-[340px]">
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      fill
-                      sizes="(min-width: 1024px) 33vw, 100vw"
-                      className="object-contain p-4 transition duration-300 group-hover:scale-[1.02]"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-extrabold tracking-tight">{card.title}</h3>
-                    <p className="mt-2 text-sm text-muted">{card.copy}</p>
-                    <div className="mt-4 text-sm font-extrabold text-ink">View category →</div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </Container>
-        </section>
-
-        <section className="bg-white/80 py-14 backdrop-blur-sm">
-          <Container>
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <h2 className="section-title">Featured products</h2>
-                <p className="mt-2 max-w-2xl text-sm text-muted">
-                  These are the main products customers are landing on and buying from.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {featuredProducts.map((p) => (
                 <ProductCard key={p.id} p={p} imageOverride={p.gallery?.[1] ?? p.image} />
               ))}
@@ -267,7 +229,7 @@ export default function Home() {
           </Container>
         </section>
 
-        <section className="py-14">
+        <section className="py-10 lg:py-14">
           <Container>
             <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
@@ -298,7 +260,9 @@ export default function Home() {
                 </div>
 
                 <div className="rounded-xl2 border border-line bg-panel p-5">
-                  <div className="text-xs font-extrabold uppercase tracking-wide text-muted">Product snapshot</div>
+                  <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+                    Product snapshot
+                  </div>
                   <div className="mt-3 text-lg font-extrabold text-ink">Retatrutide 40mg</div>
                   <div className="mt-1 text-sm text-muted">1 pre-filled pen • secure checkout</div>
                   <div className="mt-4 inline-flex rounded-full px-3 py-1 text-[11px] font-extrabold border border-emerald-200 bg-emerald-50 text-emerald-700">
@@ -311,7 +275,48 @@ export default function Home() {
           </Container>
         </section>
 
-        <section className="bg-white/80 py-14 backdrop-blur-sm">
+        <section className="py-10 lg:py-14">
+          <Container>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <h2 className="section-title">Shop by category</h2>
+                <p className="mt-2 max-w-2xl text-sm text-muted">
+                  Start with the main product categories and go directly into the products that matter.
+                </p>
+              </div>
+              <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
+                View full catalogue →
+              </Link>
+            </div>
+
+            <div className="mt-6 grid gap-6 lg:grid-cols-3">
+              {categoryCards.map((card) => (
+                <Link
+                  key={card.title}
+                  href={card.href}
+                  className="group overflow-hidden rounded-xl3 border border-line bg-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:shadow-lift"
+                >
+                  <div className="relative h-[240px] w-full bg-panel md:h-[300px]">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, 100vw"
+                      className="object-contain p-4 transition duration-300 group-hover:scale-[1.02]"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-lg font-extrabold tracking-tight">{card.title}</h3>
+                    <p className="mt-2 text-sm text-muted">{card.copy}</p>
+                    <div className="mt-4 text-sm font-extrabold text-ink">View category →</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        <section className="bg-white/80 py-10 backdrop-blur-sm lg:py-14">
           <Container>
             <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
               <div>
@@ -332,13 +337,22 @@ export default function Home() {
                   Start with the products people are already searching for, or browse the full catalogue.
                 </p>
                 <div className="mt-6 grid gap-3">
-                  <Link href="/product/retatrutide" className="rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90">
+                  <Link
+                    href="/product/retatrutide"
+                    className="rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+                  >
                     View Retatrutide
                   </Link>
-                  <Link href="/shop" className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel">
+                  <Link
+                    href="/shop"
+                    className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                  >
                     Browse all products
                   </Link>
-                  <Link href="/order-status" className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel">
+                  <Link
+                    href="/order-status"
+                    className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                  >
                     Track an order
                   </Link>
                 </div>

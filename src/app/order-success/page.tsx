@@ -15,21 +15,40 @@ export default function OrderSuccessPage() {
   return (
     <div>
       <Header />
-      <main className="py-14">
+
+      <main className="py-10 lg:py-14">
         <Container>
-          <div className="max-w-3xl rounded-xl3 border border-line bg-white p-8 shadow-soft">
-            <h1 className="text-3xl font-extrabold tracking-tight text-ink">
+          <div className="mx-auto max-w-3xl rounded-xl3 border border-line bg-white p-8 shadow-soft">
+            <div className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-extrabold text-emerald-700">
+              Payment completed
+            </div>
+
+            <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-ink">
               Payment successful
             </h1>
 
             <p className="mt-4 text-sm leading-7 text-muted">
-              Thank you. Your payment was completed successfully.
+              Thank you. Your card payment was completed successfully and your order
+              has been recorded.
             </p>
 
             <p className="mt-4 text-sm leading-7 text-muted">
               Your cart has now been cleared. Please keep your Stripe confirmation
-              email for your records.
+              email for your records. You can also use the order status page if you
+              need to check progress later.
             </p>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
+                Secure payment received
+              </div>
+              <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
+                Order saved successfully
+              </div>
+              <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
+                Tracking available later
+              </div>
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -49,6 +68,7 @@ export default function OrderSuccessPage() {
           </div>
         </Container>
       </main>
+
       <Footer />
     </div>
   );
