@@ -11,15 +11,25 @@ import {
 
 export const runtime = "nodejs";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+function getStripe() {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+
+  if (!secretKey) {
+    throw new Error("Missing STRIPE_SECRET_KEY");
+  }
+
+  return new Stripe(secretKey);
+}
 
 function priceIdToProductMap() {
   const map = new Map<string, (typeof products)[number]>();
+
   for (const product of products) {
     if (product.stripePriceId) {
       map.set(product.stripePriceId, product);
     }
   }
+
   return map;
 }
 
@@ -43,7 +53,9 @@ export async function POST(req: Request) {
   let event: Stripe.Event;
 
   try {
+    const stripe = getStripe();
     const body = await req.text();
+
     event = stripe.webhooks.constructEvent(
       body,
       signature,
@@ -56,6 +68,7 @@ export async function POST(req: Request) {
 
   try {
     if (event.type === "checkout.session.completed") {
+      const stripe = getStripe();
       const session = event.data.object as Stripe.Checkout.Session;
 
       const existing = await getOrderByStripeSessionId(session.id);

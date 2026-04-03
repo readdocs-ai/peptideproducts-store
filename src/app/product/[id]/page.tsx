@@ -26,7 +26,10 @@ function getCategoryPage(category: string) {
     case "Regenerative":
       return { href: "/regenerative-peptides", label: "Regenerative peptides" };
     case "Metabolic":
-      return { href: "/retatrutide-research-peptide", label: "Retatrutide research peptide" };
+      return {
+        href: "/retatrutide-research-peptide",
+        label: "Retatrutide research peptide",
+      };
     default:
       return null;
   }
@@ -49,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `${p.name} | Research Peptide Compound UK`;
 
   const description = isRetatrutide
-    ? `Buy Retatrutide UK research peptide. ${p.pack}. Research supply only. View product details, documentation, and related retatrutide research pages at Peptide Products.`
+    ? `Buy Retatrutide UK research peptide. ${p.pack}. Research supply only. View Retatrutide 40mg product details, price, stock status, and related research pages at Peptide Products.`
     : `${p.subtitle}. ${p.pack}. Research supply only. View product details, documentation, and related peptide research pages at Peptide Products.`;
 
   const url = `https://www.peptideproducts.co.uk/product/${p.id}`;
@@ -92,7 +95,7 @@ export default function ProductPage({ params }: Props) {
   const isRetatrutide = p.id === "retatrutide";
 
   const imageUrls = (p.gallery?.length ? p.gallery : [p.image]).map(
-    (src) => `https://www.peptideproducts.co.uk${src}`,
+    (src) => `https://www.peptideproducts.co.uk${src}`
   );
 
   const relatedProducts = products
@@ -107,7 +110,7 @@ export default function ProductPage({ params }: Props) {
     name: p.name,
     image: imageUrls,
     description: isRetatrutide
-      ? `${p.subtitle}. ${p.pack}. Research supply only. Buy Retatrutide UK research peptide with product details, documentation, and related research content.`
+      ? `${p.subtitle}. ${p.pack}. Research supply only. Buy Retatrutide UK research peptide with product details, stock status, and related research content.`
       : `${p.subtitle}. ${p.pack}. ${p.notes}`,
     sku: p.id,
     mpn: p.id,
@@ -249,7 +252,8 @@ export default function ProductPage({ params }: Props) {
             <div>
               <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
                 <div className="text-sm font-bold text-muted">{p.subtitle}</div>
-                <h1 className="mt-2 text-4xl font-extrabold tracking-tight">
+
+                <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-ink">
                   {p.name}
                 </h1>
 
@@ -264,53 +268,115 @@ export default function ProductPage({ params }: Props) {
                   {p.stockStatus === "in_stock" ? "In stock" : "Sold out"}
                 </div>
 
-                <p className="mt-3 text-sm text-muted">
-  {p.pack}. Supplied strictly for laboratory and scientific research use only.
-</p>
+                <p className="mt-4 text-sm leading-7 text-muted">
+                  <span className="font-semibold text-ink">{p.pack}</span>. Supplied
+                  strictly for laboratory and scientific research use only.
+                </p>
 
-{isRetatrutide ? (
-  <>
-    <p className="mt-3 text-sm text-muted">
-      Retatrutide 40mg is one of the leading products in our metabolic research
-      range, with a direct route from this page into the wider{" "}
-      <Link
-        href="/buy-retatrutide-uk"
-        className="font-semibold text-ink hover:text-accent"
-      >
-        Buy Retatrutide UK
-      </Link>{" "}
-      pathway and supporting{" "}
-      <Link
-        href="/retatrutide-research-peptide"
-        className="font-semibold text-ink hover:text-accent"
-      >
-        research guide
-      </Link>
-      .
-    </p>
+                {isRetatrutide ? (
+                  <>
+                    <p className="mt-4 text-sm leading-7 text-muted">
+                      Retatrutide 40mg is one of the main products in our metabolic
+                      research range. This page is designed to give a direct route
+                      into product pricing, stock status, secure checkout, and the
+                      wider{" "}
+                      <Link
+                        href="/buy-retatrutide-uk"
+                        className="font-semibold text-ink hover:text-accent"
+                      >
+                        Buy Retatrutide UK
+                      </Link>{" "}
+                      and{" "}
+                      <Link
+                        href="/retatrutide-research-peptide"
+                        className="font-semibold text-ink hover:text-accent"
+                      >
+                        Retatrutide research peptide
+                      </Link>{" "}
+                      pages.
+                    </p>
 
-    <div className="mt-4 grid gap-3 sm:grid-cols-3">
-      <div className="rounded-xl2 border border-line bg-panel p-3 text-xs font-extrabold text-ink">
-        Research use only
-      </div>
-      <div className="rounded-xl2 border border-line bg-panel p-3 text-xs font-extrabold text-ink">
-        UK dispatch available
-      </div>
-      <div className="rounded-xl2 border border-line bg-panel p-3 text-xs font-extrabold text-ink">
-        Direct product access
-      </div>
-    </div>
-  </>
-) : (
-  <p className="mt-3 text-sm text-muted">
-    This product may be reviewed in controlled analytical, biochemical,
-    formulation, compatibility, structural, or pathway-related research
-    environments depending on the active compound listed on the label.
-  </p>
-)}
+                    <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                      <div className="rounded-xl2 border border-line bg-panel p-3 text-xs font-extrabold text-ink">
+                        Secure Stripe checkout
+                      </div>
+                      <div className="rounded-xl2 border border-line bg-panel p-3 text-xs font-extrabold text-ink">
+                        UK dispatch available
+                      </div>
+                      <div className="rounded-xl2 border border-line bg-panel p-3 text-xs font-extrabold text-ink">
+                        Research use only
+                      </div>
+                    </div>
+
+                    <div className="mt-5 rounded-xl2 border border-line bg-panel p-5">
+                      <h2 className="text-lg font-extrabold tracking-tight text-ink">
+                        Retatrutide UK product pathway
+                      </h2>
+
+                      <p className="mt-3 text-sm leading-7 text-muted">
+                        Users looking to review Retatrutide 40mg price, product
+                        format, and UK availability can use this page as the main
+                        product route.
+                      </p>
+
+                      <p className="mt-3 text-sm leading-7 text-muted">
+                        For wider context, you can also explore{" "}
+                        <Link
+                          href="/buy-retatrutide-uk"
+                          className="font-semibold text-ink hover:text-accent"
+                        >
+                          Buy Retatrutide UK
+                        </Link>
+                        ,{" "}
+                        <Link
+                          href="/retatrutide-research-peptide"
+                          className="font-semibold text-ink hover:text-accent"
+                        >
+                          Retatrutide research peptide
+                        </Link>
+                        , and{" "}
+                        <Link
+                          href="/what-is-retatrutide"
+                          className="font-semibold text-ink hover:text-accent"
+                        >
+                          What is Retatrutide?
+                        </Link>
+                        .
+                      </p>
+
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        <Link
+                          href="/buy-retatrutide-uk"
+                          className="rounded-xl2 bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+                        >
+                          Buy Retatrutide UK
+                        </Link>
+                        <Link
+                          href="/retatrutide-research-peptide"
+                          className="rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                        >
+                          Research guide
+                        </Link>
+                        <Link
+                          href="/what-is-retatrutide"
+                          className="rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+                        >
+                          What is Retatrutide?
+                        </Link>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <p className="mt-4 text-sm leading-7 text-muted">
+                    This product may be reviewed in controlled analytical,
+                    biochemical, formulation, compatibility, structural, or
+                    pathway-related laboratory environments depending on the active
+                    compound listed on the label.
+                  </p>
+                )}
 
                 {p.id === "meso-glutathione" ? (
-                  <p className="mt-3 text-sm text-muted">
+                  <p className="mt-4 text-sm text-muted">
                     Explore more context in our{" "}
                     <Link
                       href="/glutathione-research-peptide"
@@ -330,7 +396,7 @@ export default function ProductPage({ params }: Props) {
                 ) : null}
 
                 {p.id === "skinbooster-hyaluronic-acid" ? (
-                  <p className="mt-3 text-sm text-muted">
+                  <p className="mt-4 text-sm text-muted">
                     Explore more context in our{" "}
                     <Link
                       href="/hyaluronic-acid-peptide-research"
@@ -350,7 +416,7 @@ export default function ProductPage({ params }: Props) {
                 ) : null}
 
                 {p.id === "meso-lift-firming" ? (
-                  <p className="mt-3 text-sm text-muted">
+                  <p className="mt-4 text-sm text-muted">
                     Explore the broader context in our{" "}
                     <Link
                       href="/firming-peptides"
@@ -363,7 +429,7 @@ export default function ProductPage({ params }: Props) {
                 ) : null}
 
                 {p.id === "meso-collagen" ? (
-                  <p className="mt-3 text-sm text-muted">
+                  <p className="mt-4 text-sm text-muted">
                     Explore the broader context in our{" "}
                     <Link
                       href="/regenerative-peptides"
@@ -376,7 +442,7 @@ export default function ProductPage({ params }: Props) {
                 ) : null}
 
                 {p.id === "meso-pdrn" ? (
-                  <p className="mt-3 text-sm text-muted">
+                  <p className="mt-4 text-sm text-muted">
                     Learn more in our{" "}
                     <Link
                       href="/pdrn-research-peptide"
@@ -395,67 +461,8 @@ export default function ProductPage({ params }: Props) {
                   </p>
                 ) : null}
 
-              {p.id === "retatrutide" ? (
-  <div className="mt-4 rounded-xl2 border border-line bg-panel p-5">
-    <h2 className="text-lg font-extrabold tracking-tight text-ink">
-      Retatrutide UK product pathway
-    </h2>
-
-    <p className="mt-3 text-sm leading-7 text-muted">
-      This product page is the main route for users looking to review
-      Retatrutide 40mg pricing, stock status, and laboratory product details.
-    </p>
-
-    <p className="mt-3 text-sm leading-7 text-muted">
-      You can also explore the{" "}
-      <Link
-        href="/buy-retatrutide-uk"
-        className="font-semibold text-ink hover:text-accent"
-      >
-        Buy Retatrutide UK
-      </Link>{" "}
-      page, the{" "}
-      <Link
-        href="/retatrutide-research-peptide"
-        className="font-semibold text-ink hover:text-accent"
-      >
-        retatrutide research peptide
-      </Link>{" "}
-      guide, and the{" "}
-      <Link
-        href="/what-is-retatrutide"
-        className="font-semibold text-ink hover:text-accent"
-      >
-        what is retatrutide
-      </Link>{" "}
-      page for broader context.
-    </p>
-
-    <div className="mt-4 flex flex-wrap gap-3">
-      <Link
-        href="/buy-retatrutide-uk"
-        className="rounded-xl2 bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
-      >
-        Buy Retatrutide UK
-      </Link>
-      <Link
-        href="/retatrutide-research-peptide"
-        className="rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
-      >
-        Research guide
-      </Link>
-      <Link
-        href="/what-is-retatrutide"
-        className="rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
-      >
-        What is Retatrutide?
-      </Link>
-    </div>
-  </div>
-) : null}
-
                 {p.id === "meso-vitamin-c" ? (
-                  <p className="mt-3 text-sm text-muted">
+                  <p className="mt-4 text-sm text-muted">
                     Explore the broader context in our{" "}
                     <Link
                       href="/antioxidant-peptides"
@@ -468,7 +475,7 @@ export default function ProductPage({ params }: Props) {
                 ) : null}
 
                 {categoryPage ? (
-                  <p className="mt-3 text-sm text-muted">
+                  <p className="mt-4 text-sm text-muted">
                     This product sits within the{" "}
                     <Link
                       href={categoryPage.href}
@@ -590,8 +597,8 @@ export default function ProductPage({ params }: Props) {
               >
                 <div className="text-sm font-extrabold text-ink">Research peptides</div>
                 <div className="mt-2 text-sm text-muted">
-                  Overview of antioxidant, hydration, firming, regenerative, and related
-                  compound lines.
+                  Overview of antioxidant, hydration, firming, regenerative, and
+                  related compound lines.
                 </div>
               </Link>
 

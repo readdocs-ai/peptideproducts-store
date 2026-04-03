@@ -122,6 +122,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
             {formatGBP(product.priceGBP)}
           </div>
         </div>
+
         <div className="rounded-xl2 border border-line bg-haze px-3 py-2 text-xs font-extrabold text-slate">
           Research supply
         </div>
@@ -141,7 +142,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
 
         {inStock ? (
           <div className="mt-2 text-xs text-slate">
-            UK dispatch available • Fast delivery options
+            Secure Stripe checkout • UK dispatch available
           </div>
         ) : (
           <div className="mt-2 text-xs text-slate">
@@ -151,7 +152,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
 
         {isRetatrutide ? (
           <div className="mt-3 rounded-xl2 border border-line bg-white p-3 text-xs font-bold text-ink">
-            Retatrutide is currently one of our most in-demand research products.
+            Retatrutide is one of our most viewed metabolic research products.
           </div>
         ) : null}
       </div>
@@ -169,6 +170,18 @@ export function ProductBuyBox({ product }: { product: Product }) {
         </div>
       ) : null}
 
+      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+        <div className="rounded-xl2 border border-line bg-white px-3 py-3 text-center text-[11px] font-extrabold text-ink">
+          Secure payment
+        </div>
+        <div className="rounded-xl2 border border-line bg-white px-3 py-3 text-center text-[11px] font-extrabold text-ink">
+          Fast UK dispatch
+        </div>
+        <div className="rounded-xl2 border border-line bg-white px-3 py-3 text-center text-[11px] font-extrabold text-ink">
+          Research use only
+        </div>
+      </div>
+
       <div className="mt-6">
         <label className="text-xs font-extrabold text-slate">Quantity</label>
         <div className="mt-2 flex items-center gap-2">
@@ -185,6 +198,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
           >
             −
           </button>
+
           <input
             className={
               "h-10 w-16 rounded-xl2 border border-line text-center font-extrabold outline-none " +
@@ -202,6 +216,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
             }}
             inputMode="numeric"
           />
+
           <button
             type="button"
             disabled={!inStock}
@@ -258,6 +273,12 @@ export function ProductBuyBox({ product }: { product: Product }) {
               className="font-bold text-ink hover:text-accent"
             >
               Research guide
+            </Link>
+            <Link
+              href="/what-is-retatrutide"
+              className="font-bold text-ink hover:text-accent"
+            >
+              What is Retatrutide?
             </Link>
           </div>
         </div>

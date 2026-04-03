@@ -4,10 +4,19 @@ import { products } from "@/data/products";
 
 export const runtime = "nodejs";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+function getStripe() {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+
+  if (!secretKey) {
+    throw new Error("Missing STRIPE_SECRET_KEY");
+  }
+
+  return new Stripe(secretKey);
+}
 
 export async function POST(req: Request) {
   try {
+    const stripe = getStripe();
     const body = await req.json();
     const items = body?.items ?? [];
 

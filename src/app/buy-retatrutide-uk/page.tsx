@@ -8,14 +8,14 @@ import { Container } from "@/components/Container";
 export const metadata: Metadata = {
   title: "Buy Retatrutide UK | Retatrutide 40mg Research Peptide | Peptide Products",
   description:
-    "Buy Retatrutide UK research peptide. View the Retatrutide 40mg product page, explore supporting research content, and browse related peptide pages at Peptide Products.",
+    "Buy Retatrutide UK research peptide. View Retatrutide 40mg price, stock status, supporting research content, and related UK peptide pages at Peptide Products.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/buy-retatrutide-uk",
   },
   openGraph: {
     title: "Buy Retatrutide UK | Retatrutide 40mg Research Peptide | Peptide Products",
     description:
-      "Buy Retatrutide UK research peptide and explore the Retatrutide 40mg product page with related laboratory research content.",
+      "Buy Retatrutide UK research peptide and view the Retatrutide 40mg product page with supporting research content and related UK peptide pages.",
     url: "https://www.peptideproducts.co.uk/buy-retatrutide-uk",
     siteName: "Peptide Products",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Buy Retatrutide UK | Retatrutide 40mg Research Peptide | Peptide Products",
     description:
-      "Buy Retatrutide UK research peptide and explore the Retatrutide 40mg product page with related laboratory research content.",
+      "Buy Retatrutide UK research peptide and view the Retatrutide 40mg product page with supporting research content.",
     images: ["https://www.peptideproducts.co.uk/products/retatrutide-40mg-uk.jpg"],
   },
 };
@@ -43,7 +43,7 @@ export default function Page() {
     name: "Buy Retatrutide UK",
     url: "https://www.peptideproducts.co.uk/buy-retatrutide-uk",
     description:
-      "Buy Retatrutide UK research peptide. View the Retatrutide 40mg product page, explore supporting research content, and browse related peptide pages.",
+      "Buy Retatrutide UK research peptide. View Retatrutide 40mg price, stock status, supporting research content, and related peptide pages.",
     isPartOf: {
       "@type": "WebSite",
       name: "Peptide Products",
@@ -83,7 +83,7 @@ export default function Page() {
         name: "Can I view the Retatrutide product page from here?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. This page links directly to the Retatrutide 40mg product page along with related research content.",
+          text: "Yes. This page links directly to the Retatrutide 40mg product page.",
         },
       },
       {
@@ -99,7 +99,7 @@ export default function Page() {
         name: "What related pages should I read next?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The most relevant related pages are the Retatrutide research peptide guide, the Research Peptides UK page, and the Retatrutide 40mg product listing.",
+          text: "The most relevant related pages are the Retatrutide research peptide guide, Research Peptides UK, and the Retatrutide 40mg product page.",
         },
       },
     ],
@@ -133,33 +133,20 @@ export default function Page() {
               </h1>
 
               <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
-                Buy Retatrutide 40mg research peptide with a direct route to the{" "}
+                Buy Retatrutide 40mg research peptide with a direct route into the{" "}
                 <Link
                   href="/product/retatrutide"
                   className="font-semibold text-ink hover:text-accent"
                 >
                   Retatrutide product page
                 </Link>
-                , supporting research content, and related peptide pages.
+                , product pricing, stock status, and secure checkout.
               </p>
 
               <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
-                This product is presented for laboratory and scientific research use
-                only. You can also explore the{" "}
-                <Link
-                  href="/retatrutide-research-peptide"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  retatrutide research peptide
-                </Link>{" "}
-                guide and the wider{" "}
-                <Link
-                  href="/research-peptides"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  research peptides
-                </Link>{" "}
-                catalogue.
+                This page is designed for users looking to buy retatrutide in the UK
+                and move quickly into the main product listing, supporting research
+                content, and related peptide pages without unnecessary steps.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -208,7 +195,7 @@ export default function Page() {
                   </h2>
 
                   <p className="mt-3 text-sm leading-7 text-muted">
-                    Premium research peptide listing for laboratory and scientific
+                    Research peptide listing supplied for laboratory and scientific
                     research use only.
                   </p>
 
@@ -221,7 +208,7 @@ export default function Page() {
                   </div>
 
                   <div className="mt-2 text-sm text-muted">
-                    1 pre-filled pen • research-use-only listing
+                    1 pre-filled pen • secure Stripe checkout
                   </div>
 
                   <div className="mt-6 flex flex-wrap gap-3">
@@ -242,13 +229,13 @@ export default function Page() {
 
                   <div className="mt-6 grid gap-3">
                     <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
+                      Secure Stripe checkout
+                    </div>
+                    <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
+                      UK dispatch available
+                    </div>
+                    <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
                       Research use only
-                    </div>
-                    <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
-                      UK supply route
-                    </div>
-                    <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
-                      Direct product access
                     </div>
                   </div>
                 </div>
@@ -261,14 +248,14 @@ export default function Page() {
           <Container>
             <div className="max-w-4xl">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Retatrutide research peptide overview
+                Retatrutide UK product route
               </h2>
 
               <p className="mt-4 text-sm leading-7 text-muted">
                 Retatrutide is listed on this site as a research-use-only peptide
                 product supplied for laboratory and scientific investigation. This
-                page gives users a direct route into the main product listing while
-                supporting broader retatrutide-related searches in the UK.
+                page helps users searching for Retatrutide in the UK move directly
+                into the main product listing with a clearer buying path.
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
@@ -279,46 +266,33 @@ export default function Page() {
                 >
                   buy retatrutide UK
                 </Link>
-                , the most direct path is to view the{" "}
+                , the most direct step is to view the{" "}
                 <Link
                   href="/product/retatrutide"
                   className="font-semibold text-ink hover:text-accent"
                 >
                   Retatrutide 40mg product listing
                 </Link>
-                , then continue into the{" "}
+                , where you can review product format, current price, stock status,
+                and checkout options.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                For broader context, you can also read the{" "}
                 <Link
                   href="/retatrutide-research-peptide"
                   className="font-semibold text-ink hover:text-accent"
                 >
-                  research guide
+                  retatrutide research peptide
                 </Link>{" "}
-                for additional context.
-              </p>
-
-              <p className="mt-4 text-sm leading-7 text-muted">
-                You can also browse the wider peptide category structure through{" "}
+                guide and browse the wider{" "}
                 <Link
                   href="/research-peptides"
                   className="font-semibold text-ink hover:text-accent"
                 >
                   research peptides
-                </Link>
-                ,{" "}
-                <Link
-                  href="/research-peptides-uk"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  research peptides UK
-                </Link>
-                , and{" "}
-                <Link
-                  href="/buy-research-peptides-uk"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  buy research peptides UK
-                </Link>
-                .
+                </Link>{" "}
+                structure across the site.
               </p>
             </div>
           </Container>
@@ -328,7 +302,7 @@ export default function Page() {
           <Container>
             <div className="max-w-5xl">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Why users land on this page
+                Why this page matters
               </h2>
 
               <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -336,22 +310,23 @@ export default function Page() {
                   <div className="font-extrabold text-ink">Direct product route</div>
                   <p className="mt-2 text-sm text-muted">
                     This page links directly to the Retatrutide 40mg product listing
-                    for faster product discovery.
+                    for faster product discovery and fewer drop-offs.
                   </p>
                 </div>
 
                 <div className="surface-card p-5">
-                  <div className="font-extrabold text-ink">Supporting research guide</div>
+                  <div className="font-extrabold text-ink">Supports buying intent</div>
                   <p className="mt-2 text-sm text-muted">
-                    Internal links to the retatrutide research page add useful context
-                    without distracting from the product route.
+                    It is built for users already searching to buy Retatrutide in the
+                    UK and move quickly into the product page.
                   </p>
                 </div>
 
                 <div className="surface-card p-5">
-                  <div className="font-extrabold text-ink">Wider peptide catalogue</div>
+                  <div className="font-extrabold text-ink">Connects related pages</div>
                   <p className="mt-2 text-sm text-muted">
-                    Users can also continue into broader peptide categories and UK-focused research pages.
+                    Internal links to supporting guides help strengthen topic
+                    coverage while keeping the product route clear.
                   </p>
                 </div>
               </div>

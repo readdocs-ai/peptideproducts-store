@@ -3,8 +3,13 @@
 import { Product } from "@/data/products";
 
 export type CartItem = { productId: string; qty: number };
+export type CartEventDetail = { productId?: string; qty?: number; added?: boolean };
 
 const KEY = "pp_cart_v1";
+
+function dispatchCartEvent(detail?: CartEventDetail) {
+  window.dispatchEvent(new CustomEvent("pp-cart", { detail }));
+}
 
 export function readCart(): CartItem[] {
   if (typeof window === "undefined") return [];
@@ -30,19 +35,19 @@ export function addToCart(productId: string, qty = 1) {
   if (idx >= 0) cart[idx] = { ...cart[idx], qty: Math.min(99, cart[idx].qty + qty) };
   else cart.push({ productId, qty });
   writeCart(cart);
-  window.dispatchEvent(new Event("pp-cart"));
+  dispatchCartEvent({ productId, qty, added: true });
 }
 
 export function setQty(productId: string, qty: number) {
   const cart = readCart();
   const next = cart.map((i) => (i.productId === productId ? { ...i, qty } : i)).filter((i) => i.qty > 0);
   writeCart(next);
-  window.dispatchEvent(new Event("pp-cart"));
+  dispatchCartEvent({ productId, qty });
 }
 
 export function clearCart() {
   writeCart([]);
-  window.dispatchEvent(new Event("pp-cart"));
+  dispatchCartEvent();
 }
 
 export function cartCount(items: CartItem[]) {

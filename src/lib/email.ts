@@ -188,3 +188,29 @@ export async function sendShippedEmail(params: SendShippedEmailParams) {
     html: customerHtml,
   });
 }
+export async function sendWholesaleEmail(params: {
+  name: string;
+  email: string;
+  company?: string;
+  message: string;
+}) {
+  const resend = getResend();
+
+  const adminHtml = `
+    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
+      <h1>New wholesale enquiry</h1>
+      <p><strong>Name:</strong> ${params.name}</p>
+      <p><strong>Email:</strong> ${params.email}</p>
+      <p><strong>Company:</strong> ${params.company || "Not provided"}</p>
+      <p><strong>Message:</strong></p>
+      <p>${params.message.replace(/\n/g, "<br />")}</p>
+    </div>
+  `;
+
+  await resend.emails.send({
+    from: "Peptide Products <info@peptideproducts.co.uk>",
+    to: "info@peptideproducts.co.uk",
+    subject: `New wholesale enquiry from ${params.name}`,
+    html: adminHtml,
+  });
+}
