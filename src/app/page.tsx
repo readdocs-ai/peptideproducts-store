@@ -85,6 +85,8 @@ export default function Home() {
     getProduct("bac-water-10ml"),
   ].filter(Boolean) as typeof products;
 
+  const retatrutide = getProduct("retatrutide");
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -135,14 +137,14 @@ export default function Home() {
           }}
         />
 
-        <section className="relative overflow-hidden pb-10 pt-8 lg:pb-14 lg:pt-10">
+        <section className="relative overflow-hidden py-12 lg:py-16">
           <div className="pointer-events-none absolute inset-0 -z-10">
             <div className="absolute left-[-120px] top-[-100px] h-[260px] w-[260px] rounded-full bg-accent/15 blur-3xl" />
             <div className="absolute right-[-120px] top-[40px] h-[220px] w-[220px] rounded-full bg-accent2/15 blur-3xl" />
           </div>
 
           <Container>
-            <div className="grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:items-center">
+            <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white/85 px-4 py-2 text-xs font-semibold text-muted shadow-soft backdrop-blur-sm">
                   Research use only • UK store • Secure checkout
@@ -156,7 +158,8 @@ export default function Home() {
                 </h1>
 
                 <p className="mt-4 max-w-2xl text-base leading-7 text-muted md:text-lg">
-                  Shop the main product range, go straight to Retatrutide, and move into secure checkout with fewer clicks.
+                  Browse the full product range, move quickly into best sellers,
+                  and use secure checkout with a clearer path from product to cart.
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-3">
@@ -188,20 +191,62 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="relative">
-                <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
-                  <div className="relative h-[320px] w-full bg-[#f7f9fc] md:h-[420px] lg:h-[460px]">
-                    <Image
-                      src="/home/home-full-vial-set.webp"
-                      alt="Peptide Products full research compound range"
-                      fill
-                      priority
-                      fetchPriority="high"
-                      sizes="(min-width: 1024px) 46vw, 100vw"
-                      className="object-contain object-center"
-                    />
+              <div>
+                {retatrutide ? (
+                  <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-lift">
+                    <div className="relative h-[300px] w-full bg-panel md:h-[360px]">
+                      <Image
+                        src={retatrutide.image}
+                        alt={retatrutide.name}
+                        fill
+                        priority
+                        sizes="(min-width: 1024px) 46vw, 100vw"
+                        className="object-contain object-center p-6"
+                      />
+
+                      <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-ink shadow-soft">
+                        Featured product
+                      </div>
+
+                      <div className="absolute right-4 top-4 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-extrabold text-emerald-700 shadow-soft">
+                        In stock
+                      </div>
+                    </div>
+
+                    <div className="border-t border-line p-5">
+                      <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+                        Most viewed route
+                      </div>
+
+                      <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-ink">
+                        Retatrutide 40mg
+                      </h2>
+
+                      <p className="mt-2 text-sm text-muted">
+                        One of the most viewed products on the site with a direct path
+                        into product detail, cart, and secure checkout.
+                      </p>
+
+                      <div className="mt-4 flex items-end justify-between gap-4">
+                        <div>
+                          <div className="text-sm font-semibold text-muted">
+                            1 pre-filled pen
+                          </div>
+                          <div className="mt-1 text-2xl font-extrabold text-ink">
+                            £{retatrutide.priceGBP.toFixed(2)}
+                          </div>
+                        </div>
+
+                        <Link
+                          href="/product/retatrutide"
+                          className="rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
+                        >
+                          View product
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ) : null}
               </div>
             </div>
           </Container>
@@ -216,14 +261,22 @@ export default function Home() {
                   Start with the products customers are already viewing most.
                 </p>
               </div>
-              <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
+
+              <Link
+                href="/shop"
+                className="text-sm font-extrabold text-ink/80 hover:text-ink"
+              >
                 Browse all products →
               </Link>
             </div>
 
             <div className="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {featuredProducts.map((p) => (
-                <ProductCard key={p.id} p={p} imageOverride={p.gallery?.[1] ?? p.image} />
+                <ProductCard
+                  key={p.id}
+                  p={p}
+                  imageOverride={p.gallery?.[1] ?? p.image}
+                />
               ))}
             </div>
           </Container>
@@ -235,14 +288,19 @@ export default function Home() {
               <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
                 <div>
                   <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-accent">
-                    Featured compound
+                    Featured route
                   </div>
+
                   <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
                     Buy Retatrutide UK
                   </h2>
+
                   <p className="mt-4 max-w-2xl text-sm leading-7 text-muted md:text-base">
-                    Retatrutide 40mg is currently one of the strongest product routes on the site. Use the main product page for price, stock status, and checkout.
+                    Retatrutide 40mg is one of the strongest routes on the site.
+                    Use the main product page for price, stock status, and checkout,
+                    or go directly into the dedicated UK route.
                   </p>
+
                   <div className="mt-6 flex flex-wrap gap-3">
                     <Link
                       href="/product/retatrutide"
@@ -250,6 +308,7 @@ export default function Home() {
                     >
                       View Retatrutide 40mg
                     </Link>
+
                     <Link
                       href="/buy-retatrutide-uk"
                       className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
@@ -259,16 +318,16 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="rounded-xl2 border border-line bg-panel p-5">
-                  <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
-                    Product snapshot
+                <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                  <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
+                    Fast product access
                   </div>
-                  <div className="mt-3 text-lg font-extrabold text-ink">Retatrutide 40mg</div>
-                  <div className="mt-1 text-sm text-muted">1 pre-filled pen • secure checkout</div>
-                  <div className="mt-4 inline-flex rounded-full px-3 py-1 text-[11px] font-extrabold border border-emerald-200 bg-emerald-50 text-emerald-700">
-                    In stock
+                  <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
+                    Secure card checkout
                   </div>
-                  <div className="mt-5 text-2xl font-extrabold text-ink">£150.00</div>
+                  <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
+                    Order tracking available
+                  </div>
                 </div>
               </div>
             </div>
@@ -281,10 +340,15 @@ export default function Home() {
               <div>
                 <h2 className="section-title">Shop by category</h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Start with the main product categories and go directly into the products that matter.
+                  Start with the main product categories and go directly into the
+                  products that matter.
                 </p>
               </div>
-              <Link href="/shop" className="text-sm font-extrabold text-ink/80 hover:text-ink">
+
+              <Link
+                href="/shop"
+                className="text-sm font-extrabold text-ink/80 hover:text-ink"
+              >
                 View full catalogue →
               </Link>
             </div>
@@ -305,10 +369,15 @@ export default function Home() {
                       className="object-contain p-4 transition duration-300 group-hover:scale-[1.02]"
                     />
                   </div>
+
                   <div className="p-5">
-                    <h3 className="text-lg font-extrabold tracking-tight">{card.title}</h3>
+                    <h3 className="text-lg font-extrabold tracking-tight">
+                      {card.title}
+                    </h3>
                     <p className="mt-2 text-sm text-muted">{card.copy}</p>
-                    <div className="mt-4 text-sm font-extrabold text-ink">View category →</div>
+                    <div className="mt-4 text-sm font-extrabold text-ink">
+                      View category →
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -321,21 +390,32 @@ export default function Home() {
             <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
               <div>
                 <h2 className="section-title">Common questions</h2>
+
                 <div className="mt-6 grid gap-5">
                   {faqItems.map((item) => (
-                    <div key={item.question} className="rounded-xl2 border border-line bg-white p-5 shadow-soft">
+                    <div
+                      key={item.question}
+                      className="rounded-xl2 border border-line bg-white p-5 shadow-soft"
+                    >
                       <h3 className="text-base font-extrabold">{item.question}</h3>
-                      <p className="mt-2 text-sm leading-6 text-muted">{item.answer}</p>
+                      <p className="mt-2 text-sm leading-6 text-muted">
+                        {item.answer}
+                      </p>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div className="rounded-xl3 border border-line bg-panel p-6 shadow-soft">
-                <h2 className="text-2xl font-extrabold tracking-tight">Need a fast route?</h2>
+                <h2 className="text-2xl font-extrabold tracking-tight">
+                  Need a fast route?
+                </h2>
+
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  Start with the products people are already searching for, or browse the full catalogue.
+                  Start with the products people are already searching for, or
+                  browse the full catalogue.
                 </p>
+
                 <div className="mt-6 grid gap-3">
                   <Link
                     href="/product/retatrutide"
@@ -343,12 +423,14 @@ export default function Home() {
                   >
                     View Retatrutide
                   </Link>
+
                   <Link
                     href="/shop"
                     className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
                   >
                     Browse all products
                   </Link>
+
                   <Link
                     href="/order-status"
                     className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"

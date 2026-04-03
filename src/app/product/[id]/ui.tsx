@@ -152,7 +152,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
 
         {isRetatrutide ? (
           <div className="mt-3 rounded-xl2 border border-line bg-white p-3 text-xs font-bold text-ink">
-            Retatrutide is one of our most viewed metabolic research products.
+            Retatrutide is currently one of our highest-demand research products.
           </div>
         ) : null}
       </div>
@@ -181,6 +181,15 @@ export function ProductBuyBox({ product }: { product: Product }) {
           Research use only
         </div>
       </div>
+
+      {isRetatrutide ? (
+        <div className="mt-6 rounded-xl2 border border-emerald-200 bg-emerald-50 p-4 text-xs text-emerald-800">
+          <div className="font-extrabold">Quick route to checkout</div>
+          <div className="mt-1">
+            Add Retatrutide to cart and use the secure card checkout from your cart page.
+          </div>
+        </div>
+      ) : null}
 
       <div className="mt-6">
         <label className="text-xs font-extrabold text-slate">Quantity</label>
@@ -249,6 +258,13 @@ export function ProductBuyBox({ product }: { product: Product }) {
         {inStock ? `Add to cart — ${formatGBP(total)}` : "Sold out"}
       </button>
 
+      <Link
+        href="/cart"
+        className="mt-3 inline-flex w-full justify-center rounded-xl2 border border-line bg-white px-4 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+      >
+        Go to cart / checkout
+      </Link>
+
       <div className="mt-3 text-xs text-slate">
         You’ll be asked to confirm{" "}
         <span className="font-bold text-ink">research use only</span> at checkout.
@@ -289,7 +305,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
           ← Continue shopping
         </Link>
         <Link href="/cart" className="font-extrabold text-ink hover:underline">
-          Go to cart →
+          View cart →
         </Link>
       </div>
     </aside>
