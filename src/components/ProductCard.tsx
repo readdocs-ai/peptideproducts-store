@@ -22,25 +22,7 @@ function getCategoryHref(category: Product["category"]) {
   }
 }
 
-<<<<<<< HEAD
 export function ProductCard({ p, imageOverride }: { p: Product; imageOverride?: string }) {
-=======
-function getImageAlt(p: Product) {
-  if (p.id === "retatrutide") {
-    return "Retatrutide 40mg research peptide product image";
-  }
-
-  return `${p.name} research peptide product image`;
-}
-
-export function ProductCard({
-  p,
-  imageOverride,
-}: {
-  p: Product;
-  imageOverride?: string;
-}) {
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
   const displayImage = imageOverride ?? p.image;
   const inStock = p.stockStatus === "in_stock";
   const categoryHref = getCategoryHref(p.category);
@@ -49,7 +31,6 @@ export function ProductCard({
   return (
     <div
       className={
-<<<<<<< HEAD
         "group overflow-hidden rounded-xl3 border bg-white shadow-soft transition duration-200 hover:-translate-y-1 hover:shadow-lift " +
         (isRetatrutide ? "border-accent/30" : "border-line")
       }
@@ -65,23 +46,6 @@ export function ProductCard({
           />
 
           <div className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-extrabold text-ink shadow-soft">
-=======
-        "group overflow-hidden rounded-xl3 border bg-paper/85 shadow-soft backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:shadow-lift " +
-        (isRetatrutide ? "border-accent/40" : "border-line")
-      }
-    >
-      <Link href={`/product/${p.id}`} className="block">
-        <div className="relative h-[300px] w-full bg-panel sm:h-[340px]">
-          <Image
-            src={displayImage}
-            alt={getImageAlt(p)}
-            fill
-            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-contain object-center p-3 transition duration-300 group-hover:scale-[1.02]"
-          />
-
-          <div className="absolute left-3 top-3 rounded-full bg-paper/90 px-3 py-1 text-xs font-extrabold text-ink shadow-soft">
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
             {p.category}
           </div>
 
@@ -96,22 +60,15 @@ export function ProductCard({
             {inStock ? "In stock" : "Sold out"}
           </div>
 
-<<<<<<< HEAD
           {p.coa ? (
             <div className="absolute bottom-3 right-3 rounded-full border border-premium/30 bg-white/95 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-premium shadow-soft">
               COA available
-=======
-          {isRetatrutide ? (
-            <div className="absolute bottom-3 left-3 rounded-full bg-accent px-3 py-1 text-[11px] font-extrabold text-white shadow-soft">
-              Most viewed
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
             </div>
           ) : null}
         </div>
       </Link>
 
       <div className="p-5">
-<<<<<<< HEAD
         <div className="text-xs font-bold uppercase tracking-wide text-muted">{p.subtitle}</div>
 
         <Link href={`/product/${p.id}`} className="block">
@@ -134,27 +91,6 @@ export function ProductCard({
             <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent2" />
             <span>{p.coa ? "Certificate file available" : "Research-use listing"}</span>
           </li>
-=======
-        <div className="text-xs font-bold text-slate">{p.subtitle}</div>
-
-        <Link href={`/product/${p.id}`} className="block">
-          <div className="mt-2 text-xl font-extrabold tracking-tight text-ink group-hover:text-accent">
-            {p.name}
-          </div>
-        </Link>
-
-        <div className="mt-3 flex items-center justify-between gap-4 text-sm">
-          <div className="min-w-0 text-slate">{p.pack}</div>
-          <div className="shrink-0 font-extrabold text-ink">
-            {formatGBP(p.priceGBP)}
-          </div>
-        </div>
-
-        <ul className="mt-3 grid gap-1 text-sm text-slate">
-          {p.highlights.slice(0, 2).map((h) => (
-            <li key={h}>• {h}</li>
-          ))}
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
         </ul>
 
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -173,11 +109,7 @@ export function ProductCard({
             className={
               "rounded-xl2 px-4 py-2.5 text-sm font-extrabold shadow-soft transition " +
               (inStock
-<<<<<<< HEAD
                 ? "border border-line bg-white text-ink hover:bg-panel"
-=======
-                ? "bg-accent text-white hover:bg-accent/90"
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 : "cursor-not-allowed bg-red-100 text-red-700")
             }
           >
@@ -185,28 +117,14 @@ export function ProductCard({
           </button>
         </div>
 
-<<<<<<< HEAD
         <div className="mt-4 flex flex-wrap items-center gap-4 text-sm">
           <Link href={categoryHref} className="font-extrabold text-muted hover:text-accent">
             View category →
           </Link>
           {p.coa ? <span className="text-xs font-extrabold uppercase tracking-wide text-premium">COA</span> : null}
           {isRetatrutide ? <span className="text-xs font-extrabold uppercase tracking-wide text-accent">Best seller</span> : null}
-=======
-        <div className="mt-3 flex flex-wrap gap-3 text-sm">
-          <Link
-            href={categoryHref}
-            className="font-extrabold text-slate hover:text-accent"
-          >
-            View category →
-          </Link>
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
         </div>
       </div>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f

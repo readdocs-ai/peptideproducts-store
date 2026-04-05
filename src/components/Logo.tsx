@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 import { brand } from "@/theme/brand";
 
 function LogoMark({ compact = false }: { compact?: boolean }) {
-  const size = compact ? 40 : 44; // ⬅️ increase compact size
-  const fontSize = compact ? 18 : 20;
+  const size = compact ? 34 : 44;
+  const fontSize = compact ? 16 : 20;
 
   return (
     <svg
@@ -22,6 +21,7 @@ function LogoMark({ compact = false }: { compact?: boolean }) {
         fill="white"
         fontSize={fontSize}
         fontWeight="800"
+        fontFamily="Arial, Helvetica, sans-serif"
       >
         PP
       </text>
@@ -31,40 +31,17 @@ function LogoMark({ compact = false }: { compact?: boolean }) {
 
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <div className="flex items-center gap-4 sm:gap-5">
+    <div className="flex items-center gap-3 sm:gap-4">
       <LogoMark compact={compact} />
 
       <div className="min-w-0 leading-tight">
-=======
-import Image from "next/image";
-import { brand } from "@/theme/brand";
-
-export function Logo({ compact = false }: { compact?: boolean }) {
-  return (
-    <div className="flex items-center gap-2 sm:gap-3">
-      <Image
-        src="/brand/logo.svg"
-        alt={`${brand.name} logo`}
-        width={compact ? 30 : 38}
-        height={compact ? 30 : 38}
-        priority
-        className="rounded-md"
-      />
-
-      <div className="leading-tight">
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
         <div className="text-sm font-extrabold tracking-tight text-ink sm:text-base">
           {brand.name}
         </div>
 
         {!compact && (
-<<<<<<< HEAD
-          <div className="hidden text-[11px] font-medium text-muted/80 sm:block">
-            Premium UK research peptide supplier
-=======
           <div className="hidden text-[11px] font-semibold text-muted sm:block">
-            {brand.tagline}
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
+            Premium UK research peptide supplier
           </div>
         )}
       </div>

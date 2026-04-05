@@ -16,12 +16,11 @@ html {
 }
 
 body {
-<<<<<<< HEAD
   @apply bg-bg text-ink font-sans antialiased;
   background-image:
-    radial-gradient(circle at top left, rgba(29, 78, 216, 0.08), transparent 26%),
-    radial-gradient(circle at top right, rgba(15, 118, 110, 0.06), transparent 24%),
-    linear-gradient(to bottom, #f8fbff 0%, #f5f8fc 34%, #ffffff 100%);
+    radial-gradient(circle at top left, rgba(29, 78, 216, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(15, 118, 110, 0.10), transparent 26%),
+    linear-gradient(to bottom, #f8fbff 0%, #f3f7fd 38%, #ffffff 100%);
   background-attachment: fixed;
 }
 
@@ -31,27 +30,15 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(148, 163, 184, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
   background-size: 36px 36px;
-  mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.22), transparent 72%);
+  mask-image: linear-gradient(to bottom, rgba(255,255,255,0.28), transparent 74%);
   z-index: -1;
 }
 
 ::selection {
-  background: rgba(29, 78, 216, 0.2);
-=======
-  @apply bg-bg text-ink font-sans;
-  background-image:
-    radial-gradient(circle at top left, rgba(37, 99, 235, 0.07), transparent 28%),
-    radial-gradient(circle at top right, rgba(20, 184, 166, 0.06), transparent 26%),
-    linear-gradient(to bottom, #ffffff, #f8fafc 55%, #ffffff);
-  background-attachment: fixed;
-}
-
-::selection {
-  background: rgba(37, 99, 235, 0.20);
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
+  background: rgba(29, 78, 216, 0.20);
 }
 
 a {
@@ -68,7 +55,6 @@ img {
   }
 
   .section-title {
-<<<<<<< HEAD
     @apply text-2xl font-extrabold tracking-tight text-ink md:text-3xl;
   }
 
@@ -77,11 +63,11 @@ img {
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-muted shadow-soft;
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white/95 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-muted shadow-soft backdrop-blur;
   }
 
   .trust-pill {
-    @apply rounded-full border border-line bg-white px-3 py-1.5 text-xs font-extrabold text-ink shadow-soft;
+    @apply rounded-full border border-line bg-white/95 px-3 py-1.5 text-xs font-extrabold text-ink shadow-soft;
   }
 
   .feature-card {
@@ -89,7 +75,7 @@ img {
   }
 
   .glass-card {
-    @apply rounded-xl3 border border-line bg-white shadow-soft;
+    @apply rounded-xl3 border border-white/70 bg-white/80 shadow-lift backdrop-blur-md;
   }
 
   .soft-label {
@@ -98,12 +84,5 @@ img {
 
   .premium-badge {
     @apply inline-flex items-center rounded-full border border-premium/30 bg-premium/10 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-premium;
-=======
-    @apply text-2xl font-extrabold tracking-tight text-ink;
-  }
-
-  .section-copy {
-    @apply text-sm leading-7 text-muted;
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
   }
 }

@@ -129,10 +129,7 @@ export const products: Product[] = [
     ],
     notes: "For research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
-<<<<<<< HEAD
     coa: "/docs/coa/selank-10mg.pdf",
-=======
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
   },
 
   {
@@ -159,10 +156,7 @@ export const products: Product[] = [
     ],
     notes: "For research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
-<<<<<<< HEAD
     coa: "/docs/coa/selank-5mg.pdf",
-=======
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
   },
 
   {
@@ -189,10 +183,7 @@ export const products: Product[] = [
     ],
     notes: "For research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
-<<<<<<< HEAD
     coa: "/docs/coa/bpc-157-5mg.pdf",
-=======
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
   },
 
   {
@@ -297,10 +288,7 @@ export const products: Product[] = [
     ],
     notes: "For research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
-<<<<<<< HEAD
     coa: "/docs/coa/ghk-cu-50mg.pdf",
-=======
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
   },
 
   {
@@ -327,10 +315,7 @@ export const products: Product[] = [
     ],
     notes: "For research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
-<<<<<<< HEAD
     coa: "/docs/coa/ghk-cu-100mg.pdf",
-=======
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
   },
 
   {
@@ -383,10 +368,7 @@ export const products: Product[] = [
     ],
     notes: "For research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
-<<<<<<< HEAD
     coa: "/docs/coa/nad-500mg.pdf",
-=======
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
   },
 
   {
@@ -439,10 +421,7 @@ export const products: Product[] = [
     ],
     notes: "For research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
-<<<<<<< HEAD
     coa: "/docs/coa/glutathione-500mg.pdf",
-=======
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
   },
 
   {

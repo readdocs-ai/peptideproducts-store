@@ -344,13 +344,7 @@ export default function HydrationPeptidesPage() {
                 >
                   peptide products
                 </Link>
-<<<<<<< HEAD
                 . Linking related pages in this way helps users move through relevant topic areas and compare closely related product categories more easily.
-=======
-                . Linking related pages in this way helps users move through
-                relevant topic areas while strengthening site structure for
-                search visibility.
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
@@ -509,11 +503,7 @@ export default function HydrationPeptidesPage() {
                 and search structure. Product pages, guides, and category
                 content are designed to support scientific review, controlled
                 investigation, and research navigation rather than general
-<<<<<<< HEAD
                 consumer use. This keeps the catalogue focused on
-=======
-                consumer use. This gives the site a clearer topical focus and
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 helps keep all content aligned with laboratory study and
                 scientific investigation.
               </p>

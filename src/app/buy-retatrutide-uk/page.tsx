@@ -133,11 +133,7 @@ export default function Page() {
               </h1>
 
               <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
-<<<<<<< HEAD
                 Buy Retatrutide 40mg research peptide and move directly to the{" "}
-=======
-                Buy Retatrutide 40mg research peptide with a direct route into the{" "}
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 <Link
                   href="/product/retatrutide"
                   className="font-semibold text-ink hover:text-accent"
@@ -397,11 +393,7 @@ export default function Page() {
               <Link href="/" className="surface-card p-5">
                 <div className="font-extrabold text-ink">Homepage</div>
                 <p className="mt-2 text-sm text-muted">
-<<<<<<< HEAD
                   Return to the main catalogue and research guides.
-=======
-                  Return to the main site hub for products, categories, and research pages.
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 </p>
               </Link>
             </div>

@@ -347,12 +347,7 @@ export default function AntioxidantPeptidesPage() {
                   peptide products
                 </Link>
                 . Linking into these related pages helps users move through
-<<<<<<< HEAD
                 connected topic areas and compare related antioxidant product categories more easily.
-=======
-                connected topic areas while also strengthening internal site
-                structure for search visibility.
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
@@ -440,11 +435,7 @@ export default function AntioxidantPeptidesPage() {
               <p className="mt-4 text-sm leading-7 text-muted">
                 This type of internal topic structure helps users find relevant
                 laboratory research areas quickly while also supporting stronger
-<<<<<<< HEAD
                 the wider peptide and laboratory compound catalogue. It reinforces that
-=======
-                site architecture for search engines. It reinforces that
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 antioxidant compounds are part of a wider scientific catalogue
                 including detailed product pages, category hubs, and broader
                 informational guides focused on controlled investigation and
@@ -538,11 +529,7 @@ export default function AntioxidantPeptidesPage() {
                 and search structure. Product pages, guides, and category
                 content are designed to support scientific review, controlled
                 investigation, and research navigation rather than general
-<<<<<<< HEAD
                 consumer use. This keeps the catalogue focused on
-=======
-                consumer use. This gives the site a clearer topical focus and
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 helps keep all content aligned with laboratory study and
                 scientific investigation.
               </p>

@@ -285,11 +285,7 @@ export default function Page() {
               <p className="mt-4 text-sm leading-7 text-muted">
                 Topic interest around Retatrutide often includes references to
                 GLP-1, GIP, and glucagon pathway activity in scientific
-<<<<<<< HEAD
                 discussion. Here, that context supports a clearer path into the{" "}
-=======
-                discussion. Here, that context supports a clearer route into the{" "}
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 <Link
                   href="/product/retatrutide"
                   className="font-semibold text-ink hover:text-accent"
@@ -428,11 +424,7 @@ export default function Page() {
               <Link href="/" className="surface-card p-5">
                 <div className="text-sm font-extrabold text-ink">Homepage</div>
                 <p className="mt-2 text-sm text-muted">
-<<<<<<< HEAD
                   Return to the main catalogue and research guides.
-=======
-                  Return to the main site hub for products, categories, and research pages.
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 </p>
               </Link>
             </div>
@@ -468,11 +460,7 @@ export default function Page() {
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-<<<<<<< HEAD
                 It also gives users a clearer path from research reading
-=======
-                It also gives users a cleaner path from research-style browsing
->>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 into the specific page or product they are looking for.
               </p>
             </div>
