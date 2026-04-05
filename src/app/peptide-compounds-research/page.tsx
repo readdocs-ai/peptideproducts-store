@@ -259,7 +259,11 @@ export default function Page() {
                 <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
                   regenerative peptides
                 </Link>
+<<<<<<< HEAD
                 . This gives users a more direct way into the most relevant
+=======
+                . This gives users a clearer route into the most relevant
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 category before moving to individual product pages.
               </p>
             </div>
@@ -335,7 +339,11 @@ export default function Page() {
                 >
                   research peptide supplier UK
                 </Link>{" "}
+<<<<<<< HEAD
                 also help connect this page with the most relevant related guides.
+=======
+                also help place this page within the wider site structure.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
               </p>
             </div>
           </Container>

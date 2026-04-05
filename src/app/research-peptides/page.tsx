@@ -353,7 +353,11 @@ export default function ResearchPeptidesPage() {
                 <Link href="/product/retatrutide" className="rounded-xl2 border border-line bg-panel p-4">
                   <div className="text-sm font-extrabold text-ink">Retatrutide product page</div>
                   <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                     Open the Retatrutide 40mg product page.
+=======
+                    Direct route into the Retatrutide 40mg product listing for research buyers.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                   </p>
                 </Link>
               </div>
@@ -607,14 +611,22 @@ export default function ResearchPeptidesPage() {
               <Link href="/product/retatrutide" className="surface-card p-5">
                 <div className="font-extrabold text-ink">Retatrutide product page</div>
                 <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                   Open the Retatrutide 40mg product page.
+=======
+                  Direct route to the Retatrutide 40mg product listing.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 </p>
               </Link>
 
               <Link href="/" className="surface-card p-5">
                 <div className="font-extrabold text-ink">Homepage</div>
                 <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                   Return to the main catalogue and research guides.
+=======
+                  Return to the main site hub for products, categories, and research pages.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 </p>
               </Link>
             </div>

@@ -425,14 +425,22 @@ export default function WhatIsRetatrutidePage() {
               <Link href="/laboratory-peptide-compounds" className="surface-card p-5">
                 <div className="font-extrabold text-ink">Laboratory peptide compounds</div>
                 <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                   Broader laboratory compound guide covering related peptide categories.
+=======
+                  Broader laboratory compound guide supporting your site structure.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 </p>
               </Link>
 
               <Link href="/" className="surface-card p-5">
                 <div className="font-extrabold text-ink">Homepage</div>
                 <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                   Return to the main catalogue and research guides.
+=======
+                  Return to the main site hub for products, categories, and research pages.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 </p>
               </Link>
             </div>

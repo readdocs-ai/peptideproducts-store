@@ -184,7 +184,11 @@ export default function ResearchPeptideSupplierUKPage() {
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-muted md:text-base">
                 The site is structured around antioxidant, hydration, firming, regenerative,
+<<<<<<< HEAD
                 and selected specialist product lines, with direct links to individual
+=======
+                and selected specialist product lines, with direct routes into individual
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 products and a research-use-only positioning throughout. This page is designed
                 to support supplier-intent searches while also guiding visitors toward the most
                 relevant category and product pages.
@@ -336,7 +340,11 @@ export default function ResearchPeptideSupplierUKPage() {
                 <Link href="/product/retatrutide" className="rounded-xl2 border border-line bg-panel p-4">
                   <div className="text-sm font-extrabold text-ink">Retatrutide product page</div>
                   <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                     Open the Retatrutide 40mg product page.
+=======
+                    Direct route into the Retatrutide 40mg product listing.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                   </p>
                 </Link>
               </div>
@@ -408,11 +416,19 @@ export default function ResearchPeptideSupplierUKPage() {
                 Peptide Products is designed to support that process by combining category-level
                 browsing with individual product pages that surface pack size, pricing, imagery,
                 and research-use positioning. This allows buyers to explore the catalogue through
+<<<<<<< HEAD
                 both broader guides and specific product pages, whether they are comparing categories or looking
                 for an individual compound.
               </p>
               <p className="mt-4 text-sm leading-7 text-muted">
                 It also supports clearer links between related guides and product pages by linking supplier-intent
+=======
+                both broad and specific routes, whether they are comparing categories or looking
+                for an individual compound.
+              </p>
+              <p className="mt-4 text-sm leading-7 text-muted">
+                It also supports stronger internal site structure by linking supplier-intent
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 searches into the wider{" "}
                 <Link href="/research-peptides-uk" className="font-semibold text-ink hover:text-accent">
                   research peptides UK
@@ -478,7 +494,11 @@ export default function ResearchPeptideSupplierUKPage() {
                 </p>
                 <p className="mt-4 text-sm leading-7 text-muted">
                   This page supports that by connecting supplier-intent searches with category and
+<<<<<<< HEAD
                   product pages such as glutathione, hyaluronic acid, PDRN, collagen,
+=======
+                  product-level routes such as glutathione, hyaluronic acid, PDRN, collagen,
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                   vitamin C, and firming peptide blends. It also helps reinforce the broader topic
                   structure by linking to antioxidant, hydration, firming, regenerative, and
                   retatrutide-related content.
@@ -601,14 +621,22 @@ export default function ResearchPeptideSupplierUKPage() {
                 <Link href="/product/retatrutide" className="surface-card p-5">
                   <div className="font-extrabold text-ink">Retatrutide product page</div>
                   <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                     Open the Retatrutide 40mg product page.
+=======
+                    Direct route to the Retatrutide 40mg product listing.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                   </p>
                 </Link>
 
                 <Link href="/" className="surface-card p-5">
                   <div className="font-extrabold text-ink">Homepage</div>
                   <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                     Return to the main catalogue and research guides.
+=======
+                    Return to the main site hub for products, categories, and research pages.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                   </p>
                 </Link>
               </div>

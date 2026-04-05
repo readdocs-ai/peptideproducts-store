@@ -1,0 +1,160 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Container } from "@/components/Container";
+
+export const metadata: Metadata = {
+  title: "Where to Buy Retatrutide UK | Research Peptide Supply",
+  description:
+    "Where to buy Retatrutide UK research peptide. Explore product access, pricing, availability, and related laboratory research pages.",
+  alternates: {
+    canonical: "https://www.peptideproducts.co.uk/where-to-buy-retatrutide-uk",
+  },
+};
+
+export default function Page() {
+  return (
+    <div>
+      <Header />
+
+      <main className="py-14">
+        <Container>
+          <div className="max-w-5xl">
+            <div className="text-sm text-muted">
+              <Link href="/" className="font-semibold hover:text-ink">
+                Home
+              </Link>
+              <span className="mx-2">/</span>
+              Where to buy Retatrutide UK
+            </div>
+
+            <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
+              Where to Buy Retatrutide UK
+            </h1>
+
+            <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
+              Users searching for where to buy Retatrutide UK are usually looking
+              for direct access to a reliable research peptide supply. This page
+              connects that search intent with the official product listing and
+              supporting research content.
+            </p>
+
+            <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
+              You can go directly to the{" "}
+              <Link
+                href="/product/retatrutide"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                Retatrutide 40mg product page
+              </Link>{" "}
+              or use the dedicated{" "}
+              <Link
+                href="/buy-retatrutide-uk"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                Buy Retatrutide UK
+              </Link>{" "}
+              page for a clearer route into pricing, stock, and product details.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/product/retatrutide"
+                className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white"
+              >
+                View Retatrutide →
+              </Link>
+
+              <Link
+                href="/buy-retatrutide-uk"
+                className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink"
+              >
+                Buy Retatrutide UK →
+              </Link>
+            </div>
+
+            <section className="mt-12 rounded-xl3 border border-line bg-white p-6 shadow-soft">
+              <h2 className="text-2xl font-extrabold tracking-tight text-ink">
+                Retatrutide UK supply overview
+              </h2>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Retatrutide is positioned on this site as a research-use-only
+                peptide compound supplied for laboratory and scientific study.
+                This page helps connect commercial search queries with product
+                availability and structured internal navigation.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Visitors typically arrive here looking for pricing, stock
+                availability, and a direct route to the product. These are all
+                accessible via the main product listing and connected Retatrutide
+                pages.
+              </p>
+            </section>
+
+            <section className="mt-12">
+              <h2 className="text-2xl font-extrabold tracking-tight">
+                Related Retatrutide pages
+              </h2>
+
+              <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                <Link href="/product/retatrutide" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">
+                    Retatrutide product
+                  </div>
+                  <p className="mt-2 text-sm text-muted">
+                    View the Retatrutide 40mg product page.
+                  </p>
+                </Link>
+
+                <Link href="/retatrutide-price-uk" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">
+                    Retatrutide price UK
+                  </div>
+                  <p className="mt-2 text-sm text-muted">
+                    Explore pricing and supply information.
+                  </p>
+                </Link>
+
+                <Link href="/retatrutide-research-peptide" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">
+                    Retatrutide research peptide
+                  </div>
+                  <p className="mt-2 text-sm text-muted">
+                    Read the research overview.
+                  </p>
+                </Link>
+
+                <Link href="/retatrutide-uk" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">
+                    Retatrutide UK
+                  </div>
+                  <p className="mt-2 text-sm text-muted">
+                    Explore availability and navigation pages.
+                  </p>
+                </Link>
+
+                <Link href="/retatrutide-vs-semaglutide" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">
+                    Retatrutide vs Semaglutide
+                  </div>
+                  <p className="mt-2 text-sm text-muted">
+                    Read the comparison page for broader research context.
+                  </p>
+                </Link>
+              </div>
+            </section>
+
+            <p className="mt-10 max-w-3xl text-xs text-muted">
+              Research use only. Not for human or veterinary use.
+            </p>
+          </div>
+        </Container>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}

@@ -157,7 +157,13 @@ export default function Page() {
                 Research peptides are laboratory compounds used in controlled
                 scientific environments investigating molecular interaction,
                 biochemical pathways, compound stability, and cellular response
+<<<<<<< HEAD
                 mechanisms. For UK buyers, this page provides a practical overview that connects broad purchase-focused searches with the main research categories and key product pages.
+=======
+                mechanisms. For UK buyers, this page acts as a commercial-intent
+                guide that connects broad purchase-focused searches with the main
+                research categories and supporting product pages across the site.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
               </p>
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
@@ -334,7 +340,11 @@ export default function Page() {
                 <Link href="/product/retatrutide" className="rounded-xl2 border border-line bg-panel p-4">
                   <div className="text-sm font-extrabold text-ink">Retatrutide product page</div>
                   <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                     Open the Retatrutide 40mg product page.
+=======
+                    Direct route into the Retatrutide 40mg product listing.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                   </p>
                 </Link>
               </div>
@@ -435,7 +445,11 @@ export default function Page() {
 
               <p className="mt-4 text-sm leading-7 text-muted">
                 This page supports that process by linking directly to the
+<<<<<<< HEAD
                 wider research catalogue rather than treating buying intent as a
+=======
+                broader site structure rather than treating buying intent as a
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 standalone topic. That means users can explore antioxidant
                 compounds such as glutathione and vitamin C, hydration-related
                 products such as hyaluronic acid blends, regeneration-led
@@ -451,7 +465,11 @@ export default function Page() {
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
+<<<<<<< HEAD
                 It also gives the site a clearer product-focused entry point
+=======
+                It also gives the site a stronger commercial-intent entry point
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 for search while still maintaining the correct research-only
                 scientific context throughout.
               </p>
@@ -480,7 +498,11 @@ export default function Page() {
                 navigation, category discovery, and scientific study. It is not
                 presented as consumer or clinical guidance. Users looking to buy
                 research peptides in the UK should therefore interpret this page
+<<<<<<< HEAD
                 as a useful starting point for the research catalogue rather than a
+=======
+                as a structured route into the research catalogue rather than a
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 general retail page.
               </p>
 
@@ -567,7 +589,11 @@ export default function Page() {
               <Link href="/product/retatrutide" className="surface-card p-5">
                 <div className="font-extrabold text-ink">Retatrutide product page</div>
                 <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                   Open the Retatrutide 40mg product page.
+=======
+                  Direct route to the Retatrutide 40mg product listing.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 </p>
               </Link>
 
@@ -595,7 +621,11 @@ export default function Page() {
               <Link href="/" className="surface-card p-5">
                 <div className="font-extrabold text-ink">Homepage</div>
                 <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                   Return to the main catalogue and research guides.
+=======
+                  Return to the main site hub for products, categories, and research pages.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 </p>
               </Link>
             </div>

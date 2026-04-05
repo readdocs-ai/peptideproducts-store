@@ -190,7 +190,12 @@ export default function Page() {
                 </Link>{" "}
                 structure, connecting users to the main compound categories,
                 supporting informational pages, and related product-level content.
+<<<<<<< HEAD
                 It is designed to support both buyer navigation and easier movement between related compound categories and product pages.
+=======
+                It is designed to support both buyer navigation and stronger
+                internal topic coverage for search visibility.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
               </p>
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
@@ -315,7 +320,11 @@ export default function Page() {
                 <Link href="/product/retatrutide" className="rounded-xl2 border border-line bg-panel p-4">
                   <div className="text-sm font-extrabold text-ink">Retatrutide product page</div>
                   <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                     Open the Retatrutide 40mg product page.
+=======
+                    Direct route to the Retatrutide 40mg product listing.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                   </p>
                 </Link>
               </div>
@@ -600,7 +609,11 @@ export default function Page() {
               <Link href="/product/retatrutide" className="surface-card p-5">
                 <div className="font-extrabold text-ink">Retatrutide product page</div>
                 <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                   Open the Retatrutide 40mg product page.
+=======
+                  Direct route to the Retatrutide 40mg product listing.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 </p>
               </Link>
 
@@ -635,7 +648,11 @@ export default function Page() {
               <Link href="/" className="surface-card p-5">
                 <div className="font-extrabold text-ink">Homepage</div>
                 <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                   Return to the main catalogue and research guides.
+=======
+                  Return to the main site hub for products, categories, and research pages.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 </p>
               </Link>
             </div>

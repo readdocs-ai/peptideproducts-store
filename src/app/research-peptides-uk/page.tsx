@@ -309,7 +309,11 @@ export default function ResearchPeptidesUK() {
                 <Link href="/product/retatrutide" className="rounded-xl2 border border-line bg-panel p-4">
                   <div className="text-sm font-extrabold text-ink">Retatrutide product page</div>
                   <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                     Open the Retatrutide 40mg product page.
+=======
+                    Direct route into the Retatrutide 40mg product listing.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                   </p>
                 </Link>
               </div>
@@ -480,9 +484,16 @@ export default function ResearchPeptidesUK() {
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
                 In practical terms, UK-based research buyers often need a clear
+<<<<<<< HEAD
                 way into both category pages and product-level content. That
                 is why this page works as a central informational guide linking
                 into related categories and product pages while keeping all content aligned with research-only scientific use. Buyers exploring
+=======
+                route into both category pages and product-level content. That
+                is why this page works as a central informational guide linking
+                into the broader site architecture while keeping all content
+                aligned with research-only scientific use. Buyers exploring
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                 retatrutide can also move into{" "}
                 <Link
                   href="/buy-retatrutide-uk"
@@ -625,14 +636,22 @@ export default function ResearchPeptidesUK() {
                 <Link href="/product/retatrutide" className="surface-card p-5">
                   <div className="font-extrabold text-ink">Retatrutide product page</div>
                   <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                     Open the Retatrutide 40mg product page.
+=======
+                    Direct route to the Retatrutide 40mg product listing.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                   </p>
                 </Link>
 
                 <Link href="/" className="surface-card p-5">
                   <div className="font-extrabold text-ink">Homepage</div>
                   <p className="mt-2 text-sm text-muted">
+<<<<<<< HEAD
                     Return to the main catalogue and research guides.
+=======
+                    Return to the main site hub for products, categories, and research pages.
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
                   </p>
                 </Link>
               </div>

@@ -1,4 +1,22 @@
+<<<<<<< HEAD
 <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
   <rect width="40" height="40" rx="10" fill="#3B82F6"/>
   <text x="20" y="25" text-anchor="middle" font-size="16" fill="white" font-family="Arial, sans-serif" font-weight="bold">PP</text>
+=======
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="28" fill="#2563EB"/>
+  <text
+    x="50%"
+    y="56%"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="Inter, system-ui, sans-serif"
+    font-size="58"
+    font-weight="700"
+    fill="white"
+    letter-spacing="-4"
+  >
+    PP
+  </text>
+>>>>>>> da4884999aac5e65a9be772f3a18c2b688e4ec9f
 </svg>
