@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="pp-favicon" x1="10" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="#0B1220"/>
+  <rect x="7" y="7" width="50" height="50" rx="14" fill="url(#pp-favicon)"/>
+  <path d="M18 41V23H29C34.5228 23 39 27.4772 39 33C39 38.5228 34.5228 43 29 43H24.5V41H18ZM24.5 36H29C31.2091 36 33 34.2091 33 32C33 29.7909 31.2091 28 29 28H24.5V36Z" fill="white"/>
+  <path d="M38 22H45.5C49.6421 22 53 25.3579 53 29.5C53 33.6421 49.6421 37 45.5 37H43V44H38V22ZM43 32H45C46.6569 32 48 30.6569 48 29C48 27.3431 46.6569 26 45 26H43V32Z" fill="white" fill-opacity="0.95"/>
+</svg>
