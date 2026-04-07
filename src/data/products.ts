@@ -58,10 +58,10 @@ export const products: Product[] = [
     priceGBP: 125,
     stripePriceId: "price_1THGVLEfhppVt6QjRCccB32d",
     pack: "1 pre-filled pen x 40mg total",
-    image: "/products/retatrutide-40mg-uk.jpg",
+    image: "/products/reta single box.png",
     gallery: [
-      "/products/retatrutide-40mg-uk.jpg",
-      "/products/retatrutide-40mg-pen.jpg",
+      "/products/reta single box.png",
+      "/products/reta.png",
     ],
     quickFacts: ["40mg total", "Single pen format", "Research supply"],
     highlights: [

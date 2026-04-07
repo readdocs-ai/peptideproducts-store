@@ -24,11 +24,19 @@ export function ProductImageGallery({ product }: { product: Product }) {
                 type="button"
                 onClick={() => setSelectedIndex(index)}
                 className={`relative h-24 min-w-[96px] overflow-hidden rounded-xl2 border bg-white transition lg:h-24 lg:min-w-0 ${
-                  active ? "border-ink shadow-soft ring-2 ring-ink/10" : "border-line hover:border-ink/40"
+                  active
+                    ? "border-ink shadow-soft ring-2 ring-ink/10"
+                    : "border-line hover:border-ink/40"
                 }`}
                 aria-label={`View image ${index + 1} for ${product.name}`}
               >
-                <Image src={src} alt={`${product.name} image ${index + 1}`} fill sizes="96px" className="object-contain p-2" />
+                <Image
+                  src={src}
+                  alt={`${product.name} image ${index + 1}`}
+                  fill
+                  sizes="96px"
+                  className="object-contain p-2"
+                />
               </button>
             );
           })}
@@ -54,7 +62,9 @@ export function ProductImageGallery({ product }: { product: Product }) {
             <div
               className={
                 "absolute right-4 top-4 rounded-full px-3 py-1 text-xs font-extrabold shadow-soft " +
-                (inStock ? "border border-emerald-200 bg-emerald-50 text-emerald-700" : "border border-red-200 bg-red-50 text-red-700")
+                (inStock
+                  ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+                  : "border border-red-200 bg-red-50 text-red-700")
               }
             >
               {inStock ? "In stock" : "Sold out"}
@@ -84,54 +94,67 @@ export function ProductBuyBox({ product }: { product: Product }) {
 
   return (
     <>
-      <aside className="h-fit rounded-xl3 border border-line bg-white/90 p-6 shadow-soft backdrop-blur lg:sticky lg:top-28">
-        <div className="flex items-baseline justify-between gap-4">
+      <aside className="h-fit rounded-xl3 border border-line bg-white/95 p-6 shadow-soft backdrop-blur lg:sticky lg:top-28">
+        <div className="flex items-start justify-between gap-4">
           <div>
-            <div className="text-sm text-muted">{product.pack}</div>
-            <div className="mt-1 text-3xl font-extrabold text-ink">{formatGBP(product.priceGBP)}</div>
+            <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">
+              Price
+            </div>
+            <div className="mt-2 text-4xl font-extrabold tracking-tight text-ink">
+              {formatGBP(product.priceGBP)}
+            </div>
+            <div className="mt-2 text-sm font-semibold text-muted">{product.pack}</div>
           </div>
 
-          <div className="rounded-xl2 border border-line bg-white px-3 py-2 text-xs font-extrabold text-ink">Research supply</div>
+          <div className="rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.16em] text-ink">
+            Research supply
+          </div>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-5 flex flex-wrap gap-2">
           <div
             className={
-              "inline-flex rounded-full px-3 py-1 text-xs font-extrabold " +
-              (inStock ? "border border-emerald-200 bg-emerald-50 text-emerald-700" : "border border-red-200 bg-red-50 text-red-700")
+              "rounded-full px-3 py-1 text-xs font-extrabold " +
+              (inStock
+                ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
+                : "border border-red-200 bg-red-50 text-red-700")
             }
           >
             {inStock ? "In stock — ready to order" : "Sold out — currently unavailable"}
           </div>
 
-          <div className="mt-3 grid gap-2 text-sm text-muted">
-            <div className="rounded-xl2 border border-line bg-white px-4 py-3">Secure checkout</div>
-            <div className="rounded-xl2 border border-line bg-white px-4 py-3">Tracked UK dispatch</div>
-            <div className="rounded-xl2 border border-line bg-white px-4 py-3">Research use only</div>
-            <div className="rounded-xl2 border border-line bg-white px-4 py-3">Email and phone support before purchase</div>
-            {product.coa ? <div className="rounded-xl2 border border-line bg-white px-4 py-3">Certificate file available on this page</div> : null}
-          </div>
+          <div className="trust-pill">Tracked UK dispatch</div>
+          <div className="trust-pill">Secure checkout</div>
+          {product.coa ? <div className="premium-badge">COA available</div> : null}
         </div>
 
         {product.quickFacts?.length ? (
           <div className="mt-6 grid gap-2">
             {product.quickFacts.map((fact) => (
-              <div key={fact} className="rounded-xl2 border border-line bg-panel px-3 py-2 text-xs font-bold text-ink">
+              <div
+                key={fact}
+                className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink"
+              >
                 {fact}
               </div>
             ))}
           </div>
         ) : null}
 
-        <div className="mt-6">
-          <label className="text-xs font-extrabold text-muted">Quantity</label>
-          <div className="mt-2 flex items-center gap-2">
+        <div className="mt-6 rounded-xl2 border border-line bg-panel p-4">
+          <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">
+            Quantity
+          </div>
+
+          <div className="mt-3 flex items-center gap-2">
             <button
               type="button"
               disabled={!inStock}
               className={
-                "h-10 w-10 rounded-xl2 border border-line font-extrabold " +
-                (inStock ? "bg-white hover:bg-panel" : "cursor-not-allowed bg-panel text-muted/50")
+                "h-11 w-11 rounded-xl2 border border-line text-lg font-extrabold transition " +
+                (inStock
+                  ? "bg-white text-ink hover:bg-panel"
+                  : "cursor-not-allowed bg-white text-muted/50")
               }
               onClick={() => setQty((q) => Math.max(1, q - 1))}
             >
@@ -140,14 +163,18 @@ export function ProductBuyBox({ product }: { product: Product }) {
 
             <input
               className={
-                "h-10 w-16 rounded-xl2 border border-line text-center font-extrabold outline-none " +
-                (inStock ? "bg-white focus:ring-2 focus:ring-accent/20" : "bg-panel text-muted/50")
+                "h-11 w-20 rounded-xl2 border border-line text-center text-base font-extrabold outline-none " +
+                (inStock
+                  ? "bg-white text-ink focus:ring-2 focus:ring-accent/20"
+                  : "bg-white text-muted/50")
               }
               value={qty}
               disabled={!inStock}
               onChange={(e) => {
                 const n = Number(e.target.value);
-                if (Number.isFinite(n)) setQty(Math.min(99, Math.max(1, Math.floor(n))));
+                if (Number.isFinite(n)) {
+                  setQty(Math.min(99, Math.max(1, Math.floor(n))));
+                }
               }}
               inputMode="numeric"
             />
@@ -156,8 +183,10 @@ export function ProductBuyBox({ product }: { product: Product }) {
               type="button"
               disabled={!inStock}
               className={
-                "h-10 w-10 rounded-xl2 border border-line font-extrabold " +
-                (inStock ? "bg-white hover:bg-panel" : "cursor-not-allowed bg-panel text-muted/50")
+                "h-11 w-11 rounded-xl2 border border-line text-lg font-extrabold transition " +
+                (inStock
+                  ? "bg-white text-ink hover:bg-panel"
+                  : "cursor-not-allowed bg-white text-muted/50")
               }
               onClick={() => setQty((q) => Math.min(99, q + 1))}
             >
@@ -166,23 +195,34 @@ export function ProductBuyBox({ product }: { product: Product }) {
           </div>
         </div>
 
+        <div className="mt-5 rounded-xl2 border border-line bg-panel p-4">
+          <div className="flex items-center justify-between gap-4">
+            <div className="text-sm font-semibold text-muted">Order total</div>
+            <div className="text-2xl font-extrabold tracking-tight text-ink">
+              {formatGBP(total)}
+            </div>
+          </div>
+        </div>
+
         <button
           type="button"
           disabled={!inStock}
           className={
-            "mt-6 w-full rounded-xl2 px-4 py-3 text-sm font-extrabold shadow-soft transition " +
-            (inStock ? "bg-accent text-white hover:opacity-95" : "cursor-not-allowed bg-red-100 text-red-700")
+            "mt-6 w-full rounded-xl2 px-4 py-3.5 text-sm font-extrabold shadow-soft transition " +
+            (inStock
+              ? "bg-accent text-white hover:bg-accent/90"
+              : "cursor-not-allowed bg-red-100 text-red-700")
           }
           onClick={() => {
             if (inStock) addToCart(product.id, qty);
           }}
         >
-          {inStock ? `Add to cart — ${formatGBP(total)}` : "Sold out"}
+          {inStock ? "Add to cart" : "Sold out"}
         </button>
 
         <Link
           href="/cart"
-          className="mt-3 inline-flex w-full justify-center rounded-xl2 border border-line bg-white px-4 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
+          className="mt-3 inline-flex w-full justify-center rounded-xl2 border border-line bg-white px-4 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:bg-panel"
         >
           Go to cart / checkout
         </Link>
@@ -192,14 +232,32 @@ export function ProductBuyBox({ product }: { product: Product }) {
             href={product.coa}
             target="_blank"
             rel="noreferrer"
-            className="mt-3 inline-flex w-full justify-center rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-white"
+            className="mt-3 inline-flex w-full justify-center rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:bg-white"
           >
             Download certificate
           </a>
         ) : null}
 
-        <div className="mt-4 rounded-xl2 border border-line bg-panel p-4 text-xs leading-6 text-muted">
-          Need documentation before ordering? Review the quality page or contact support before checkout.
+        <div className="mt-5 grid gap-2 text-sm text-muted">
+          <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
+            Secure Stripe checkout for card payments
+          </div>
+          <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
+            Alternative bank transfer and crypto available
+          </div>
+          <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
+            Email and phone support before purchase
+          </div>
+          {product.coa ? (
+            <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
+              Certificate file available on this page
+            </div>
+          ) : null}
+        </div>
+
+        <div className="mt-5 rounded-xl2 border border-line bg-panel p-4 text-xs leading-6 text-muted">
+          Need documentation before ordering? Review the quality page or contact
+          support before checkout.
         </div>
       </aside>
 
@@ -208,7 +266,9 @@ export function ProductBuyBox({ product }: { product: Product }) {
           <div className="flex items-center gap-3">
             <div className="min-w-0 flex-1">
               <div className="truncate text-sm font-extrabold text-ink">{product.name}</div>
-              <div className="text-xs text-muted">{formatGBP(total)} · secure checkout</div>
+              <div className="text-xs text-muted">
+                {formatGBP(total)} · secure checkout
+              </div>
             </div>
             <button
               type="button"

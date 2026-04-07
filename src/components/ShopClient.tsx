@@ -1,30 +1,29 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/Container";
-import { categories, products, Category } from "@/data/products";
+import { products } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 
+const categoryIntro = [
+  {
+    title: "Metabolic research",
+    copy: "Retatrutide, Tirzepatide, Selank, NAD, and related metabolic product lines.",
+    href: "/research-peptides",
+  },
+  {
+    title: "Regenerative compounds",
+    copy: "BPC-157, GHK-CU, and regeneration-focused compounds for laboratory study.",
+    href: "/regenerative-peptides",
+  },
+  {
+    title: "Hydration and support",
+    copy: "Support products and laboratory preparation lines including bacteriostatic water.",
+    href: "/hydration-peptides",
+  },
+] as const;
+
 export function ShopClient() {
-  const [cat, setCat] = useState<Category | "All">("All");
-  const [query, setQuery] = useState("");
-
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return products.filter((p) => {
-      const categoryMatch = cat === "All" || p.category === cat;
-      const searchMatch =
-        !q ||
-        p.name.toLowerCase().includes(q) ||
-        p.subtitle.toLowerCase().includes(q) ||
-        p.actives.join(" ").toLowerCase().includes(q);
-      return categoryMatch && searchMatch;
-    });
-  }, [cat, query]);
-
-  const activeCategory = categories.find((c) => c.key === cat);
-
   return (
     <main className="py-10 lg:py-12">
       <Container>
@@ -41,13 +40,19 @@ export function ShopClient() {
               </h1>
 
               <p className="mt-4 max-w-2xl text-sm leading-7 text-muted md:text-base">
-                Browse the full catalogue, filter by category, and review selected documentation before checkout. All products are listed for laboratory and scientific research use only.
+                Browse the full catalogue, review selected documentation where available,
+                and move directly into product pages with clearer pricing, pack details,
+                and secure checkout routes.
               </p>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 lg:w-[420px]">
-              <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">Tracked UK dispatch</div>
-              <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">Secure Stripe checkout</div>
+              <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
+                Tracked UK dispatch
+              </div>
+              <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
+                Secure Stripe checkout
+              </div>
               <Link
                 href="/quality-assurance"
                 className="rounded-xl2 border border-line bg-white p-4 text-sm font-semibold text-ink transition hover:bg-panel sm:col-span-2"
@@ -58,72 +63,83 @@ export function ShopClient() {
           </div>
         </section>
 
-        <div className="mt-8 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end lg:justify-between">
-          <div className="max-w-3xl">
-            <h2 className="section-title">Filter by category or search</h2>
-            <p className="mt-2 text-sm leading-7 text-muted">Use the category chips or search field below to narrow the product grid more quickly.</p>
+        <section className="mt-8">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-3xl">
+              <h2 className="section-title">Full product catalogue</h2>
+              <p className="mt-2 text-sm leading-7 text-muted">
+                Browse the complete range below and open individual product pages for
+                stock status, pack details, price, quality information, and checkout options.
+              </p>
+            </div>
+
+            <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm text-muted">
+              Showing <span className="font-extrabold text-ink">{products.length}</span> products.
+            </div>
           </div>
 
-          <label className="w-full lg:w-[340px]">
-            <span className="sr-only">Search products</span>
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search products, actives, or category..."
-              className="h-12 w-full rounded-xl2 border border-line bg-white px-4 text-sm text-ink shadow-soft outline-none ring-0 placeholder:text-muted focus:border-accent"
-            />
-          </label>
-        </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {categoryIntro.map((item) => (
+              <Link key={item.title} href={item.href} className="surface-card p-5">
+                <div className="text-lg font-extrabold text-ink">{item.title}</div>
+                <p className="mt-2 text-sm leading-7 text-muted">{item.copy}</p>
+                <div className="mt-4 text-sm font-extrabold text-ink">Explore →</div>
+              </Link>
+            ))}
+          </div>
+        </section>
 
-        <div className="mt-5 flex flex-wrap items-center gap-2">
-          <button
-            onClick={() => setCat("All")}
-            className={`rounded-full px-4 py-2 text-sm font-extrabold border transition ${
-              cat === "All" ? "bg-accent text-white border-accent" : "bg-white text-ink border-line hover:bg-panel"
-            }`}
-          >
-            All ({products.length})
-          </button>
+        <section className="mt-8">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {products.map((p) => (
+              <ProductCard
+                key={p.id}
+                p={p}
+                imageOverride={
+                  p.id === "retatrutide"
+                    ? "/products/retatrutide-white-bg.png"
+                    : p.gallery?.[1] ?? p.image
+                }
+              />
+            ))}
+          </div>
+        </section>
 
-          {categories.map((c) => {
-            const count = products.filter((p) => p.category === c.key).length;
-            return (
-              <button
-                key={c.key}
-                onClick={() => setCat(c.key)}
-                className={`rounded-full px-4 py-2 text-sm font-extrabold border transition ${
-                  cat === c.key ? "bg-accent text-white border-accent" : "bg-white text-ink border-line hover:bg-panel"
-                }`}
+        <section className="mt-10 rounded-xl3 border border-line bg-white p-6 shadow-soft">
+          <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+            <div>
+              <h2 className="text-2xl font-extrabold tracking-tight text-ink">
+                Before ordering
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-muted">
+                Use product pages to review available pack information, stock status,
+                gallery images, supporting quick facts, and any available certificate
+                or documentation references before checkout.
+              </p>
+            </div>
+
+            <div className="grid gap-3">
+              <Link
+                href="/quality-assurance"
+                className="rounded-xl2 border border-line bg-panel px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-white"
               >
-                {c.key} ({count})
-              </button>
-            );
-          })}
-        </div>
-
-        <div className="mt-5 rounded-xl2 border border-line bg-panel p-4 text-sm text-muted">
-          {cat === "All" ? (
-            <p>
-              Showing <span className="font-extrabold text-ink">{filtered.length}</span> products from the full catalogue.
-            </p>
-          ) : (
-            <p>
-              <span className="font-semibold text-ink">{cat}</span>: {activeCategory?.blurb} Showing {filtered.length} matching products.
-            </p>
-          )}
-        </div>
-
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => (
-            <ProductCard key={p.id} p={p} imageOverride={p.gallery?.[1] ?? p.image} />
-          ))}
-        </div>
-
-        {filtered.length === 0 ? (
-          <div className="mt-6 rounded-xl2 border border-line bg-white p-6 text-sm text-muted shadow-soft">
-            No products matched that search. Try a broader term or switch back to the full catalogue.
+                Quality & documentation
+              </Link>
+              <Link
+                href="/order-status"
+                className="rounded-xl2 border border-line bg-panel px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-white"
+              >
+                Track an order
+              </Link>
+              <Link
+                href="/contact"
+                className="rounded-xl2 border border-line bg-panel px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-white"
+              >
+                Contact support
+              </Link>
+            </div>
           </div>
-        ) : null}
+        </section>
       </Container>
     </main>
   );
