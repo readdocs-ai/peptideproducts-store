@@ -9,13 +9,14 @@ import { brand, nav } from "@/theme/brand";
 import { cartCount, readCart, type CartEventDetail } from "@/lib/cart";
 import { products } from "@/data/products";
 
-const researchLinks = [
+const helpLinks = [
   { href: "/research-peptides", label: "Research peptides" },
   { href: "/regenerative-peptides", label: "Regenerative compounds" },
   { href: "/hydration-peptides", label: "Hydration and support" },
   { href: "/quality-assurance", label: "Quality & documentation" },
   { href: "/shipping", label: "Shipping information" },
   { href: "/faq", label: "Frequently asked questions" },
+  { href: "/wholesale", label: "Wholesale enquiries" },
 ] as const;
 
 export function Header() {
@@ -68,6 +69,9 @@ export function Header() {
     setMobileOpen(false);
   }, [pathname]);
 
+  const desktopNav = nav.filter((item) => item.href !== "/wholesale");
+  const mobileNav = nav;
+
   return (
     <>
       <div className="border-b border-line bg-ink text-white">
@@ -97,12 +101,12 @@ export function Header() {
       >
         <Container>
           <div className="flex items-center justify-between py-4">
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center" aria-label="Go to homepage">
               <Logo />
             </Link>
 
-            <nav className="hidden items-center gap-7 lg:flex">
-              {nav.map((item) => (
+            <nav className="hidden items-center gap-6 lg:flex">
+              {desktopNav.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -117,9 +121,9 @@ export function Header() {
                 <button
                   type="button"
                   className="group relative text-sm font-semibold text-muted transition hover:text-ink"
-                  aria-label="Open information menu"
+                  aria-label="Open help menu"
                 >
-                  Information
+                  Help
                   <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
                 </button>
 
@@ -128,7 +132,7 @@ export function Header() {
                     Useful pages
                   </div>
                   <div className="grid gap-1">
-                    {researchLinks.map((item) => (
+                    {helpLinks.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
@@ -184,7 +188,7 @@ export function Header() {
           {mobileOpen ? (
             <div className="border-t border-line py-4 lg:hidden">
               <div className="grid gap-2">
-                {nav.map((item) => (
+                {mobileNav.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
@@ -210,10 +214,10 @@ export function Header() {
 
                 <div className="mt-2 rounded-xl2 border border-line bg-panel p-3">
                   <div className="mb-2 text-xs font-extrabold uppercase tracking-wide text-muted">
-                    Useful pages
+                    Helpful links
                   </div>
                   <div className="grid gap-1">
-                    {researchLinks.map((item) => (
+                    {helpLinks.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}

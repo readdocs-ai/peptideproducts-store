@@ -10,6 +10,7 @@ export const brand = {
 } as const;
 
 export const nav = [
+  { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
   { href: "/research-peptides", label: "Research" },
   { href: "/quality-assurance", label: "Quality" },
