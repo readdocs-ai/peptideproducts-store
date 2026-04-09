@@ -16,7 +16,7 @@ function getCategoryHref(category: Product["category"]) {
     case "Regenerative":
       return "/regenerative-peptides";
     case "Metabolic":
-      return "/retatrutide-research-peptide";
+      return "/research-peptides";
     default:
       return "/research-peptides";
   }
@@ -39,7 +39,7 @@ export function ProductCard({ p, imageOverride }: { p: Product; imageOverride?: 
         <div className="relative h-[300px] w-full bg-panel sm:h-[340px]">
           <Image
             src={displayImage}
-            alt={`${p.name} research product image`}
+            alt={`${p.name} product image`}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="object-contain object-center p-6 transition duration-300 group-hover:scale-[1.035]"
@@ -51,7 +51,7 @@ export function ProductCard({ p, imageOverride }: { p: Product; imageOverride?: 
             </div>
             {isRetatrutide ? (
               <div className="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-extrabold text-accent shadow-soft">
-                Best seller
+                Popular
               </div>
             ) : null}
           </div>
@@ -69,7 +69,7 @@ export function ProductCard({ p, imageOverride }: { p: Product; imageOverride?: 
 
           {p.coa ? (
             <div className="absolute bottom-3 right-3 rounded-full border border-premium/30 bg-white/95 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-premium shadow-soft">
-              COA available
+              Documentation available
             </div>
           ) : null}
         </div>
@@ -116,7 +116,7 @@ export function ProductCard({ p, imageOverride }: { p: Product; imageOverride?: 
           ))}
           <li className="flex items-start gap-2">
             <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent2" />
-            <span>{p.coa ? "Certificate file available" : "Research-use listing"}</span>
+            <span>{p.coa ? "Documentation available on product page" : "Research-use-only listing"}</span>
           </li>
         </ul>
 
@@ -140,14 +140,14 @@ export function ProductCard({ p, imageOverride }: { p: Product; imageOverride?: 
                 : "cursor-not-allowed bg-red-100 text-red-700")
             }
           >
-            {inStock ? "Quick add" : "Sold out"}
+            {inStock ? "Add to cart" : "Sold out"}
           </button>
         </div>
 
         <div className="mt-4 flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-muted">
           <span>Research use only</span>
-          {p.coa ? <span className="text-premium">COA</span> : null}
-          {inStock ? <span className="text-emerald-700">Available</span> : null}
+          {p.coa ? <span className="text-premium">Docs available</span> : null}
+          {inStock ? <span className="text-emerald-700">Ready to order</span> : null}
         </div>
       </div>
     </div>

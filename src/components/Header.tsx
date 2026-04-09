@@ -11,11 +11,11 @@ import { products } from "@/data/products";
 
 const researchLinks = [
   { href: "/research-peptides", label: "Research peptides" },
-  { href: "/peptide-compounds-research", label: "Peptide compounds research" },
-  { href: "/research-peptides-uk", label: "Research peptides UK" },
-  { href: "/research-peptide-supplier-uk", label: "Research peptide supplier UK" },
-  { href: "/buy-research-peptides-uk", label: "Buy research peptides UK" },
-  { href: "/laboratory-peptide-compounds", label: "Laboratory peptide compounds" },
+  { href: "/regenerative-peptides", label: "Regenerative compounds" },
+  { href: "/hydration-peptides", label: "Hydration and support" },
+  { href: "/quality-assurance", label: "Quality & documentation" },
+  { href: "/shipping", label: "Shipping information" },
+  { href: "/faq", label: "Frequently asked questions" },
 ] as const;
 
 export function Header() {
@@ -25,7 +25,10 @@ export function Header() {
   const [toast, setToast] = useState<{ name: string; qty: number } | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const productMap = useMemo(() => new Map(products.map((product) => [product.id, product.name])), []);
+  const productMap = useMemo(
+    () => new Map(products.map((product) => [product.id, product.name])),
+    []
+  );
 
   useEffect(() => {
     const sync = (event?: Event) => {
@@ -74,7 +77,7 @@ export function Header() {
               <span>Research use only</span>
               <span>Tracked UK dispatch</span>
               <Link href="/quality-assurance" className="hover:text-white">
-                COA & quality documents
+                Quality & documentation
               </Link>
             </div>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
@@ -114,15 +117,15 @@ export function Header() {
                 <button
                   type="button"
                   className="group relative text-sm font-semibold text-muted transition hover:text-ink"
-                  aria-label="Open research menu"
+                  aria-label="Open information menu"
                 >
-                  Research
+                  Information
                   <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
                 </button>
 
                 <div className="invisible absolute left-0 top-full z-50 mt-4 w-[320px] rounded-xl2 border border-line bg-white p-3 opacity-0 shadow-lift transition-all duration-200 group-hover:visible group-hover:opacity-100">
                   <div className="mb-2 px-2 text-xs font-extrabold uppercase tracking-wide text-muted">
-                    Research guides
+                    Useful pages
                   </div>
                   <div className="grid gap-1">
                     {researchLinks.map((item) => (
@@ -144,6 +147,13 @@ export function Header() {
               >
                 Order status
                 <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+              </Link>
+
+              <Link
+                href="/shop"
+                className="rounded-xl2 bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft transition hover:bg-accent/90"
+              >
+                Browse products
               </Link>
             </nav>
 
@@ -191,9 +201,16 @@ export function Header() {
                   Order status
                 </Link>
 
+                <Link
+                  href="/shop"
+                  className="rounded-xl2 bg-accent px-3 py-3 text-sm font-extrabold text-white shadow-soft transition hover:bg-accent/90"
+                >
+                  Browse products
+                </Link>
+
                 <div className="mt-2 rounded-xl2 border border-line bg-panel p-3">
                   <div className="mb-2 text-xs font-extrabold uppercase tracking-wide text-muted">
-                    Research guides
+                    Useful pages
                   </div>
                   <div className="grid gap-1">
                     {researchLinks.map((item) => (
@@ -215,11 +232,16 @@ export function Header() {
 
       {toast ? (
         <div className="fixed bottom-4 right-4 z-[60] w-[min(92vw,380px)] rounded-xl3 border border-line bg-white p-4 shadow-lift">
-          <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-accent">Added to cart</div>
+          <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-accent">
+            Added to cart
+          </div>
           <div className="mt-2 text-base font-extrabold text-ink">{toast.name}</div>
           <div className="mt-1 text-sm text-muted">Quantity: {toast.qty}</div>
           <div className="mt-4 flex gap-3">
-            <Link href="/cart" className="rounded-xl2 bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft">
+            <Link
+              href="/cart"
+              className="rounded-xl2 bg-accent px-4 py-2 text-sm font-extrabold text-white shadow-soft"
+            >
               View cart
             </Link>
             <button

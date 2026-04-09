@@ -11,14 +11,14 @@ import { ProductCard } from "@/components/ProductCard";
 export const metadata: Metadata = {
   title: "Premium Research Peptides & Laboratory Compounds UK",
   description:
-    "Research peptides and laboratory compounds supplied in the UK with secure checkout, tracked dispatch, and documentation available on selected product lines.",
+    "Research-use-only peptides and laboratory compounds supplied in the UK with secure checkout, tracked dispatch, and documentation available on selected product lines.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk",
   },
   openGraph: {
     title: "Premium Research Peptides UK | Peptide Products",
     description:
-      "Research peptides supplied in the UK with secure checkout, tracked dispatch, and certificate files available on selected lines.",
+      "Research-use-only peptides supplied in the UK with secure checkout, tracked dispatch, and certificate files available on selected lines.",
     url: "https://www.peptideproducts.co.uk",
     siteName: "Peptide Products",
     images: [
@@ -35,19 +35,19 @@ export const metadata: Metadata = {
 const categoryCards = [
   {
     title: "Metabolic research peptides",
-    copy: "Retatrutide, Tirzepatide, Selank, ML-10, NAD, and related laboratory product lines.",
+    copy: "Explore Retatrutide, Tirzepatide, NAD, and related research-use-only product lines.",
     image: "/products/retatrutide-40mg-uk.jpg",
     href: "/research-peptides",
   },
   {
     title: "Regenerative compounds",
-    copy: "BPC-157 and GHK-CU product lines for laboratories reviewing regeneration-focused compounds.",
+    copy: "Browse BPC-157, GHK-CU, and related lines used in regeneration-focused research settings.",
     image: "/products/ghk-cu-100mg.webp",
     href: "/regenerative-peptides",
   },
   {
     title: "Hydration & support products",
-    copy: "Bacteriostatic water and support supplies used in laboratory preparation workflows.",
+    copy: "Shop bacteriostatic water and support items used alongside laboratory preparation workflows.",
     image: "/products/bac-water-10ml.webp",
     href: "/hydration-peptides",
   },
@@ -55,43 +55,43 @@ const categoryCards = [
 
 const trustCards = [
   {
-    title: "High purity compounds",
-    copy: "Products are supplied to high standards with selected documentation available where applicable.",
+    title: "Quality information available",
+    copy: "Selected product pages include supporting documentation so you can review available quality information before ordering.",
   },
   {
-    title: "Tracked UK dispatch",
-    copy: "Orders are prepared for UK dispatch with tracking updates provided after shipment.",
+    title: "Tracked UK delivery",
+    copy: "Orders are prepared for UK dispatch and tracking details are provided once shipment is confirmed.",
   },
   {
-    title: "Secure checkout",
-    copy: "Stripe card checkout and alternative payment options are available through the cart.",
+    title: "Secure payment options",
+    copy: "Pay securely by card through Stripe, with additional payment options available at checkout.",
   },
   {
-    title: "Direct support",
-    copy: "Email and phone contact details remain visible for pre-order questions and support.",
+    title: "Pre-order support",
+    copy: "Questions before ordering? Contact support directly by email or phone for help with products, ordering, and delivery.",
   },
 ] as const;
 
-const guideLinks = [
+const helpLinks = [
   {
-    title: "Research peptides",
-    copy: "Browse the main category overview and move into the product groups most relevant to your laboratory work.",
-    href: "/research-peptides",
+    title: "Browse all products",
+    copy: "View the full catalogue and compare the current peptide and support product range.",
+    href: "/shop",
   },
   {
-    title: "Research peptides UK",
-    copy: "UK-focused guide for buyers comparing product categories and supply options.",
-    href: "/research-peptides-uk",
+    title: "Quality & documentation",
+    copy: "Review the quality page and check which lines include supporting documentation.",
+    href: "/quality-assurance",
   },
   {
-    title: "Buy Retatrutide UK",
-    copy: "Direct guide for visitors specifically looking for the Retatrutide range.",
-    href: "/buy-retatrutide-uk",
+    title: "Shipping information",
+    copy: "See dispatch and delivery details before placing an order.",
+    href: "/shipping",
   },
   {
-    title: "Research peptide supplier UK",
-    copy: "Supplier-focused page for visitors comparing UK research peptide sources.",
-    href: "/research-peptide-supplier-uk",
+    title: "Questions before ordering?",
+    copy: "Contact support for product, payment, and delivery questions.",
+    href: "/contact",
   },
 ] as const;
 
@@ -174,17 +174,18 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
               <div>
                 <div className="eyebrow">
-                  Premium UK research peptide supplier
+                  UK research-use-only peptide store
                   <span className="h-2 w-2 rounded-full bg-accent2" />
                 </div>
 
                 <h1 className="mt-5 max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl lg:leading-[1.05]">
-                  Research peptides supplied in the UK with verified quality.
+                  Research-use-only peptides with secure checkout, tracked UK dispatch, with
+                  documentation available on selected lines.
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-base leading-7 text-muted md:text-lg">
-                  High purity compounds, fast UK dispatch, secure checkout, and available
-                  documentation on selected product lines.
+                  Browse the current range, review quality information where available, and order
+                  through secure checkout with tracked UK delivery.
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-3">
@@ -205,7 +206,7 @@ export default function Home() {
 
                 <div className="mt-6 flex flex-wrap gap-2">
                   <span className="trust-pill">Research use only</span>
-                  <span className="trust-pill">Selected COA documents available</span>
+                  <span className="trust-pill">Selected documentation available</span>
                   <span className="trust-pill">Tracked UK dispatch</span>
                   <span className="trust-pill">Secure checkout</span>
                 </div>
@@ -248,7 +249,7 @@ export default function Home() {
               <div>
                 <h2 className="section-title">Best sellers</h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Start with the most viewed products in the current range.
+                  Explore some of the most popular products in the current range.
                 </p>
               </div>
 
@@ -271,7 +272,7 @@ export default function Home() {
               <div>
                 <h2 className="section-title">Shop by category</h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Move quickly into the part of the catalogue most relevant to your research workflow.
+                  Move quickly into the part of the catalogue most relevant to your research needs.
                 </p>
               </div>
 
@@ -314,19 +315,17 @@ export default function Home() {
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
-                <div className="eyebrow">Research guides</div>
-                <h2 className="mt-4 section-title">
-                  Explore the main research guides and category pages.
-                </h2>
+                <div className="eyebrow">Helpful links</div>
+                <h2 className="mt-4 section-title">Everything you need before placing an order.</h2>
                 <p className="mt-2 max-w-2xl text-sm text-muted">
-                  Use these pages to explore broader topics, compare categories, and move into
-                  relevant product lines more quickly.
+                  Use these pages to browse products, review quality information, and check
+                  delivery details before ordering.
                 </p>
               </div>
             </div>
 
             <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {guideLinks.map((item) => (
+              {helpLinks.map((item) => (
                 <Link key={item.href} href={item.href} className="surface-card p-5">
                   <div className="text-lg font-extrabold text-ink">{item.title}</div>
                   <p className="mt-2 text-sm leading-7 text-muted">{item.copy}</p>
@@ -357,11 +356,11 @@ export default function Home() {
 
               <div className="glass-card p-6">
                 <h2 className="text-2xl font-extrabold tracking-tight text-ink">
-                  Need help before ordering?
+                  Questions before you place an order?
                 </h2>
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  Browse the catalogue, review quality information, track an existing order, or
-                  contact support directly.
+                  Review the catalogue, check available quality information, track an existing
+                  order, or contact support before purchasing.
                 </p>
 
                 <div className="mt-6 grid gap-3">

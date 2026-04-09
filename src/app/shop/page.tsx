@@ -4,9 +4,9 @@ import { Footer } from "@/components/Footer";
 import { ShopClient } from "@/components/ShopClient";
 
 export const metadata: Metadata = {
-  title: "Shop Research Peptides | Laboratory Compounds UK | Peptide Products",
+  title: "Shop Research-Use-Only Peptides | UK Product Catalogue | Peptide Products",
   description:
-    "Browse research peptides and laboratory compounds in the UK including antioxidant, hydration, firming, regenerative, and retatrutide-related products supplied for scientific study.",
+    "Browse the Peptide Products catalogue of research-use-only peptides and laboratory compounds with secure checkout, tracked UK dispatch, and documentation available on selected product lines.",
 };
 
 export default function ShopPage() {

@@ -8,17 +8,17 @@ import { ProductCard } from "@/components/ProductCard";
 const categoryIntro = [
   {
     title: "Metabolic research",
-    copy: "Retatrutide, Tirzepatide, Selank, NAD, and related metabolic product lines.",
+    copy: "Explore Retatrutide, Tirzepatide, NAD, and related research-use-only product lines.",
     href: "/research-peptides",
   },
   {
     title: "Regenerative compounds",
-    copy: "BPC-157, GHK-CU, and regeneration-focused compounds for laboratory study.",
+    copy: "Browse BPC-157, GHK-CU, and related lines used in regeneration-focused research settings.",
     href: "/regenerative-peptides",
   },
   {
     title: "Hydration and support",
-    copy: "Support products and laboratory preparation lines including bacteriostatic water.",
+    copy: "Shop bacteriostatic water and support items used alongside laboratory preparation workflows.",
     href: "/hydration-peptides",
   },
 ] as const;
@@ -31,18 +31,17 @@ export function ShopClient() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <div className="eyebrow">
-                Premium research peptide catalogue
+                UK research-use-only peptide catalogue
                 <span className="h-2 w-2 rounded-full bg-accent2" />
               </div>
 
               <h1 className="mt-4 text-3xl font-extrabold tracking-tight md:text-5xl">
-                Shop research peptides and laboratory compounds.
+                Shop the full product range.
               </h1>
 
               <p className="mt-4 max-w-2xl text-sm leading-7 text-muted md:text-base">
-                Browse the full catalogue, review selected documentation where available,
-                and move directly into product pages with clearer pricing, pack details,
-                and secure checkout routes.
+                Browse the current catalogue, review product details and available documentation,
+                and order through secure checkout with tracked UK dispatch.
               </p>
             </div>
 
@@ -51,13 +50,13 @@ export function ShopClient() {
                 Tracked UK dispatch
               </div>
               <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">
-                Secure Stripe checkout
+                Secure card checkout
               </div>
               <Link
                 href="/quality-assurance"
                 className="rounded-xl2 border border-line bg-white p-4 text-sm font-semibold text-ink transition hover:bg-panel sm:col-span-2"
               >
-                Review quality documents →
+                Quality & documentation →
               </Link>
             </div>
           </div>
@@ -68,13 +67,13 @@ export function ShopClient() {
             <div className="max-w-3xl">
               <h2 className="section-title">Full product catalogue</h2>
               <p className="mt-2 text-sm leading-7 text-muted">
-                Browse the complete range below and open individual product pages for
-                stock status, pack details, price, quality information, and checkout options.
+                Browse the full range below and open individual product pages for pricing, pack
+                details, stock status, quality information, and ordering options.
               </p>
             </div>
 
             <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm text-muted">
-              Showing <span className="font-extrabold text-ink">{products.length}</span> products.
+              Showing <span className="font-extrabold text-ink">{products.length}</span> products
             </div>
           </div>
 
@@ -83,7 +82,7 @@ export function ShopClient() {
               <Link key={item.title} href={item.href} className="surface-card p-5">
                 <div className="text-lg font-extrabold text-ink">{item.title}</div>
                 <p className="mt-2 text-sm leading-7 text-muted">{item.copy}</p>
-                <div className="mt-4 text-sm font-extrabold text-ink">Explore →</div>
+                <div className="mt-4 text-sm font-extrabold text-ink">Explore category →</div>
               </Link>
             ))}
           </div>
@@ -109,12 +108,11 @@ export function ShopClient() {
           <div className="grid gap-6 lg:grid-cols-[1fr_0.9fr] lg:items-start">
             <div>
               <h2 className="text-2xl font-extrabold tracking-tight text-ink">
-                Before ordering
+                Before you order
               </h2>
               <p className="mt-3 text-sm leading-7 text-muted">
-                Use product pages to review available pack information, stock status,
-                gallery images, supporting quick facts, and any available certificate
-                or documentation references before checkout.
+                Use product pages to review pack information, stock status, gallery images, quick
+                facts, and any available documentation before checkout.
               </p>
             </div>
 

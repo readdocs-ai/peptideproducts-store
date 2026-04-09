@@ -35,11 +35,14 @@ export function Footer() {
               <Link href="/quality-assurance" className="hover:text-ink">
                 Quality & documentation
               </Link>
+              <Link href="/shipping" className="hover:text-ink">
+                Shipping information
+              </Link>
               <Link href="/order-status" className="hover:text-ink">
                 Track an order
               </Link>
               <Link href="/contact" className="hover:text-ink">
-                Contact
+                Contact support
               </Link>
               <Link href="/wholesale" className="hover:text-ink">
                 Wholesale
@@ -55,9 +58,6 @@ export function Footer() {
               <Link href="/disclaimer" className="hover:text-ink">
                 Research use disclaimer
               </Link>
-              <Link href="/shipping" className="hover:text-ink">
-                Shipping & returns
-              </Link>
               <Link href="/terms" className="hover:text-ink">
                 Terms & conditions
               </Link>
@@ -65,14 +65,14 @@ export function Footer() {
                 Privacy policy
               </Link>
               <Link href="/faq" className="hover:text-ink">
-                FAQ
+                Frequently asked questions
               </Link>
             </div>
           </div>
 
           <div>
             <div className="text-sm font-extrabold uppercase tracking-[0.12em] text-ink">
-              Research guides
+              Helpful links
             </div>
             <div className="mt-4 grid gap-3 text-sm text-muted">
               <Link href="/research-peptides" className="hover:text-ink">
@@ -81,21 +81,22 @@ export function Footer() {
               <Link href="/research-peptides-uk" className="hover:text-ink">
                 Research peptides UK
               </Link>
-              <Link href="/retatrutide-research-peptide" className="hover:text-ink">
-                Retatrutide research peptide
+              <Link href="/laboratory-peptide-compounds" className="hover:text-ink">
+                Laboratory peptide compounds
               </Link>
-              <Link href="/antioxidant-peptides" className="hover:text-ink">
-                Antioxidant peptides
+              <Link href="/buy-research-peptides-uk" className="hover:text-ink">
+                Buy research peptides UK
               </Link>
-              <Link href="/regenerative-peptides" className="hover:text-ink">
-                Regenerative peptides
+              <Link href="/research-peptide-supplier-uk" className="hover:text-ink">
+                Research peptide supplier UK
               </Link>
             </div>
           </div>
         </div>
 
         <div className="border-t border-line py-6 text-xs text-muted">
-          © {new Date().getFullYear()} {brand.name}. All rights reserved. Products are listed for laboratory, analytical, and scientific research use only.
+          © {new Date().getFullYear()} {brand.name}. All rights reserved. Products are listed for
+          laboratory, analytical, and scientific research use only.
         </div>
       </Container>
     </footer>

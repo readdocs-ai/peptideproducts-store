@@ -2,7 +2,7 @@ export const brand = {
   name: "Peptide Products",
   tagline: "Premium UK research peptide supplier",
   description:
-    "Research peptides and laboratory compounds supplied in the UK with secure checkout, tracked dispatch, and documentation available on selected product lines.",
+    "UK supplier of research peptides and laboratory compounds. Explore antioxidant, regenerative, hydration, and retatrutide-related products with secure checkout and documentation available on selected lines.",
   domain: "peptideproducts.co.uk",
   phone: "07429 098887",
   wholesale: "Wholesale enquiries welcome",
@@ -10,8 +10,8 @@ export const brand = {
 } as const;
 
 export const nav = [
-  { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
+  { href: "/research-peptides", label: "Research" },
   { href: "/quality-assurance", label: "Quality" },
   { href: "/wholesale", label: "Wholesale" },
   { href: "/contact", label: "Contact" },

@@ -6,16 +6,16 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
-  title: "Buy Research Peptides UK | Laboratory Compounds for Scientific Study",
+  title: "Buy Research Peptides UK | Research-Use-Only Product Guide",
   description:
-    "Browse research peptides available in the UK including antioxidant, regenerative, hydration, firming, and retatrutide-related laboratory compounds supplied strictly for scientific study.",
+    "Browse research-use-only peptide categories available in the UK, compare product types, and move into trusted product, quality, and support pages before ordering.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/buy-research-peptides-uk",
   },
   openGraph: {
-    title: "Buy Research Peptides UK | Laboratory Compounds for Scientific Study",
+    title: "Buy Research Peptides UK | Research-Use-Only Product Guide",
     description:
-      "Browse research peptides available in the UK including antioxidant, regenerative, hydration, firming, and retatrutide-related laboratory compounds supplied strictly for scientific study.",
+      "Browse research-use-only peptide categories available in the UK, compare product types, and move into trusted product, quality, and support pages before ordering.",
     url: "https://www.peptideproducts.co.uk/buy-research-peptides-uk",
     siteName: "Peptide Products",
     images: [
@@ -23,15 +23,15 @@ export const metadata: Metadata = {
         url: "https://www.peptideproducts.co.uk/products/meso-glutathione-main.jpg",
         width: 1200,
         height: 900,
-        alt: "Buy research peptides UK laboratory compounds",
+        alt: "Buy research peptides UK product guide",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Buy Research Peptides UK | Laboratory Compounds for Scientific Study",
+    title: "Buy Research Peptides UK | Research-Use-Only Product Guide",
     description:
-      "Browse research peptides available in the UK including antioxidant, regenerative, hydration, firming, and retatrutide-related laboratory compounds supplied strictly for scientific study.",
+      "Browse research-use-only peptide categories available in the UK, compare product types, and move into trusted product, quality, and support pages before ordering.",
     images: ["https://www.peptideproducts.co.uk/products/meso-glutathione-main.jpg"],
   },
 };
@@ -40,17 +40,63 @@ const faqItems = [
   {
     question: "Can research peptides be bought in the UK through this site?",
     answer:
-      "Yes. The site provides a UK-facing catalogue structure for research peptide compounds and related laboratory product lines supplied strictly for scientific study.",
+      "Yes. This site provides a UK-facing catalogue for research-use-only peptide and related laboratory product lines.",
   },
   {
     question: "Which categories are available?",
     answer:
-      "The site includes antioxidant, hydration, firming, regenerative, and selected metabolic research compound categories, along with related product pages and supporting research guides.",
+      "The catalogue includes antioxidant, hydration, firming, regenerative, and selected metabolic product categories, along with supporting quality and information pages.",
   },
   {
     question: "Are these compounds supplied for human use?",
     answer:
       "No. All products listed on this site are supplied strictly for laboratory and scientific research use only.",
+  },
+] as const;
+
+const categoryCards = [
+  {
+    title: "Antioxidant peptides",
+    copy: "Glutathione and vitamin C related lines used in antioxidant-focused research settings.",
+    href: "/antioxidant-peptides",
+  },
+  {
+    title: "Hydration peptides",
+    copy: "Hydration-focused products including hyaluronic acid related lines and support items.",
+    href: "/hydration-peptides",
+  },
+  {
+    title: "Firming peptides",
+    copy: "Structure and elasticity-focused blends used in formulation and compatibility review.",
+    href: "/firming-peptides",
+  },
+  {
+    title: "Regenerative peptides",
+    copy: "PDRN, collagen-related lines, and regeneration-focused research products.",
+    href: "/regenerative-peptides",
+  },
+] as const;
+
+const helpfulLinks = [
+  {
+    title: "Browse all products",
+    copy: "Open the full catalogue and compare prices, pack sizes, stock status, and product details.",
+    href: "/shop",
+  },
+  {
+    title: "Quality & documentation",
+    copy: "Review available supporting files and pre-order information before purchase.",
+    href: "/quality-assurance",
+  },
+  {
+    title: "Shipping information",
+    copy: "Check dispatch and delivery details before placing an order.",
+    href: "/shipping",
+  },
+  {
+    title: "Contact support",
+    copy: "Get help with products, documentation, ordering, or delivery questions.",
+    href: "/contact",
   },
 ] as const;
 
@@ -61,7 +107,7 @@ export default function Page() {
     name: "Buy Research Peptides UK",
     url: "https://www.peptideproducts.co.uk/buy-research-peptides-uk",
     description:
-      "Browse research peptides available in the UK including antioxidant, regenerative, hydration, firming, and retatrutide-related laboratory compounds supplied strictly for scientific study.",
+      "Browse research-use-only peptide categories available in the UK, compare product types, and move into trusted product, quality, and support pages before ordering.",
     isPartOf: {
       "@type": "WebSite",
       name: "Peptide Products",
@@ -127,25 +173,30 @@ export default function Page() {
                   Home
                 </Link>
                 <span className="mx-2">/</span>
-                <Link
-                  href="/research-peptides"
-                  className="font-semibold hover:text-ink"
-                >
+                <Link href="/research-peptides" className="font-semibold hover:text-ink">
                   Research peptides
                 </Link>
                 <span className="mx-2">/</span>
                 Buy research peptides UK
               </div>
 
-              <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
-                Buy research peptides UK
-              </h1>
+              <div className="mt-6 max-w-4xl">
+                <div className="eyebrow">UK research-use-only buying guide</div>
+                <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
+                  Buy research peptides UK
+                </h1>
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-muted md:text-base">
+                  This page is a simple guide for UK visitors looking to compare research-use-only
+                  peptide categories, review product types, and move into the most useful next step
+                  before ordering.
+                </p>
+              </div>
 
               <div className="mt-8 max-w-3xl overflow-hidden rounded-xl3 border border-line bg-panel p-4 shadow-soft">
                 <div className="relative h-[360px] w-full bg-panel">
                   <Image
                     src="/products/meso-glutathione-main.jpg"
-                    alt="Buy research peptides UK laboratory compounds"
+                    alt="Buy research peptides UK product guide"
                     fill
                     className="object-contain"
                     priority
@@ -153,109 +204,50 @@ export default function Page() {
                 </div>
               </div>
 
-              <p className="mt-6 max-w-3xl text-sm leading-7 text-muted">
-                Research peptides are laboratory compounds used in controlled
-                scientific environments investigating molecular interaction,
-                biochemical pathways, compound stability, and cellular response
-                mechanisms. For UK buyers, this page provides a practical overview that connects broad purchase-focused searches with the main research categories and key product pages.
-              </p>
+              <div className="mt-8 max-w-3xl space-y-4 text-sm leading-7 text-muted">
+                <p>
+                  Buyers searching for research peptides in the UK are usually looking for a clear
+                  catalogue, helpful category pages, and enough information to compare products
+                  before checkout. This guide is designed to make that process easier.
+                </p>
 
-              <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-                These compounds may include antioxidant peptide blends,
-                regeneration-focused compounds, hydration-related molecular
-                systems, structure-focused peptide categories, and selected
-                metabolic research compounds. The site is organised to help users
-                move from buying-intent searches into category-level browsing,
-                product comparison, and related research content.
-              </p>
+                <p>
+                  The site includes a range of antioxidant, hydration-focused, structural,
+                  regenerative, and selected metabolic product lines. Rather than sending visitors
+                  through too many overlapping pages, this guide points you toward the most useful
+                  next page based on what you want to review.
+                </p>
 
-              <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-                If you are looking to buy research peptides in the UK for
-                laboratory study, the most useful route is often to begin with the{" "}
-                <Link href="/research-peptides" className="font-semibold text-ink hover:text-accent">
-                  research peptides
-                </Link>{" "}
-                overview, then move into pages such as{" "}
-                <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
-                  antioxidant peptides
-                </Link>
-                ,{" "}
-                <Link href="/hydration-peptides" className="font-semibold text-ink hover:text-accent">
-                  hydration peptides
-                </Link>
-                ,{" "}
-                <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
-                  firming peptides
-                </Link>
-                , and{" "}
-                <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
-                  regenerative peptides
-                </Link>
-                .
-              </p>
-
-              <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-                Laboratories exploring newer metabolic research categories can also
-                move into{" "}
-                <Link href="/retatrutide-research-peptide" className="font-semibold text-ink hover:text-accent">
-                  retatrutide research peptide
-                </Link>
-                ,{" "}
-                <Link href="/buy-retatrutide-uk" className="font-semibold text-ink hover:text-accent">
-                  Buy Retatrutide UK
-                </Link>
-                , and the{" "}
-                <Link href="/product/retatrutide" className="font-semibold text-ink hover:text-accent">
-                  Retatrutide product page
-                </Link>
-                .
-              </p>
-
-              <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-                Explore related research areas including{" "}
-                <Link href="/antioxidant-peptides" className="font-semibold text-ink hover:text-accent">
-                  antioxidant peptides
-                </Link>
-                ,{" "}
-                <Link href="/hydration-peptides" className="font-semibold text-ink hover:text-accent">
-                  hydration peptides
-                </Link>
-                ,{" "}
-                <Link href="/firming-peptides" className="font-semibold text-ink hover:text-accent">
-                  firming peptides
-                </Link>
-                , and{" "}
-                <Link href="/regenerative-peptides" className="font-semibold text-ink hover:text-accent">
-                  regenerative peptides
-                </Link>
-                , or browse supporting guides such as{" "}
-                <Link href="/research-peptides-uk" className="font-semibold text-ink hover:text-accent">
-                  research peptides UK
-                </Link>
-                ,{" "}
-                <Link href="/research-peptide-supplier-uk" className="font-semibold text-ink hover:text-accent">
-                  research peptide supplier UK
-                </Link>
-                , and{" "}
-                <Link href="/laboratory-peptide-compounds" className="font-semibold text-ink hover:text-accent">
-                  laboratory peptide compounds
-                </Link>
-                .
-              </p>
+                <p>
+                  You can start with the{" "}
+                  <Link href="/shop" className="font-semibold text-ink hover:text-accent">
+                    full catalogue
+                  </Link>
+                  , move into broader{" "}
+                  <Link href="/research-peptides" className="font-semibold text-ink hover:text-accent">
+                    research peptide categories
+                  </Link>
+                  , or review{" "}
+                  <Link href="/quality-assurance" className="font-semibold text-ink hover:text-accent">
+                    quality and documentation
+                  </Link>{" "}
+                  before placing an order.
+                </p>
+              </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   href="/shop"
                   className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
                 >
-                  Browse research compounds
+                  Browse all products
                 </Link>
 
                 <Link
-                  href="/buy-retatrutide-uk"
+                  href="/quality-assurance"
                   className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
                 >
-                  Buy Retatrutide UK
+                  Quality & documentation
                 </Link>
               </div>
             </div>
@@ -268,75 +260,41 @@ export default function Page() {
               <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
                 <div className="max-w-3xl">
                   <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-muted">
-                    Featured buying pathway
+                    Core category path
                   </div>
                   <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-ink md:text-3xl">
-                    Retatrutide discovery within the UK research peptide cluster
+                    Explore the main product categories
                   </h2>
                   <p className="mt-3 text-sm leading-7 text-muted md:text-base">
-                    This buyer-focused page also supports users exploring
-                    retatrutide-related content by linking into the{" "}
-                    <Link
-                      href="/retatrutide-research-peptide"
-                      className="font-semibold text-ink hover:text-accent"
-                    >
-                      retatrutide research peptide
-                    </Link>{" "}
-                    guide, the{" "}
-                    <Link
-                      href="/buy-retatrutide-uk"
-                      className="font-semibold text-ink hover:text-accent"
-                    >
-                      Buy Retatrutide UK
-                    </Link>{" "}
-                    page, and the main{" "}
-                    <Link
-                      href="/product/retatrutide"
-                      className="font-semibold text-ink hover:text-accent"
-                    >
-                      Retatrutide product page
-                    </Link>
-                    .
+                    Use the category pages below to move into the part of the catalogue most
+                    relevant to your product search, then open product pages for pricing, stock
+                    status, pack details, and available documentation.
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-3">
                   <Link
-                    href="/buy-retatrutide-uk"
+                    href="/research-peptides"
                     className="rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
                   >
-                    Buy Retatrutide UK
+                    Research peptide categories
                   </Link>
                   <Link
-                    href="/retatrutide-research-peptide"
+                    href="/shop"
                     className="rounded-xl2 border border-line bg-white px-5 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
                   >
-                    Retatrutide research peptide
+                    Open full catalogue
                   </Link>
                 </div>
               </div>
 
-              <div className="mt-6 grid gap-4 md:grid-cols-3">
-                <Link href="/buy-retatrutide-uk" className="rounded-xl2 border border-line bg-panel p-4">
-                  <div className="text-sm font-extrabold text-ink">Buy Retatrutide UK</div>
-                  <p className="mt-2 text-sm text-muted">
-                    UK-focused landing page connecting research intent to retatrutide product discovery.
-                  </p>
-                </Link>
-
-                <Link href="/retatrutide-research-peptide" className="rounded-xl2 border border-line bg-panel p-4">
-                  <div className="text-sm font-extrabold text-ink">Retatrutide research peptide</div>
-                  <p className="mt-2 text-sm text-muted">
-                    Supporting guide for retatrutide research context and internal topical relevance.
-                  </p>
-                </Link>
-
-                <Link href="/product/retatrutide" className="rounded-xl2 border border-line bg-panel p-4">
-                  <div className="text-sm font-extrabold text-ink">Retatrutide product page</div>
-                  <p className="mt-2 text-sm text-muted">
-                    Open the Retatrutide 40mg product page.
-                  </p>
-                </Link>
+              <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                {categoryCards.map((item) => (
+                  <Link key={item.href} href={item.href} className="rounded-xl2 border border-line bg-panel p-4">
+                    <div className="text-sm font-extrabold text-ink">{item.title}</div>
+                    <p className="mt-2 text-sm text-muted">{item.copy}</p>
+                  </Link>
+                ))}
               </div>
             </div>
           </Container>
@@ -346,72 +304,33 @@ export default function Page() {
           <Container>
             <div className="max-w-4xl">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Research peptide categories available in the UK
+                What buyers usually want to check
               </h2>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                Buyers searching for research peptides in the UK often need a
-                clear overview of the main compound types available through a
-                laboratory-focused catalogue. On this site, those categories are
-                structured around antioxidant, hydration, firming,
-                regenerative, and selected metabolic research lines so that users
-                can move quickly from purchase intent into the most relevant area
-                of scientific interest.
+                In practice, buyers comparing research peptides in the UK are usually looking at a
+                few simple things: category coverage, product availability, clear product pages, and
+                access to supporting information such as pack size, imagery, stock status, and
+                documentation.
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                This category structure also helps strengthen internal topic
-                coverage by connecting buyer-focused pages with the main
-                supporting research content, including{" "}
-                <Link href="/research-peptides-uk" className="font-semibold text-ink hover:text-accent">
-                  research peptides UK
-                </Link>
-                ,{" "}
-                <Link
-                  href="/research-peptide-supplier-uk"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  research peptide supplier UK
-                </Link>
-                , and{" "}
-                <Link
-                  href="/laboratory-peptide-compounds"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  laboratory peptide compounds
-                </Link>
-                .
+                A useful buying page should help visitors move from broad search intent into the
+                right category, then into the most relevant product pages without confusion or too
+                many repeated paths.
               </p>
 
-              <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                <Link href="/antioxidant-peptides" className="surface-card p-5">
-                  <div className="font-extrabold text-ink">Antioxidant peptides</div>
-                  <p className="mt-2 text-sm text-muted">
-                    Glutathione and vitamin C research compounds studied for oxidative stress and antioxidant activity.
-                  </p>
+              <p className="mt-4 text-sm leading-7 text-muted">
+                That is why this page works best as a product-discovery guide leading into the{" "}
+                <Link href="/shop" className="font-semibold text-ink hover:text-accent">
+                  shop
                 </Link>
-
-                <Link href="/hydration-peptides" className="surface-card p-5">
-                  <div className="font-extrabold text-ink">Hydration peptides</div>
-                  <p className="mt-2 text-sm text-muted">
-                    Hyaluronic acid based compounds used in hydration and extracellular matrix research.
-                  </p>
+                ,{" "}
+                <Link href="/quality-assurance" className="font-semibold text-ink hover:text-accent">
+                  quality page
                 </Link>
-
-                <Link href="/firming-peptides" className="surface-card p-5">
-                  <div className="font-extrabold text-ink">Firming peptides</div>
-                  <p className="mt-2 text-sm text-muted">
-                    Elasticity and structural peptide blends reviewed in firmness and compatibility research.
-                  </p>
-                </Link>
-
-                <Link href="/regenerative-peptides" className="surface-card p-5">
-                  <div className="font-extrabold text-ink">Regenerative peptides</div>
-                  <p className="mt-2 text-sm text-muted">
-                    Collagen and PDRN based compounds studied in regeneration and repair research environments.
-                  </p>
-                </Link>
-              </div>
+                , and key category pages rather than acting as a standalone sales page.
+              </p>
             </div>
           </Container>
         </section>
@@ -420,68 +339,18 @@ export default function Page() {
           <Container>
             <div className="max-w-4xl">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                What buyers usually look for when buying research peptides
-              </h2>
-
-              <p className="mt-4 text-sm leading-7 text-muted">
-                In practice, buyers looking to buy research peptides in the UK
-                are usually comparing category coverage, product availability,
-                product-page clarity, and access to supporting information such
-                as pack size, imagery, and documentation. A strong buying page
-                should help users move from broad search intent into category
-                pages and then into the most relevant product lines without
-                confusion.
-              </p>
-
-              <p className="mt-4 text-sm leading-7 text-muted">
-                This page supports that process by linking directly to the
-                wider research catalogue rather than treating buying intent as a
-                standalone topic. That means users can explore antioxidant
-                compounds such as glutathione and vitamin C, hydration-related
-                products such as hyaluronic acid blends, regeneration-led
-                lines including collagen and PDRN, and selected metabolic
-                content such as{" "}
-                <Link
-                  href="/retatrutide-research-peptide"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  retatrutide research peptide
-                </Link>{" "}
-                through a connected research pathway.
-              </p>
-
-              <p className="mt-4 text-sm leading-7 text-muted">
-                It also gives the site a clearer product-focused entry point
-                for search while still maintaining the correct research-only
-                scientific context throughout.
-              </p>
-            </div>
-          </Container>
-        </section>
-
-        <section className="bg-white/80 py-14 backdrop-blur-sm">
-          <Container>
-            <div className="max-w-4xl">
-              <h2 className="text-2xl font-extrabold tracking-tight">
                 Research use only and scientific context
               </h2>
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-                All products listed on this site are supplied strictly for
-                laboratory and scientific research use only. They are not
-                intended for human consumption, medical treatment, veterinary
-                use, or clinical application. This research-only positioning is
-                central to the way products, category pages, and supporting
-                informational pages are presented across the site.
+                All products listed on this site are supplied strictly for laboratory and
+                scientific research use only. They are not intended for human consumption, medical
+                treatment, veterinary use, or clinical application.
               </p>
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">
-                The content on this page is intended to support laboratory
-                navigation, category discovery, and scientific study. It is not
-                presented as consumer or clinical guidance. Users looking to buy
-                research peptides in the UK should therefore interpret this page
-                as a useful starting point for the research catalogue rather than a
-                general retail page.
+                This page is intended to support product discovery, category navigation, and
+                pre-order research. It is not presented as consumer or clinical guidance.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -489,13 +358,13 @@ export default function Page() {
                   href="/shop"
                   className="inline-block rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
                 >
-                  Browse research products
+                  Browse all products
                 </Link>
                 <Link
-                  href="/buy-retatrutide-uk"
+                  href="/quality-assurance"
                   className="inline-block rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
                 >
-                  Buy Retatrutide UK
+                  Quality & documentation
                 </Link>
               </div>
             </div>
@@ -504,100 +373,15 @@ export default function Page() {
 
         <section className="bg-white/80 py-14 backdrop-blur-sm">
           <Container>
-            <h2 className="text-2xl font-extrabold tracking-tight">
-              Related research guides
-            </h2>
+            <h2 className="text-2xl font-extrabold tracking-tight">Helpful next pages</h2>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              <Link href="/research-peptides" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Research peptides</div>
-                <p className="mt-2 text-sm text-muted">
-                  Overview of peptide compounds used in laboratory study.
-                </p>
-              </Link>
-
-              <Link href="/research-peptides-uk" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Research peptides UK</div>
-                <p className="mt-2 text-sm text-muted">
-                  Laboratory peptide compounds available to UK buyers.
-                </p>
-              </Link>
-
-              <Link
-                href="/research-peptide-supplier-uk"
-                className="surface-card p-5"
-              >
-                <div className="font-extrabold text-ink">Research peptide supplier UK</div>
-                <p className="mt-2 text-sm text-muted">
-                  Overview of peptide compound supply and research products.
-                </p>
-              </Link>
-
-              <Link href="/buy-research-peptides-uk" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Buy research peptides UK</div>
-                <p className="mt-2 text-sm text-muted">
-                  Commercial-intent guide linking into the main peptide categories and product lines.
-                </p>
-              </Link>
-
-              <Link
-                href="/laboratory-peptide-compounds"
-                className="surface-card p-5"
-              >
-                <div className="font-extrabold text-ink">Laboratory peptide compounds</div>
-                <p className="mt-2 text-sm text-muted">
-                  Broader overview of peptide compound types used in scientific research environments.
-                </p>
-              </Link>
-
-              <Link href="/retatrutide-research-peptide" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Retatrutide research peptide</div>
-                <p className="mt-2 text-sm text-muted">
-                  Supporting guide for retatrutide research context and internal topic relevance.
-                </p>
-              </Link>
-
-              <Link href="/buy-retatrutide-uk" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Buy Retatrutide UK</div>
-                <p className="mt-2 text-sm text-muted">
-                  UK-focused retatrutide landing page connecting research intent to product discovery.
-                </p>
-              </Link>
-
-              <Link href="/product/retatrutide" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Retatrutide product page</div>
-                <p className="mt-2 text-sm text-muted">
-                  Open the Retatrutide 40mg product page.
-                </p>
-              </Link>
-
-              <Link href="/antioxidant-peptides" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Antioxidant peptides</div>
-                <p className="mt-2 text-sm text-muted">
-                  Antioxidant-led research compounds including glutathione and vitamin C.
-                </p>
-              </Link>
-
-              <Link href="/hydration-peptides" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Hydration peptides</div>
-                <p className="mt-2 text-sm text-muted">
-                  Hydration and extracellular matrix-focused research compound pages.
-                </p>
-              </Link>
-
-              <Link href="/regenerative-peptides" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Regenerative peptides</div>
-                <p className="mt-2 text-sm text-muted">
-                  Regeneration-related compound pages including collagen and PDRN content.
-                </p>
-              </Link>
-
-              <Link href="/" className="surface-card p-5">
-                <div className="font-extrabold text-ink">Homepage</div>
-                <p className="mt-2 text-sm text-muted">
-                  Return to the main catalogue and research guides.
-                </p>
-              </Link>
+              {helpfulLinks.map((item) => (
+                <Link key={item.href} href={item.href} className="surface-card p-5">
+                  <div className="font-extrabold text-ink">{item.title}</div>
+                  <p className="mt-2 text-sm text-muted">{item.copy}</p>
+                </Link>
+              ))}
             </div>
           </Container>
         </section>
@@ -613,12 +397,8 @@ export default function Page() {
             <div className="mt-8 grid gap-5">
               {faqItems.map((item) => (
                 <div key={item.question} className="surface-card p-6">
-                  <h3 className="text-lg font-extrabold tracking-tight">
-                    {item.question}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-muted">
-                    {item.answer}
-                  </p>
+                  <h3 className="text-lg font-extrabold tracking-tight">{item.question}</h3>
+                  <p className="mt-3 text-sm leading-7 text-muted">{item.answer}</p>
                 </div>
               ))}
             </div>

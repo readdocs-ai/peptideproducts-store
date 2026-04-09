@@ -57,8 +57,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${p.name} | Premium Research Peptide UK`;
-  const description = `${p.subtitle}. ${p.pack}. ${p.coa ? "Documentation available. " : ""}Research supply only. View product details and ordering guidance at Peptide Products.`;
+  const title = `${p.name} | Research Peptide Product UK`;
+  const description = `${p.subtitle}. ${p.pack}. ${p.coa ? "Documentation available. " : ""}Research supply only. View product details, quality information, and ordering guidance at Peptide Products.`;
   const url = `https://www.peptideproducts.co.uk/product/${p.id}`;
   const ogImage = `https://www.peptideproducts.co.uk${p.gallery?.[0] ?? p.image}`;
 
@@ -90,9 +90,11 @@ export default function ProductPage({ params }: Props) {
   const imageUrls = (p.gallery?.length ? p.gallery : [p.image]).map(
     (src) => `https://www.peptideproducts.co.uk${src}`
   );
+
   const relatedProducts = products
     .filter((item) => item.id !== p.id && item.category === p.category)
     .slice(0, 3);
+
   const categoryPage = getCategoryPage(p.category);
   const previewPath = getPreviewPath(p.coa);
 
@@ -190,7 +192,7 @@ export default function ProductPage({ params }: Props) {
     },
     {
       q: "How is ordering handled?",
-      a: "You can add the product to cart, use secure card checkout through Stripe, or use the alternative bank transfer or crypto checkout if preferred.",
+      a: "Add the product to cart and complete secure card checkout through Stripe, or use the alternative bank transfer or cryptocurrency option if preferred.",
     },
   ];
 
@@ -236,7 +238,7 @@ export default function ProductPage({ params }: Props) {
                 <div className="mt-5 flex flex-wrap gap-2">
                   <div className="trust-pill">Research use only</div>
 
-                  {p.coa ? <div className="premium-badge">COA available</div> : null}
+                  {p.coa ? <div className="premium-badge">Documentation available</div> : null}
 
                   <div
                     className={
@@ -273,13 +275,13 @@ export default function ProductPage({ params }: Props) {
 
                 <div className="mt-5 grid gap-2 text-sm text-muted">
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                    Secure Stripe checkout
+                    Secure card checkout via Stripe
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                     Tracked UK dispatch
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                    Alternative bank transfer & crypto available
+                    Bank transfer and cryptocurrency options available
                   </div>
                 </div>
               </div>
@@ -289,7 +291,7 @@ export default function ProductPage({ params }: Props) {
           <section className="mt-12 grid gap-10 lg:grid-cols-[1fr_0.92fr]">
             <div className="space-y-6">
               <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
-                <div className="soft-label">Highlights</div>
+                <div className="soft-label">Product highlights</div>
                 <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">
                   What you are ordering
                 </h2>
@@ -306,7 +308,7 @@ export default function ProductPage({ params }: Props) {
               <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
                 <div className="soft-label">Intended laboratory context</div>
                 <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">
-                  Use case guidance
+                  Research context
                 </h2>
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
                   {p.intendedUse.map((item) => (
@@ -327,8 +329,8 @@ export default function ProductPage({ params }: Props) {
                     Certificate preview and download
                   </h2>
                   <p className="mt-3 text-sm leading-7 text-muted">
-                    This product includes certificate documentation for visitors who want
-                    paperwork before ordering.
+                    This product includes supporting documentation for visitors who want to review
+                    available paperwork before ordering.
                   </p>
 
                   <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_0.78fr] lg:items-start">
@@ -351,10 +353,10 @@ export default function ProductPage({ params }: Props) {
                           Downloadable certificate file
                         </div>
                         <div className="rounded-xl2 border border-line bg-white px-4 py-3">
-                          Preview integrated into the product page
+                          Preview available on this page
                         </div>
                         <div className="rounded-xl2 border border-line bg-white px-4 py-3">
-                          Quality page also links broader documentation
+                          Additional quality information available on the quality page
                         </div>
                       </div>
 
@@ -377,24 +379,50 @@ export default function ProductPage({ params }: Props) {
                     </div>
                   </div>
                 </div>
-              ) : null}
+              ) : (
+                <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
+                  <div className="soft-label">Documentation</div>
+                  <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">
+                    Need documentation guidance?
+                  </h2>
+                  <p className="mt-3 text-sm leading-7 text-muted">
+                    Not every product page includes a downloadable certificate. Use the quality page
+                    or contact support if you want help before placing your order.
+                  </p>
+
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                    <Link
+                      href="/quality-assurance"
+                      className="rounded-xl2 border border-line bg-panel px-4 py-3 text-center text-sm font-extrabold text-ink hover:bg-white"
+                    >
+                      Quality & documentation
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="rounded-xl2 border border-line bg-panel px-4 py-3 text-center text-sm font-extrabold text-ink hover:bg-white"
+                    >
+                      Contact support
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="space-y-6">
               <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
-                <div className="soft-label">Ordering confidence</div>
+                <div className="soft-label">Ordering information</div>
                 <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">
-                  Ordering confidence
+                  Before you order
                 </h2>
                 <div className="mt-5 grid gap-3 text-sm text-muted">
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                     Secure card checkout via Stripe
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                    Stronger trust stack beside the primary CTA
+                    Tracked UK dispatch after order processing
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                    Mobile add-to-cart bar for easier conversion on phones
+                    Alternative payment options available at checkout
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                     Documentation available on selected product lines before purchase
@@ -433,10 +461,10 @@ export default function ProductPage({ params }: Props) {
                     Go to cart
                   </Link>
                   <Link
-                    href="/checkout"
+                    href="/shipping"
                     className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-extrabold text-ink hover:bg-white"
                   >
-                    Alternative checkout
+                    Shipping information
                   </Link>
                   {categoryPage ? (
                     <Link
