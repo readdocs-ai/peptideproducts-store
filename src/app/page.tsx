@@ -11,14 +11,14 @@ import { ProductCard } from "@/components/ProductCard";
 export const metadata: Metadata = {
   title: "Premium Research Peptides & Laboratory Compounds UK",
   description:
-    "Research-use-only peptides and laboratory compounds supplied in the UK with secure checkout, tracked dispatch, and documentation available on selected product lines.",
+    "Research-use-only peptides and laboratory compounds supplied in the UK with secure checkout, tracked dispatch, with documentation available on selected product lines.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk",
   },
   openGraph: {
     title: "Premium Research Peptides UK | Peptide Products",
     description:
-      "Research-use-only peptides supplied in the UK with secure checkout, tracked dispatch, and certificate files available on selected lines.",
+      "Research-use-only peptides supplied in the UK with secure checkout, tracked dispatch, and certificates of purity available on selected lines.",
     url: "https://www.peptideproducts.co.uk",
     siteName: "Peptide Products",
     images: [
@@ -172,45 +172,45 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 -z-10 bg-hero opacity-90" />
           <Container>
             <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+             
               <div>
-                <div className="eyebrow">
-                  UK research-use-only peptide store
-                  <span className="h-2 w-2 rounded-full bg-accent2" />
-                </div>
+  <div className="eyebrow">
+    UK research-use-only peptide store
+    <span className="h-2 w-2 rounded-full bg-accent2" />
+  </div>
 
-                <h1 className="mt-5 max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl lg:leading-[1.05]">
-                  Research-use-only peptides with secure checkout, tracked UK dispatch, with
-                  documentation available on selected lines.
-                </h1>
+  <h1 className="mt-5 max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl lg:leading-[1.05]">
+    Research-use-only peptides for UK laboratories.
+  </h1>
 
-                <p className="mt-5 max-w-2xl text-base leading-7 text-muted md:text-lg">
-                  Browse the current range, review quality information where available, and order
-                  through secure checkout with tracked UK delivery.
-                </p>
+  <p className="mt-5 max-w-2xl text-base leading-7 text-muted md:text-lg">
+    Browse research-use-only peptide products with secure checkout, tracked UK dispatch,
+    and documentation available on selected lines.
+  </p>
 
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <Link
-                    href="/shop"
-                    className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-accent/90"
-                  >
-                    Shop products
-                  </Link>
+  <div className="mt-6 flex flex-wrap gap-3">
+    <Link
+      href="/shop"
+      className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-accent/90"
+    >
+      Shop products
+    </Link>
 
-                  <Link
-                    href="/quality-assurance"
-                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
-                  >
-                    Quality & documentation
-                  </Link>
-                </div>
+    <Link
+      href="/quality-assurance"
+      className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
+    >
+      Quality & documentation
+    </Link>
+  </div>
 
-                <div className="mt-6 flex flex-wrap gap-2">
-                  <span className="trust-pill">Research use only</span>
-                  <span className="trust-pill">Selected documentation available</span>
-                  <span className="trust-pill">Tracked UK dispatch</span>
-                  <span className="trust-pill">Secure checkout</span>
-                </div>
-              </div>
+  <div className="mt-6 flex flex-wrap gap-2">
+    <span className="trust-pill">Research use only</span>
+    <span className="trust-pill">Documentation available on selected lines</span>
+    <span className="trust-pill">Tracked UK dispatch</span>
+    <span className="trust-pill">Secure checkout</span>
+  </div>
+</div>
 
               <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-soft">
                 <div className="relative h-[320px] md:h-[460px]">
