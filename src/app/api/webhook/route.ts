@@ -33,6 +33,10 @@ function priceIdToProductMap() {
   return map;
 }
 
+function getShippingRegionFromCountry(country?: string | null): "UK" | "International" {
+  return (country || "").toUpperCase() === "GB" ? "UK" : "International";
+}
+
 export async function POST(req: Request) {
   const signature = req.headers.get("stripe-signature");
 
@@ -70,6 +74,22 @@ export async function POST(req: Request) {
     if (event.type === "checkout.session.completed") {
       const stripe = getStripe();
       const session = event.data.object as Stripe.Checkout.Session;
+      const sessionData = session as Stripe.Checkout.Session & {
+        shipping?: {
+          name?: string | null;
+          address?: {
+            line1?: string | null;
+            line2?: string | null;
+            city?: string | null;
+            state?: string | null;
+            postal_code?: string | null;
+            country?: string | null;
+          } | null;
+        } | null;
+        total_details?: {
+          amount_shipping?: number | null;
+        } | null;
+      };
 
       const existing = await getOrderByStripeSessionId(session.id);
       if (existing) {
@@ -109,21 +129,43 @@ export async function POST(req: Request) {
         0
       );
 
-      const shipping = 0;
-      const total = subtotal + shipping;
+      const shipping = sessionData.total_details?.amount_shipping
+        ? sessionData.total_details.amount_shipping / 100
+        : 0;
+
+      const total = session.amount_total
+        ? session.amount_total / 100
+        : subtotal + shipping;
+
+      const shippingAddress = {
+        line1: sessionData.shipping?.address?.line1 || "",
+        line2: sessionData.shipping?.address?.line2 || "",
+        city: sessionData.shipping?.address?.city || "",
+        state: sessionData.shipping?.address?.state || "",
+        postalCode: sessionData.shipping?.address?.postal_code || "",
+        country: sessionData.shipping?.address?.country || "",
+      };
+
+      const shippingRegion = getShippingRegionFromCountry(
+        sessionData.shipping?.address?.country
+      );
 
       const customerName =
+        sessionData.shipping?.name ||
         session.customer_details?.name ||
         session.customer_details?.email ||
         "Stripe Customer";
 
       const customerEmail =
-        session.customer_details?.email || session.customer_email || "";
+        session.customer_details?.email ||
+        session.customer_email ||
+        "";
 
       const order = await createOrder({
         name: customerName,
         email: customerEmail,
-        shippingRegion: "UK",
+        shippingRegion,
+        shippingAddress,
         subtotal,
         shipping,
         total,
@@ -143,8 +185,12 @@ export async function POST(req: Request) {
           customerName: order.name,
           customerEmail: order.email,
           paymentMethod: order.paymentMethod,
+          subtotalGBP: order.subtotal,
+          shippingGBP: order.shipping,
           totalGBP: order.total,
           items: order.items,
+          shippingRegion: order.shippingRegion,
+          shippingAddress: order.shippingAddress,
         });
       } catch (emailError) {
         console.error("STRIPE ORDER EMAIL ERROR:", emailError);

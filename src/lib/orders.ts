@@ -10,11 +10,21 @@ export type StoredOrderItem = {
 export type OrderStatus = "pending" | "paid" | "shipped";
 export type PaymentMethod = "bank_transfer" | "crypto" | "card";
 
+export type StoredShippingAddress = {
+  line1: string;
+  line2: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+};
+
 export type StoredOrder = {
   id: string;
   name: string;
   email: string;
-  shippingRegion: "UK";
+  shippingRegion: "UK" | "International";
+  shippingAddress: StoredShippingAddress;
   subtotal: number;
   shipping: number;
   total: number;
@@ -52,12 +62,27 @@ function makeOrderId() {
   return `PP-${y}${m}${d}-${suffix}`;
 }
 
+function normalizeShippingAddress(
+  raw?: Partial<StoredShippingAddress> | null
+): StoredShippingAddress {
+  return {
+    line1: raw?.line1 || "",
+    line2: raw?.line2 || "",
+    city: raw?.city || "",
+    state: raw?.state || "",
+    postalCode: raw?.postalCode || "",
+    country: raw?.country || "",
+  };
+}
+
 function normalizeOrder(raw: Partial<StoredOrder>): StoredOrder {
   return {
     id: raw.id || "",
     name: raw.name || "",
     email: raw.email || "",
-    shippingRegion: "UK",
+    shippingRegion:
+      raw.shippingRegion === "International" ? "International" : "UK",
+    shippingAddress: normalizeShippingAddress(raw.shippingAddress),
     subtotal: raw.subtotal || 0,
     shipping: raw.shipping || 0,
     total: raw.total || 0,
@@ -79,7 +104,8 @@ export function isKvConfigured() {
 export async function createOrder(input: {
   name: string;
   email: string;
-  shippingRegion: "UK";
+  shippingRegion: "UK" | "International";
+  shippingAddress: StoredShippingAddress;
   subtotal: number;
   shipping: number;
   total: number;
@@ -102,6 +128,7 @@ export async function createOrder(input: {
     name: input.name,
     email: input.email,
     shippingRegion: input.shippingRegion,
+    shippingAddress: normalizeShippingAddress(input.shippingAddress),
     subtotal: input.subtotal,
     shipping: input.shipping,
     total: input.total,

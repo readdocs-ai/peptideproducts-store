@@ -19,6 +19,31 @@ function formatGBP(value: number) {
   }).format(value);
 }
 
+function formatCountry(code: string) {
+  const countries: Record<string, string> = {
+    GB: "United Kingdom",
+    US: "United States",
+    CA: "Canada",
+    AU: "Australia",
+    NZ: "New Zealand",
+    IE: "Ireland",
+    DE: "Germany",
+    FR: "France",
+    ES: "Spain",
+    IT: "Italy",
+    NL: "Netherlands",
+    BE: "Belgium",
+    SE: "Sweden",
+    NO: "Norway",
+    DK: "Denmark",
+    CH: "Switzerland",
+    AT: "Austria",
+    PT: "Portugal",
+  };
+
+  return countries[code] || code;
+}
+
 export default async function AdminOrdersPage({
   searchParams,
 }: {
@@ -34,7 +59,7 @@ export default async function AdminOrdersPage({
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight text-ink">Admin Orders</h1>
           <p className="mt-2 text-sm text-muted">
-            Review orders, payment method, status and shipping progress.
+            Review orders, payment method, customer delivery details, and shipping progress.
           </p>
         </div>
       </div>
@@ -49,7 +74,9 @@ export default async function AdminOrdersPage({
       ) : orders.length === 0 ? (
         <div className="rounded-[1.75rem] border border-line bg-white p-6 shadow-soft">
           <div className="text-lg font-extrabold text-ink">No orders yet</div>
-          <div className="mt-2 text-sm text-muted">Orders will appear here once customers place them.</div>
+          <div className="mt-2 text-sm text-muted">
+            Orders will appear here once customers place them.
+          </div>
         </div>
       ) : (
         <>
@@ -67,18 +94,14 @@ export default async function AdminOrdersPage({
                       <PaymentMethodBadge paymentMethod={order.paymentMethod} />
                     </div>
 
-                    <div className="mt-2 text-sm text-muted">
-                      {formatDate(order.createdAt)}
-                    </div>
+                    <div className="mt-2 text-sm text-muted">{formatDate(order.createdAt)}</div>
 
                     <div className="mt-5 grid gap-4 md:grid-cols-2">
                       <div className="rounded-xl2 border border-line bg-panel p-4">
                         <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
                           Customer
                         </div>
-                        <div className="mt-2 text-sm font-extrabold text-ink">
-                          {order.name}
-                        </div>
+                        <div className="mt-2 text-sm font-extrabold text-ink">{order.name}</div>
                         <div className="mt-1 text-sm text-muted">{order.email}</div>
                       </div>
 
@@ -95,6 +118,40 @@ export default async function AdminOrdersPage({
                         <div className="mt-1 text-sm text-ink">
                           <span className="font-extrabold">Shipping:</span>{" "}
                           {order.shipping > 0 ? formatGBP(order.shipping) : "Free"}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-5 grid gap-4 md:grid-cols-2">
+                      <div className="rounded-xl2 border border-line bg-panel p-4">
+                        <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+                          Shipping Region
+                        </div>
+                        <div className="mt-2 text-sm font-extrabold text-ink">
+                          {order.shippingRegion}
+                        </div>
+                      </div>
+
+                      <div className="rounded-xl2 border border-line bg-panel p-4">
+                        <div className="text-xs font-extrabold uppercase tracking-wide text-muted">
+                          Shipping Address
+                        </div>
+                        <div className="mt-2 space-y-1 text-sm text-ink">
+                          <div>{order.shippingAddress?.line1 || "—"}</div>
+                          {order.shippingAddress?.line2 ? (
+                            <div>{order.shippingAddress.line2}</div>
+                          ) : null}
+                          <div>
+                            {[order.shippingAddress?.city, order.shippingAddress?.state]
+                              .filter(Boolean)
+                              .join(", ") || "—"}
+                          </div>
+                          <div>{order.shippingAddress?.postalCode || "—"}</div>
+                          <div>
+                            {order.shippingAddress?.country
+                              ? formatCountry(order.shippingAddress.country)
+                              : "—"}
+                          </div>
                         </div>
                       </div>
                     </div>
