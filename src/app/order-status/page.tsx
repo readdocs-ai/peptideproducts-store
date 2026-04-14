@@ -9,7 +9,7 @@ import { Container } from "@/components/Container";
 type LookupOrder = {
   id: string;
   status: "pending" | "paid" | "shipped";
-  paymentMethod: "bank_transfer" | "crypto";
+  paymentMethod: "bank_transfer" | "crypto" | "card";
   total: number;
   createdAt: string;
   paidAt: string | null;
@@ -29,6 +29,12 @@ function formatGBP(value: number) {
     style: "currency",
     currency: "GBP",
   }).format(value);
+}
+
+function getPaymentMethodLabel(paymentMethod: LookupOrder["paymentMethod"]) {
+  if (paymentMethod === "bank_transfer") return "Bank Transfer";
+  if (paymentMethod === "crypto") return "Cryptocurrency";
+  return "Card";
 }
 
 export default function OrderStatusPage() {
@@ -127,7 +133,7 @@ export default function OrderStatusPage() {
                   </div>
                   <div>
                     <span className="font-extrabold text-ink">Payment method:</span>{" "}
-                    {order.paymentMethod === "bank_transfer" ? "Bank Transfer" : "Cryptocurrency"}
+                    {getPaymentMethodLabel(order.paymentMethod)}
                   </div>
                   <div>
                     <span className="font-extrabold text-ink">Total:</span> {formatGBP(order.total)}
