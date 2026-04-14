@@ -73,9 +73,18 @@ export async function POST(req: Request) {
   try {
     if (event.type === "checkout.session.completed") {
       const stripe = getStripe();
+
       const session = event.data.object as Stripe.Checkout.Session;
-      const sessionData = session as Stripe.Checkout.Session & {
-        shipping?: {
+
+      const existing = await getOrderByStripeSessionId(session.id);
+      if (existing) {
+        return NextResponse.json({ ok: true, duplicate: true });
+      }
+
+      const fullSession = (await stripe.checkout.sessions.retrieve(
+        session.id
+      )) as Stripe.Checkout.Session & {
+        shipping_details?: {
           name?: string | null;
           address?: {
             line1?: string | null;
@@ -89,12 +98,19 @@ export async function POST(req: Request) {
         total_details?: {
           amount_shipping?: number | null;
         } | null;
+        customer_details?: {
+          name?: string | null;
+          email?: string | null;
+          address?: {
+            line1?: string | null;
+            line2?: string | null;
+            city?: string | null;
+            state?: string | null;
+            postal_code?: string | null;
+            country?: string | null;
+          } | null;
+        } | null;
       };
-
-      const existing = await getOrderByStripeSessionId(session.id);
-      if (existing) {
-        return NextResponse.json({ ok: true, duplicate: true });
-      }
 
       const lineItemsResponse = await stripe.checkout.sessions.listLineItems(
         session.id,
@@ -129,36 +145,52 @@ export async function POST(req: Request) {
         0
       );
 
-      const shipping = sessionData.total_details?.amount_shipping
-        ? sessionData.total_details.amount_shipping / 100
+      const shipping = fullSession.total_details?.amount_shipping
+        ? fullSession.total_details.amount_shipping / 100
         : 0;
 
-      const total = session.amount_total
-        ? session.amount_total / 100
+      const total = fullSession.amount_total
+        ? fullSession.amount_total / 100
         : subtotal + shipping;
 
       const shippingAddress = {
-        line1: sessionData.shipping?.address?.line1 || "",
-        line2: sessionData.shipping?.address?.line2 || "",
-        city: sessionData.shipping?.address?.city || "",
-        state: sessionData.shipping?.address?.state || "",
-        postalCode: sessionData.shipping?.address?.postal_code || "",
-        country: sessionData.shipping?.address?.country || "",
+        line1:
+          fullSession.shipping_details?.address?.line1 ||
+          fullSession.customer_details?.address?.line1 ||
+          "",
+        line2:
+          fullSession.shipping_details?.address?.line2 ||
+          fullSession.customer_details?.address?.line2 ||
+          "",
+        city:
+          fullSession.shipping_details?.address?.city ||
+          fullSession.customer_details?.address?.city ||
+          "",
+        state:
+          fullSession.shipping_details?.address?.state ||
+          fullSession.customer_details?.address?.state ||
+          "",
+        postalCode:
+          fullSession.shipping_details?.address?.postal_code ||
+          fullSession.customer_details?.address?.postal_code ||
+          "",
+        country:
+          fullSession.shipping_details?.address?.country ||
+          fullSession.customer_details?.address?.country ||
+          "",
       };
 
-      const shippingRegion = getShippingRegionFromCountry(
-        sessionData.shipping?.address?.country
-      );
+      const shippingRegion = getShippingRegionFromCountry(shippingAddress.country);
 
       const customerName =
-        sessionData.shipping?.name ||
-        session.customer_details?.name ||
-        session.customer_details?.email ||
+        fullSession.shipping_details?.name ||
+        fullSession.customer_details?.name ||
+        fullSession.customer_email ||
         "Stripe Customer";
 
       const customerEmail =
-        session.customer_details?.email ||
-        session.customer_email ||
+        fullSession.customer_details?.email ||
+        fullSession.customer_email ||
         "";
 
       const order = await createOrder({
