@@ -4,7 +4,7 @@ import { products } from "@/data/products";
 
 export const runtime = "nodejs";
 
-const UK_SHIPPING_FEE_GBP = 0.00;
+const UK_SHIPPING_FEE_GBP = 0;
 const INTERNATIONAL_SHIPPING_FEE_GBP = 14.99;
 
 const ALLOWED_COUNTRIES: Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry[] =
@@ -84,9 +84,11 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!ALLOWED_COUNTRIES.includes(
-      shippingCountry as Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry
-    )) {
+    if (
+      !ALLOWED_COUNTRIES.includes(
+        shippingCountry as Stripe.Checkout.SessionCreateParams.ShippingAddressCollection.AllowedCountry
+      )
+    ) {
       return NextResponse.json(
         { error: "Shipping country is not supported." },
         { status: 400 }
@@ -136,7 +138,6 @@ export async function POST(req: Request) {
       mode: "payment",
       line_items: lineItems,
       customer_creation: "always",
-
       billing_address_collection: "required",
 
       shipping_address_collection: {
