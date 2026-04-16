@@ -224,10 +224,27 @@ export async function sendShippedEmail(params: SendShippedEmailParams) {
   const customerHtml = `
     <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
       <h1>Your order has shipped</h1>
+
       <p>Hello ${escapeHtml(params.customerName)},</p>
+
       <p>Your order <strong>${params.orderId}</strong> has now been shipped.</p>
+
       <p><strong>Tracking Number:</strong> ${escapeHtml(params.trackingNumber)}</p>
+
       <p>Thank you for your order.</p>
+
+      <hr style="margin:20px 0;" />
+
+      <p>If everything arrives safely, we’d really appreciate a quick review.</p>
+
+      <p>
+        👉 <a href="https://www.peptideproducts.co.uk/reviews">Leave a review</a>
+      </p>
+
+      <p style="font-size:12px;color:#6b7280;">
+        Your feedback helps us improve and build trust for new customers.
+      </p>
+
       <p>If you need help, reply to info@peptideproducts.co.uk.</p>
     </div>
   `;
