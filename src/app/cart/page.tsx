@@ -60,11 +60,12 @@ export default function CartPage() {
     .filter((x) => !!x.product);
 
   const subtotal = cartTotalGBP(items, products);
-  const shipping = subtotal > 0
-    ? isUkCountry(country)
-      ? UK_SHIPPING_FEE_GBP
-      : INTERNATIONAL_SHIPPING_FEE_GBP
-    : 0;
+  const shipping =
+    subtotal > 0
+      ? isUkCountry(country)
+        ? UK_SHIPPING_FEE_GBP
+        : INTERNATIONAL_SHIPPING_FEE_GBP
+      : 0;
   const total = subtotal + shipping;
 
   const handleStripeCheckout = async () => {
@@ -239,10 +240,10 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                <div className="mt-3 text-xs text-muted">
+                <div className="mt-3 rounded-xl2 border border-line bg-panel p-4 text-xs text-muted">
                   {isUkCountry(country)
-                    ? "UK shipping is free."
-                    : "International shipping is charged at £14.99."}
+                    ? "Free UK shipping. Final address is confirmed securely in Stripe checkout."
+                    : "International shipping is charged at £14.99. Final address is confirmed securely in Stripe checkout."}
                 </div>
 
                 <div className="mt-6 grid gap-2 text-sm text-muted">
@@ -250,10 +251,13 @@ export default function CartPage() {
                     Secure Stripe checkout for card payments
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                    Alternative bank transfer or crypto checkout available
+                    Free UK shipping / £14.99 international
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                    Quality page available for documentation review
+                    Tracked dispatch and order status updates
+                  </div>
+                  <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
+                    Alternative bank transfer or crypto checkout available
                   </div>
                 </div>
 
@@ -278,7 +282,28 @@ export default function CartPage() {
                   Review quality & documentation
                 </Link>
 
-                {error ? <div className="mt-3 text-sm font-semibold text-red-600">{error}</div> : null}
+                <div className="mt-5 rounded-xl2 border border-line bg-panel p-4">
+                  <div className="text-sm font-extrabold text-ink">
+                    ★★★★★ Verified customer
+                  </div>
+                  <p className="mt-2 text-sm leading-7 text-muted">
+                    Fast delivery, secure packaging and smooth checkout. Great overall
+                    experience.
+                  </p>
+                </div>
+
+                <div className="mt-5 rounded-xl2 border border-line bg-white p-4">
+                  <div className="text-sm font-extrabold text-ink">What happens next?</div>
+                  <div className="mt-3 grid gap-2 text-sm text-muted">
+                    <div>1. Complete payment securely through Stripe</div>
+                    <div>2. Receive your order confirmation by email</div>
+                    <div>3. Track progress later using the order status page</div>
+                  </div>
+                </div>
+
+                {error ? (
+                  <div className="mt-3 text-sm font-semibold text-red-600">{error}</div>
+                ) : null}
               </aside>
             </div>
           )}

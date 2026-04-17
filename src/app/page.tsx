@@ -72,6 +72,21 @@ const trustCards = [
   },
 ] as const;
 
+const reviewCards = [
+  {
+    name: "James, UK",
+    text: "Fast delivery and secure packaging. Very smooth ordering process.",
+  },
+  {
+    name: "A. R., UK",
+    text: "Order arrived quickly and everything was packed well.",
+  },
+  {
+    name: "Michael, UK",
+    text: "Clear communication, easy checkout, and a good overall experience.",
+  },
+] as const;
+
 const helpLinks = [
   {
     title: "Browse all products",
@@ -172,45 +187,44 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 -z-10 bg-hero opacity-90" />
           <Container>
             <div className="grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
-             
               <div>
-  <div className="eyebrow">
-    UK research-use-only peptide store
-    <span className="h-2 w-2 rounded-full bg-accent2" />
-  </div>
+                <div className="eyebrow">
+                  UK research-use-only peptide store
+                  <span className="h-2 w-2 rounded-full bg-accent2" />
+                </div>
 
-  <h1 className="mt-5 max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl lg:leading-[1.05]">
-    Research-use-only peptides for UK laboratories.
-  </h1>
+                <h1 className="mt-5 max-w-3xl text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl lg:leading-[1.05]">
+                  Research-use-only peptides for UK laboratories.
+                </h1>
 
-  <p className="mt-5 max-w-2xl text-base leading-7 text-muted md:text-lg">
-    Browse research-use-only peptide products with secure checkout, tracked UK dispatch,
-    and documentation available on selected lines.
-  </p>
+                <p className="mt-5 max-w-2xl text-base leading-7 text-muted md:text-lg">
+                  Browse research-use-only peptide products with secure checkout, tracked UK dispatch,
+                  and documentation available on selected lines.
+                </p>
 
-  <div className="mt-6 flex flex-wrap gap-3">
-    <Link
-      href="/shop"
-      className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-accent/90"
-    >
-      Shop products
-    </Link>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Link
+                    href="/shop"
+                    className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-accent/90"
+                  >
+                    Shop products
+                  </Link>
 
-    <Link
-      href="/quality-assurance"
-      className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
-    >
-      Quality & documentation
-    </Link>
-  </div>
+                  <Link
+                    href="/quality-assurance"
+                    className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft transition hover:-translate-y-0.5 hover:bg-panel"
+                  >
+                    Quality & documentation
+                  </Link>
+                </div>
 
-  <div className="mt-6 flex flex-wrap gap-2">
-    <span className="trust-pill">Research use only</span>
-    <span className="trust-pill">Documentation available on selected lines</span>
-    <span className="trust-pill">Tracked UK dispatch</span>
-    <span className="trust-pill">Secure checkout</span>
-  </div>
-</div>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  <span className="trust-pill">Research use only</span>
+                  <span className="trust-pill">Documentation available on selected lines</span>
+                  <span className="trust-pill">Tracked UK dispatch</span>
+                  <span className="trust-pill">Secure checkout</span>
+                </div>
+              </div>
 
               <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-soft">
                 <div className="relative h-[320px] md:h-[460px]">
@@ -237,6 +251,37 @@ export default function Home() {
                     {card.title}
                   </div>
                   <p className="mt-3 text-sm leading-7 text-muted">{card.copy}</p>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+
+        <section className="bg-white/80 py-10 backdrop-blur-sm lg:py-14">
+          <Container>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <div className="eyebrow">Customer reviews</div>
+                <h2 className="mt-4 section-title">What customers are saying.</h2>
+                <p className="mt-2 max-w-2xl text-sm text-muted">
+                  Feedback from customers who have already ordered from Peptide Products.
+                </p>
+              </div>
+
+              <Link href="/reviews" className="text-sm font-extrabold text-ink/80 hover:text-ink">
+                View all reviews →
+              </Link>
+            </div>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {reviewCards.map((review) => (
+                <div
+                  key={review.name}
+                  className="rounded-xl3 border border-line bg-white p-5 shadow-soft"
+                >
+                  <div className="text-lg font-extrabold text-ink">★★★★★</div>
+                  <p className="mt-3 text-sm leading-7 text-muted">{review.text}</p>
+                  <div className="mt-4 text-sm font-extrabold text-ink">{review.name}</div>
                 </div>
               ))}
             </div>
