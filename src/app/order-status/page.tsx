@@ -167,6 +167,19 @@ export default function OrderStatusPage() {
               </div>
             ) : null}
 
+            <hr className="my-6" />
+
+<div className="text-sm text-muted">
+  If your order has arrived safely, we’d really appreciate a quick review.
+</div>
+
+<Link
+  href="/reviews"
+  className="mt-3 inline-block font-extrabold text-accent hover:underline"
+>
+  Leave a review →
+</Link>
+
             <div className="mt-8 text-sm">
               <Link href="/shop" className="font-extrabold text-ink hover:underline">
                 Continue shopping →
