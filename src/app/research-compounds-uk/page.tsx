@@ -5,29 +5,41 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
-  title: "Retatrutide UK | Laboratory Research Compound",
+  title: "Research Compounds UK | Laboratory Supply UK",
   description:
-    "Retatrutide UK information page for laboratory and analytical research use. View product details, quality information, shipping guidance, and related research pages.",
+    "Research compounds UK supplier including peptides and laboratory materials. Secure checkout, UK delivery, and supporting documentation available on selected product lines.",
   alternates: {
-    canonical: "https://www.peptideproducts.co.uk/retatrutide-uk",
+    canonical: "https://www.peptideproducts.co.uk/research-compounds-uk",
   },
 };
 
+const categories = [
+  {
+    name: "Research peptides",
+    href: "/research-peptides",
+  },
+  {
+    name: "Metabolic compounds",
+    href: "/product/retatrutide",
+  },
+  {
+    name: "Regenerative compounds",
+    href: "/regenerative-peptides",
+  },
+];
+
 const faqs = [
   {
-    question: "Is Retatrutide listed for human use?",
-    answer:
-      "No. Retatrutide products listed by Peptide Products are supplied strictly for laboratory, analytical, and scientific research use only.",
+    q: "What are research compounds?",
+    a: "Research compounds are materials supplied for laboratory, analytical, and scientific research environments. They are not intended for human consumption or medical use.",
   },
   {
-    question: "Can UK buyers order Retatrutide online?",
-    answer:
-      "Yes. Customers can view the Retatrutide product page online, review available product information, and complete checkout through the website.",
+    q: "Can research compounds be ordered in the UK?",
+    a: "Yes. Products can be viewed online and ordered through the website using secure checkout options.",
   },
   {
-    question: "Is delivery available outside the UK?",
-    answer:
-      "UK delivery is available, and selected international shipping options may also be available depending on destination.",
+    q: "Do you offer UK delivery?",
+    a: "Yes. Orders are prepared for tracked UK dispatch, with international shipping available on selected orders.",
   },
 ];
 
@@ -39,32 +51,31 @@ export default function Page() {
       <main className="py-14">
         <Container>
           <div className="mx-auto max-w-4xl">
-            <div className="eyebrow">Laboratory use only</div>
+            <div className="eyebrow">Laboratory supply</div>
 
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
-              Retatrutide UK laboratory research compound
+              Research compounds UK supplier
             </h1>
 
             <p className="mt-5 text-base leading-8 text-muted">
-              Retatrutide is a laboratory research compound listed by Peptide
-              Products for analytical and scientific research environments. This
-              page helps UK buyers review Retatrutide availability, product
-              details, quality information, ordering guidance, and related
-              research pages.
+              Peptide Products supplies research compounds in the UK for laboratory,
+              analytical, and scientific environments. This page provides an overview
+              of available compound categories, product access, and ordering
+              information.
             </p>
 
             <p className="mt-4 text-base leading-8 text-muted">
-              Products are supplied strictly for laboratory and research use
-              only. They are not intended for human consumption, medical use,
-              veterinary use, or clinical treatment.
+              All products are listed strictly for laboratory and research use only.
+              They are not intended for human consumption, medical use, or clinical
+              application.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                href="/product/retatrutide"
+                href="/shop"
                 className="rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
               >
-                View Retatrutide product
+                Browse all products
               </Link>
 
               <Link
@@ -75,40 +86,39 @@ export default function Page() {
               </Link>
 
               <Link
-                href="/shipping"
+                href="/contact"
                 className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
               >
-                Shipping information
+                Contact support
               </Link>
             </div>
 
             <section className="mt-12 rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Retatrutide availability in the UK
+                Available research compound categories
               </h2>
 
-              <p className="mt-4 text-sm leading-7 text-muted">
-                Peptide Products lists Retatrutide for UK customers looking for
-                laboratory reference materials and research compounds. Product
-                details, pack information, stock status, and checkout options can
-                be reviewed directly on the product page.
-              </p>
-
-              <p className="mt-4 text-sm leading-7 text-muted">
-                For current availability and pricing, visit the{" "}
-                <Link
-                  href="/product/retatrutide"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  Retatrutide 40mg product page
-                </Link>
-                .
-              </p>
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                {categories.map((c) => (
+                  <Link
+                    key={c.name}
+                    href={c.href}
+                    className="surface-card p-5"
+                  >
+                    <div className="font-extrabold text-ink">
+                      {c.name}
+                    </div>
+                    <p className="mt-2 text-sm text-muted">
+                      Explore related products, availability, and ordering options.
+                    </p>
+                  </Link>
+                ))}
+              </div>
             </section>
 
             <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Ordering and delivery information
+                Ordering research compounds in the UK
               </h2>
 
               <div className="mt-5 grid gap-4 md:grid-cols-3">
@@ -116,8 +126,8 @@ export default function Page() {
                   <div className="text-sm font-extrabold text-ink">
                     Secure checkout
                   </div>
-                  <p className="mt-2 text-sm leading-6 text-muted">
-                    Card checkout is processed securely through Stripe.
+                  <p className="mt-2 text-sm text-muted">
+                    Card payments are processed securely through Stripe.
                   </p>
                 </div>
 
@@ -125,17 +135,17 @@ export default function Page() {
                   <div className="text-sm font-extrabold text-ink">
                     UK dispatch
                   </div>
-                  <p className="mt-2 text-sm leading-6 text-muted">
+                  <p className="mt-2 text-sm text-muted">
                     Orders are prepared for tracked delivery after processing.
                   </p>
                 </div>
 
                 <div className="rounded-xl2 border border-line bg-panel p-4">
                   <div className="text-sm font-extrabold text-ink">
-                    Research only
+                    Research use only
                   </div>
-                  <p className="mt-2 text-sm leading-6 text-muted">
-                    Supplied strictly for laboratory and analytical use only.
+                  <p className="mt-2 text-sm text-muted">
+                    All products are supplied strictly for laboratory use only.
                   </p>
                 </div>
               </div>
@@ -143,46 +153,43 @@ export default function Page() {
 
             <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Related Retatrutide pages
+                Popular research compounds
               </h2>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <Link href="/product/retatrutide" className="surface-card p-5">
                   <div className="font-extrabold text-ink">
-                    Retatrutide product page
+                    Retatrutide
                   </div>
                   <p className="mt-2 text-sm text-muted">
-                    View product details, stock status, and checkout options.
+                    View product details, stock availability, and ordering options.
                   </p>
                 </Link>
 
-                <Link
-                  href="/retatrutide-research-peptide"
-                  className="surface-card p-5"
-                >
+                <Link href="/product/tirzepatide-tr40-40mg" className="surface-card p-5">
                   <div className="font-extrabold text-ink">
-                    Retatrutide research peptide
+                    Tirzepatide
                   </div>
                   <p className="mt-2 text-sm text-muted">
-                    Read more supporting research-focused information.
+                    Access product information and availability.
                   </p>
                 </Link>
 
-                <Link href="/buy-retatrutide-uk" className="surface-card p-5">
+                <Link href="/product/ghk-cu-100mg" className="surface-card p-5">
                   <div className="font-extrabold text-ink">
-                    Buy Retatrutide UK
+                    GHK-CU
                   </div>
                   <p className="mt-2 text-sm text-muted">
-                    UK-focused ordering and availability information.
+                    Explore regenerative compound product details.
                   </p>
                 </Link>
 
-                <Link href="/research-peptides" className="surface-card p-5">
+                <Link href="/product/bpc-157-10mg" className="surface-card p-5">
                   <div className="font-extrabold text-ink">
-                    Research peptides
+                    BPC-157
                   </div>
                   <p className="mt-2 text-sm text-muted">
-                    Browse related research compound categories.
+                    View product information and ordering options.
                   </p>
                 </Link>
               </div>
@@ -190,20 +197,20 @@ export default function Page() {
 
             <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Retatrutide UK FAQs
+                Research compounds UK FAQs
               </h2>
 
               <div className="mt-5 grid gap-4">
                 {faqs.map((item) => (
                   <div
-                    key={item.question}
+                    key={item.q}
                     className="rounded-xl2 border border-line bg-panel p-4"
                   >
                     <h3 className="text-sm font-extrabold text-ink">
-                      {item.question}
+                      {item.q}
                     </h3>
                     <p className="mt-2 text-sm leading-7 text-muted">
-                      {item.answer}
+                      {item.a}
                     </p>
                   </div>
                 ))}

@@ -7,11 +7,18 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-line bg-white">
       <Container>
-        <div className="grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.9fr]">
+        <div className="grid gap-10 py-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
+          
+          {/* Brand */}
           <div>
             <Logo />
             <p className="mt-4 max-w-md text-sm leading-7 text-muted">
               {brand.description}
+            </p>
+
+            <p className="mt-4 max-w-md text-sm leading-7 text-muted">
+              All products are supplied strictly for laboratory and research use only.
+              Not for human consumption, medical use, or veterinary use.
             </p>
 
             <div className="mt-6 space-y-2 text-sm text-muted">
@@ -21,9 +28,11 @@ export function Footer() {
               </a>
               <div>{brand.phone}</div>
               <div>{brand.wholesale}</div>
+              <div>United Kingdom</div>
             </div>
           </div>
 
+          {/* Shop & Support */}
           <div>
             <div className="text-sm font-extrabold uppercase tracking-[0.12em] text-ink">
               Shop & support
@@ -31,6 +40,9 @@ export function Footer() {
             <div className="mt-4 grid gap-3 text-sm text-muted">
               <Link href="/shop" className="hover:text-ink">
                 Shop all products
+              </Link>
+              <Link href="/about" className="hover:text-ink">
+                About us
               </Link>
               <Link href="/quality-assurance" className="hover:text-ink">
                 Quality & documentation
@@ -50,9 +62,10 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Policies */}
           <div>
             <div className="text-sm font-extrabold uppercase tracking-[0.12em] text-ink">
-              Policies
+              Policies & info
             </div>
             <div className="mt-4 grid gap-3 text-sm text-muted">
               <Link href="/disclaimer" className="hover:text-ink">
@@ -64,12 +77,19 @@ export function Footer() {
               <Link href="/privacy" className="hover:text-ink">
                 Privacy policy
               </Link>
+              <Link href="/returns" className="hover:text-ink">
+                Returns & refunds
+              </Link>
               <Link href="/faq" className="hover:text-ink">
                 Frequently asked questions
+              </Link>
+              <Link href="/reviews" className="hover:text-ink">
+                Customer reviews
               </Link>
             </div>
           </div>
 
+          {/* SEO Links */}
           <div>
             <div className="text-sm font-extrabold uppercase tracking-[0.12em] text-ink">
               Helpful links
@@ -78,25 +98,37 @@ export function Footer() {
               <Link href="/research-peptides" className="hover:text-ink">
                 Research peptides
               </Link>
-              <Link href="/research-peptides-uk" className="hover:text-ink">
-                Research peptides UK
+              <Link href="/peptides-uk" className="hover:text-ink">
+                Peptides UK
               </Link>
-              <Link href="/laboratory-peptide-compounds" className="hover:text-ink">
-                Laboratory peptide compounds
+              <Link href="/research-compounds-uk" className="hover:text-ink">
+                Research compounds UK
               </Link>
-              <Link href="/buy-research-peptides-uk" className="hover:text-ink">
-                Buy research peptides UK
+              <Link href="/metabolic-research-compounds" className="hover:text-ink">
+                Metabolic research compounds
               </Link>
-              <Link href="/research-peptide-supplier-uk" className="hover:text-ink">
-                Research peptide supplier UK
+              <Link href="/retatrutide-uk" className="hover:text-ink">
+                Retatrutide UK
+              </Link>
+              <Link href="/buy-retatrutide-uk" className="hover:text-ink">
+                Buy Retatrutide UK
+              </Link>
+              <Link href="/retatrutide-price-uk" className="hover:text-ink">
+                Retatrutide price UK
+              </Link>
+              <Link href="/where-to-buy-retatrutide-uk" className="hover:text-ink">
+                Where to buy Retatrutide UK
               </Link>
             </div>
           </div>
+
         </div>
 
+        {/* Bottom */}
         <div className="border-t border-line py-6 text-xs text-muted">
-          © {new Date().getFullYear()} {brand.name}. All rights reserved. Products are listed for
-          laboratory, analytical, and scientific research use only.
+          © {new Date().getFullYear()} {brand.name}. All rights reserved. Products are
+          listed strictly for laboratory, analytical, and scientific research use only.
+          Not for human consumption, medical use, or veterinary use.
         </div>
       </Container>
     </footer>

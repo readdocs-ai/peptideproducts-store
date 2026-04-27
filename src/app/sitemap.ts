@@ -8,27 +8,45 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     "",
     "/shop",
+    "/about",
     "/quality-assurance",
     "/contact",
     "/wholesale",
     "/order-status",
+    "/reviews",
     "/faq",
+    "/shipping",
+    "/returns",
+    "/terms",
+    "/privacy",
+    "/disclaimer",
+
     "/research-peptides",
     "/research-peptides-uk",
+    "/peptides-uk",
+    "/research-compounds-uk",
+    "/metabolic-research-compounds",
     "/research-peptide-supplier-uk",
+    "/laboratory-peptide-compounds",
+    "/peptide-products",
+
     "/antioxidant-peptides",
     "/hydration-peptides",
     "/firming-peptides",
     "/regenerative-peptides",
+
     "/pdrn-research-peptide",
     "/glutathione-research-peptide",
     "/hyaluronic-acid-peptide-research",
+
+    "/retatrutide-uk",
     "/retatrutide-research-peptide",
-    "/buy-research-peptides-uk",
     "/buy-retatrutide-uk",
+    "/retatrutide-price-uk",
+    "/where-to-buy-retatrutide-uk",
     "/what-is-retatrutide",
-    "/laboratory-peptide-compounds",
-    "/peptide-products",
+
+    "/buy-research-peptides-uk",
   ];
 
   const staticRoutes = staticPages.map((path) => {
@@ -38,23 +56,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
     if (path === "") {
       priority = 1;
       changeFrequency = "daily";
-    } else if (path === "/shop" || path === "/quality-assurance") {
-      priority = 0.95;
+    } else if (path === "/shop") {
+      priority = 0.96;
       changeFrequency = "daily";
-    } else if (path === "/buy-retatrutide-uk" || path === "/retatrutide-research-peptide") {
+    } else if (
+      path === "/retatrutide-uk" ||
+      path === "/buy-retatrutide-uk" ||
+      path === "/retatrutide-research-peptide" ||
+      path === "/retatrutide-price-uk" ||
+      path === "/where-to-buy-retatrutide-uk"
+    ) {
       priority = 0.94;
       changeFrequency = "daily";
-    } else if (path === "/what-is-retatrutide") {
-      priority = 0.9;
-      changeFrequency = "weekly";
     } else if (
+      path === "/peptides-uk" ||
+      path === "/research-compounds-uk" ||
+      path === "/metabolic-research-compounds" ||
       path === "/research-peptides" ||
       path === "/research-peptides-uk" ||
       path === "/research-peptide-supplier-uk" ||
       path === "/buy-research-peptides-uk"
     ) {
-      priority = 0.88;
+      priority = 0.9;
       changeFrequency = "weekly";
+    } else if (
+      path === "/quality-assurance" ||
+      path === "/about" ||
+      path === "/contact" ||
+      path === "/shipping" ||
+      path === "/returns"
+    ) {
+      priority = 0.85;
+      changeFrequency = "monthly";
     } else if (
       path === "/antioxidant-peptides" ||
       path === "/hydration-peptides" ||
@@ -78,7 +111,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const productRoutes = products.map((product) => ({
     url: `${baseUrl}/product/${product.id}`,
     lastModified: now,
-    changeFrequency: product.id === "retatrutide" ? ("daily" as const) : ("weekly" as const),
+    changeFrequency:
+      product.id === "retatrutide" ? ("daily" as const) : ("weekly" as const),
     priority: product.id === "retatrutide" ? 0.95 : 0.86,
   }));
 
