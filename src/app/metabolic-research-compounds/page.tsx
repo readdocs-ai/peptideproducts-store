@@ -7,7 +7,7 @@ import { Container } from "@/components/Container";
 export const metadata: Metadata = {
   title: "Metabolic Research Compounds UK | Laboratory Supply",
   description:
-    "Explore metabolic research compounds in the UK including Retatrutide and Tirzepatide laboratory reference materials supplied strictly for research use only.",
+    "Metabolic research compounds UK supplier including Retatrutide and Tirzepatide laboratory reference materials supplied strictly for research use only.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/metabolic-research-compounds",
   },
@@ -17,17 +17,17 @@ const compoundLinks = [
   {
     name: "Retatrutide",
     href: "/product/retatrutide",
-    copy: "View Retatrutide product details, availability, and ordering options.",
+    copy: "View Retatrutide product details, current availability, and ordering options.",
   },
   {
     name: "Tirzepatide",
     href: "/product/tirzepatide-tr40-40mg",
-    copy: "View Tirzepatide product information and current availability.",
+    copy: "Review Tirzepatide product information and laboratory supply details.",
   },
   {
-    name: "Research peptides",
-    href: "/research-peptides",
-    copy: "Browse the wider research peptide category and related guides.",
+    name: "Retatrutide UK",
+    href: "/retatrutide-uk",
+    copy: "Read the UK availability guide for Retatrutide laboratory supply.",
   },
   {
     name: "Research compounds UK",
@@ -49,6 +49,10 @@ const faqs = [
     q: "Can UK customers order online?",
     a: "Yes. Product pages show availability, pricing, checkout options, and delivery information for UK and selected international customers.",
   },
+  {
+    q: "Which metabolic research compounds are listed?",
+    a: "The catalogue includes products such as Retatrutide and Tirzepatide, alongside related research compound pages and supporting product information.",
+  },
 ];
 
 export default function Page() {
@@ -66,16 +70,35 @@ export default function Page() {
             </h1>
 
             <p className="mt-5 text-base leading-8 text-muted">
-              Peptide Products lists metabolic research compounds for laboratory,
-              analytical, and scientific research environments. This page helps
-              UK customers review related product categories, ordering
-              information, and research-use-only guidance.
+              Peptide Products lists metabolic research compounds in the UK for
+              laboratory, analytical, and scientific research environments. This
+              page helps customers review product categories, ordering guidance,
+              quality information, and research-use-only supply details.
             </p>
 
             <p className="mt-4 text-base leading-8 text-muted">
-              Products in this category are supplied strictly for laboratory and
-              research use only. They are not intended for human consumption,
-              medical use, veterinary use, or clinical treatment.
+              Products in this category include laboratory reference materials
+              such as{" "}
+              <Link
+                href="/product/retatrutide"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                Retatrutide
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="/product/tirzepatide-tr40-40mg"
+                className="font-semibold text-ink hover:text-accent"
+              >
+                Tirzepatide
+              </Link>
+              . These products are supplied strictly for laboratory and research
+              use only.
+            </p>
+
+            <p className="mt-4 text-base leading-8 text-muted">
+              They are not intended for human consumption, medical use,
+              veterinary use, clinical use, or treatment purposes.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -116,8 +139,28 @@ export default function Page() {
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                For direct product access, browse the current catalogue or review
-                the dedicated Retatrutide and Tirzepatide product pages.
+                Customers researching this category often begin with the broader{" "}
+                <Link
+                  href="/research-compounds-uk"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  research compounds UK
+                </Link>{" "}
+                page before moving into individual product pages such as{" "}
+                <Link
+                  href="/product/retatrutide"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  Retatrutide
+                </Link>{" "}
+                and{" "}
+                <Link
+                  href="/product/tirzepatide-tr40-40mg"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  Tirzepatide
+                </Link>
+                .
               </p>
             </section>
 
@@ -131,6 +174,9 @@ export default function Page() {
                   <Link key={item.href} href={item.href} className="surface-card p-5">
                     <div className="font-extrabold text-ink">{item.name}</div>
                     <p className="mt-2 text-sm leading-6 text-muted">{item.copy}</p>
+                    <div className="mt-4 text-sm font-extrabold text-ink">
+                      Open page →
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -138,8 +184,22 @@ export default function Page() {
 
             <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Ordering information
+                Ordering metabolic research compounds
               </h2>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Customers can browse product pages, review product information,
+                check stock status, add items to cart, and complete secure
+                checkout online. Orders are prepared for dispatch after
+                processing, and customers can use the{" "}
+                <Link
+                  href="/order-status"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  order status page
+                </Link>{" "}
+                to check progress after ordering.
+              </p>
 
               <div className="mt-5 grid gap-4 md:grid-cols-3">
                 <div className="rounded-xl2 border border-line bg-panel p-4">
@@ -169,6 +229,24 @@ export default function Page() {
                   </p>
                 </div>
               </div>
+            </section>
+
+            <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">
+              <h2 className="text-2xl font-extrabold tracking-tight">
+                Quality information
+              </h2>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Selected product lines include supporting documentation or quality
+                information where available. Customers can review the{" "}
+                <Link
+                  href="/quality-assurance"
+                  className="font-semibold text-ink hover:text-accent"
+                >
+                  quality and documentation page
+                </Link>{" "}
+                before ordering or contact support for product-related questions.
+              </p>
             </section>
 
             <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">

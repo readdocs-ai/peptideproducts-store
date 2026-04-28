@@ -107,6 +107,9 @@ export function Footer() {
               <Link href="/metabolic-research-compounds" className="hover:text-ink">
                 Metabolic research compounds
               </Link>
+              <Link href="/tirzepatide-uk" className="hover:text-ink">
+  Tirzepatide UK
+</Link>
               <Link href="/retatrutide-uk" className="hover:text-ink">
                 Retatrutide UK
               </Link>
