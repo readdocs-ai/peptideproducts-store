@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/wholesale",
     "/order-status",
+    "/buy-tirzepatide-uk",
     "/reviews",
     "/faq",
     "/shipping",
