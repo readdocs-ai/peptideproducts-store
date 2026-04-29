@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/buy-tirzepatide-uk",
     "/tirzepatide-price-uk",
     "/where-to-buy-tirzepatide-uk",
+    "/buy-peptides-uk",
     "/reviews",
     "/faq",
     "/shipping",
