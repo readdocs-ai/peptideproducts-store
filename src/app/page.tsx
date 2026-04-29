@@ -287,6 +287,58 @@ export default function Home() {
             </div>
           </Container>
         </section>
+        <section className="bg-white/80 py-10 backdrop-blur-sm lg:py-14">
+  <Container>
+    <div className="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <div className="eyebrow">Research categories</div>
+        <h2 className="mt-4 section-title">
+          Popular research compounds in the UK.
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm text-muted">
+          Explore key research-use-only pages covering peptides, metabolic
+          research compounds, and laboratory supply information for UK customers.
+        </p>
+      </div>
+    </div>
+
+    <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <Link href="/retatrutide-uk" className="surface-card p-5">
+        <div className="text-lg font-extrabold text-ink">Retatrutide UK</div>
+        <p className="mt-2 text-sm leading-7 text-muted">
+          View Retatrutide availability, product access, and ordering information.
+        </p>
+        <div className="mt-4 text-sm font-extrabold text-ink">Open page →</div>
+      </Link>
+
+      <Link href="/tirzepatide-uk" className="surface-card p-5">
+        <div className="text-lg font-extrabold text-ink">Tirzepatide UK</div>
+        <p className="mt-2 text-sm leading-7 text-muted">
+          Review Tirzepatide product information, availability, and related pages.
+        </p>
+        <div className="mt-4 text-sm font-extrabold text-ink">Open page →</div>
+      </Link>
+
+      <Link href="/buy-peptides-uk" className="surface-card p-5">
+        <div className="text-lg font-extrabold text-ink">Buy peptides UK</div>
+        <p className="mt-2 text-sm leading-7 text-muted">
+          Browse peptide product pages and laboratory research supply information.
+        </p>
+        <div className="mt-4 text-sm font-extrabold text-ink">Open page →</div>
+      </Link>
+
+      <Link href="/metabolic-research-compounds" className="surface-card p-5">
+        <div className="text-lg font-extrabold text-ink">
+          Metabolic research compounds
+        </div>
+        <p className="mt-2 text-sm leading-7 text-muted">
+          Explore metabolic pathway research materials and related product pages.
+        </p>
+        <div className="mt-4 text-sm font-extrabold text-ink">Open page →</div>
+      </Link>
+    </div>
+  </Container>
+</section>
 
         <section className="py-10 lg:py-14">
           <Container>

@@ -5,11 +5,11 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
-  title: "Buy Peptides UK | Laboratory Research Supply",
+  title: "Where to Buy Peptides UK | Laboratory Research Supply",
   description:
-    "Buy peptides UK for laboratory and analytical research use. Browse research peptides, metabolic compounds, product pages, delivery information, and secure checkout options.",
+    "Where to buy peptides UK for laboratory and analytical research use. Browse research peptides, product pages, delivery information, and secure checkout options.",
   alternates: {
-    canonical: "https://www.peptideproducts.co.uk/buy-peptides-uk",
+    canonical: "https://www.peptideproducts.co.uk/where-to-buy-peptides-uk",
   },
 };
 
@@ -17,17 +17,17 @@ const productLinks = [
   {
     name: "Retatrutide",
     href: "/product/retatrutide",
-    copy: "View Retatrutide product details, current availability, and ordering options.",
+    copy: "View Retatrutide product details, availability, and ordering options.",
   },
   {
     name: "Tirzepatide",
     href: "/product/tirzepatide-tr40-40mg",
-    copy: "Review Tirzepatide product information, pricing, and laboratory supply details.",
+    copy: "Review Tirzepatide product information, pricing, and availability.",
   },
   {
     name: "GHK-CU",
     href: "/product/ghk-cu-100mg",
-    copy: "Explore GHK-CU product information and availability.",
+    copy: "Explore GHK-CU product details and laboratory supply information.",
   },
   {
     name: "BPC-157",
@@ -37,6 +37,10 @@ const productLinks = [
 ];
 
 const relatedPages = [
+  {
+    name: "Buy peptides UK",
+    href: "/buy-peptides-uk",
+  },
   {
     name: "Peptides UK",
     href: "/peptides-uk",
@@ -49,28 +53,24 @@ const relatedPages = [
     name: "Metabolic research compounds",
     href: "/metabolic-research-compounds",
   },
-  {
-    name: "Research peptides",
-    href: "/research-peptides",
-  },
 ];
 
 const faqs = [
   {
-    q: "Can peptides be purchased in the UK?",
-    a: "Peptide Products lists peptides and related research compounds for laboratory, analytical, and scientific research use only. Customers can browse products online and complete checkout through the website.",
+    q: "Where can I buy peptides in the UK?",
+    a: "Peptide Products lists peptides and related research compounds online for laboratory, analytical, and scientific research use only.",
   },
   {
-    q: "Are these peptides for human use?",
-    a: "No. All products are supplied strictly for laboratory and research use only. They are not intended for human consumption, medical use, veterinary use, or clinical treatment.",
+    q: "Are these products for human use?",
+    a: "No. Products listed by Peptide Products are supplied strictly for laboratory and research use only. They are not intended for human consumption, medical use, veterinary use, or clinical treatment.",
+  },
+  {
+    q: "Can I check product details before ordering?",
+    a: "Yes. Product pages include pack details, stock information, pricing, checkout options, and supporting documentation where available.",
   },
   {
     q: "Is UK delivery available?",
     a: "Yes. Orders are prepared for tracked UK delivery after processing, with selected international shipping options available depending on destination.",
-  },
-  {
-    q: "Can I review product details before ordering?",
-    a: "Yes. Product pages include pack information, stock status, pricing, checkout options, and supporting documentation where available.",
   },
 ];
 
@@ -85,22 +85,20 @@ export default function Page() {
             <div className="eyebrow">Laboratory supply</div>
 
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
-              Buy peptides UK for laboratory research
+              Where to buy peptides UK
             </h1>
 
             <p className="mt-5 text-base leading-8 text-muted">
-              Peptide Products provides online access to peptides and related
-              research compounds in the UK for laboratory, analytical, and
-              scientific research environments. This page helps customers browse
-              product categories, compare related pages, review ordering
-              information, and access product pages directly.
+              This page helps UK customers find peptide product information,
+              research compound categories, product pages, pricing access, and
+              ordering guidance for laboratory and analytical research use.
             </p>
 
             <p className="mt-4 text-base leading-8 text-muted">
-              Products listed on this website are supplied strictly for
-              laboratory and research use only. They are not intended for human
-              consumption, medical use, veterinary use, clinical use, or
-              treatment purposes.
+              Peptide Products provides online access to peptides and related
+              research compounds for laboratory use only. Products are not
+              intended for human consumption, medical use, veterinary use,
+              clinical use, or treatment purposes.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -112,31 +110,36 @@ export default function Page() {
               </Link>
 
               <Link
-                href="/peptides-uk"
+                href="/buy-peptides-uk"
                 className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
               >
-                Peptides UK guide
+                Buy peptides UK
               </Link>
 
               <Link
-                href="/quality-assurance"
+                href="/shipping"
                 className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
               >
-                Quality & documentation
+                Shipping information
               </Link>
             </div>
 
             <section className="mt-12 rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Peptides available to UK customers
+                Finding peptides for laboratory research
               </h2>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                Customers can review individual product pages for current stock
-                status, pack information, pricing, checkout options, and related
-                product guidance. The catalogue includes metabolic research
-                compounds, regenerative research products, and wider laboratory
-                peptide-related materials.
+                Customers looking for peptides in the UK can browse the current
+                catalogue, review individual product pages, compare related
+                research compound categories, and check ordering information
+                before completing checkout.
+              </p>
+
+              <p className="mt-4 text-sm leading-7 text-muted">
+                Product pages include details such as pack information, stock
+                status, pricing, checkout options, and supporting documentation
+                where available.
               </p>
 
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -156,44 +159,25 @@ export default function Page() {
 
             <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Ordering peptides online
+                What to check before ordering
               </h2>
-
-              <p className="mt-4 text-sm leading-7 text-muted">
-                Customers can browse the catalogue, open individual product
-                pages, add products to cart, and complete checkout online. Card
-                payments are processed securely through Stripe, and selected
-                alternative payment options may also be available through the
-                checkout process.
-              </p>
-
-              <p className="mt-4 text-sm leading-7 text-muted">
-                After ordering, customers can use the{" "}
-                <Link
-                  href="/order-status"
-                  className="font-semibold text-ink hover:text-accent"
-                >
-                  order status page
-                </Link>{" "}
-                to check progress using their order number and email address.
-              </p>
 
               <div className="mt-5 grid gap-4 md:grid-cols-3">
                 <div className="rounded-xl2 border border-line bg-panel p-4">
                   <div className="text-sm font-extrabold text-ink">
-                    Secure checkout
+                    Product information
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted">
-                    Card payments are processed securely through Stripe.
+                    Review pack size, stock status, pricing, and product details.
                   </p>
                 </div>
 
                 <div className="rounded-xl2 border border-line bg-panel p-4">
                   <div className="text-sm font-extrabold text-ink">
-                    UK dispatch
+                    Delivery details
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted">
-                    Orders are prepared for tracked delivery after processing.
+                    Check shipping information before completing checkout.
                   </p>
                 </div>
 
@@ -202,7 +186,7 @@ export default function Page() {
                     Research use only
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted">
-                    Products are supplied strictly for laboratory use only.
+                    Confirm products are suitable for laboratory research use only.
                   </p>
                 </div>
               </div>
@@ -210,7 +194,7 @@ export default function Page() {
 
             <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Related research pages
+                Related pages
               </h2>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -218,7 +202,7 @@ export default function Page() {
                   <Link key={item.href} href={item.href} className="surface-card p-5">
                     <div className="font-extrabold text-ink">{item.name}</div>
                     <p className="mt-2 text-sm text-muted">
-                      Open related product guides and laboratory supply pages.
+                      Open related research compound and peptide supply pages.
                     </p>
                   </Link>
                 ))}
@@ -227,7 +211,7 @@ export default function Page() {
 
             <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-extrabold tracking-tight">
-                Buy peptides UK FAQs
+                Where to buy peptides UK FAQs
               </h2>
 
               <div className="mt-5 grid gap-4">
@@ -249,27 +233,7 @@ export default function Page() {
           </div>
         </Container>
       </main>
-<h2 className="mt-10 text-2xl font-extrabold tracking-tight">
-  Popular research pages
-</h2>
 
-<div className="mt-5 grid gap-3 sm:grid-cols-2">
-  <Link href="/buy-tirzepatide-uk" className="surface-card p-5">
-    Buy Tirzepatide UK
-  </Link>
-
-  <Link href="/tirzepatide-price-uk" className="surface-card p-5">
-    Tirzepatide price UK
-  </Link>
-
-  <Link href="/where-to-buy-tirzepatide-uk" className="surface-card p-5">
-    Where to buy Tirzepatide UK
-  </Link>
-
-  <Link href="/retatrutide-uk" className="surface-card p-5">
-    Retatrutide UK
-  </Link>
-</div>
       <Footer />
     </div>
   );

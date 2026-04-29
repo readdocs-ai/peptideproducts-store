@@ -113,6 +113,9 @@ export function Footer() {
 <Link href="/buy-peptides-uk" className="hover:text-ink">
   Buy peptides UK
 </Link>
+<Link href="/where-to-buy-peptides-uk" className="hover:text-ink">
+  Where to buy peptides UK
+</Link>
               <Link href="/research-compounds-uk" className="hover:text-ink">
                 Research compounds UK
               </Link>

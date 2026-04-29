@@ -236,6 +236,11 @@ export default function ProductPage({ params }: Props) {
                 <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-ink md:text-5xl">
                   {p.name}
                 </h1>
+                <div className="mt-4 flex flex-wrap gap-2">
+  <span className="trust-pill">UK-based supply</span>
+  <span className="trust-pill">Tracked delivery available</span>
+  <span className="trust-pill">Laboratory research use only</span>
+</div>
 
                 <div className="mt-5 flex flex-wrap gap-2">
                   <div className="trust-pill">Research use only</div>

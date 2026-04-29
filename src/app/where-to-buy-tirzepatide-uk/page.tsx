@@ -205,7 +205,27 @@ export default function Page() {
           </div>
         </Container>
       </main>
+<h2 className="mt-10 text-2xl font-extrabold tracking-tight">
+  Popular research pages
+</h2>
 
+<div className="mt-5 grid gap-3 sm:grid-cols-2">
+  <Link href="/buy-tirzepatide-uk" className="surface-card p-5">
+    Buy Tirzepatide UK
+  </Link>
+
+  <Link href="/tirzepatide-price-uk" className="surface-card p-5">
+    Tirzepatide price UK
+  </Link>
+
+  <Link href="/where-to-buy-tirzepatide-uk" className="surface-card p-5">
+    Where to buy Tirzepatide UK
+  </Link>
+
+  <Link href="/retatrutide-uk" className="surface-card p-5">
+    Retatrutide UK
+  </Link>
+</div>
       <Footer />
     </div>
   );
