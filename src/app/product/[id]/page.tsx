@@ -265,14 +265,17 @@ export default function ProductPage({ params }: Props) {
                 </div>
 
                 {p.stockStatus === "in_stock" ? (
-                  <div className="mt-4 inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-extrabold text-amber-700">
-                    Limited stock - high demand
-                  </div>
-                ) : null}
+  <div className="mt-4 inline-flex rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-extrabold text-red-700">
+    Low stock — high demand product
+  </div>
+) : null}
 
                 <p className="mt-6 max-w-2xl text-sm leading-7 text-muted md:text-base">
                   {p.notes}
                 </p>
+                <p className="mt-3 text-sm font-semibold text-ink">
+  View full product details and availability above before ordering.
+</p>
 
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   {specificationCards.map((item) => (
@@ -290,6 +293,12 @@ export default function ProductPage({ params }: Props) {
 
               <div className="mt-6 rounded-xl3 border border-line bg-white p-6 shadow-soft">
                 <ProductBuyBox product={p} />
+                <div className="mt-4 grid gap-2 text-xs text-muted">
+  <div>✔ UK-based supplier</div>
+  <div>✔ Tracked delivery available</div>
+  <div>✔ Secure checkout (Stripe)</div>
+  <div>✔ Discreet packaging</div>
+</div>
 
                 <div className="mt-5 grid gap-2 text-sm text-muted">
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
@@ -442,6 +451,18 @@ export default function ProductPage({ params }: Props) {
             <div className="space-y-6">
               <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
                 <div className="soft-label">Ordering information</div>
+                <div className="mt-6 rounded-xl3 border border-line bg-white p-6 shadow-soft">
+  <h3 className="text-lg font-extrabold text-ink">
+    Why order from Peptide Products?
+  </h3>
+
+  <div className="mt-4 grid gap-3 text-sm text-muted">
+    <div>• UK-based supply with tracked dispatch</div>
+    <div>• Secure checkout with multiple payment options</div>
+    <div>• Clear product pages with documentation where available</div>
+    <div>• Fast processing and discreet packaging</div>
+  </div>
+</div>
                 <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">
                   Before you order
                 </h2>
