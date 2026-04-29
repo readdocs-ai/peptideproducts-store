@@ -57,10 +57,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${p.name} | Research Peptide Product UK`;
+  const title = `${p.name} | Laboratory Research Compound UK`;
   const description = `${p.subtitle}. ${p.pack}. ${
     p.coa ? "Documentation available. " : ""
-  }Research supply only. View product details, quality information, and ordering guidance at Peptide Products.`;
+  }Supplied strictly for laboratory research use only. View product details, quality information, UK delivery, and ordering guidance at Peptide Products.`;
   const url = `https://www.peptideproducts.co.uk/product/${p.id}`;
   const ogImage = `https://www.peptideproducts.co.uk${p.gallery?.[0] ?? p.image}`;
 
@@ -185,6 +185,7 @@ export default function ProductPage({ params }: Props) {
     {
       q: `Is ${p.name} listed for human use?`,
       a: "No. All products are listed strictly for laboratory, analytical, and scientific research use only.",
+      
     },
     {
       q: "Can I review documentation before ordering?",
@@ -196,6 +197,10 @@ export default function ProductPage({ params }: Props) {
       q: "How is ordering handled?",
       a: "Add the product to cart and complete secure card checkout through Stripe, or use the alternative bank transfer or cryptocurrency option if preferred.",
     },
+    {
+  q: "What is the intended use of this product?",
+  a: "This product is supplied strictly for laboratory, analytical, and scientific research use only. It is not intended for human consumption, medical use, veterinary use, clinical use, or treatment purposes.",
+},
   ];
 
   return (
@@ -513,7 +518,42 @@ export default function ProductPage({ params }: Props) {
               </div>
             </div>
           </section>
+<section className="mt-10 rounded-xl3 border border-line bg-white p-6 shadow-soft">
+  <div className="soft-label">Research guides</div>
+  <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">
+    Related research information
+  </h2>
 
+  <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <Link href="/peptides-uk" className="surface-card p-5">
+      <div className="font-extrabold text-ink">Peptides UK</div>
+      <p className="mt-2 text-sm text-muted">
+        Browse UK peptide supply information.
+      </p>
+    </Link>
+
+    <Link href="/research-compounds-uk" className="surface-card p-5">
+      <div className="font-extrabold text-ink">Research compounds UK</div>
+      <p className="mt-2 text-sm text-muted">
+        Explore wider laboratory compound pages.
+      </p>
+    </Link>
+
+    <Link href="/metabolic-research-compounds" className="surface-card p-5">
+      <div className="font-extrabold text-ink">Metabolic compounds</div>
+      <p className="mt-2 text-sm text-muted">
+        View related metabolic research pages.
+      </p>
+    </Link>
+
+    <Link href="/buy-peptides-uk" className="surface-card p-5">
+      <div className="font-extrabold text-ink">Buy peptides UK</div>
+      <p className="mt-2 text-sm text-muted">
+        Review ordering and product access pages.
+      </p>
+    </Link>
+  </div>
+</section>
           {relatedProducts.length ? (
             <section className="mt-10">
               <div className="flex items-end justify-between gap-4">
