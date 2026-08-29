@@ -1,0 +1,11 @@
+PP9.3 ALLUVI LINK FIX
+
+Fix applied:
+- Removed the permanent redirect that sent /product/alluvi-retatrutide-40mg to the Synexa Retatrutide product.
+- Kept Synexa Retatrutide as the flagship/main Retatrutide product.
+- Legacy Alluvi URLs now redirect to /product/alluvi-retatrutide-40mg.
+- Verified the Alluvi product exists in src/data/products.ts at GBP 125 and remains in stock.
+- Verified the three Alluvi product images exist in public/products.
+
+Important:
+- This project preserves the existing .git repository and all other current project changes from the uploaded master.

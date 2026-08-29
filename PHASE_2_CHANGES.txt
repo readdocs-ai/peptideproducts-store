@@ -1,0 +1,27 @@
+PEPTIDE PRODUCTS - PHASE 2
+
+Visible changes
+1. Homepage Alluvi hero badge now reads "In stock".
+2. Homepage FAQ area rebuilt into a balanced three-column layout.
+3. Large empty area immediately above the footer removed.
+4. Product cards redesigned with a shorter image area, clearer price, stock badge, details link and compact cart button.
+5. Shop grid now displays four products per row on wide desktop screens.
+6. Alluvi product page now has a prominent blue flagship/in-stock banner and clearer product badges.
+
+Protected areas not changed
+- Royal Mail Click & Drop integration
+- Admin orders and fulfilment
+- Checkout and payment processing
+- Order storage and email logic
+- URLs, metadata, schema, sitemap and SEO landing-page content
+
+Files changed
+- src/app/page.tsx
+- src/components/ProductCard.tsx
+- src/components/ShopClient.tsx
+- src/app/product/[id]/page.tsx
+
+Validation
+- The changed TSX files were syntax-checked with TypeScript.
+- A full Next.js build could not be run in the temporary packaging environment because project dependencies were not available there.
+- Run npm install if required, then npm run build before deployment.

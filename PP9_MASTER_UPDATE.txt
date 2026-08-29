@@ -1,0 +1,69 @@
+PP9 MASTER UPDATE
+=================
+
+Built from the exact PP8.2-BUSINESS-COMMAND-CENTRE project ZIP supplied in this chat.
+The existing Git repository (.git) is preserved so this extracted folder can be used directly as the new working master.
+
+KEY CHANGES
+-----------
+1. Tirzepatide catalogue consolidated to the current range:
+   - Tirzepatide TR10 10mg
+   - Tirzepatide TR15 15mg
+
+2. New current product images installed:
+   - public/products/tirzepatide-tr10-10mg.webp
+   - public/products/tirzepatide-tr15-15mg.webp
+
+3. Old Tirzepatide 30mg / 40mg image files removed.
+
+4. Current internal product links, featured-product references, research pages and Tirzepatide SEO content updated from the previous TR30/TR40 listings to TR10/TR15.
+
+5. Legacy product URLs are safely redirected:
+   - /product/tirzepatide-tr30-30mg -> /product/tirzepatide-tr10-10mg
+   - /product/tirzepatide-tr40-40mg -> /product/tirzepatide-tr15-15mg
+
+6. The legacy /tr40-peptide-uk SEO landing page is retained so old bookmarks/search traffic do not hit a dead end, but it now clearly states that the old 40mg listing is retired and routes visitors to the current 10mg/15mg range.
+
+7. Admin Orders now includes full customer detail editing:
+   - customer name
+   - email
+   - phone
+   - delivery name
+   - address line 1
+   - address line 2
+   - town/city
+   - county/state
+   - postcode
+   - country code
+
+   Correcting these details updates the saved order, packing slip and future emails. If an order has already been sent to Royal Mail, the admin panel warns that an already-created Click & Drop label is not automatically changed.
+
+8. Existing Print Packing Slip feature is preserved.
+
+9. Existing PP Business Command Centre, Bank/Accountant Centre, analytics, inventory and Redis optimisations are preserved.
+
+10. Removed an accidentally embedded old Next.js source-project folder from public/products that was being included by the broad TypeScript include pattern and could create unnecessary type/build noise.
+
+11. Removed a duplicate shippingAddress declaration in the createOrder input type.
+
+VALIDATION
+----------
+- All product image paths referenced by src/data/products.ts were checked and exist.
+- Current /product/... internal links were checked against the catalogue.
+- TypeScript syntax transpilation passed for the amended core files.
+- Full npm install/build could not be run in the OpenAI build environment because its internal npm mirror does not provide yocto-queue@0.1.0. Run npm install and npm run build on the normal Windows development machine before pushing.
+
+SIMPLE WORKFLOW
+---------------
+1. Extract PP9-MASTER-FULL-GIT-READY.zip.
+2. Open the PP9-MASTER folder in CMD.
+3. Run: git status
+   It should recognise the existing Git repository because .git is included.
+4. Run: npm install
+5. Run: npm run build
+6. If build succeeds:
+   git add .
+   git commit -m "PP9 master Tirzepatide and admin customer upgrade"
+   git push origin main
+
+No copying files into another project folder is required.

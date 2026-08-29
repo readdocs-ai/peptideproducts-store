@@ -1,0 +1,40 @@
+PP9.1 CHECKOUT CONVERSION MASTER UPDATE
+=======================================
+
+Purpose
+-------
+Reduce checkout abandonment and make card payment clearer, especially on mobile.
+
+Customer checkout changes
+-------------------------
+- Removed cryptocurrency as a customer checkout option and removed customer-facing cryptocurrency wording.
+- Rebuilt checkout as a single card-first flow: delivery details -> Stripe -> payment confirmation.
+- Added mobile-friendly autocomplete/input modes for name, email, phone and delivery address fields.
+- Added a clear payment-cancelled message explaining that no charge was made.
+- Checkout details are saved locally so customers returning from Stripe do not have to type them again.
+- The cart is no longer cleared before Stripe opens. It is cleared only after the success page is reached.
+- A recent Stripe Checkout Session is reused for 20 minutes when the same customer/details/cart retry payment, reducing duplicate pending orders.
+- Added clearer WhatsApp payment-help messaging.
+- Added a simple Stripe-only payment panel and stronger, clearer payment CTA.
+- Cart and checkout now show the existing promotion discount before Stripe so the displayed total matches the Stripe total.
+
+Admin changes
+-------------
+- Pending card orders with a Stripe Session ID display a "Payment not completed" badge for clarity.
+
+Payment/API changes
+-------------------
+- /api/order manual/alternative payment creation is retired and returns HTTP 410.
+- /api/checkout remains the supported payment route.
+- New Stripe sessions include checkout_version=pp-card-v2 metadata for easier support/debugging.
+- Historical crypto/bank-transfer order types remain supported internally so old records are not damaged.
+
+Public wording cleanup
+----------------------
+Updated cart, checkout, FAQ, product pages, reviews, shipping, returns, international orders,
+about, terms, privacy and related customer-facing pages to describe secure Stripe card checkout.
+
+Important
+---------
+No Stripe secret keys, webhook secrets or environment files were added or changed.
+Existing Git history is preserved in this master project.

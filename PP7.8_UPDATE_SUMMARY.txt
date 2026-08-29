@@ -1,0 +1,32 @@
+PP 7.8 - SINGLE RETATRUTIDE PREMIUM EDITION
+
+PRIMARY POSITIONING
+- Retatrutide is now the main product name across the homepage, product card and product page.
+- Synexa is presented secondarily as the RapidPen presentation/brand.
+- The live product remains at /product/retatrutide.
+
+REMOVED
+- Discontinued Alluvi Retatrutide 40mg product record.
+- Alluvi Retatrutide product and SEO pages.
+- Alluvi Retatrutide homepage and product images.
+- Alluvi Retatrutide test report references and asset.
+- Alluvi Retatrutide sitemap entries.
+
+SEO PRESERVATION
+- Permanent redirects added from all former Alluvi Retatrutide URLs to the main Retatrutide product or buying guide.
+- Existing /product/retatrutide URL retained.
+- Retatrutide remains the primary title and search wording.
+
+UPDATED AREAS
+- Homepage hero and featured products.
+- Popular links.
+- Product catalogue record.
+- Product cards.
+- Premium Retatrutide product page.
+- Product buy box.
+- Quality information page.
+- Product SEO content.
+- Sitemap and redirects.
+
+IMPORTANT
+The supplied source ZIP already contained other uncommitted project changes. They have been preserved in the full project package.

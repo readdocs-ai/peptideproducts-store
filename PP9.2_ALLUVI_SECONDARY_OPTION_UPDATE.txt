@@ -1,0 +1,12 @@
+PP9.2 ALLUVI SECONDARY OPTION UPDATE
+
+- Synexa Retatrutide 40mg RapidPen remains the flagship/main Retatrutide product.
+- Restored Alluvi Retatrutide 40mg as a secondary alternative at £125.
+- Added three optimized Alluvi product images supplied by the user.
+- Alluvi appears immediately after Synexa in the catalogue, but Synexa keeps the flagship badge, homepage focus, primary SEO copy and primary Retatrutide journey.
+- Added product-specific Alluvi SEO copy that explicitly preserves Synexa as the primary option.
+- Restored old Alluvi URLs as redirects to the current Alluvi product page; they are not added back to the sitemap as promotional landing pages.
+- Alluvi uses the existing PP9.1 simplified secure Stripe card checkout.
+- The existing buy-2-get-1 promotion continues to exclude Retatrutide products, including Alluvi.
+- No historical Alluvi certificate/test report was attached because a prior report should not be represented as current-batch documentation without confirmation.
+- Existing Synexa pricing, homepage, product page, SEO routes and promotion remain unchanged.

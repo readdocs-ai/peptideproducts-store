@@ -1,0 +1,31 @@
+PP8.1 - MOBILE-FIRST PREMIUM STOREFRONT
+
+Built directly from the working project uploaded on 6 August 2026.
+
+Customer-facing updates:
+- Mobile header is shorter and easier to operate one-handed.
+- Cart and menu controls now use larger touch targets.
+- Mobile navigation uses larger rows and scrolls safely on short screens.
+- Homepage hero is more compact on phones while retaining the premium desktop layout.
+- Homepage calls to action become full-width on mobile.
+- Flagship Retatrutide image panel is resized for smaller screens.
+- Homepage sections use tighter mobile spacing.
+- Product cards use reduced image height and padding on mobile.
+- Product card action buttons stack on mobile for easier tapping.
+- Shop introduction and category navigation are optimised for narrow screens.
+- Shop category pills scroll horizontally on mobile.
+- Flagship Retatrutide product page has tighter mobile spacing, typography and specification cards.
+- Flagship product buy box has larger mobile checkout controls.
+
+Files updated for PP8.1:
+- src/app/page.tsx
+- src/components/Header.tsx
+- src/components/ProductCard.tsx
+- src/components/ShopClient.tsx
+- src/app/product/[id]/page.tsx
+- src/app/product/[id]/ui.tsx
+
+The uploaded project's other existing local changes have been preserved in the full master ZIP.
+
+VALIDATION NOTE
+A full npm build could not be run in the packaging environment because its internal package mirror returned 404 for yocto-queue. Run npm install/npm run build locally before committing.

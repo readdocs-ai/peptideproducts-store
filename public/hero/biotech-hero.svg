@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-label="Biotech hero illustration">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="20%" r="70%">
+      <stop offset="0" stop-color="rgba(37,99,235,0.22)"/>
+      <stop offset="0.45" stop-color="rgba(20,184,166,0.16)"/>
+      <stop offset="1" stop-color="rgba(37,99,235,0)"/>
+    </radialGradient>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12" result="b"/>
+      <feOffset dx="0" dy="18" result="o"/>
+      <feColorMatrix in="o" type="matrix"
+        values="0 0 0 0 0.05
+                0 0 0 0 0.07
+                0 0 0 0 0.12
+                0 0 0 .18 0" result="c"/>
+      <feMerge>
+        <feMergeNode in="c"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="900" height="700" rx="48" fill="#FFFFFF"/>
+  <rect x="40" y="40" width="820" height="620" rx="44" fill="url(#bg)"/>
+
+  <!-- Glass card -->
+  <g filter="url(#s)">
+    <rect x="120" y="110" width="660" height="480" rx="40" fill="rgba(246,248,251,0.85)" stroke="rgba(11,18,32,0.10)" stroke-width="3"/>
+  </g>
+
+  <!-- Molecule network -->
+  <g stroke="#0B1220" stroke-opacity="0.55" stroke-width="6" fill="none" stroke-linecap="round">
+    <path d="M270 360 L380 270 L520 310 L630 220" />
+    <path d="M270 360 L330 470 L480 510 L610 460" />
+    <path d="M380 270 L430 170 L560 160 L630 220" />
+  </g>
+
+  <g>
+    <circle cx="270" cy="360" r="16" fill="#0B1220"/>
+    <circle cx="380" cy="270" r="16" fill="#0B1220"/>
+    <circle cx="520" cy="310" r="16" fill="#0B1220"/>
+    <circle cx="630" cy="220" r="16" fill="#0B1220"/>
+    <circle cx="330" cy="470" r="16" fill="#0B1220"/>
+    <circle cx="480" cy="510" r="16" fill="#0B1220"/>
+    <circle cx="610" cy="460" r="16" fill="#0B1220"/>
+    <circle cx="430" cy="170" r="16" fill="#0B1220"/>
+    <circle cx="560" cy="160" r="16" fill="#0B1220"/>
+  </g>
+
+  <!-- Accent rings -->
+  <g fill="none" stroke="url(#g)" stroke-width="10" stroke-linecap="round">
+    <path d="M210 220 a90 90 0 1 0 180 0" opacity="0.9"/>
+    <path d="M520 560 a90 90 0 1 0 180 0" opacity="0.75"/>
+  </g>
+
+  <!-- Micro text lines -->
+  <g stroke="rgba(11,18,32,0.30)" stroke-width="6" stroke-linecap="round">
+    <path d="M210 210 H370" />
+    <path d="M210 250 H320" />
+    <path d="M210 290 H350" />
+  </g>
+
+  <!-- Label pills -->
+  <g>
+    <rect x="560" y="160" width="170" height="44" rx="22" fill="#FFFFFF" stroke="rgba(11,18,32,0.10)" stroke-width="3"/>
+    <text x="585" y="190" font-family="ui-sans-serif, system-ui, Inter, Segoe UI, Roboto, Helvetica, Arial" font-size="18" font-weight="700" fill="#0B1220">COA / SDS</text>
+
+    <rect x="560" y="214" width="220" height="44" rx="22" fill="#FFFFFF" stroke="rgba(11,18,32,0.10)" stroke-width="3"/>
+    <text x="585" y="244" font-family="ui-sans-serif, system-ui, Inter, Segoe UI, Roboto, Helvetica, Arial" font-size="18" font-weight="700" fill="#0B1220">Research Use Only</text>
+  </g>
+</svg>
