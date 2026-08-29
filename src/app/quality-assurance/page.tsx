@@ -51,9 +51,9 @@ const pillars = [
 
 const uploadedDocuments = [
   {
-    title: "Azentra Retatrutide 40mg",
-    href: "/certificates/retatrutide-janoshik-test-report-98920.png",
-    preview: "/certificates/retatrutide-janoshik-test-report-98920.png",
+    title: "Alluvi Retatrutide 40mg",
+    href: "/docs/coa/alluvi-retatrutide-40mg.pdf",
+    preview: "/docs/previews/alluvi-retatrutide-40mg.jpg",
   },
   {
     title: "GHK-CU 100mg",

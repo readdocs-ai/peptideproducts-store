@@ -87,6 +87,7 @@ export const products: Product[] = [
     ],
     notes: "For research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
+    coa: "/docs/coa/alluvi-retatrutide-40mg.pdf",
   },
 
   {

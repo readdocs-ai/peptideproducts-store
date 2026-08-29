@@ -1,0 +1,7 @@
+PP9.6 - ALLUVI COA UPDATE - 29 AUGUST 2026
+
+- Added Alluvi Retatrutide 40mg Janoshik test report PDF.
+- Added page-one JPG preview for the Quality Information page.
+- Connected the COA to the flagship /product/retatrutide product.
+- Replaced the old Azentra Retatrutide quality-document card with Alluvi Retatrutide 40mg.
+- Existing Retatrutide SEO routes/content were not rewritten.
