@@ -1,0 +1,13 @@
+PP9.7 - Alluvi COA product-page fix
+Date: 2026-08-29
+
+Changes:
+- Added coaPreview support to product data.
+- Added the Alluvi COA preview as the final thumbnail in the Retatrutide flagship gallery.
+- COA preview can be selected and displayed in the main gallery panel.
+- Added a View full test report link when the COA preview is selected.
+- Made the product-page Test report available badge clickable.
+- Added a dedicated View Alluvi Test Report button to the flagship Retatrutide buy box.
+- Made the shop-card Test report badge clickable.
+- Existing /product/retatrutide URL and Retatrutide SEO structure were not changed.
+- Existing Quality Assurance Alluvi COA entry remains unchanged.

@@ -100,9 +100,15 @@ export function ProductCard({
             Research use only
           </span>
           {hasTestReport ? (
-            <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[11px] font-bold text-amber-800">
+            <a
+              href={p.coa}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[11px] font-bold text-amber-800 transition hover:bg-amber-100"
+              aria-label={`Open test report for ${p.name}`}
+            >
               Test report
-            </span>
+            </a>
           ) : null}
         </div>
 
