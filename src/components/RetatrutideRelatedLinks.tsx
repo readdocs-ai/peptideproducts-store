@@ -36,7 +36,7 @@ const retatrutideLinks = [
       "Price and value guide explaining how to check the current Retatrutide 40mg price, pack information, and value signals.",
   },
   {
-    href: "/where-to-buy-retatrutide-uk",
+    href: "/buy-retatrutide-uk",
     label: "Where to buy Retatrutide UK",
     description:
       "Supplier and trust checklist covering documentation, reviews, support routes, delivery information, and product-page links.",

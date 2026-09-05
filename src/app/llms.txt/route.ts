@@ -15,7 +15,7 @@ ${brand.name} is a UK-based supplier of laboratory research compounds and resear
 - Retatrutide research hub: https://www.peptideproducts.co.uk/retatrutide
 - Retatrutide UK guide: https://www.peptideproducts.co.uk/retatrutide-uk
 - Retatrutide price guide: https://www.peptideproducts.co.uk/retatrutide-price-uk
-- Where to buy Retatrutide UK: https://www.peptideproducts.co.uk/where-to-buy-retatrutide-uk
+- Where to buy Retatrutide UK: https://www.peptideproducts.co.uk/buy-retatrutide-uk
 - Research peptide documentation guide: https://www.peptideproducts.co.uk/research-peptide-documentation
 - Quality information and test reports: https://www.peptideproducts.co.uk/quality-assurance
 - Shipping information: https://www.peptideproducts.co.uk/shipping

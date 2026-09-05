@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Research Peptide Supplier UK",
   description:
     "Learn more about Peptide Products as a UK research-use-only peptide supplier, browse key product categories, and move into product, quality, and support pages before ordering.",
+  robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/research-peptide-supplier-uk",
   },

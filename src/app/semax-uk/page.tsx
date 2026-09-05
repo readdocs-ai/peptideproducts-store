@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Semax UK | Laboratory Research Peptide Supply",
   description:
     "Semax UK laboratory research peptide page with product access, secure checkout guidance, UK delivery information, and research-use-only supply.",
+  robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/semax-uk",
   },

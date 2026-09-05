@@ -1,0 +1,38 @@
+PP9.9 SEARCH CONSOLE FULL CLEANUP
+Date: 2026-09-05
+
+Changes made after reviewing all supplied Google Search Console indexing categories:
+
+1. Added permanent redirects for malformed legacy URLs reported as 404:
+   /shipping-Shipping -> /shipping
+   /reviews-Reviews -> /reviews
+   /wholesale-Wholesale -> /wholesale
+   /retatrutide-uk" -> /retatrutide-uk
+
+2. Ensured old product URLs resolve directly to current relevant destinations. Existing redirects retained, including:
+   /product/meso-glutathione -> /product/glutathione-500mg
+   /product/alluvi-retatrutide-40mg -> /product/retatrutide
+
+3. Added direct config redirect:
+   /glutathione-research-peptide -> /antioxidant-peptides
+
+4. Removed redirecting URLs from sitemap:
+   /where-to-buy-retatrutide-uk
+   /glutathione-research-peptide
+
+5. Replaced internal links to /where-to-buy-retatrutide-uk with the final canonical destination /buy-retatrutide-uk, including Retatrutide related links, landing-page links, SEO data references and llms.txt.
+
+6. Strengthened explicit index/follow signals on the four pages Search Console previously classified as duplicate without a user-selected canonical. Their existing self-canonicals are preserved:
+   /buy-peptides-uk
+   /tb-500-uk
+   /semax-uk
+   /research-peptide-supplier-uk
+
+7. Intentionally NOT changed:
+   /admin and /cart remain blocked by robots.txt.
+   /order-status remains noindex.
+   HTTP/non-www homepage variants remain redirects to the canonical HTTPS/www site.
+   /_next/image optimizer URLs are not indexable content pages and were not promoted into the index.
+   Current Retatrutide SEO pages and /product/retatrutide remain intact.
+
+Search Console reports are historical crawl data and will not clear immediately after deployment. Validate genuine fixes after the new version is live and allow Google to recrawl.

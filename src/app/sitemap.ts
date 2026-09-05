@@ -41,7 +41,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/nootropic-peptides",
 
     
-    "/glutathione-research-peptide",
     
 
     "/retatrutide",
@@ -49,7 +48,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/retatrutide-uk",
     "/buy-retatrutide-uk",
     "/retatrutide-price-uk",
-    "/where-to-buy-retatrutide-uk",
     "/retatrutide-research-peptide",
     "/what-is-retatrutide",
     "/retatrutide-for-sale-uk",
@@ -92,7 +90,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       path === "/retatrutide-uk" ||
       path === "/buy-retatrutide-uk" ||
       path === "/retatrutide-price-uk" ||
-      path === "/where-to-buy-retatrutide-uk" ||
       path === "/retatrutide-research-peptide" ||
       path === "/what-is-retatrutide" ||
       path === "/retatrutide-for-sale-uk" ||

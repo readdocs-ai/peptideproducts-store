@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "TB-500 UK | Laboratory Research Peptide",
   description:
     "TB-500 UK laboratory research peptide information page. View product availability, pricing, quality information, and ordering guidance for UK research customers.",
+  robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/tb-500-uk",
   },

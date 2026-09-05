@@ -218,7 +218,7 @@ export function RetatrutideLandingPage({ page }: RetatrutideLandingPageProps) {
                     Cost, pack, and value-checking information before ordering.
                   </p>
                 </Link>
-                <Link href="/where-to-buy-retatrutide-uk" className="surface-card p-5">
+                <Link href="/buy-retatrutide-uk" className="surface-card p-5">
                   <div className="font-extrabold text-ink">Supplier guide</div>
                   <p className="mt-2 text-sm leading-6 text-muted">
                     Trust checks, documentation, reviews, support, and UK delivery route.

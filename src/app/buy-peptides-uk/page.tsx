@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Buy Peptides UK | Laboratory Research Supply",
   description:
     "Buy peptides UK for laboratory and analytical research use. Browse research peptides, metabolic compounds, product pages, delivery information, and secure checkout options.",
+  robots: { index: true, follow: true },
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/buy-peptides-uk",
   },

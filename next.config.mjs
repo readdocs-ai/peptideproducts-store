@@ -2,6 +2,32 @@
 const nextConfig = {
   async redirects() {
     return [
+      // Search Console cleanup: malformed legacy URLs discovered by Google.
+      {
+        source: "/shipping-Shipping",
+        destination: "/shipping",
+        permanent: true,
+      },
+      {
+        source: "/reviews-Reviews",
+        destination: "/reviews",
+        permanent: true,
+      },
+      {
+        source: "/wholesale-Wholesale",
+        destination: "/wholesale",
+        permanent: true,
+      },
+      {
+        source: '/retatrutide-uk"',
+        destination: "/retatrutide-uk",
+        permanent: true,
+      },
+      {
+        source: "/glutathione-research-peptide",
+        destination: "/antioxidant-peptides",
+        permanent: true,
+      },
       {
         source: "/pdrn-research-peptide",
         destination: "/research-peptides",

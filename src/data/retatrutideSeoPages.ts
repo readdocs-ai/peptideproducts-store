@@ -101,7 +101,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     supportCopy: researchOnly,
     intentLabel: "Best for UK availability and local supplier searches",
     primaryCta: { href: "/product/retatrutide", label: "View Retatrutide 40mg product" },
-    secondaryCta: { href: "/where-to-buy-retatrutide-uk", label: "Check supplier guidance" },
+    secondaryCta: { href: "/buy-retatrutide-uk", label: "Check supplier guidance" },
     quickFacts: [
       "UK-focused Retatrutide landing page",
       "Points to the live Retatrutide 40mg product",
@@ -199,7 +199,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
           "Use this page for buying-intent information.",
           "Use /product/retatrutide for live purchase details.",
           "Use /retatrutide-price-uk for price-focused guidance.",
-          "Use /where-to-buy-retatrutide-uk for supplier checks.",
+          "Use /buy-retatrutide-uk for supplier checks.",
         ],
       },
       {
@@ -280,7 +280,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
         points: [
           "Price intent: /retatrutide-price-uk.",
           "Commercial intent: /buy-retatrutide-uk.",
-          "Supplier intent: /where-to-buy-retatrutide-uk.",
+          "Supplier intent: /buy-retatrutide-uk.",
           "Checkout intent: /product/retatrutide.",
         ],
       },
@@ -303,7 +303,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     ],
   },
   "where-to-buy-retatrutide-uk": {
-    path: "/where-to-buy-retatrutide-uk",
+    path: "/buy-retatrutide-uk",
     title: "Where to Buy Retatrutide UK | Supplier Checklist",
     description:
       "Where to buy Retatrutide UK supplier guide. Check Retatrutide 40mg product availability, documentation, reviews, support, UK delivery information, and research-use-only notices.",
@@ -349,7 +349,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
         body:
           "The supplier guide is about trust and where-to-buy intent. The price page is about cost comparison. Both pages should point users toward the product page when they are ready to check current availability.",
         points: [
-          "Trust intent: /where-to-buy-retatrutide-uk.",
+          "Trust intent: /buy-retatrutide-uk.",
           "Price intent: /retatrutide-price-uk.",
           "Availability intent: /retatrutide-uk.",
           "Product intent: /product/retatrutide.",
@@ -494,7 +494,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
           "Main Retatrutide hub: /retatrutide.",
           "Product page: /product/retatrutide.",
           "UK guide: /retatrutide-uk.",
-          "Supplier guide: /where-to-buy-retatrutide-uk.",
+          "Supplier guide: /buy-retatrutide-uk.",
         ],
       },
     ],
@@ -564,7 +564,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
         points: [
           "Product details: /product/retatrutide.",
           "Price checks: /retatrutide-price-uk.",
-          "Supplier checks: /where-to-buy-retatrutide-uk.",
+          "Supplier checks: /buy-retatrutide-uk.",
           "Research context: /retatrutide-research-peptide.",
         ],
       },
@@ -740,7 +740,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
       label: "View Retatrutide pen product"
     },
     secondaryCta: {
-      href: "/where-to-buy-retatrutide-uk",
+      href: "/buy-retatrutide-uk",
       label: "Read supplier guide"
     },
     quickFacts: [
@@ -775,7 +775,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
         body: "Users comparing Retatrutide pages can review price guidance, supplier guidance, shipping information and customer service feedback before ordering.",
         points: [
           "Price guidance: /retatrutide-price-uk.",
-          "Supplier checks: /where-to-buy-retatrutide-uk.",
+          "Supplier checks: /buy-retatrutide-uk.",
           "Quality information: /quality-assurance.",
           "Reviews: /reviews."
         ]
