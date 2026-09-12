@@ -1,0 +1,26 @@
+Peptide Products PP10.0 - Controlled Content Quality Cleanup
+Date: 12 September 2026
+
+Purpose
+-------
+This update applies the low-risk content-quality recommendations identified in the 11 September site audit while PP9.9 Search Console validation remains in progress.
+
+Changes made
+------------
+1. Removed the visible "SEO purpose" panel from shared Retatrutide landing pages.
+2. Rewrote customer-facing phrases that referred to SEO clusters, search intent, Search Console, traffic recovery, organic landing pages, ranking/authority, or internal site strategy.
+3. Reworded Retatrutide hub, pricing, supplier, Reta shorthand, pen-format and related-links copy so it reads as customer-facing information.
+4. Cleaned similar internal/SEO language from About, Metabolic Research Compounds, and Buy Research Peptides UK pages.
+5. Ensured the homepage H1 contains an explicit space after "Retatrutide 40mg," for crawler/render consistency.
+6. Confirmed the Reta Research Compound 40mg Vial is already categorised as Metabolic; no taxonomy change was required.
+
+Deliberately NOT changed
+------------------------
+- No Retatrutide URLs were removed or newly redirected in this update.
+- No canonical strategy changes were made beyond the PP9.9 cleanup already in progress.
+- /product/retatrutide structure, product data, checkout and conversion layout were not redesigned.
+- No new SEO landing pages were created.
+- No broad sitemap/robots/indexing changes were made.
+- The larger Retatrutide cannibalisation/consolidation review is deferred until PP9.9 validation and fresh Search Console ranking data are available.
+
+This update is intended to improve visible content quality without disturbing the technical SEO validation cycle.

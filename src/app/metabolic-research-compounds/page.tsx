@@ -83,7 +83,7 @@ const faqs = [
   },
   {
     "q": "Why are there multiple Retatrutide pages?",
-    "a": "The Retatrutide pages are designed for different search intents, including the product listing, general information, price guidance, supplier guidance, and research-use context."
+    "a": "The Retatrutide pages cover different customer needs, including the product listing, general information, price guidance, supplier information, and research-use context."
   },
   {
     "q": "Are metabolic research compounds supplied for human use?",
@@ -251,7 +251,7 @@ export default function Page() {
                 Metabolic research product hub
               </h2>
               <p className="mt-4 text-sm leading-7 text-muted">
-                Use this hub to move from broad metabolic research intent into specific product pages, Retatrutide guidance, quality information, and ordering support. This gives Retatrutide a strong internal link path without making every page repeat the same wording.
+                Use this hub to move from the wider metabolic research catalogue into specific product pages, Retatrutide guidance, quality information, and ordering support. Each linked page provides a distinct type of information without repeating the same content.
               </p>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 {products.map((item) => (

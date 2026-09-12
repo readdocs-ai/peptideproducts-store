@@ -315,7 +315,7 @@ export default function Page() {
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                A useful buying page should help visitors move from broad search intent into the
+                A useful buying page should help visitors move from broad catalogue research into the
                 right category, then into the most relevant product pages without confusion or too
                 many repeated paths.
               </p>

@@ -34,14 +34,14 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     quickFacts: [
       "Central Retatrutide information hub",
       "Links to the main product page",
-      "Supports UK, price, supplier, and research searches",
+      "Covers UK availability, pricing, supplier checks, and research context",
       "Research-use-only positioning",
     ],
     sections: [
       {
         heading: "How this Retatrutide hub should be used",
         body:
-          "The hub gives Google and customers one clear place to understand the Retatrutide section of the website. Each supporting page has a separate purpose, while this page links the cluster together and points users toward the live Retatrutide 40mg product page.",
+          "This hub brings the main Retatrutide information together in one place. Use the supporting pages for pricing, UK availability, supplier checks, and research context, or go directly to the live Retatrutide 40mg product page for current product details.",
         points: [
           "Use the product page for live price, stock, format, and checkout details.",
           "Use the price page for value, pack, and cost-checking information.",
@@ -54,7 +54,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
         body:
           "Peptide Products lists Retatrutide 40mg as a research-use product. Customers should always use the live product page to confirm the current product image, pack format, price, stock status, payment options, and delivery information before ordering.",
         points: [
-          "Main conversion page: /product/retatrutide.",
+          "Current product details and checkout: /product/retatrutide.",
           "Main hub page: /retatrutide.",
           "UK availability page: /retatrutide-uk.",
           "Short search term page: /reta.",
@@ -65,10 +65,10 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
         body:
           "Retatrutide is the lead product line, so the site includes several Retatrutide pages. Each page is written to answer a different customer search need and guide visitors toward the main product page where appropriate.",
         points: [
-          "Commercial intent is handled by the buy page and product page.",
-          "Research intent is handled by the research peptide and what-is pages.",
-          "Trust intent is handled by the supplier and review pathways.",
-          "Price intent is handled by the price page without duplicating checkout content.",
+          "Use the buy guide and product page for ordering and current product information.",
+          "Use the research peptide and what-is pages for background and research context.",
+          "Use the supplier, quality, and reviews pages for trust and documentation checks.",
+          "Use the price page for current pricing context and pack comparisons.",
         ],
       },
     ],
@@ -76,12 +76,12 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
       {
         question: "Which Retatrutide page is the main product page?",
         answer:
-          "The main product and conversion page is /product/retatrutide. It should be used for live Retatrutide 40mg product details, current price, stock status, and checkout information.",
+          "The main Retatrutide product page is /product/retatrutide. Use it for current Retatrutide 40mg product details, price, stock status, and checkout information.",
       },
       {
         question: "Why are there several Retatrutide pages?",
         answer:
-          "Retatrutide is a priority product for Peptide Products, so the website uses a Retatrutide cluster to serve different search intents, including product, price, UK availability, supplier checks, shorthand Reta searches, and research information.",
+          "Peptide Products provides separate Retatrutide pages for product details, pricing, UK availability, supplier checks, shorthand Reta terminology, and research information so customers can find the most relevant information quickly.",
       },
       {
         question: "Is this page for medical advice?",
@@ -239,7 +239,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     eyebrow: "Price and value guide",
     h1: "Retatrutide Price UK",
     intro:
-      "This price page is designed for customers who are comparing Retatrutide cost, product format, and value before visiting the live Retatrutide 40mg product page. It should support price-intent searches without duplicating the whole product page.",
+      "This page is for customers comparing Retatrutide cost, product format, and value before visiting the live Retatrutide 40mg product page. Use the product page to confirm the current price, stock, and checkout details.",
     supportCopy: researchOnly,
     intentLabel: "Best for price, cost, and value searches",
     primaryCta: { href: "/product/retatrutide", label: "Check live Retatrutide price" },
@@ -248,7 +248,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
       "Price-focused Retatrutide page",
       "Live price shown on product page",
       "Explains what affects value",
-      "Supports comparison searches",
+      "Helps customers compare price, pack format, and value",
     ],
     sections: [
       {
@@ -317,7 +317,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     secondaryCta: { href: "/reviews", label: "Read customer reviews" },
     quickFacts: [
       "Supplier-check Retatrutide page",
-      "Supports trust and review searches",
+      "Brings together supplier, quality, review, and support checks",
       "Links to product and quality pages",
       "UK ordering information pathway",
     ],
@@ -452,14 +452,14 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     eyebrow: "Simple explainer",
     h1: "What Is Retatrutide?",
     intro:
-      "This page is a plain-English explainer for people who are searching what Retatrutide is. It introduces the term, explains how Peptide Products structures Retatrutide information, and directs users to the appropriate product, price, and research pages.",
+      "This page gives a plain-English overview of Retatrutide terminology and research context, with links to the relevant product, price, UK availability, and research information pages.",
     supportCopy: researchOnly,
     intentLabel: "Best for beginner and definition searches",
     primaryCta: { href: "/retatrutide-research-peptide", label: "Read research context" },
     secondaryCta: { href: "/product/retatrutide", label: "View Retatrutide product" },
     quickFacts: [
       "Plain-English Retatrutide explanation",
-      "Supports definition searches",
+      "Provides a plain-English definition and research context",
       "Links education to the product page",
       "No dosage or medical guidance",
     ],
@@ -489,7 +489,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
       {
         heading: "Where to go next",
         body:
-          "After reading the definition, users can choose the correct next page based on their search intent. This helps prevent every Retatrutide page from trying to answer the same query.",
+          "After reading the definition, use the links below to continue to the most relevant Retatrutide information, including the main product page, UK guide, supplier guide, and research hub.",
         points: [
           "Main Retatrutide hub: /retatrutide.",
           "Product page: /product/retatrutide.",
@@ -523,16 +523,16 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     eyebrow: "Short-name search page",
     h1: "Reta UK",
     intro:
-      "Reta is commonly used as a shortened search term for Retatrutide. This page captures that shorthand search intent and guides customers to the correct Retatrutide 40mg product and supporting Retatrutide information pages.",
+      "Reta is commonly used as a shortened term for Retatrutide. This page explains that shorthand and guides customers to the current Retatrutide 40mg product and related information pages.",
     supportCopy: researchOnly,
     intentLabel: "Best for shorthand Reta searches",
     primaryCta: { href: "/product/retatrutide", label: "View Retatrutide 40mg product" },
     secondaryCta: { href: "/retatrutide", label: "Open Retatrutide hub" },
     quickFacts: [
-      "Targets Reta shorthand searches",
+      "Explains Reta shorthand terminology",
       "Clarifies Reta means Retatrutide",
       "Directs users to the main product page",
-      "Supports Retatrutide cluster authority",
+      "Connects to the main Retatrutide information pages",
     ],
     sections: [
       {
@@ -540,7 +540,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
         body:
           "On Peptide Products, Reta is treated as a shorthand search term for Retatrutide. The page exists so users who search Reta UK can quickly reach the correct Retatrutide product and information pages.",
         points: [
-          "Reta search intent maps to Retatrutide.",
+          "Reta is used here as shorthand for Retatrutide.",
           "The main product page is /product/retatrutide.",
           "The main information hub is /retatrutide.",
           "Price and UK availability have separate supporting pages.",
@@ -592,7 +592,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     description: "Retatrutide for sale UK guide from Peptide Products. Check the Retatrutide 40mg research product page for current price, stock, UK dispatch, documentation and support.",
     eyebrow: "High-intent Retatrutide search page",
     h1: "Retatrutide for Sale UK",
-    intro: "This page is built for high-intent Retatrutide searches and points customers to the live Retatrutide 40mg product page for stock, price, delivery, documentation and checkout information.",
+    intro: "This page brings together current Retatrutide availability, price, delivery, documentation, and ordering information, with a direct link to the live Retatrutide 40mg product page.",
     supportCopy: researchOnly,
     intentLabel: "Best for retatrutide for sale uk searches",
     primaryCta: {
@@ -604,9 +604,9 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
       label: "View quality information"
     },
     quickFacts: [
-      "Targets Retatrutide for sale UK searches",
+      "Current UK availability and ordering information",
       "Routes visitors to the live product page",
-      "Supports price, stock, and documentation checks",
+      "Covers price, stock, and documentation checks",
       "Research-use-only positioning"
     ],
     sections: [
@@ -662,7 +662,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     description: "Retatrutide 40mg UK product information for research-use-only customers. Check pack format, price, UK dispatch, documentation, and product-page details.",
     eyebrow: "Retatrutide 40mg format page",
     h1: "Retatrutide 40mg UK",
-    intro: "This page focuses on the Retatrutide 40mg format listed by Peptide Products and supports searches that include Retatrutide 40mg, UK ordering and documentation checks.",
+    intro: "This page focuses on the Retatrutide 40mg format listed by Peptide Products and brings together UK ordering, product-format, and documentation information.",
     supportCopy: researchOnly,
     intentLabel: "Best for retatrutide 40mg uk searches",
     primaryCta: {
@@ -676,7 +676,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     quickFacts: [
       "Retatrutide 40mg focused page",
       "Points to live product and checkout details",
-      "Supports product-format searches",
+      "Explains the 40mg product format and related checks",
       "UK research supply context"
     ],
     sections: [
@@ -732,7 +732,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     description: "Retatrutide UK pen guide for research-use-only customers. Check Retatrutide 40mg pen format, UK dispatch information, documentation, price and product details.",
     eyebrow: "Retatrutide pen search page",
     h1: "Retatrutide UK Pen",
-    intro: "This page supports searchers looking specifically for Retatrutide pen information in the UK and routes users to the live Retatrutide 40mg product page.",
+    intro: "This page provides UK customers with Retatrutide pen information and links directly to the live Retatrutide 40mg product page for current details.",
     supportCopy: researchOnly,
     intentLabel: "Best for retatrutide uk pen searches",
     primaryCta: {
@@ -744,9 +744,9 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
       label: "Read supplier guide"
     },
     quickFacts: [
-      "Targets Retatrutide pen searches",
+      "Retatrutide pen format information",
       "Directs to the live 40mg product page",
-      "Supports UK dispatch and documentation checks",
+      "Covers UK dispatch and documentation checks",
       "Research-use-only wording"
     ],
     sections: [
@@ -762,11 +762,11 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
       },
       {
         heading: "Why this page exists",
-        body: "Search Console shows search demand around Retatrutide pen wording. This page answers that search intent and routes the visitor to the main product page.",
+        body: "This page explains the Retatrutide pen format and directs visitors to the main product page for current product details, price, stock, and checkout information.",
         points: [
           "Captures pen-specific organic searches.",
           "Avoids duplicating the full product page.",
-          "Supports the Retatrutide SEO cluster.",
+          "Links to the wider Retatrutide information section.",
           "Keeps all claims within research-use-only limits."
         ]
       },
@@ -814,7 +814,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
       label: "Open Reta UK guide"
     },
     quickFacts: [
-      "Targets Reta peptide buy searches",
+      "Explains Reta terminology for UK customers",
       "Explains Reta as Retatrutide shorthand",
       "Routes users to the live product page",
       "Research-use-only context"
@@ -841,12 +841,12 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
         ]
       },
       {
-        heading: "Why this page helps traffic recovery",
-        body: "This page creates a dedicated organic landing page for a query already visible in Search Console, helping replace lost Merchant listing traffic with regular search traffic.",
+        heading: "How this page helps customers",
+        body: "This page helps customers using the shortened Reta wording find the correct Retatrutide product information and supporting guidance.",
         points: [
-          "Targets live query demand.",
-          "Adds a new route into the Retatrutide cluster.",
-          "Passes authority to /product/retatrutide.",
+          "Explains common Reta terminology.",
+          "Connects visitors with the main Retatrutide information pages.",
+          "Points to /product/retatrutide for current product details.",
           "Avoids medical or usage claims."
         ]
       }
@@ -872,7 +872,7 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
     description: "Peptide pens UK guide from Peptide Products. Review research-use-only product information, Retatrutide 40mg pen details, UK dispatch, documentation and support links.",
     eyebrow: "Peptide pens search page",
     h1: "Peptide Pens UK",
-    intro: "This page supports searches around peptide pens in the UK and connects that search intent with the current Retatrutide 40mg product pathway on Peptide Products.",
+    intro: "This page provides UK research customers with information about peptide pen formats and links to the current Retatrutide 40mg product and related catalogue pages.",
     supportCopy: researchOnly,
     intentLabel: "Best for peptide pens uk searches",
     primaryCta: {
@@ -884,15 +884,15 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
       label: "View metabolic category"
     },
     quickFacts: [
-      "Targets peptide pens UK searches",
-      "Supports Retatrutide 40mg visibility",
+      "Covers peptide pen information for UK research customers",
+      "Links directly to the Retatrutide 40mg product",
       "Links to category and quality pages",
       "Research-use-only positioning"
     ],
     sections: [
       {
-        heading: "Peptide pen search intent",
-        body: "Users searching for peptide pens often want to confirm product format, images, price, stock and supplier trust signals. This page routes that intent to the correct live product pages.",
+        heading: "Peptide pen information",
+        body: "Customers comparing peptide pen formats can use this page to check product format, images, price, stock, quality information, and supplier support before opening the relevant live product page.",
         points: [
           "Retatrutide 40mg product page for live product details.",
           "Metabolic category for related research products.",
@@ -904,10 +904,10 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
         heading: "How pages stay separated",
         body: "The peptide pens page is a broad search-entry page. It does not replace individual product pages, which remain the source for specific product images, prices and checkout information.",
         points: [
-          "Broad pen intent: /peptide-pens-uk.",
-          "Retatrutide product intent: /product/retatrutide.",
-          "Category intent: /metabolic-research-compounds.",
-          "Documentation intent: /quality-assurance."
+          "Peptide pen overview: /peptide-pens-uk.",
+          "Retatrutide product details: /product/retatrutide.",
+          "Metabolic product category: /metabolic-research-compounds.",
+          "Quality documentation: /quality-assurance."
         ]
       },
       {
@@ -1024,8 +1024,8 @@ export const retatrutideSeoPages: Record<string, RetatrutideSeoPage> = {
       label: "Review quality information"
     },
     quickFacts: [
-      "Targets supplier comparison searches",
-      "Supports trust and documentation intent",
+      "Supplier comparison checklist",
+      "Covers trust, quality, and documentation checks",
       "Links to reviews, quality, shipping and contact pages",
       "Avoids competitor claims"
     ],

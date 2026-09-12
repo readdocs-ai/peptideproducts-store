@@ -153,7 +153,7 @@ export default function AboutPage() {
                 Key catalogue pathways
               </h2>
               <p className="mt-3 text-sm leading-7 text-muted">
-                The site is organised around clear buying and research-intent pathways. The Retatrutide product page remains the main product destination, while the Retatrutide hub, price guide, UK availability guide, and supplier checklist support different search intents.
+                The site is organised so customers can move easily between product details, pricing, UK availability, supplier information, quality documentation, and research context. The Retatrutide product page remains the main destination for current product details and checkout.
               </p>
               <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 <Link href="/product/retatrutide" className="surface-card p-5">

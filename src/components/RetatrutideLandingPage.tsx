@@ -105,9 +105,6 @@ export function RetatrutideLandingPage({ page }: RetatrutideLandingPageProps) {
                   {page.supportCopy}
                 </p>
 
-                <div className="mt-6 rounded-xl2 border border-accent/20 bg-accent/5 p-4 text-sm font-bold leading-7 text-ink">
-                  SEO purpose: {page.intentLabel}.
-                </div>
 
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link

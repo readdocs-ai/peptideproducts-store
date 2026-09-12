@@ -60,11 +60,11 @@ const retatrutideLinks = [
       "Short-name landing page for users searching Reta as shorthand for Retatrutide in the UK.",
   },
 
-  { href: "/retatrutide-for-sale-uk", label: "Retatrutide for sale UK", description: "High-intent organic landing page for users checking Retatrutide availability, price, UK dispatch, and documentation before ordering." },
-  { href: "/retatrutide-40mg-uk", label: "Retatrutide 40mg UK", description: "Format-focused page for searches around Retatrutide 40mg product details, pack checks, stock, and ordering information." },
-  { href: "/retatrutide-uk-pen", label: "Retatrutide UK pen", description: "Pen-format search page that routes visitors to the live Retatrutide 40mg product page and support information." },
-  { href: "/reta-peptide-buy", label: "Reta peptide buy", description: "Shorthand buying-intent page for users searching Reta as a route to Retatrutide product and price information." },
-  { href: "/peptide-pens-uk", label: "Peptide pens UK", description: "Broader peptide pen search-entry page supporting Retatrutide 40mg visibility and metabolic category traffic." },
+  { href: "/retatrutide-for-sale-uk", label: "Retatrutide for sale UK", description: "Availability, price, UK dispatch, and documentation information before ordering." },
+  { href: "/retatrutide-40mg-uk", label: "Retatrutide 40mg UK", description: "Retatrutide 40mg product-format, pack, stock, and ordering information." },
+  { href: "/retatrutide-uk-pen", label: "Retatrutide UK pen", description: "Retatrutide pen-format information with links to the live product page and support information." },
+  { href: "/reta-peptide-buy", label: "Reta peptide buy", description: "Explains Reta shorthand and links to Retatrutide product and price information." },
+  { href: "/peptide-pens-uk", label: "Peptide pens UK", description: "Overview of peptide pen formats with links to Retatrutide 40mg and the metabolic category." },
   { href: "/retatrutide-supplier-checklist", label: "Retatrutide supplier checklist", description: "Neutral supplier trust checklist covering product details, documentation, reviews, shipping, and support checks." },
   {
     href: "/quality-assurance",
@@ -92,10 +92,10 @@ export function RetatrutideRelatedLinks({
           Related Retatrutide information
         </h2>
         <p className="mt-3 text-sm leading-7 text-muted">
-          Retatrutide is the priority product on Peptide Products, so these pages
-          are arranged as a connected SEO cluster. Each page targets a different
-          search intent while pointing customers toward the main Retatrutide 40mg
-          product page when they need live price, stock, and checkout details.
+          Use these pages to find the Retatrutide information most relevant to you,
+          including product details, UK availability, pricing, supplier checks, and
+          research context. For current price, stock, and checkout details, use the
+          main Retatrutide 40mg product page.
         </p>
       </div>
 

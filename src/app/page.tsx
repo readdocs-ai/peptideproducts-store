@@ -106,7 +106,7 @@ export default function Home() {
                 </div>
 
                 <h1 className="mt-5 max-w-3xl text-[2.7rem] font-black leading-[0.96] tracking-[-0.055em] sm:mt-6 sm:text-6xl lg:text-7xl">
-                  Retatrutide 40mg,
+                  Retatrutide 40mg,{" "}
                   <span className="block bg-gradient-to-r from-white via-[#f7e4ae] to-[#d9b761] bg-clip-text text-transparent">
                     presented with precision.
                   </span>
