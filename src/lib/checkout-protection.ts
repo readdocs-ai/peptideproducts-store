@@ -13,6 +13,27 @@ const redis = redisUrl
 const ABUSE_LOG_KEY = "checkout:abuse-log";
 const MAX_LOG_ITEMS = 250;
 
+const DEFAULT_BLOCKED_EMAIL_DOMAINS = ["storebotmail.joonix.net"];
+const DEFAULT_BLOCKED_PHONES = ["02070313000"];
+
+function csvEnv(name: string, fallback: string[]) {
+  const raw = process.env[name];
+  const values = raw
+    ? raw.split(",").map((value) => value.trim().toLowerCase()).filter(Boolean)
+    : fallback;
+  return new Set(values);
+}
+
+function emailDomain(value: string) {
+  const at = value.lastIndexOf("@");
+  return at >= 0 ? value.slice(at + 1).trim().toLowerCase() : "";
+}
+
+function normaliseName(value: string) {
+  return value.trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+
 export type CheckoutProtectionInput = {
   ip: string;
   name: string;
@@ -111,6 +132,39 @@ export async function checkCheckoutProtection(
   if (input.honeypot?.trim()) {
     await logBlockedAttempt(input, "honeypot");
     return { allowed: false, reason: "Unable to start checkout." };
+  }
+
+  // Known-abuse signatures are checked before Redis rate limiting and before
+  // any internal order or Stripe Checkout Session is created. The defaults
+  // reflect the repeated automated pattern observed on 14 Sep 2026 and can
+  // be extended or replaced with comma-separated environment variables.
+  const blockedEmailDomains = csvEnv(
+    "CHECKOUT_BLOCKED_EMAIL_DOMAINS",
+    DEFAULT_BLOCKED_EMAIL_DOMAINS,
+  );
+  const blockedPhones = csvEnv("CHECKOUT_BLOCKED_PHONES", DEFAULT_BLOCKED_PHONES);
+  const domain = emailDomain(input.email);
+  const phone = normalisePhone(input.phone);
+  const name = normaliseName(input.name);
+
+  if (domain && blockedEmailDomains.has(domain)) {
+    await logBlockedAttempt(input, "known-abuse:blocked-email-domain");
+    return {
+      allowed: false,
+      reason: "Unable to start checkout. Please contact us if you believe this is an error.",
+      retryAfterSeconds: 24 * 60 * 60,
+    };
+  }
+
+  // Extra guard for the exact recurring signature. Name alone is never used
+  // as a blocking signal; the phone must also match a known abusive number.
+  if (phone && blockedPhones.has(phone) && name === "john smith") {
+    await logBlockedAttempt(input, "known-abuse:phone-name-signature");
+    return {
+      allowed: false,
+      reason: "Unable to start checkout. Please contact us if you believe this is an error.",
+      retryAfterSeconds: 24 * 60 * 60,
+    };
   }
 
   if (!redis) return { allowed: true };
