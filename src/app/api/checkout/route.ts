@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { products } from "@/data/products";
 import { createOrder, updateOrderStripeSessionId, type StoredOrderItem } from "@/lib/orders";
+import { checkCheckoutProtection, getRequestIp } from "@/lib/checkout-protection";
 
 export const runtime = "nodejs";
 
@@ -29,6 +30,7 @@ type Body = {
   researchDeclarationVersion?: string;
   shippingAddress?: ShippingAddress;
   items?: IncomingCartItem[];
+  website?: string;
 };
 
 const UK_SHIPPING_FEE_GBP = 0;
@@ -131,6 +133,43 @@ export async function POST(req: Request) {
     }
     if (!rawItems.length) {
       return NextResponse.json({ ok: false, error: "Cart is empty." }, { status: 400 });
+    }
+
+    if (name.length > 120 || email.length > 180 || phone.length > 40 ||
+        shippingAddress.line1.length > 160 || shippingAddress.line2.length > 160 ||
+        shippingAddress.city.length > 100 || shippingAddress.state.length > 100 ||
+        shippingAddress.postalCode.length > 24) {
+      return NextResponse.json({ ok: false, error: "Please check the details entered and try again." }, { status: 400 });
+    }
+
+    const ip = getRequestIp(req);
+    const userAgent = req.headers.get("user-agent") || "unknown";
+    const payloadFingerprint = JSON.stringify({
+      name: name.toLowerCase(),
+      email,
+      phone: phone.replace(/\D+/g, ""),
+      shippingAddress,
+      items: rawItems,
+    });
+    const protection = await checkCheckoutProtection({
+      ip,
+      name,
+      email,
+      phone,
+      userAgent,
+      payloadFingerprint,
+      honeypot: body.website,
+    });
+
+    if (!protection.allowed) {
+      const response = NextResponse.json(
+        { ok: false, error: protection.reason || "Unable to start checkout." },
+        { status: 429 },
+      );
+      if (protection.retryAfterSeconds) {
+        response.headers.set("Retry-After", String(protection.retryAfterSeconds));
+      }
+      return response;
     }
 
     const items = buildItems(rawItems);

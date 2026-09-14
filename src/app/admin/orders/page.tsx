@@ -4,12 +4,14 @@ import { StatusBadge } from "@/components/admin/StatusBadge";
 import { PaymentMethodBadge } from "@/components/admin/PaymentMethodBadge";
 import { OrderStatusControls } from "@/components/admin/OrderStatusControls";
 import { AdminOrderAlerts } from "@/components/admin/AdminOrderAlerts";
+import { getCheckoutProtectionSummary } from "@/lib/checkout-protection";
 
 function formatDate(value: string | number) {
   const date = new Date(value);
   return date.toLocaleString("en-GB", {
     dateStyle: "medium",
     timeStyle: "short",
+    timeZone: "Europe/London",
   });
 }
 
@@ -91,6 +93,7 @@ export default async function AdminOrdersPage({
   const limit = Math.max(20, Number(searchParams?.limit || 20));
   const searchQuery = normaliseSearch(searchParams?.q);
   const statusFilter = normaliseSearch(searchParams?.status).toLowerCase();
+  const checkoutProtection = await getCheckoutProtectionSummary();
   const exactOrderLookup =
     isKvConfigured() && /^pp-\d{6}-[a-z0-9]+$/i.test(searchQuery)
       ? await getOrderForAdminSearch(searchQuery)
@@ -113,16 +116,22 @@ export default async function AdminOrdersPage({
       ]
     : indexedMatches;
   const orders = statusFilter
-    ? searchedOrders.filter((order) => {
-        if (statusFilter === "awaiting-dispatch") {
-          return order.status === "paid" && !order.trackingNumber;
-        }
-        if (statusFilter === "ready-to-ship") {
-          return order.status === "paid" && Boolean(order.trackingNumber);
-        }
-        return order.status === statusFilter;
-      })
-    : searchedOrders;
+    ? statusFilter === "all"
+      ? searchedOrders
+      : searchedOrders.filter((order) => {
+          if (statusFilter === "awaiting-dispatch") {
+            return order.status === "paid" && !order.trackingNumber;
+          }
+          if (statusFilter === "ready-to-ship") {
+            return order.status === "paid" && Boolean(order.trackingNumber);
+          }
+          return order.status === statusFilter;
+        })
+    : searchQuery
+      ? searchedOrders
+      : searchedOrders.filter(
+          (order) => !(order.status === "pending" && order.paymentMethod === "card"),
+        );
 
   const dashboardOrders = searchQuery ? searchedOrders : allOrders;
   const awaitingDispatch = dashboardOrders.filter(
@@ -201,9 +210,30 @@ export default async function AdminOrdersPage({
         </div>
       </section>
 
+      <section className="mb-6 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 shadow-soft">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div className="text-xs font-extrabold uppercase tracking-wide text-slate-600">Checkout protection</div>
+            <div className="mt-1 text-lg font-extrabold text-ink">
+              {checkoutProtection.blockedLast24Hours} blocked attempt{checkoutProtection.blockedLast24Hours === 1 ? "" : "s"} in the last 24 hours
+            </div>
+            <p className="mt-1 text-sm text-muted">
+              Rate limits and bot checks are active. Customer identifiers are logged as one-way hashes only.
+            </p>
+          </div>
+          <Link
+            href="/admin/orders?status=pending"
+            className="rounded-xl2 border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-extrabold text-amber-800 hover:bg-amber-100"
+          >
+            Review unpaid attempts
+          </Link>
+        </div>
+      </section>
+
       <div className="mb-6 flex flex-wrap gap-2">
         {[
-          ["", "All orders"],
+          ["", "Paid & fulfilment"],
+          ["all", "All orders"],
           ["awaiting-dispatch", "Awaiting dispatch"],
           ["ready-to-ship", "Tracking ready"],
           ["paid", "Paid"],

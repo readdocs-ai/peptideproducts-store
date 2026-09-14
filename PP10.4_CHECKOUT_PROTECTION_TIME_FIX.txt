@@ -1,0 +1,14 @@
+PP10.4 CHECKOUT PROTECTION + ADMIN TIME FIX
+
+Implemented:
+- Server-side checkout rate limiting using Redis.
+- Limits repeated attempts by IP, email, phone, repeated payload and name+IP combination.
+- Repeated abuse triggers a 6-hour temporary IP checkout block.
+- Hidden checkout honeypot field blocks simple form bots before an order is created.
+- Abuse logging stores only one-way hashed customer/network identifiers.
+- Admin orders page shows the number of blocked checkout attempts in the last 24 hours.
+- Pending card / unpaid attempts are hidden from the default fulfilment list but remain available under All orders / Pending and through search.
+- Admin order timestamps explicitly render in Europe/London, fixing the one-hour BST offset.
+- Existing UK-only shipping, Royal Mail Tracked 24, pricing fix and order-search recovery are preserved.
+
+The customer name itself is never used as a standalone blocking rule, so a genuine customer named John Smith is not automatically blocked.

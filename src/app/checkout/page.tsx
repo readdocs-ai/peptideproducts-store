@@ -148,6 +148,7 @@ export default function Checkout() {
   const [error, setError] = useState<string | null>(null);
   const [paymentCancelled, setPaymentCancelled] = useState(false);
   const [detailsLoaded, setDetailsLoaded] = useState(false);
+  const [website, setWebsite] = useState("");
 
   useEffect(() => {
     try {
@@ -254,6 +255,7 @@ export default function Checkout() {
           country: country.trim().toUpperCase(),
         },
         items: orderItems.map(({ id, qty }) => ({ id, qty })),
+        website,
       };
 
       const fingerprint = JSON.stringify(payload);
@@ -317,6 +319,18 @@ export default function Checkout() {
           <div className="mx-auto max-w-6xl">
             <div className="rounded-[1.5rem] border border-line bg-white p-4 shadow-soft sm:p-6 lg:p-8">
               <div className="eyebrow">Secure card checkout</div>
+              <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden">
+                <label htmlFor="website">Website</label>
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={website}
+                  onChange={(event) => setWebsite(event.target.value)}
+                />
+              </div>
               <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl lg:text-4xl">
                 Complete your details, then pay securely with Stripe.
               </h1>
