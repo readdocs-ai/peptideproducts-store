@@ -44,6 +44,9 @@ export default async function PrintableOrderPage({ params }: { params: { id: str
       <div className="mt-6 ml-auto max-w-xs space-y-2 text-sm">
         <div className="flex justify-between"><span>Subtotal</span><strong>{gbp(order.subtotal)}</strong></div>
         <div className="flex justify-between"><span>Shipping</span><strong>{gbp(order.shipping)}</strong></div>
+        {order.subtotal + order.shipping > order.total + 0.001 ? (
+          <div className="flex justify-between text-amber-700"><span>Legacy promotion/discount</span><strong>−{gbp(order.subtotal + order.shipping - order.total)}</strong></div>
+        ) : null}
         <div className="flex justify-between border-t border-ink pt-2 text-base"><span>Total</span><strong>{gbp(order.total)}</strong></div>
       </div>
 

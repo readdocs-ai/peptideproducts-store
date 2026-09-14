@@ -83,21 +83,6 @@ function isUkCountry(country: string) {
   return country.trim().toUpperCase() === "GB";
 }
 
-function isPromoEligibleProduct(productId: string) {
-  return !productId.toLowerCase().includes("retatrutide");
-}
-
-function getPromoDiscountGBP(items: StoredOrderItem[]) {
-  const eligibleUnitPrices: number[] = [];
-  for (const item of items) {
-    if (!isPromoEligibleProduct(item.id)) continue;
-    for (let index = 0; index < item.qty; index += 1) {
-      eligibleUnitPrices.push(item.priceGBP);
-    }
-  }
-  return eligibleUnitPrices.length >= 3 ? roundGBP(Math.min(...eligibleUnitPrices)) : 0;
-}
-
 function getHelpHref(country: string, total: number) {
   const selectedCountry =
     COUNTRY_OPTIONS.find((option) => option.value === country)?.label || country;
@@ -225,10 +210,8 @@ export default function Checkout() {
     marketingOptIn,
   ]);
 
-  const promoDiscount = useMemo(() => getPromoDiscountGBP(orderItems), [orderItems]);
-  const discountedSubtotal = roundGBP(Math.max(0, subtotal - promoDiscount));
-  const shipping = discountedSubtotal > 0 ? UK_SHIPPING_FEE_GBP : 0;
-  const total = roundGBP(discountedSubtotal + shipping);
+  const shipping = subtotal > 0 ? UK_SHIPPING_FEE_GBP : 0;
+  const total = roundGBP(subtotal + shipping);
   const shippingRegion = "UK";
 
   const formValid =
@@ -615,9 +598,6 @@ export default function Checkout() {
 
                   <div className="mt-5 grid gap-2 text-sm text-muted">
                     <div className="flex justify-between"><span>Subtotal</span><span className="font-extrabold text-ink">{formatGBP(subtotal)}</span></div>
-                    {promoDiscount > 0 ? (
-                      <div className="flex justify-between text-emerald-700"><span>Promotion</span><span className="font-extrabold">−{formatGBP(promoDiscount)}</span></div>
-                    ) : null}
                     <div className="flex justify-between"><span>Shipping</span><span className="font-extrabold text-ink">{shipping === 0 ? "Free" : formatGBP(shipping)}</span></div>
                     <div className="my-1 h-px bg-line" />
                     <div className="flex justify-between text-lg"><span className="font-extrabold text-ink">Total</span><span className="font-extrabold text-ink">{formatGBP(total)}</span></div>

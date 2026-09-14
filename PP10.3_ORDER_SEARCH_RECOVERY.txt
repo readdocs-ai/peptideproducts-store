@@ -1,0 +1,8 @@
+PP10.3 ORDER SEARCH / DATABASE RECOVERY
+
+- Admin order search now scans up to 5,000 indexed orders instead of only 500.
+- Exact PP order-number searches query the Redis order key directly.
+- If an order exists in Redis but is missing from orders:index, an exact admin search automatically restores that index entry.
+- Preserves the PP10.2 emergency pricing fix and all PP10.1/PP10.0/PP9.9 work.
+
+This addresses orders that existed in the database but could not be found through the previous limited/index-only admin search.

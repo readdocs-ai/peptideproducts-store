@@ -1,0 +1,7 @@
+PP10.2 emergency pricing fix
+
+- Removed the automatic Buy 2 Get 1 Free promotion from cart, checkout and server-side Stripe checkout.
+- New orders now charge the exact product subtotal plus configured shipping (UK shipping currently free).
+- No coupon/discount-code field is present in the checkout.
+- Historical orders that already received the old automatic promotion are not altered. Admin screens, print view and order emails now show the inferred legacy promotion/discount when subtotal + shipping exceeds total.
+- PP10.1 UK-only shipping and Royal Mail Tracked 24 changes are preserved.

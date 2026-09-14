@@ -84,6 +84,7 @@ type SendOrderUpdateEmailParams = {
 type OrderTotals = {
   subtotalGBP: number;
   shippingGBP: number;
+  discountGBP: number;
   totalGBP: number;
 };
 
@@ -210,9 +211,12 @@ function getOrderTotals(params: SendOrderEmailsParams): OrderTotals {
   const shippingGBP = roundGBP(Math.max(0, safeNumber(params.shippingGBP)));
   const totalGBP = roundGBP(Math.max(0, safeNumber(params.totalGBP)));
 
+  const discountGBP = roundGBP(Math.max(0, subtotalGBP + shippingGBP - totalGBP));
+
   return {
     subtotalGBP,
     shippingGBP,
+    discountGBP,
     totalGBP,
   };
 }
@@ -232,6 +236,11 @@ function renderOrderTotals(totals: OrderTotals) {
           totals.shippingGBP,
         )}</td>
       </tr>
+      ${totals.discountGBP > 0 ? `
+      <tr>
+        <td style="padding:8px 0;color:#92400e;">Promotion / discount</td>
+        <td style="padding:8px 0;text-align:right;font-weight:700;color:#92400e;">−${formatGBP(totals.discountGBP)}</td>
+      </tr>` : ""}
       <tr>
         <td colspan="2" style="border-top:1px solid #e5e7eb;padding-top:10px;"></td>
       </tr>

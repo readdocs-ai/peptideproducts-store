@@ -33,21 +33,6 @@ function roundGBP(value: number) {
   return Math.round(value * 100) / 100;
 }
 
-function isPromoEligibleProduct(productId: string) {
-  return !productId.toLowerCase().includes("retatrutide");
-}
-
-function getPromoDiscountGBP(rows: Array<{ item: CartItem; product: (typeof products)[number] | undefined }>) {
-  const eligibleUnitPrices: number[] = [];
-  for (const row of rows) {
-    if (!row.product || !isPromoEligibleProduct(row.product.id)) continue;
-    for (let index = 0; index < row.item.qty; index += 1) {
-      eligibleUnitPrices.push(row.product.priceGBP);
-    }
-  }
-  return eligibleUnitPrices.length >= 3 ? roundGBP(Math.min(...eligibleUnitPrices)) : 0;
-}
-
 function getWhatsAppHref(country: string, total: number) {
   const selectedCountry =
     COUNTRY_OPTIONS.find((option) => option.value === country)?.label || country;
@@ -102,10 +87,8 @@ export default function CartPage() {
     .filter((x) => !!x.product);
 
   const subtotal = cartTotalGBP(items, products);
-  const promoDiscount = getPromoDiscountGBP(rows);
-  const discountedSubtotal = roundGBP(Math.max(0, subtotal - promoDiscount));
-  const shipping = discountedSubtotal > 0 ? UK_SHIPPING_FEE_GBP : 0;
-  const total = roundGBP(discountedSubtotal + shipping);
+  const shipping = subtotal > 0 ? UK_SHIPPING_FEE_GBP : 0;
+  const total = roundGBP(subtotal + shipping);
   const hasEnquiryOnlyItems = rows.some(({ product }) =>
     product ? ENQUIRY_ONLY_PRODUCT_IDS.has(product.id) : true
   );
@@ -346,12 +329,6 @@ export default function CartPage() {
                     <span>Subtotal</span>
                     <span className="font-extrabold text-ink">{formatGBP(subtotal)}</span>
                   </div>
-                  {promoDiscount > 0 ? (
-                    <div className="flex justify-between text-emerald-700">
-                      <span>Promotion</span>
-                      <span className="font-extrabold">−{formatGBP(promoDiscount)}</span>
-                    </div>
-                  ) : null}
                   <div className="flex justify-between">
                     <span>Shipping</span>
                     <span className="font-extrabold text-ink">

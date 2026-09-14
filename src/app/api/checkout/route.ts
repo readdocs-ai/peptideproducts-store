@@ -62,10 +62,6 @@ function isUkCountry(country: string) {
   return country.trim().toUpperCase() === "GB";
 }
 
-function isPromoEligibleProduct(productId: string) {
-  return !productId.toLowerCase().includes("retatrutide");
-}
-
 function buildItems(rawItems: IncomingCartItem[]) {
   const productMap = new Map(products.map((product) => [product.id, product]));
   const merged = new Map<string, StoredOrderItem>();
@@ -94,64 +90,15 @@ function buildItems(rawItems: IncomingCartItem[]) {
   return Array.from(merged.values());
 }
 
-function getPromoDiscountGBP(items: StoredOrderItem[]) {
-  const eligibleUnitPrices: number[] = [];
-  for (const item of items) {
-    if (!isPromoEligibleProduct(item.id)) continue;
-    for (let index = 0; index < item.qty; index += 1) {
-      eligibleUnitPrices.push(item.priceGBP);
-    }
-  }
-  return eligibleUnitPrices.length >= 3 ? roundGBP(Math.min(...eligibleUnitPrices)) : 0;
-}
-
-function buildStripeLineItems(items: StoredOrderItem[], promoDiscount: number): Stripe.Checkout.SessionCreateParams.LineItem[] {
-  let discountRemaining = Math.round(promoDiscount * 100);
-  const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
-
-  const orderedItems = [...items].sort((a, b) => a.priceGBP - b.priceGBP);
-
-  for (const item of orderedItems) {
-    const unitAmount = Math.round(item.priceGBP * 100);
-    let quantity = item.qty;
-
-    if (discountRemaining > 0 && isPromoEligibleProduct(item.id) && discountRemaining === unitAmount && quantity > 0) {
-      if (quantity > 1) {
-        lineItems.push({
-          quantity: quantity - 1,
-          price_data: {
-            currency: "gbp",
-            unit_amount: unitAmount,
-            product_data: { name: item.name, metadata: { product_id: item.id } },
-          },
-        });
-      }
-      lineItems.push({
-        quantity: 1,
-        price_data: {
-          currency: "gbp",
-          unit_amount: 0,
-          product_data: {
-            name: `${item.name} — promotional unit`,
-            metadata: { product_id: item.id, promotion: "buy_2_get_1" },
-          },
-        },
-      });
-      discountRemaining = 0;
-      continue;
-    }
-
-    lineItems.push({
-      quantity,
-      price_data: {
-        currency: "gbp",
-        unit_amount: unitAmount,
-        product_data: { name: item.name, metadata: { product_id: item.id } },
-      },
-    });
-  }
-
-  return lineItems;
+function buildStripeLineItems(items: StoredOrderItem[]): Stripe.Checkout.SessionCreateParams.LineItem[] {
+  return items.map((item) => ({
+    quantity: item.qty,
+    price_data: {
+      currency: "gbp",
+      unit_amount: Math.round(item.priceGBP * 100),
+      product_data: { name: item.name, metadata: { product_id: item.id } },
+    },
+  }));
 }
 
 export async function POST(req: Request) {
@@ -188,10 +135,8 @@ export async function POST(req: Request) {
 
     const items = buildItems(rawItems);
     const subtotal = roundGBP(items.reduce((sum, item) => sum + item.priceGBP * item.qty, 0));
-    const promoDiscount = getPromoDiscountGBP(items);
-    const discountedSubtotal = roundGBP(Math.max(0, subtotal - promoDiscount));
     const shipping = UK_SHIPPING_FEE_GBP;
-    const total = roundGBP(discountedSubtotal + shipping);
+    const total = roundGBP(subtotal + shipping);
     const shippingRegion = "UK";
 
     const order = await createOrder({
@@ -212,7 +157,7 @@ export async function POST(req: Request) {
 
     const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "https://www.peptideproducts.co.uk").replace(/\/$/, "");
     const stripe = getStripe();
-    const lineItems = buildStripeLineItems(items, promoDiscount);
+    const lineItems = buildStripeLineItems(items);
 
 
     const session = await stripe.checkout.sessions.create({
@@ -251,7 +196,7 @@ export async function POST(req: Request) {
       paymentMethod: "card",
       checkoutUrl: session.url,
       subtotal,
-      promoDiscount,
+      promoDiscount: 0,
       shipping,
       total,
     });

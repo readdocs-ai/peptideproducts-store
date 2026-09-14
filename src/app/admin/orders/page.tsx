@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getRecentOrders, isKvConfigured, listOrders } from "@/lib/orders";
+import { getOrderForAdminSearch, getRecentOrders, isKvConfigured, listOrders } from "@/lib/orders";
 import { StatusBadge } from "@/components/admin/StatusBadge";
 import { PaymentMethodBadge } from "@/components/admin/PaymentMethodBadge";
 import { OrderStatusControls } from "@/components/admin/OrderStatusControls";
@@ -91,14 +91,27 @@ export default async function AdminOrdersPage({
   const limit = Math.max(20, Number(searchParams?.limit || 20));
   const searchQuery = normaliseSearch(searchParams?.q);
   const statusFilter = normaliseSearch(searchParams?.status).toLowerCase();
+  const exactOrderLookup =
+    isKvConfigured() && /^pp-\d{6}-[a-z0-9]+$/i.test(searchQuery)
+      ? await getOrderForAdminSearch(searchQuery)
+      : null;
+
   const allOrders = isKvConfigured()
     ? searchQuery
-      ? await listOrders(500)
+      ? await listOrders(5000)
       : await getRecentOrders(limit)
     : [];
-  const searchedOrders = searchQuery
+
+  const indexedMatches = searchQuery
     ? allOrders.filter((order) => orderMatchesSearch(order, searchQuery))
     : allOrders;
+
+  const searchedOrders = exactOrderLookup
+    ? [
+        exactOrderLookup,
+        ...indexedMatches.filter((order) => order.id !== exactOrderLookup.id),
+      ]
+    : indexedMatches;
   const orders = statusFilter
     ? searchedOrders.filter((order) => {
         if (statusFilter === "awaiting-dispatch") {
@@ -254,7 +267,7 @@ export default async function AdminOrdersPage({
         ) : (
           <p className="mt-3 text-sm text-muted">
             Search by order number, customer email, name, phone, tracking
-            number, postcode, Stripe session or product name.
+            number, postcode, Stripe session or product name. Exact PP order-number searches also check the database directly and repair a missing index entry when found.
           </p>
         )}
       </div>
@@ -354,6 +367,12 @@ export default async function AdminOrdersPage({
                             ? formatGBP(order.shipping)
                             : "Free"}
                         </div>
+                        {order.subtotal + order.shipping > order.total + 0.001 ? (
+                          <div className="mt-1 text-sm text-amber-700">
+                            <span className="font-extrabold">Legacy promotion/discount:</span>{" "}
+                            −{formatGBP(order.subtotal + order.shipping - order.total)}
+                          </div>
+                        ) : null}
                       </div>
                     </div>
 

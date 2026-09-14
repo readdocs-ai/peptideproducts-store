@@ -290,6 +290,33 @@ export async function getRecentOrders(limit = 20) {
   return listOrders(limit);
 }
 
+
+export async function getOrderForAdminSearch(orderId: string) {
+  if (!redis) return null;
+
+  const normalisedOrderId = orderId.trim().toUpperCase();
+  if (!normalisedOrderId) return null;
+
+  const order = await getOrder(normalisedOrderId);
+  if (!order) return null;
+
+  // Historical orders can still exist as order:<id> keys even when an older
+  // index migration or reset left them out of orders:index. If an admin finds
+  // one by exact order number, repair the list index so it appears normally
+  // in future admin/report views as well.
+  const indexType = await redis.type(ORDER_INDEX_KEY);
+  if (indexType === "none") {
+    await redis.lpush(ORDER_INDEX_KEY, order.id);
+  } else if (indexType === "list") {
+    const existingPosition = await redis.lpos(ORDER_INDEX_KEY, order.id);
+    if (existingPosition === null) {
+      await redis.lpush(ORDER_INDEX_KEY, order.id);
+    }
+  }
+
+  return order;
+}
+
 export async function getOrderForCustomerLookup(orderId: string, email: string) {
   const order = await getOrder(orderId);
   if (!order) return null;

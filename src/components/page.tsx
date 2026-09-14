@@ -339,6 +339,12 @@ export default async function AdminOrdersPage({
                             ? formatGBP(order.shipping)
                             : "Free"}
                         </div>
+                        {order.subtotal + order.shipping > order.total + 0.001 ? (
+                          <div className="mt-1 text-sm text-amber-700">
+                            <span className="font-extrabold">Legacy promotion/discount:</span>{" "}
+                            −{formatGBP(order.subtotal + order.shipping - order.total)}
+                          </div>
+                        ) : null}
                       </div>
                     </div>
 
