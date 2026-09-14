@@ -32,11 +32,7 @@ type Body = {
 };
 
 const UK_SHIPPING_FEE_GBP = 0;
-const INTERNATIONAL_SHIPPING_FEE_GBP = 25;
-const ALLOWED_COUNTRIES = new Set([
-  "GB", "US", "CA", "AU", "NZ", "IE", "DE", "FR", "ES", "IT",
-  "NL", "BE", "SE", "NO", "DK", "CH", "AT", "PT", "SA", "AE",
-]);
+const ALLOWED_COUNTRIES = new Set(["GB"]);
 const ENQUIRY_ONLY_PRODUCT_IDS = new Set([
   "reta-research-compound-10mg-vial",
   "reta-research-compound-20mg-vial",
@@ -181,7 +177,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: "A complete shipping address is required." }, { status: 400 });
     }
     if (!ALLOWED_COUNTRIES.has(shippingAddress.country)) {
-      return NextResponse.json({ ok: false, error: "Shipping country is not supported." }, { status: 400 });
+      return NextResponse.json({ ok: false, error: "International shipping is temporarily suspended. We are currently accepting UK delivery addresses only." }, { status: 400 });
     }
     if (body.researchUseAccepted !== true) {
       return NextResponse.json({ ok: false, error: "You must accept the Research Use Declaration before continuing to payment." }, { status: 400 });
@@ -194,11 +190,9 @@ export async function POST(req: Request) {
     const subtotal = roundGBP(items.reduce((sum, item) => sum + item.priceGBP * item.qty, 0));
     const promoDiscount = getPromoDiscountGBP(items);
     const discountedSubtotal = roundGBP(Math.max(0, subtotal - promoDiscount));
-    const shipping = discountedSubtotal > 0 && !isUkCountry(shippingAddress.country)
-      ? INTERNATIONAL_SHIPPING_FEE_GBP
-      : UK_SHIPPING_FEE_GBP;
+    const shipping = UK_SHIPPING_FEE_GBP;
     const total = roundGBP(discountedSubtotal + shipping);
-    const shippingRegion = isUkCountry(shippingAddress.country) ? "UK" : "International";
+    const shippingRegion = "UK";
 
     const order = await createOrder({
       name,
@@ -220,16 +214,6 @@ export async function POST(req: Request) {
     const stripe = getStripe();
     const lineItems = buildStripeLineItems(items, promoDiscount);
 
-    if (shipping > 0) {
-      lineItems.push({
-        quantity: 1,
-        price_data: {
-          currency: "gbp",
-          unit_amount: Math.round(shipping * 100),
-          product_data: { name: "International tracked shipping" },
-        },
-      });
-    }
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",

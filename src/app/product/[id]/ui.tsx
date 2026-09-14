@@ -10,12 +10,12 @@ const retatrutideRelatedLinks = [
   {
     href: "/international-orders",
     label: "International orders",
-    copy: "Selected international delivery and £25 international shipping information.",
+    copy: "International shipping is temporarily suspended. UK delivery remains available.",
   },
   {
     href: "/shipping",
     label: "Delivery information",
-    copy: "UK dispatch details, international estimates, and delivery guidance.",
+    copy: "Royal Mail Tracked 24 UK dispatch details and delivery guidance.",
   },
   {
     href: "/quality-assurance",
@@ -219,7 +219,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
 
           <div className="mt-5 grid gap-3 border-t border-white/10 pt-5 text-sm sm:grid-cols-3">
             <div><div className="font-extrabold">Tracked dispatch</div><div className="mt-1 text-xs leading-5 text-white/55">Order updates provided</div></div>
-            <div><div className="font-extrabold">Free UK delivery</div><div className="mt-1 text-xs leading-5 text-white/55">Selected international delivery</div></div>
+            <div><div className="font-extrabold">Free UK delivery</div><div className="mt-1 text-xs leading-5 text-white/55">Royal Mail Tracked 24</div></div>
             <div><div className="font-extrabold">Secure card checkout</div><div className="mt-1 text-xs leading-5 text-white/55">Processed securely through Stripe</div></div>
           </div>
         </div>
@@ -398,7 +398,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
             Stripe secure card checkout
           </div>
           <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-            Free UK delivery / £25 selected international delivery
+            Free UK delivery / Royal Mail Tracked 24
           </div>
           <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
             Tracked dispatch and order status updates

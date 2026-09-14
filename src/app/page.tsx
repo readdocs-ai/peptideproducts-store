@@ -246,7 +246,7 @@ export default function Home() {
                 {[
                   ["Retatrutide research hub", "Dedicated UK information and supporting research pages.", "/retatrutide"],
                   ["Customer reviews", "Read ordering, packaging and delivery feedback.", "/reviews"],
-                  ["International orders", "Selected international delivery and ordering guidance.", "/international-orders"],
+                  ["International orders", "International shipping is temporarily suspended; UK orders remain available.", "/international-orders"],
                   ["Order support", "Contact support before or after checkout.", "/contact"],
                 ].map(([title, copy, href]) => (
                   <Link

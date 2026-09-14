@@ -10,7 +10,6 @@ import { products } from "@/data/products";
 import { CartItem, cartTotalGBP, clearCart, formatGBP, readCart, setQty } from "@/lib/cart";
 
 const UK_SHIPPING_FEE_GBP = 0;
-const INTERNATIONAL_SHIPPING_FEE_GBP = 25.0;
 const WHATSAPP_NUMBER = "447429098887";
 
 const ENQUIRY_ONLY_PRODUCT_IDS = new Set([
@@ -24,25 +23,6 @@ const ENQUIRY_ONLY_PRODUCT_IDS = new Set([
 
 const COUNTRY_OPTIONS = [
   { value: "GB", label: "United Kingdom" },
-  { value: "US", label: "United States" },
-  { value: "CA", label: "Canada" },
-  { value: "AU", label: "Australia" },
-  { value: "NZ", label: "New Zealand" },
-  { value: "IE", label: "Ireland" },
-  { value: "DE", label: "Germany" },
-  { value: "FR", label: "France" },
-  { value: "ES", label: "Spain" },
-  { value: "IT", label: "Italy" },
-  { value: "NL", label: "Netherlands" },
-  { value: "BE", label: "Belgium" },
-  { value: "SE", label: "Sweden" },
-  { value: "NO", label: "Norway" },
-  { value: "SA", label: "Saudi Arabia" },
-  { value: "AE", label: "United Arab Emirates" },
-  { value: "DK", label: "Denmark" },
-  { value: "CH", label: "Switzerland" },
-  { value: "AT", label: "Austria" },
-  { value: "PT", label: "Portugal" },
 ] as const;
 
 function isUkCountry(country: string) {
@@ -124,12 +104,7 @@ export default function CartPage() {
   const subtotal = cartTotalGBP(items, products);
   const promoDiscount = getPromoDiscountGBP(rows);
   const discountedSubtotal = roundGBP(Math.max(0, subtotal - promoDiscount));
-  const shipping =
-    discountedSubtotal > 0
-      ? isUkCountry(country)
-        ? UK_SHIPPING_FEE_GBP
-        : INTERNATIONAL_SHIPPING_FEE_GBP
-      : 0;
+  const shipping = discountedSubtotal > 0 ? UK_SHIPPING_FEE_GBP : 0;
   const total = roundGBP(discountedSubtotal + shipping);
   const hasEnquiryOnlyItems = rows.some(({ product }) =>
     product ? ENQUIRY_ONLY_PRODUCT_IDS.has(product.id) : true
@@ -336,7 +311,7 @@ export default function CartPage() {
                     <div className="rounded-xl2 border border-emerald-200 bg-emerald-50 p-4">
                       <div className="text-sm font-extrabold text-emerald-950">Need help before ordering?</div>
                       <p className="mt-2 text-sm leading-6 text-emerald-800">
-                        Message us before checkout for help with payment, delivery, international shipping or order tracking.
+                        Message us before checkout for help with payment, UK delivery or order tracking.
                       </p>
                       <a
                         href={getWhatsAppHref(country, total)}
@@ -359,17 +334,11 @@ export default function CartPage() {
                   <label className="block text-sm font-extrabold text-ink">
                     Shipping country
                   </label>
-                  <select
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    className="mt-3 w-full rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink outline-none transition focus:border-accent"
-                  >
-                    {COUNTRY_OPTIONS.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
+                  <input
+                    value="United Kingdom"
+                    readOnly
+                    className="mt-3 w-full rounded-xl2 border border-line bg-slate-100 px-4 py-3 text-sm font-semibold text-ink outline-none"
+                  />
                 </div>
 
                 <div className="mt-6 grid gap-3 text-sm text-muted">
@@ -397,9 +366,7 @@ export default function CartPage() {
                 </div>
 
                 <div className="mt-3 rounded-xl2 border border-line bg-panel p-4 text-xs leading-5 text-muted">
-                  {isUkCountry(country)
-                    ? "Free UK shipping. Delivery details are confirmed during checkout."
-                    : "International shipping is charged at £25.00. Delivery details are confirmed during checkout."}
+                  Free UK delivery via Royal Mail Tracked 24. International shipping is temporarily suspended.
                 </div>
 
                 {hasEnquiryOnlyItems ? (
@@ -427,7 +394,7 @@ export default function CartPage() {
                       : "Secure card payment continues through Stripe."}
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                    Free UK shipping / £25.00 international
+                    Free UK delivery — Royal Mail Tracked 24
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                     Tracked dispatch and order status updates

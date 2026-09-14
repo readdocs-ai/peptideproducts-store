@@ -70,7 +70,7 @@ const faqs = [
   },
   {
     q: "Do you offer UK delivery?",
-    a: "Yes. Orders are prepared for tracked UK dispatch, with international shipping available on selected orders.",
+    a: "Yes. UK orders are prepared for dispatch using Royal Mail Tracked 24. International shipping is temporarily suspended.",
   },
   {
     q: "Can I review product information before ordering?",
@@ -183,7 +183,7 @@ export default function Page() {
 
               <p className="mt-4 text-sm leading-7 text-muted">
                 UK orders are prepared for tracked dispatch after processing.
-                Selected international shipping options may also be available
+                International shipping is temporarily suspended
                 depending on destination.
               </p>
 

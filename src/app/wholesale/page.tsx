@@ -37,7 +37,7 @@ const countries = [
 const enquiryTypes = [
   "Repeat order enquiry",
   "Bulk order enquiry",
-  "International order enquiry",
+  "International shipping update",
   "Product availability enquiry",
   "Documentation enquiry",
   "General wholesale enquiry",
@@ -45,7 +45,7 @@ const enquiryTypes = [
 
 function getWhatsAppHref() {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    "Hi Peptide Products, I would like to discuss a wholesale or international order enquiry."
+    "Hi Peptide Products, I would like to discuss a wholesale enquiry or ask about future international shipping availability."
   )}`;
 }
 
@@ -125,18 +125,18 @@ export default function Wholesale() {
                   <div className="eyebrow">Wholesale enquiries</div>
 
                   <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-ink md:text-5xl">
-                    Wholesale, repeat order, and international supply enquiries.
+                    Wholesale and repeat-order enquiries, plus updates on future international shipping availability.
                   </h1>
 
                   <p className="mt-5 max-w-3xl text-sm leading-7 text-muted md:text-base">
                     Use this page for larger quantity enquiries, repeat order
-                    requests, international order questions, documentation
+                    requests, international shipping questions, documentation
                     requirements, or product availability checks before ordering.
                   </p>
 
                   <div className="mt-5 flex flex-wrap gap-2">
                     <span className="trust-pill">UK-based supplier</span>
-                    <span className="trust-pill">International enquiries welcome</span>
+                    <span className="trust-pill">International shipping temporarily suspended</span>
                     <span className="trust-pill">Documentation support</span>
                     <span className="trust-pill">WhatsApp support</span>
                     <span className="trust-pill">Research use only</span>
@@ -178,7 +178,7 @@ export default function Wholesale() {
                       Repeat or larger quantity orders
                     </div>
                     <div className="rounded-xl2 border border-emerald-200 bg-white px-4 py-3">
-                      International delivery questions
+                      International shipping updates
                     </div>
                     <div className="rounded-xl2 border border-emerald-200 bg-white px-4 py-3">
                       Product availability before checkout
@@ -194,7 +194,7 @@ export default function Wholesale() {
             <section className="mt-8 grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
               <div className="space-y-6">
                 <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
-                  <div className="soft-label">International buyers</div>
+                  <div className="soft-label">International shipping</div>
 
                   <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">
                     Enquiries from overseas customers are welcome.
@@ -209,10 +209,10 @@ export default function Wholesale() {
 
                   <div className="mt-5 grid gap-3 text-sm text-muted">
                     <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                      Selected international delivery is available.
+                      International shipping is temporarily suspended. UK delivery remains available.
                     </div>
                     <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                      International shipping is currently £25.00 at checkout.
+                      International checkout is currently unavailable until further notice.
                     </div>
                     <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                       Delivery times are estimates and customs may affect timing.

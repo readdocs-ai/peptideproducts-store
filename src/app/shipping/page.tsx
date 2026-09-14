@@ -7,14 +7,14 @@ import { Container } from "@/components/Container";
 export const metadata: Metadata = {
   title: "UK Delivery, Returns & Dispatch | Peptide Products",
   description:
-    "Shipping, dispatch, tracking, returns and cancellation information for Peptide Products research-use-only orders. UK dispatch, selected international delivery and support links.",
+    "Shipping, dispatch, tracking, returns and cancellation information for Peptide Products research-use-only orders. UK-only delivery via Royal Mail Tracked 24 and order support links.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/shipping",
   },
   openGraph: {
     title: "UK Delivery, Returns & Dispatch | Peptide Products",
     description:
-      "Review dispatch cut-offs, UK delivery, selected international delivery, returns, cancellations and order support before purchasing research-use-only products.",
+      "Review dispatch cut-offs, UK-only delivery via Royal Mail Tracked 24, returns, cancellations and order support before purchasing research-use-only products.",
     url: "https://www.peptideproducts.co.uk/shipping",
     siteName: "Peptide Products",
   },
@@ -34,7 +34,7 @@ const shippingFaqs = [
   {
     question: "Do you offer international delivery?",
     answer:
-      "Selected international delivery is available at GBP 25.00. International parcels usually arrive within approximately 6 to 7 working days, but this is an estimate only and may vary due to customs, courier processing, or local delivery conditions.",
+      "International delivery is temporarily suspended. We are currently accepting UK orders only until further notice.",
   },
   {
     question: "Can research-use-only products be returned?",
@@ -85,12 +85,12 @@ export default function ShippingPage() {
                 UK delivery, returns and cancellations.
               </h1>
               <p className="mt-5 max-w-3xl text-sm leading-7 text-muted md:text-base">
-                Shipping and returns policy for research-use-only goods. Orders are dispatched from the UK after payment confirmation, with tracking provided where available.
+                Shipping and returns policy for research-use-only goods. We are currently accepting UK orders only. UK orders are dispatched after payment confirmation using Royal Mail Tracked 24.
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
                 <span className="trust-pill">UK dispatch</span>
                 <span className="trust-pill">Free UK delivery</span>
-                <span className="trust-pill">Selected international delivery</span>
+                <span className="trust-pill">Royal Mail Tracked 24</span>
                 <span className="trust-pill">Order status support</span>
               </div>
             </section>
@@ -105,13 +105,13 @@ export default function ShippingPage() {
               <div className="rounded-xl3 border border-line bg-white p-5 shadow-soft">
                 <h2 className="font-extrabold text-ink">UK delivery</h2>
                 <p className="mt-2 text-sm leading-7 text-muted">
-                  UK delivery is currently free and usually sent for next-working-day delivery after dispatch, where available.
+                  UK delivery is currently free and dispatched using Royal Mail Tracked 24.
                 </p>
               </div>
               <div className="rounded-xl3 border border-line bg-white p-5 shadow-soft">
                 <h2 className="font-extrabold text-ink">International delivery</h2>
                 <p className="mt-2 text-sm leading-7 text-muted">
-                  Selected international delivery is available at GBP 25.00, usually around 6 to 7 working days as an estimate only.
+                  International shipping is temporarily suspended. We are accepting UK orders only until further notice.
                 </p>
               </div>
             </section>
@@ -125,10 +125,10 @@ export default function ShippingPage() {
                   <div className="border-b border-line bg-panel px-4 py-3 font-extrabold text-ink">Notes</div>
                   <div className="border-b border-line px-4 py-3">United Kingdom</div>
                   <div className="border-b border-line px-4 py-3 font-semibold text-ink">Free</div>
-                  <div className="border-b border-line px-4 py-3">Usually next-working-day delivery after dispatch</div>
+                  <div className="border-b border-line px-4 py-3">Royal Mail Tracked 24</div>
                   <div className="px-4 py-3">International</div>
-                  <div className="px-4 py-3 font-semibold text-ink">GBP 25.00</div>
-                  <div className="px-4 py-3">Usually around 6 to 7 working days, estimated only</div>
+                  <div className="px-4 py-3 font-semibold text-amber-800">Temporarily suspended</div>
+                  <div className="px-4 py-3">International checkout is currently unavailable</div>
                 </div>
               </div>
             </section>
@@ -145,10 +145,10 @@ export default function ShippingPage() {
             <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-extrabold tracking-tight text-ink">Dispatch, payment confirmation and tracking</h2>
               <p className="mt-3 text-sm leading-7 text-muted">
-                Orders are dispatched after successful payment confirmation through Stripe. Tracking is provided when available.
+                Orders are dispatched after successful payment confirmation through Stripe. UK orders are sent using Royal Mail Tracked 24 and the tracking number is provided after dispatch.
               </p>
               <p className="mt-3 text-sm leading-7 text-muted">
-                International orders may be inspected by customs. The buyer is responsible for local import requirements, customs clearance, taxes, duties, and any associated risks.
+                International shipping is temporarily suspended. UK orders continue as normal.
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link href="/order-status" className="rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90">Check order status</Link>

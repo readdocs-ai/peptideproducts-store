@@ -154,7 +154,7 @@ export default function ProductPage({ params }: Props) {
       },
       {
         q: "Do you provide delivery?",
-        a: "Yes. UK delivery is available, and selected international delivery is available at checkout.",
+        a: "Yes. UK delivery is available via Royal Mail Tracked 24. International shipping is temporarily suspended.",
       },
     ];
 
@@ -191,53 +191,6 @@ const shippingDetails = [
         "@type": "QuantitativeValue",
         minValue: 1,
         maxValue: 3,
-        unitCode: "DAY",
-      },
-    },
-  },
-  {
-    "@type": "OfferShippingDetails",
-    shippingDestination: {
-      "@type": "DefinedRegion",
-      addressCountry: [
-        "US",
-        "CA",
-        "AU",
-        "NZ",
-        "IE",
-        "DE",
-        "FR",
-        "ES",
-        "IT",
-        "NL",
-        "BE",
-        "SE",
-        "NO",
-        "DK",
-        "CH",
-        "AT",
-        "PT",
-        "AE",
-        "SA",
-      ],
-    },
-    shippingRate: {
-      "@type": "MonetaryAmount",
-      value: 25,
-      currency: "GBP",
-    },
-    deliveryTime: {
-      "@type": "ShippingDeliveryTime",
-      handlingTime: {
-        "@type": "QuantitativeValue",
-        minValue: 1,
-        maxValue: 3,
-        unitCode: "DAY",
-      },
-      transitTime: {
-        "@type": "QuantitativeValue",
-        minValue: 5,
-        maxValue: 10,
         unitCode: "DAY",
       },
     },
@@ -563,7 +516,7 @@ hasMerchantReturnPolicy: merchantReturnPolicy,
                 Secure card checkout available
               </div>
               <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                Free UK delivery / £25 selected international delivery
+                Free UK delivery / Royal Mail Tracked 24
               </div>
               <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                 Discreet packaging and tracked dispatch where available
@@ -595,7 +548,7 @@ hasMerchantReturnPolicy: merchantReturnPolicy,
                 Delivery information
               </div>
               <p className="mt-2 text-sm leading-6 text-muted">
-                UK delivery and selected international delivery information.
+                UK delivery via Royal Mail Tracked 24 and current delivery information.
               </p>
             </Link>
 
@@ -663,7 +616,7 @@ hasMerchantReturnPolicy: merchantReturnPolicy,
                   Secure card checkout available
                 </div>
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                  Free UK delivery / £25 selected international delivery
+                  Free UK delivery / Royal Mail Tracked 24
                 </div>
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                   Discreet packaging and tracked dispatch where available

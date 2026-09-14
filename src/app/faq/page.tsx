@@ -55,12 +55,12 @@ const faqs = [
   {
     question: "How long does UK delivery take?",
     answer:
-      "UK orders are usually sent using a tracked service where available. Orders dispatched on working days are usually sent for next-working-day delivery, although delivery times are estimates and can be affected by courier delays.",
+      "UK orders are dispatched using Royal Mail Tracked 24. Delivery times are estimates and can be affected by Royal Mail or local delivery delays.",
   },
   {
-    question: "How long does international delivery take?",
+    question: "Do you currently offer international delivery?",
     answer:
-      "International parcels usually arrive within approximately 6–7 working days. This is an estimated timeframe only and may vary due to customs, courier processing, or local delivery conditions.",
+      "International shipping is temporarily suspended. We are currently accepting UK orders only until further notice.",
   },
   {
     question: "Can I check my order status?",
@@ -70,7 +70,7 @@ const faqs = [
   {
     question: "Do you provide tracking?",
     answer:
-      "Tracking is provided when available. If you need help with an order, use your order number when contacting support so we can check it faster.",
+      "Yes. Dispatched UK orders use Royal Mail Tracked 24. Your Royal Mail tracking number is shown in your dispatch email and on the order status page once available.",
   },
    {
     question: "Do you provide test reports or quality information?",

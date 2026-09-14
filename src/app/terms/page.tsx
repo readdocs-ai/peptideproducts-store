@@ -210,19 +210,17 @@ page or contact support before ordering.
 
               <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
                 <h2 className="text-2xl font-extrabold tracking-tight text-ink">
-                  International orders and customs
+                  International orders
                 </h2>
 
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  International customers are responsible for checking local import
-                  rules before ordering. The buyer is responsible for customs
-                  clearance, taxes, duties, import permissions, and any risks
-                  associated with restrictions in their jurisdiction.
+                  International shipping is temporarily suspended. We are currently
+                  accepting UK orders only until further notice.
                 </p>
 
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  International parcels usually arrive within approximately 6–7
-                  working days, but this is an estimated timeframe only.
+                  We will update the International Orders and Shipping pages when
+                  international delivery becomes available again.
                 </p>
               </div>
 

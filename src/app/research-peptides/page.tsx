@@ -147,7 +147,7 @@ const helpfulLinks = [
   },
   {
     title: "Shipping information",
-    copy: "Check UK dispatch, selected international delivery, and delivery guidance before checkout.",
+    copy: "Check free UK delivery, Royal Mail Tracked 24 dispatch, and current delivery guidance before checkout.",
     href: "/shipping",
   },
   {

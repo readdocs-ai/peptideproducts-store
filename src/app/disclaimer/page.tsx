@@ -204,16 +204,14 @@ export default function Disclaimer() {
                 </h2>
 
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  UK and international delivery timeframes are estimates only and
-                  may be affected by payment confirmation, courier handling,
-                  customs processing, local delivery conditions, bank holidays, or
-                  circumstances outside our control.
+                  UK delivery timeframes are estimates only and may be affected by
+                  payment confirmation, Royal Mail handling, local delivery conditions,
+                  bank holidays, or circumstances outside our control.
                 </p>
 
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  International customers are responsible for local import
-                  permissions, customs clearance, taxes, duties, and any risks
-                  associated with import restrictions in their jurisdiction.
+                  International shipping is temporarily suspended. We are currently
+                  accepting UK orders only until further notice.
                 </p>
 
                 <div className="mt-5">

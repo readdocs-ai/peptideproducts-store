@@ -1,0 +1,21 @@
+PP10.1 - UK-only delivery + Royal Mail tracking update
+Date: 2026-09-14
+
+Changes in this update:
+- International checkout is temporarily suspended.
+- Cart and checkout now allow United Kingdom delivery only.
+- Server-side checkout also rejects non-GB delivery addresses, so international orders cannot bypass the customer interface.
+- UK delivery is shown as free and dispatched using Royal Mail Tracked 24.
+- Added a clear checkout notice: UK orders only, international shipping suspended, all sales final/no returns or refunds once processed, statutory rights unaffected.
+- Updated the International Orders page to a temporary suspension notice rather than advertising active international delivery.
+- Updated Shipping, FAQ, product pages, relevant research pages, wholesale copy, terms and disclaimer so customer-facing text no longer claims international delivery is currently available.
+- Product structured-data shipping details now advertise UK delivery only.
+- Order status now shows Courier: Royal Mail Tracked 24 beside the tracking number.
+- Dispatch emails now identify Royal Mail Tracked 24 and label the number as a Royal Mail tracking number.
+- Order confirmation emails now identify Royal Mail Tracked 24 and repeat the concise final-sale notice.
+
+Preserved:
+- Existing PP9.9 Search Console cleanup.
+- Existing PP10.0 content-quality cleanup.
+- Existing admin, Stripe, SumUp, Royal Mail Click & Drop and order-management functionality.
+- Existing no-return/no-refund policy wording elsewhere except for updates needed to keep shipping information accurate.

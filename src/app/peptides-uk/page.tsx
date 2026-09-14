@@ -47,7 +47,7 @@ const faqs = [
   },
   {
     q: "Is UK delivery available?",
-    a: "Yes. Orders are prepared for tracked UK delivery, with international shipping available on selected orders.",
+    a: "Yes. UK orders are prepared for dispatch using Royal Mail Tracked 24. International shipping is temporarily suspended.",
   },
   {
     q: "Can I review product information before ordering?",

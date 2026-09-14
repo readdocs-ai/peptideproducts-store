@@ -149,7 +149,7 @@ export default function Page() {
                     Delivery option
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted">
-                    UK and selected international delivery options may be shown
+                    UK delivery information and current shipping availability may be shown
                     at checkout.
                   </p>
                 </div>

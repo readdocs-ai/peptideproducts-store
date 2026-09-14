@@ -604,6 +604,9 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
     "Shipping address:",
     renderShippingAddressText(params.shippingAddress),
     "",
+    "UK delivery service: Royal Mail Tracked 24.",
+    "All sales are final and we do not accept returns or refunds once an order has been processed. This does not affect your statutory rights.",
+    "",
     "If this email went to junk/spam, please mark it as safe so future order and tracking updates arrive in your inbox.",
     "",
     renderEmailFooterText(),
@@ -688,6 +691,10 @@ ${
 
           ${instructionsHtml}
 
+          <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:18px;padding:16px;margin-top:18px;color:#7c2d12;line-height:1.6;">
+            <strong>Please note:</strong> all sales are final and we do not accept returns or refunds once an order has been processed. This does not affect your statutory rights.
+          </div>
+
           <div style="margin-top:22px;">
             ${renderButton(orderStatusUrl, "Check order status")}
             ${renderButton(whatsappUrl, "Message us on WhatsApp", "#047857")}
@@ -706,6 +713,7 @@ ${
 
           <h2 style="margin-top:26px;">Shipping address</h2>
           <p>${shippingAddressHtml}</p>
+          <p style="color:#4b5563;"><strong>Delivery service:</strong> Royal Mail Tracked 24</p>
 
           ${researchUseNoticeHtml}
 
@@ -798,8 +806,10 @@ export async function sendShippedEmail(params: SendShippedEmailParams) {
     "",
     `Hello ${params.customerName},`,
     `Your order ${params.orderId} has now been marked as shipped.`,
-    `Tracking number: ${params.trackingNumber}`,
+    `Courier: Royal Mail Tracked 24`,
+    `Royal Mail tracking number: ${params.trackingNumber}`,
     "Tracking updates may not appear immediately after dispatch.",
+    "Please note: all sales are final and we do not accept returns or refunds once an order has been processed. This does not affect your statutory rights.",
     "",
     `Order status: ${orderStatusUrl}`,
     `WhatsApp support: ${whatsappUrl}`,
@@ -826,7 +836,7 @@ export async function sendShippedEmail(params: SendShippedEmailParams) {
 
           <div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:18px;padding:18px;margin:18px 0;">
             <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.12em;color:#4f46e5;font-weight:800;">
-              Tracking number
+              Royal Mail Tracked 24
             </div>
             <div style="font-size:22px;font-weight:800;color:#111827;margin-top:6px;">
               ${escapeHtml(params.trackingNumber)}
@@ -834,8 +844,7 @@ export async function sendShippedEmail(params: SendShippedEmailParams) {
           </div>
 
           <p style="color:#4b5563;line-height:1.6;">
-            Tracking updates may not appear immediately after dispatch. Please allow time
-            for the courier system to update.
+            Your order has been dispatched using Royal Mail Tracked 24. Tracking updates may not appear immediately after dispatch, so please allow time for Royal Mail to update the tracking information.
           </p>
 
           <div style="margin-top:22px;">

@@ -292,8 +292,8 @@ export default function QualityAssurancePage() {
                   <p className="mt-2 text-sm leading-7 text-muted">
                     Orders are dispatched after payment confirmation. UK orders
                     received before 3pm on working days are usually dispatched the
-                    same working day for next-working-day delivery. International
-                    delivery is estimated only and may vary.
+                    same working day using Royal Mail Tracked 24. International
+                    shipping is temporarily suspended.
                   </p>
                 </div>
               </div>

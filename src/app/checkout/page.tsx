@@ -11,7 +11,6 @@ import { formatGBP, readCart } from "@/lib/cart";
 import type { StoredOrderItem } from "@/lib/orders";
 
 const UK_SHIPPING_FEE_GBP = 0;
-const INTERNATIONAL_SHIPPING_FEE_GBP = 25;
 const WHATSAPP_NUMBER = "447429098887";
 const CHECKOUT_DETAILS_KEY = "pp_checkout_details_v2";
 const CHECKOUT_ATTEMPT_KEY = "pp_checkout_attempt_v1";
@@ -29,25 +28,6 @@ const ENQUIRY_ONLY_PRODUCT_IDS = new Set([
 
 const COUNTRY_OPTIONS = [
   { value: "GB", label: "United Kingdom" },
-  { value: "US", label: "United States" },
-  { value: "CA", label: "Canada" },
-  { value: "AU", label: "Australia" },
-  { value: "NZ", label: "New Zealand" },
-  { value: "IE", label: "Ireland" },
-  { value: "DE", label: "Germany" },
-  { value: "FR", label: "France" },
-  { value: "ES", label: "Spain" },
-  { value: "IT", label: "Italy" },
-  { value: "NL", label: "Netherlands" },
-  { value: "BE", label: "Belgium" },
-  { value: "SE", label: "Sweden" },
-  { value: "NO", label: "Norway" },
-  { value: "DK", label: "Denmark" },
-  { value: "CH", label: "Switzerland" },
-  { value: "AT", label: "Austria" },
-  { value: "PT", label: "Portugal" },
-  { value: "SA", label: "Saudi Arabia" },
-  { value: "AE", label: "United Arab Emirates" },
 ] as const;
 
 type CheckoutDisplayItem = StoredOrderItem & {
@@ -200,7 +180,7 @@ export default function Checkout() {
         setCity(saved.city || "");
         setStateRegion(saved.stateRegion || "");
         setPostalCode(saved.postalCode || "");
-        setCountry(saved.country || "GB");
+        setCountry("GB");
         setMarketingOptIn(saved.marketingOptIn === true);
       }
     } catch {
@@ -222,7 +202,7 @@ export default function Checkout() {
       city,
       stateRegion,
       postalCode,
-      country,
+      country: "GB",
       marketingOptIn,
     };
 
@@ -247,12 +227,9 @@ export default function Checkout() {
 
   const promoDiscount = useMemo(() => getPromoDiscountGBP(orderItems), [orderItems]);
   const discountedSubtotal = roundGBP(Math.max(0, subtotal - promoDiscount));
-  const shipping =
-    discountedSubtotal > 0
-      ? (isUkCountry(country) ? UK_SHIPPING_FEE_GBP : INTERNATIONAL_SHIPPING_FEE_GBP)
-      : 0;
+  const shipping = discountedSubtotal > 0 ? UK_SHIPPING_FEE_GBP : 0;
   const total = roundGBP(discountedSubtotal + shipping);
-  const shippingRegion = isUkCountry(country) ? "UK" : "International";
+  const shippingRegion = "UK";
 
   const formValid =
     name.trim().length > 1 &&
@@ -369,6 +346,13 @@ export default function Checkout() {
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">2. Continue to Stripe</div>
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">3. Confirm secure payment</div>
               </div>
+            </div>
+
+            <div className="mt-5 rounded-[1.25rem] border border-blue-200 bg-blue-50 p-4 sm:p-5">
+              <div className="text-sm font-extrabold text-blue-950">UK delivery only</div>
+              <p className="mt-1 text-sm leading-6 text-blue-900">
+                International shipping is temporarily suspended. UK orders are dispatched using Royal Mail Tracked 24. All sales are final and we do not accept returns or refunds once an order has been processed. This does not affect your statutory rights.
+              </p>
             </div>
 
             {paymentCancelled ? (
@@ -523,16 +507,13 @@ export default function Checkout() {
                         </div>
                         <div>
                           <FieldLabel>Country</FieldLabel>
-                          <select
-                            autoComplete="country"
-                            value={country}
-                            onChange={(event) => setCountry(event.target.value)}
-                            className="mt-2 w-full rounded-xl2 border border-line bg-panel px-4 py-3.5 text-base text-ink outline-none transition focus:border-accent focus:bg-white"
-                          >
-                            {COUNTRY_OPTIONS.map((option) => (
-                              <option key={option.value} value={option.value}>{option.label}</option>
-                            ))}
-                          </select>
+                          <input
+                            autoComplete="country-name"
+                            value="United Kingdom"
+                            readOnly
+                            className="mt-2 w-full rounded-xl2 border border-line bg-slate-100 px-4 py-3.5 text-base font-semibold text-ink outline-none"
+                          />
+                          <p className="mt-2 text-xs leading-5 text-muted">International shipping is temporarily suspended.</p>
                         </div>
                       </div>
                     </div>

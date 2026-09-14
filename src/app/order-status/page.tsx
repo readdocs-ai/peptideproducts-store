@@ -76,7 +76,7 @@ function getStatusHelp(order: LookupOrder) {
     return "Your payment has been received. Your order is being prepared for dispatch.";
   }
 
-  return "Your order has been shipped. Use the tracking number shown below if available.";
+  return "Your order has been shipped using Royal Mail Tracked 24. Use the tracking number shown below if available.";
 }
 
 function getStatusBadgeClass(status: LookupOrder["status"]) {
@@ -241,10 +241,16 @@ export default function OrderStatusPage() {
                   ) : null}
 
                   {order.trackingNumber ? (
-                    <div>
-                      <span className="font-extrabold text-ink">Tracking number:</span>{" "}
-                      {order.trackingNumber}
-                    </div>
+                    <>
+                      <div>
+                        <span className="font-extrabold text-ink">Courier:</span>{" "}
+                        Royal Mail Tracked 24
+                      </div>
+                      <div>
+                        <span className="font-extrabold text-ink">Royal Mail tracking number:</span>{" "}
+                        {order.trackingNumber}
+                      </div>
+                    </>
                   ) : null}
                 </div>
 

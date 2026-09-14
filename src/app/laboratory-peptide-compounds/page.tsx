@@ -118,7 +118,7 @@ const helpfulLinks = [
   },
   {
     title: "Shipping information",
-    copy: "Check UK dispatch, selected international delivery, delivery estimates, and order processing information.",
+    copy: "Check free UK delivery, Royal Mail Tracked 24 dispatch, delivery guidance, and order processing information.",
     href: "/shipping",
   },
   {
@@ -386,7 +386,7 @@ export default function Page() {
                   <div className="surface-card p-6">
                     <h3 className="text-lg font-extrabold">Delivery and support</h3>
                     <p className="mt-3 text-sm leading-6 text-muted">
-                      Check UK dispatch, selected international delivery information, order status,
+                      Check UK dispatch, Royal Mail Tracked 24 delivery information, order status,
                       and contact options before placing an order.
                     </p>
                   </div>
