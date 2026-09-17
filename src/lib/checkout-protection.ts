@@ -57,7 +57,7 @@ type Rule = {
   windowSeconds: number;
 };
 
-type AbuseLogEntry = {
+export type AbuseLogEntry = {
   at: string;
   reason: string;
   ipHash: string;
@@ -65,6 +65,12 @@ type AbuseLogEntry = {
   phoneHash: string;
   nameHash: string;
   userAgent: string;
+  payloadHash?: string;
+  ipBlockHash?: string;
+  emailBlockHash?: string;
+  phoneBlockHash?: string;
+  nameIpBlockHash?: string;
+  payloadBlockHash?: string;
 };
 
 function salt() {
@@ -100,14 +106,26 @@ async function incrementRule(rule: Rule) {
 async function logBlockedAttempt(input: CheckoutProtectionInput, reason: string) {
   if (!redis) return;
 
+  const ipBlockHash = hash(input.ip || "unknown");
+  const emailBlockHash = hash(input.email || "unknown");
+  const phoneBlockHash = hash(normalisePhone(input.phone) || "unknown");
+  const nameIpBlockHash = hash(`${input.name}|${input.ip}`);
+  const payloadBlockHash = hash(input.payloadFingerprint || "unknown");
+
   const entry: AbuseLogEntry = {
     at: new Date().toISOString(),
     reason,
-    ipHash: shortHash(input.ip || "unknown"),
-    emailHash: shortHash(input.email || "unknown"),
-    phoneHash: shortHash(normalisePhone(input.phone) || "unknown"),
+    ipHash: ipBlockHash.slice(0, 12),
+    emailHash: emailBlockHash.slice(0, 12),
+    phoneHash: phoneBlockHash.slice(0, 12),
     nameHash: shortHash(input.name || "unknown"),
     userAgent: input.userAgent.slice(0, 160),
+    payloadHash: payloadBlockHash.slice(0, 12),
+    ipBlockHash,
+    emailBlockHash,
+    phoneBlockHash,
+    nameIpBlockHash,
+    payloadBlockHash,
   };
 
   const multi = redis.multi();
@@ -249,12 +267,12 @@ export async function checkCheckoutProtection(
   return { allowed: true };
 }
 
-export async function getCheckoutProtectionSummary() {
+export async function getCheckoutProtectionSummary(limit = 50) {
   if (!redis) {
     return { configured: false, blockedLast24Hours: 0, recent: [] as AbuseLogEntry[] };
   }
 
-  const raw = await redis.lrange(ABUSE_LOG_KEY, 0, 49);
+  const raw = await redis.lrange(ABUSE_LOG_KEY, 0, MAX_LOG_ITEMS - 1);
   const entries = raw
     .map((value) => {
       try {
@@ -273,6 +291,35 @@ export async function getCheckoutProtectionSummary() {
   return {
     configured: true,
     blockedLast24Hours,
-    recent: entries.slice(0, 5),
+    recent: entries.slice(0, Math.max(1, Math.min(limit, MAX_LOG_ITEMS))),
   };
+}
+
+export async function releaseTemporaryCheckoutBlock(params: {
+  ipBlockHash?: string;
+  emailBlockHash?: string;
+  phoneBlockHash?: string;
+  nameIpBlockHash?: string;
+  payloadBlockHash?: string;
+}) {
+  if (!redis) return { released: false, reason: "Redis is not configured" };
+
+  const isHash = (value?: string) => Boolean(value && /^[a-f0-9]{64}$/i.test(value));
+  if (!isHash(params.ipBlockHash)) {
+    return { released: false, reason: "Invalid block identifier" };
+  }
+
+  const keys = [
+    `checkout:block:${params.ipBlockHash}`,
+    `checkout:rl:ip:2h:${params.ipBlockHash}`,
+    `checkout:rl:ip:24h:${params.ipBlockHash}`,
+  ];
+
+  if (isHash(params.emailBlockHash)) keys.push(`checkout:rl:email:2h:${params.emailBlockHash}`);
+  if (isHash(params.phoneBlockHash)) keys.push(`checkout:rl:phone:2h:${params.phoneBlockHash}`);
+  if (isHash(params.nameIpBlockHash)) keys.push(`checkout:rl:name-ip:2h:${params.nameIpBlockHash}`);
+  if (isHash(params.payloadBlockHash)) keys.push(`checkout:rl:payload:30m:${params.payloadBlockHash}`);
+
+  await redis.del(...keys);
+  return { released: true };
 }

@@ -1,0 +1,9 @@
+PP10.6 ADMIN VISIBILITY + STOCK UPDATE
+
+- Admin Orders now loads 50 orders by default.
+- Load-more increments by 50 and returns to the orders list anchor instead of jumping to the top.
+- Added a Blocked Checkout Attempts history panel with Europe/London timestamps, reason, privacy-safe hashed identifiers, repeated-IP counts and user-agent context.
+- Added a safe Allow retry control for temporary rate-limit/IP blocks only. Known-abuse signatures remain protected and cannot be released from admin.
+- Added an authenticated admin API endpoint to clear temporary block/rate-limit keys for a genuine customer retry.
+- Glutathione 1000mg remains visible/indexable but is marked Out of stock and cannot be purchased.
+- PP10.5 pre-Stripe abuse protection is preserved.

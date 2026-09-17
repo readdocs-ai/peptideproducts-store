@@ -5,6 +5,7 @@ import { PaymentMethodBadge } from "@/components/admin/PaymentMethodBadge";
 import { OrderStatusControls } from "@/components/admin/OrderStatusControls";
 import { AdminOrderAlerts } from "@/components/admin/AdminOrderAlerts";
 import { getCheckoutProtectionSummary } from "@/lib/checkout-protection";
+import { CheckoutProtectionPanel } from "@/components/admin/CheckoutProtectionPanel";
 
 function formatDate(value: string | number) {
   const date = new Date(value);
@@ -90,10 +91,10 @@ export default async function AdminOrdersPage({
 }: {
   searchParams?: { limit?: string; q?: string; status?: string };
 }) {
-  const limit = Math.max(20, Number(searchParams?.limit || 20));
+  const limit = Math.max(50, Math.min(5000, Number(searchParams?.limit || 50)));
   const searchQuery = normaliseSearch(searchParams?.q);
   const statusFilter = normaliseSearch(searchParams?.status).toLowerCase();
-  const checkoutProtection = await getCheckoutProtectionSummary();
+  const checkoutProtection = await getCheckoutProtectionSummary(50);
   const exactOrderLookup =
     isKvConfigured() && /^pp-\d{6}-[a-z0-9]+$/i.test(searchQuery)
       ? await getOrderForAdminSearch(searchQuery)
@@ -145,10 +146,10 @@ export default async function AdminOrdersPage({
     .filter((order) => order.status === "paid" || order.status === "shipped")
     .reduce((sum, order) => sum + order.total, 0);
   const latestOrderId = allOrders[0]?.id || "";
-  const nextLimit = limit + 20;
+  const nextLimit = Math.min(5000, limit + 50);
 
   return (
-    <main className="mx-auto max-w-7xl px-6 py-10">
+    <main id="top" className="mx-auto max-w-7xl px-6 py-10">
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
           <div className="mb-6">
@@ -221,14 +222,16 @@ export default async function AdminOrdersPage({
               Rate limits and bot checks are active. Customer identifiers are logged as one-way hashes only.
             </p>
           </div>
-          <Link
-            href="/admin/orders?status=pending"
+          <a
+            href="#blocked-attempts"
             className="rounded-xl2 border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-extrabold text-amber-800 hover:bg-amber-100"
           >
-            Review unpaid attempts
-          </Link>
+            View blocked attempts
+          </a>
         </div>
       </section>
+
+      <CheckoutProtectionPanel entries={checkoutProtection.recent} />
 
       <div className="mb-6 flex flex-wrap gap-2">
         {[
@@ -323,7 +326,7 @@ export default async function AdminOrdersPage({
         </div>
       ) : (
         <>
-          <div className="space-y-5">
+          <div id="orders-list" className="scroll-mt-6 space-y-5">
             {orders.map((order) => (
               <div
                 key={order.id}
@@ -580,10 +583,10 @@ export default async function AdminOrdersPage({
           {!searchQuery ? (
             <div className="mt-8 flex justify-center">
               <Link
-                href={`/admin/orders?limit=${nextLimit}`}
+                href={`/admin/orders?limit=${nextLimit}${statusFilter ? `&status=${encodeURIComponent(statusFilter)}` : ""}#orders-list`}
                 className="inline-flex rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
               >
-                Load more orders
+                Load 50 older orders
               </Link>
             </div>
           ) : null}

@@ -784,7 +784,8 @@ export const products: Product[] = [
       "Controlled compound study",
     ],
     notes: "For research use only. Not for human or veterinary use.",
-    stockStatus: "in_stock",
+    stockStatus: "sold_out",
+    availabilityLabel: "Out of stock",
   },
 
   {
