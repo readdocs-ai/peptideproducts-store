@@ -55,6 +55,46 @@ export const categories: { key: Category; blurb: string }[] = [
 export const products: Product[] = [
 
   {
+    id: "retatrutide",
+    name: "Retatrutide 40mg Pen",
+    brandName: "Alluvi",
+    availabilityLabel: "In stock",
+    badge: "Flagship",
+    subtitle: "Retatrutide 40mg research peptide pen · Alluvi presentation",
+    category: "Metabolic",
+    priceGBP: 125,
+    stripePriceId: "price_1THGVLEfhppVt6QjRCccB32d",
+    pack: "1 pre-filled pen x 40mg total",
+    image: "/products/alluvi-retatrutide-40mg-hero.webp",
+    gallery: [
+      "/products/alluvi-retatrutide-40mg-hero.webp",
+      "/products/alluvi-retatrutide-40mg-box-pen.webp",
+      "/products/alluvi-retatrutide-40mg-closeup.webp",
+    ],
+    quickFacts: [
+      "Retatrutide 40mg",
+      "Alluvi presentation",
+      "In stock",
+      "Research use only",
+    ],
+    highlights: [
+      "Retatrutide 40mg research peptide pen",
+      "Single pre-filled 40mg research format",
+      "Supplied in the Alluvi product presentation",
+      "Available for UK laboratory research procurement",
+    ],
+    actives: ["Retatrutide 40mg"],
+    intendedUse: [
+      "Laboratory research",
+      "Analytical review",
+      "Controlled scientific study",
+    ],
+    notes: "For research use only. Not for human or veterinary use.",
+    stockStatus: "in_stock",
+    coa: "https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ",
+  },
+
+  {
     id: "alloya-glutathione-500mg-pen",
     imageAlt: "Alloya Health Care Glutathione 500mg pen in gold product packaging",
     name: "Alloya Glutathione 500mg Pen",
@@ -212,46 +252,6 @@ export const products: Product[] = [
     stockStatus: "in_stock",
   },
 
-
-  {
-    id: "retatrutide",
-    name: "Retatrutide 40mg Pen",
-    brandName: "Alluvi",
-    availabilityLabel: "In stock",
-    badge: "Flagship",
-    subtitle: "Retatrutide 40mg research peptide pen · Alluvi presentation",
-    category: "Metabolic",
-    priceGBP: 125,
-    stripePriceId: "price_1THGVLEfhppVt6QjRCccB32d",
-    pack: "1 pre-filled pen x 40mg total",
-    image: "/products/alluvi-retatrutide-40mg-hero.webp",
-    gallery: [
-      "/products/alluvi-retatrutide-40mg-hero.webp",
-      "/products/alluvi-retatrutide-40mg-box-pen.webp",
-      "/products/alluvi-retatrutide-40mg-closeup.webp",
-    ],
-    quickFacts: [
-      "Retatrutide 40mg",
-      "Alluvi presentation",
-      "In stock",
-      "Research use only",
-    ],
-    highlights: [
-      "Retatrutide 40mg research peptide pen",
-      "Single pre-filled 40mg research format",
-      "Supplied in the Alluvi product presentation",
-      "Available for UK laboratory research procurement",
-    ],
-    actives: ["Retatrutide 40mg"],
-    intendedUse: [
-      "Laboratory research",
-      "Analytical review",
-      "Controlled scientific study",
-    ],
-    notes: "For research use only. Not for human or veterinary use.",
-    stockStatus: "in_stock",
-    coa: "https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ",
-  },
 
   {
     id: "synexa-retatrutide-40mg",
