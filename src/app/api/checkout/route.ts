@@ -73,8 +73,12 @@ function buildItems(rawItems: IncomingCartItem[]) {
     const qty = normaliseQty(rawItem.qty);
     const product = productMap.get(productId);
 
-    if (ENQUIRY_ONLY_PRODUCT_IDS.has(productId)) {
-      throw new Error("One or more products require availability confirmation before ordering.");
+    if (
+      ENQUIRY_ONLY_PRODUCT_IDS.has(productId) ||
+      product?.enquiryOnly ||
+      product?.informationOnly
+    ) {
+      throw new Error("One or more products are not available for direct online ordering.");
     }
     if (!product || product.stockStatus !== "in_stock" || qty < 1) {
       throw new Error("One or more cart items are invalid or unavailable.");

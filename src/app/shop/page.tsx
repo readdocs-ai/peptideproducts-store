@@ -130,26 +130,30 @@ export default function ShopPage() {
         description: `${product.subtitle}. ${product.pack}. Supplied strictly for laboratory research use only.`,
         brand: {
           "@type": "Brand",
-          name: "Peptide Products",
+          name: product.brandName ?? "Peptide Products",
         },
-        offers: {
-          "@type": "Offer",
-          url: `https://www.peptideproducts.co.uk/product/${product.id}`,
-          priceCurrency: "GBP",
-          price: product.priceGBP,
-          availability:
-            product.stockStatus === "in_stock"
-              ? "https://schema.org/InStock"
-              : "https://schema.org/OutOfStock",
-          itemCondition: "https://schema.org/NewCondition",
-          shippingDetails,
-          hasMerchantReturnPolicy: merchantReturnPolicy,
-          seller: {
-            "@type": "Organization",
-            name: "Peptide Products",
-            url: "https://www.peptideproducts.co.uk",
-          },
-        },
+        ...(product.enquiryOnly || product.informationOnly
+          ? {}
+          : {
+              offers: {
+                "@type": "Offer",
+                url: `https://www.peptideproducts.co.uk/product/${product.id}`,
+                priceCurrency: "GBP",
+                price: product.priceGBP,
+                availability:
+                  product.stockStatus === "in_stock"
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/OutOfStock",
+                itemCondition: "https://schema.org/NewCondition",
+                shippingDetails,
+                hasMerchantReturnPolicy: merchantReturnPolicy,
+                seller: {
+                  "@type": "Organization",
+                  name: "Peptide Products",
+                  url: "https://www.peptideproducts.co.uk",
+                },
+              },
+            }),
       },
     })),
   };

@@ -31,6 +31,7 @@ export function CheckoutProtectionPanel({ entries }: { entries: AbuseLogEntry[] 
   const [released, setReleased] = useState<Record<string, boolean>>({});
   const [working, setWorking] = useState<Record<string, boolean>>({});
   const [message, setMessage] = useState("");
+  const [showHistory, setShowHistory] = useState(false);
 
   const repeatCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -74,15 +75,32 @@ export function CheckoutProtectionPanel({ entries }: { entries: AbuseLogEntry[] 
           <h2 className="mt-1 text-xl font-extrabold text-ink">Recent protection history</h2>
           <p className="mt-1 max-w-3xl text-sm text-muted">Only privacy-safe hashes are shown. Use Allow retry only for temporary rate-limit blocks that you believe belong to a genuine customer. Known bot signatures cannot be released here.</p>
         </div>
-        <a href="#top" className="rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink hover:bg-panel">Back to top</a>
+        <div className="flex flex-wrap gap-2">
+          {entries.length > 0 ? (
+            <button
+              type="button"
+              onClick={() => setShowHistory((value) => !value)}
+              className="rounded-xl2 border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-extrabold text-amber-900 hover:bg-amber-100"
+              aria-expanded={showHistory}
+              aria-controls="checkout-protection-history"
+            >
+              {showHistory ? "Hide history" : `Show history (${entries.length})`}
+            </button>
+          ) : null}
+          <a href="#top" className="rounded-xl2 border border-line bg-white px-4 py-2 text-sm font-extrabold text-ink hover:bg-panel">Back to top</a>
+        </div>
       </div>
 
       {message ? <div className="mt-4 rounded-xl2 border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-900">{message}</div> : null}
 
       {entries.length === 0 ? (
         <div className="mt-5 rounded-xl2 border border-line bg-panel p-4 text-sm text-muted">No blocked attempts have been logged yet.</div>
+      ) : !showHistory ? (
+        <div className="mt-5 rounded-xl2 border border-line bg-panel p-4 text-sm text-muted">
+          {entries.length} historical blocked attempt{entries.length === 1 ? "" : "s"} logged. History is hidden to keep the admin page compact.
+        </div>
       ) : (
-        <div className="mt-5 overflow-x-auto">
+        <div id="checkout-protection-history" className="mt-5 overflow-x-auto">
           <table className="min-w-full text-left text-sm">
             <thead>
               <tr className="border-b border-line text-xs uppercase tracking-wide text-muted">

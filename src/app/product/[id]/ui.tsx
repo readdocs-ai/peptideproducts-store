@@ -76,7 +76,7 @@ export function ProductImageGallery({ product }: { product: Product }) {
               >
                 <Image
                   src={src}
-                  alt={isCertificate ? `${product.name} independent test report` : `${product.name} image ${index + 1}`}
+                  alt={isCertificate ? `${product.name} independent test report` : `${product.imageAlt ?? product.name}${index ? ` - image ${index + 1}` : ""}`}
                   fill
                   sizes="96px"
                   className={isCertificate ? "object-cover object-top" : "object-contain p-2"}
@@ -95,7 +95,7 @@ export function ProductImageGallery({ product }: { product: Product }) {
           <div className={`group relative overflow-hidden bg-panel ${product.id === "retatrutide" ? "aspect-[4/3]" : "aspect-square"}`}>
             <Image
               src={selected}
-              alt={`${product.name} product image`}
+              alt={product.imageAlt ?? `${product.name} product image`}
               fill
               priority
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -156,9 +156,52 @@ export function ProductBuyBox({ product }: { product: Product }) {
   const total = useMemo(() => product.priceGBP * qty, [product.priceGBP, qty]);
   const inStock = product.stockStatus === "in_stock";
   const hasTestReport = Boolean(product.coa);
-  const orderByEnquiry = product.stockStatus !== "in_stock";
+  const orderByEnquiry = product.enquiryOnly || product.stockStatus !== "in_stock";
   const orderSupportUrl = getProductSupportUrl(product);
   const isFlagshipRetatrutide = product.id === "retatrutide";
+
+  if (product.informationOnly) {
+    return (
+      <aside className="relative z-10 h-fit rounded-xl3 border border-line bg-white/95 p-5 shadow-soft backdrop-blur">
+        <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">Availability</div>
+        <div className="mt-2 text-3xl font-extrabold tracking-tight text-ink">Product information only</div>
+        <div className="mt-2 text-sm font-semibold leading-6 text-muted">{product.pack}</div>
+        <div className="mt-4 rounded-xl2 border border-line bg-panel p-4 text-sm leading-6 text-muted">
+          This page is provided for factual product information. This product is not currently offered for sale or product enquiries through Peptide Products.
+        </div>
+        <Link href="/shop" className="mt-4 inline-flex w-full justify-center rounded-xl2 border border-line bg-white px-4 py-3.5 text-sm font-extrabold text-ink transition hover:bg-panel">
+          Return to shop
+        </Link>
+      </aside>
+    );
+  }
+
+  if (product.enquiryOnly) {
+    return (
+      <aside className="relative z-10 h-fit rounded-xl3 border border-line bg-white/95 p-5 shadow-soft backdrop-blur">
+        <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">Availability</div>
+        <div className="mt-2 text-3xl font-extrabold tracking-tight text-ink">Enquire for availability</div>
+        <div className="mt-2 text-sm font-semibold leading-6 text-muted">{product.pack}</div>
+        <div className="mt-4 rounded-xl2 border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-950">
+          This product is publicly listed for product information and availability enquiries. Online purchasing is not currently enabled.
+        </div>
+        <a
+          href={orderSupportUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex w-full justify-center rounded-xl2 bg-accent px-4 py-3.5 text-sm font-extrabold text-white shadow-soft transition hover:bg-accent/90"
+        >
+          Enquire about this product
+        </a>
+        <Link href="/contact" className="mt-3 inline-flex w-full justify-center rounded-xl2 border border-line bg-white px-4 py-3.5 text-sm font-extrabold text-ink transition hover:bg-panel">
+          Contact Peptide Products
+        </Link>
+        <div className="mt-5 border-t border-line pt-4 text-xs leading-5 text-muted">
+          Research-use-only product listing. Availability, documentation and supply details can be confirmed before any order is considered.
+        </div>
+      </aside>
+    );
+  }
 
   if (isFlagshipRetatrutide) {
     return (

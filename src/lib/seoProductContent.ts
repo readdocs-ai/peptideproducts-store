@@ -11,6 +11,54 @@ export type ProductSeoContent = {
 };
 
 const productSpecific: Record<string, Partial<ProductSeoContent>> = {
+  "alloya-glutathione-500mg-pen": {
+    title: "Glutathione 500mg Pen UK | Alloya Health Care | Peptide Products",
+    description: "Explore the Alloya Health Care Glutathione 500mg pen. View product specifications and glutathione information. In stock in the UK with secure online checkout.",
+    intro: "Alloya Glutathione 500mg Pen is a pre-filled research presentation containing 500mg of glutathione. This UK product page is designed for customers and laboratories comparing glutathione research formats, with clear pack information, product imagery, current stock and secure online ordering.",
+    documentation: "Product-specific quality documentation should be confirmed before supply. The listing does not repeat cosmetic skin-lightening claims from promotional packaging and does not present the product as an approved medicine.",
+    handling: "Handle and store the product according to the manufacturer label and appropriate laboratory procedures. Injectable glutathione products require particular attention to ingredient quality, sterility and endotoxin control.",
+    comparison: "Customers researching glutathione formats can compare this Alloya 500mg pen presentation with the existing 500mg, 1000mg and 1500mg glutathione catalogue listings.",
+  },
+  "alluvi-nad-1000mg-pen-set": {
+    title: "NAD+ 1000mg Pen Set UK | Alluvi Healthcare | Peptide Products",
+    description: "Explore the Alluvi NAD+ 1000mg pen set containing two 500mg pens. View NAD+ product information, pack details and current UK availability. In stock with secure online checkout.",
+    intro: "Alluvi NAD+ 1000mg Pen Set contains two 500mg pre-filled research pens, providing 1000mg total NAD+ content according to the product packaging. The page gives UK researchers a dedicated product record for the pen format with current stock information and secure online ordering.",
+    documentation: "Confirm batch and quality documentation before supply. This listing describes the pack and compound without adopting anti-ageing, brain-repair or therapeutic claims shown on promotional packaging.",
+    handling: "Store and handle NAD+ research material according to the manufacturer label and appropriate laboratory procedures, with particular attention to sterile-product quality where applicable.",
+    comparison: "This two-pen 1000mg total presentation can be compared with the existing NAD 500mg and NAD 1000mg vial-format listings in the catalogue.",
+  },
+  "alloya-mots-c-40mg-pen": {
+    title: "MOTS-C 40mg Pen UK | Alloya Health Care | Peptide Products",
+    description: "Explore the Alloya Health Care MOTS-C 40mg pen. View product specifications, format and research information. In stock in the UK with secure online checkout.",
+    intro: "Alloya MOTS-C 40mg Pen is a pre-filled research presentation containing 40mg of MOTS-C. MOTS-C is a mitochondrial-derived peptide investigated in experimental research, and this page provides a dedicated UK product record without making treatment or human-use claims.",
+    documentation: "Confirm product-specific batch and quality documentation before supply. The listing focuses on compound identity, presentation and research procurement information.",
+    handling: "Store and handle MOTS-C research material according to the manufacturer label, appropriate laboratory procedures and normal chain-of-custody controls.",
+    comparison: "Use this page to compare the Alloya 40mg pen format with other metabolic research compounds and peptide presentations listed by Peptide Products.",
+  },
+  "alloya-pt-141-10mg-pen": {
+    title: "PT-141 10mg Pen UK | Alloya Health Care | Peptide Products",
+    description: "Explore the Alloya Health Care PT-141 10mg pen. View product specifications and PT-141 information. In stock in the UK with secure online checkout.",
+    intro: "Alloya PT-141 10mg Pen is a pre-filled research presentation containing 10mg of PT-141, the peptide also known as bremelanotide. The Alloya product listed here is presented as a research product and should not be confused with separately authorised prescription medicines containing bremelanotide.",
+    documentation: "Confirm batch and quality documentation before supply. Product information is limited to the research presentation and does not make treatment, dosing or human-use claims.",
+    handling: "Store and handle PT-141 research material according to the manufacturer label and appropriate laboratory procedures.",
+    comparison: "This page provides a dedicated 10mg pen-format listing for researchers comparing PT-141 with other peptide research products in the catalogue.",
+  },
+  "alloya-mt2-10mg-pen": {
+    title: "MT2 10mg Pen | Product Information | Peptide Products",
+    description: "Factual product information concerning the Alloya Health Care MT2 10mg pen and its current availability status in the UK.",
+    intro: "The packaging supplied to Peptide Products identifies this item as an Alloya Health Care MT2 10mg Pen. MT2 commonly refers to Melanotan II. This page is retained for factual product information only; the product is not offered for sale or enquiry through Peptide Products.",
+    documentation: "Melanotan II pen products have a specific UK regulatory position. This listing is therefore informational and does not offer the product for purchase or product enquiry.",
+    handling: "Store and handle MT2 research material according to the manufacturer label and appropriate laboratory procedures. This listing does not provide administration or dosing instructions.",
+    comparison: "This page provides factual identification of the photographed Alloya MT2 10mg presentation and its current unavailable status.",
+  },
+  "alloya-tesamorelin-20mg-pen": {
+    title: "Tesamorelin 20mg Pen UK | Alloya Health Care | Peptide Products",
+    description: "Explore the Alloya Health Care Tesamorelin 20mg pen. View product specifications, format and research information. In stock in the UK with secure online checkout.",
+    intro: "Alloya Tesamorelin 20mg Pen is a pre-filled research presentation containing 20mg of tesamorelin, a growth hormone-releasing factor analogue studied in clinical and laboratory research. This Alloya presentation is not represented as EGRIFTA or as an approved prescription medicine.",
+    documentation: "Confirm batch and quality documentation before supply. Although tesamorelin is the active ingredient in an approved US prescription product, that approval does not establish approval of this Alloya 20mg pen presentation.",
+    handling: "Store and handle tesamorelin research material according to the manufacturer label and appropriate laboratory procedures. This listing does not provide dosing or administration instructions.",
+    comparison: "This page gives researchers a dedicated 20mg pen-format listing to compare with other metabolic and peptide research products in the catalogue.",
+  },
   retatrutide: {
     title: "Retatrutide 40mg Research Peptide Pen UK | Peptide Products",
     description:
@@ -213,9 +261,17 @@ const productSpecific: Record<string, Partial<ProductSeoContent>> = {
       "Review ML-10 10mg alongside other metabolic research compounds, including Retatrutide and Tirzepatide product pathways, depending on the catalogue area being compared.",
   },
   "melanotan-mt2-10mg": {
-    title: "Melanotan MT-2 10mg Research Peptide UK | Peptide Products",
+    title: "Melanotan MT-2 10mg | Product Information | Peptide Products",
     description:
-      "Melanotan MT-2 10mg lyophilised research peptide vial for laboratory use only. Review pack details, checkout guidance, delivery, and ordering guidance.",
+      "Factual product information for the Melanotan MT-2 10mg lyophilised vial. This item is not currently offered for sale or product enquiries through Peptide Products.",
+    intro:
+      "This page provides factual product information for the Melanotan MT-2 10mg vial. The item is not currently offered for sale, checkout or product enquiries through Peptide Products.",
+    documentation:
+      "Review the product presentation and labelled pack details on this information-only page. Ordering and delivery information does not apply to this item.",
+    handling:
+      "This information-only listing does not provide handling, ordering or delivery instructions for use of the product.",
+    comparison:
+      "This item is shown for factual product identification only and is not part of the currently purchasable catalogue.",
   },
 };
 

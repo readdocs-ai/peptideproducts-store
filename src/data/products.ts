@@ -27,6 +27,9 @@ export type Product = {
   brandName?: string;
   availabilityLabel?: string;
   badge?: string;
+  enquiryOnly?: boolean;
+  informationOnly?: boolean;
+  imageAlt?: string;
 };
 
 export const categories: { key: Category; blurb: string }[] = [
@@ -50,6 +53,165 @@ export const categories: { key: Category; blurb: string }[] = [
 ];
 
 export const products: Product[] = [
+
+  {
+    id: "alloya-glutathione-500mg-pen",
+    imageAlt: "Alloya Health Care Glutathione 500mg pen in gold product packaging",
+    name: "Alloya Glutathione 500mg Pen",
+    brandName: "Alloya Health Care",
+    availabilityLabel: "In stock",
+    badge: "New",
+        subtitle: "Glutathione 500mg pre-filled research pen · Alloya Health Care presentation",
+    category: "Antioxidants",
+    priceGBP: 130,
+    pack: "1 pre-filled research pen x 500mg total",
+    image: "/products/alloya-glutathione-500mg-pen.jpg",
+    gallery: ["/products/alloya-glutathione-500mg-pen.jpg"],
+    quickFacts: ["Glutathione 500mg", "Pre-filled pen", "Research supply"],
+    highlights: [
+      "Alloya Health Care Glutathione 500mg research pen",
+      "Single pre-filled 500mg presentation",
+      "Listed for UK laboratory and analytical research supply",
+      "Available to order online with secure checkout",
+    ],
+    actives: ["Glutathione 500mg"],
+    intendedUse: ["Laboratory research", "Analytical review", "Controlled scientific study"],
+    notes: "In stock and available to order online. Supplied strictly for laboratory research use. Not for human or veterinary use.",
+    stockStatus: "in_stock",
+  },
+
+  {
+    id: "alluvi-nad-1000mg-pen-set",
+    imageAlt: "Alluvi Healthcare NAD+ 1000mg set containing two 500mg pens",
+    name: "Alluvi NAD+ 1000mg Pen Set",
+    brandName: "Alluvi Healthcare",
+    availabilityLabel: "In stock",
+    badge: "New",
+        subtitle: "NAD+ 1000mg research pen set · two 500mg pens · Alluvi presentation",
+    category: "Metabolic",
+    priceGBP: 130,
+    pack: "2 pre-filled research pens x 500mg NAD+ (1000mg total)",
+    image: "/products/alluvi-nad-1000mg-pen-set.jpg",
+    gallery: ["/products/alluvi-nad-1000mg-pen-set.jpg"],
+    quickFacts: ["NAD+ 1000mg total", "2 x 500mg pens", "Research supply"],
+    highlights: [
+      "Alluvi NAD+ research presentation with 1000mg total content",
+      "Two pre-filled 500mg research pens supplied in the pack",
+      "Available to order online for UK laboratory research supply",
+      "Available to order online with secure checkout",
+    ],
+    actives: ["Nicotinamide adenine dinucleotide (NAD+) 1000mg total"],
+    intendedUse: ["Laboratory research", "Analytical review", "Controlled scientific study"],
+    notes: "In stock and available to order online. Supplied strictly for laboratory research use. Not for human or veterinary use.",
+    stockStatus: "in_stock",
+  },
+
+  {
+    id: "alloya-mots-c-40mg-pen",
+    imageAlt: "Alloya Health Care MOTS-C 40mg pen and product packaging",
+    name: "Alloya MOTS-C 40mg Pen",
+    brandName: "Alloya Health Care",
+    availabilityLabel: "In stock",
+    badge: "New",
+        subtitle: "MOTS-C 40mg pre-filled research peptide pen · Alloya Health Care presentation",
+    category: "Metabolic",
+    priceGBP: 130,
+    pack: "1 pre-filled research pen x 40mg total",
+    image: "/products/alloya-mots-c-40mg-pen.jpg",
+    gallery: ["/products/alloya-mots-c-40mg-pen.jpg"],
+    quickFacts: ["MOTS-C 40mg", "Pre-filled pen", "Research supply"],
+    highlights: [
+      "Alloya Health Care MOTS-C 40mg research peptide pen",
+      "Single pre-filled 40mg research presentation",
+      "MOTS-C is a mitochondrial-derived peptide studied in experimental research",
+      "Available to order online with secure checkout",
+    ],
+    actives: ["MOTS-C 40mg"],
+    intendedUse: ["Laboratory research", "Analytical review", "Controlled scientific study"],
+    notes: "In stock and available to order online. Supplied strictly for laboratory research use. Not for human or veterinary use.",
+    stockStatus: "in_stock",
+  },
+
+  {
+    id: "alloya-pt-141-10mg-pen",
+    imageAlt: "Alloya Health Care PT-141 10mg pen and product box",
+    name: "Alloya PT-141 10mg Pen",
+    brandName: "Alloya Health Care",
+    availabilityLabel: "In stock",
+    badge: "New",
+        subtitle: "PT-141 10mg pre-filled research peptide pen · Alloya Health Care presentation",
+    category: "Metabolic",
+    priceGBP: 130,
+    pack: "1 pre-filled research pen x 10mg total",
+    image: "/products/alloya-pt-141-10mg-pen.jpg",
+    gallery: ["/products/alloya-pt-141-10mg-pen.jpg"],
+    quickFacts: ["PT-141 10mg", "Pre-filled pen", "Research supply"],
+    highlights: [
+      "Alloya Health Care PT-141 10mg research peptide pen",
+      "Single pre-filled 10mg research presentation",
+      "PT-141 is also known in scientific literature as bremelanotide",
+      "Available to order online with secure checkout",
+    ],
+    actives: ["PT-141 (bremelanotide) 10mg"],
+    intendedUse: ["Laboratory research", "Analytical review", "Controlled scientific study"],
+    notes: "In stock and available to order online. This Alloya product is not presented as an approved medicinal product. Supplied strictly for laboratory research use.",
+    stockStatus: "in_stock",
+  },
+
+  {
+    id: "alloya-mt2-10mg-pen",
+    imageAlt: "Alloya Health Care MT2 10mg pen product packaging",
+    name: "Alloya MT2 10mg Pen",
+    brandName: "Alloya Health Care",
+    availabilityLabel: "Product information only",
+    badge: "New",
+    enquiryOnly: false,
+    informationOnly: true,
+    subtitle: "MT2 / Melanotan II 10mg pen · factual product information",
+    category: "Metabolic",
+    priceGBP: 0,
+    pack: "1 pre-filled pen x 10mg total",
+    image: "/products/alloya-mt2-10mg-pen.jpg",
+    gallery: ["/products/alloya-mt2-10mg-pen.jpg"],
+    quickFacts: ["MT2 10mg", "Melanotan II", "Information only", "Not available to order"],
+    highlights: [
+      "Alloya Health Care MT2 10mg pen shown for factual product identification",
+      "MT2 commonly refers to Melanotan II",
+      "The packaging identifies a 10mg pen presentation",
+      "This product is not offered for sale or product enquiries through Peptide Products",
+    ],
+    actives: ["Melanotan II (MT2) 10mg"],
+    intendedUse: ["Product information only"],
+    notes: "Product information only. This product is not currently offered for sale or enquiry through Peptide Products.",
+    stockStatus: "sold_out",
+  },
+
+  {
+    id: "alloya-tesamorelin-20mg-pen",
+    imageAlt: "Alloya Health Care Tesamorelin 20mg pen with product packaging",
+    name: "Alloya Tesamorelin 20mg Pen",
+    brandName: "Alloya Health Care",
+    availabilityLabel: "In stock",
+    badge: "New",
+        subtitle: "Tesamorelin 20mg pre-filled research peptide pen · Alloya Health Care presentation",
+    category: "Metabolic",
+    priceGBP: 130,
+    pack: "1 pre-filled research pen x 20mg total",
+    image: "/products/alloya-tesamorelin-20mg-pen.jpg",
+    gallery: ["/products/alloya-tesamorelin-20mg-pen.jpg"],
+    quickFacts: ["Tesamorelin 20mg", "Pre-filled pen", "Research supply"],
+    highlights: [
+      "Alloya Health Care Tesamorelin 20mg research peptide pen",
+      "Single pre-filled 20mg research presentation",
+      "Tesamorelin is a growth hormone-releasing factor analogue studied in clinical and laboratory research",
+      "Available to order online with secure checkout",
+    ],
+    actives: ["Tesamorelin 20mg"],
+    intendedUse: ["Laboratory research", "Analytical review", "Controlled scientific study"],
+    notes: "In stock and available to order online. This Alloya presentation is not represented as the FDA-approved EGRIFTA product. Supplied strictly for laboratory research use.",
+    stockStatus: "in_stock",
+  },
+
 
   {
     id: "retatrutide",
@@ -88,8 +250,7 @@ export const products: Product[] = [
     ],
     notes: "For research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
-    coa: "/docs/coa/alluvi-retatrutide-40mg.pdf",
-    coaPreview: "/docs/previews/alluvi-retatrutide-40mg.jpg",
+    coa: "https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ",
   },
 
   {
@@ -168,6 +329,7 @@ export const products: Product[] = [
     notes:
       "Supplied strictly for laboratory research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
+    coa: "https://verify.janoshik.com/tests/163217-ALLUVI_GLOW_70MG_KIT_DCL3AJSE4JQP",
   },
 
   {
@@ -207,6 +369,7 @@ export const products: Product[] = [
     notes:
       "Supplied strictly for laboratory research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
+    coa: "https://verify.janoshik.com/tests/163218-ALLUVI_BPC157_TB500_40MG_KIT_EAI125ZEF8TB",
   },
 
   {
@@ -408,38 +571,35 @@ export const products: Product[] = [
     stockStatus: "in_stock",
   },
 
-    {
+  {
     id: "melanotan-mt2-10mg",
+    imageAlt: "Melanotan MT-2 10mg vial product packaging",
     name: "Melanotan MT-2 10mg",
-    subtitle: "Melanotan MT-2 research peptide vial",
+    subtitle: "Melanotan II / MT-2 10mg vial · factual product information",
     category: "Metabolic",
     priceGBP: 45,
-    stripePriceId: "price_1THGklEfhppVt6QjAuk8duEP",
     pack: "1 vial x 10mg lyophilised powder",
     image: "/products/melanotan-mt2-10mg.webp",
     gallery: ["/products/melanotan-mt2-10mg.webp"],
+    availabilityLabel: "Out of stock",
+    informationOnly: true,
     quickFacts: [
       "10mg vial",
       "Lyophilised powder",
-      "UK-based supply",
-      "Research supply",
+      "Information only",
+      "Not available to order",
     ],
     highlights: [
-      "Melanotan MT-2 10mg research peptide vial",
-      "Lyophilised powder format for laboratory research settings",
-      "Sterile sealed vial with clear ordering and checkout information",
-      "UK dispatch with tracked delivery available after processing",
+      "Melanotan MT-2 10mg vial shown for factual product identification",
+      "MT-2 commonly refers to Melanotan II",
+      "The packaging identifies a 10mg lyophilised vial presentation",
+      "This product is not offered for sale or product enquiries through Peptide Products",
     ],
     actives: ["Melanotan II (MT-2) 10mg"],
-    intendedUse: [
-      "Laboratory research",
-      "Analytical review",
-      "Controlled peptide study",
-      "Research-use-only supply",
-    ],
+    intendedUse: ["Product information only"],
     notes:
-      "Melanotan MT-2 10mg is supplied as a lyophilised research peptide vial for laboratory, analytical, and scientific research use only. UK delivery, secure checkout, and alternative payment options are available during ordering.",
-    stockStatus: "in_stock",
+      "Product information only. This product is not currently offered for sale or enquiry through Peptide Products.",
+    stockStatus: "sold_out",
   },
 
   {

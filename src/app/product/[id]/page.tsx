@@ -74,7 +74,7 @@ const ogImage = `https://www.peptideproducts.co.uk${p.gallery?.[0] ?? p.image}`;
       url,
       siteName: "Peptide Products",
       type: "website",
-      images: [{ url: ogImage, width: 1200, height: 630, alt: p.name }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: p.imageAlt ?? p.name }],
     },
     twitter: {
       card: "summary_large_image",
@@ -118,7 +118,26 @@ export default function ProductPage({ params }: Props) {
 
  const isRetatrutidePen = p.id === "retatrutide";
  const isFlagshipRetatrutide = p.id === "retatrutide";
- const faqs = isRetatrutidePen
+ const faqs = p.informationOnly
+  ? [
+      {
+        q: `What is ${p.name}?`,
+        a: `${p.name} is shown on this page for factual product information and identification only.`,
+      },
+      {
+        q: "Can I buy or enquire about this product through Peptide Products?",
+        a: "No. This product is not currently offered for sale or product enquiries through Peptide Products.",
+      },
+      {
+        q: "Why is there no price or order button?",
+        a: "This is an information-only listing. Online purchasing, checkout and product enquiries are not available for this item.",
+      },
+      {
+        q: "Does this page provide delivery or ordering information?",
+        a: "No. Delivery and ordering information does not apply because this product is not offered for sale through Peptide Products.",
+      },
+    ]
+  : isRetatrutidePen
   ? [
       {
         q: "Is this the main Retatrutide 40mg product page?",
@@ -150,7 +169,9 @@ export default function ProductPage({ params }: Props) {
       },
       {
         q: "How is ordering handled?",
-        a: "Add the product to cart, enter your delivery details, then complete secure card payment through Stripe.",
+        a: p.enquiryOnly
+          ? "Online purchasing is not currently enabled for this product. Use the product enquiry option to contact Peptide Products about availability and product information."
+          : "Add the product to cart, enter your delivery details, then complete secure card payment through Stripe.",
       },
       {
         q: "Do you provide delivery?",
@@ -227,24 +248,28 @@ const shippingDetails = [
       ]
     : []),
 ],
-    offers: {
-      "@type": "Offer",
-      url: productUrl,
-      priceCurrency: "GBP",
-      price: p.priceGBP,
-      availability:
-        p.stockStatus === "in_stock"
-          ? "https://schema.org/InStock"
-          : "https://schema.org/OutOfStock",
-      itemCondition: "https://schema.org/NewCondition",
-      shippingDetails,
-hasMerchantReturnPolicy: merchantReturnPolicy,
-      seller: {
-        "@type": "Organization",
-        name: "Peptide Products",
-        url: "https://www.peptideproducts.co.uk",
-      },
-    },
+    ...(p.enquiryOnly || p.informationOnly
+      ? {}
+      : {
+          offers: {
+            "@type": "Offer",
+            url: productUrl,
+            priceCurrency: "GBP",
+            price: p.priceGBP,
+            availability:
+              p.stockStatus === "in_stock"
+                ? "https://schema.org/InStock"
+                : "https://schema.org/OutOfStock",
+            itemCondition: "https://schema.org/NewCondition",
+            shippingDetails,
+            hasMerchantReturnPolicy: merchantReturnPolicy,
+            seller: {
+              "@type": "Organization",
+              name: "Peptide Products",
+              url: "https://www.peptideproducts.co.uk",
+            },
+          },
+        }),
   };
 
   const breadcrumbSchema = {

@@ -8,14 +8,14 @@ import { Container } from "@/components/Container";
 export const metadata: Metadata = {
   title: "Melanotan UK | Research Compound",
   description:
-    "Browse Melanotan laboratory research compound information, UK peptide supply details, product availability, ordering guidance, tracked dispatch, and quality documentation at Peptide Products.",
+    "Read factual Melanotan product information and current availability status from Peptide Products. Melanotan II products are not currently offered for sale or product enquiries.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/melanotan-uk",
   },
   openGraph: {
     title: "Melanotan UK | Laboratory Research Compound",
     description:
-      "Research-use-only laboratory compound supply information for UK customers.",
+      "Factual Melanotan product information and current availability status for UK visitors.",
     url: "https://www.peptideproducts.co.uk/melanotan-uk",
     siteName: "Peptide Products",
     type: "website",
@@ -37,15 +37,15 @@ export default function MelanotanUKPage() {
             </h1>
 
             <p className="mt-6 max-w-3xl text-base leading-8 text-muted">
-              Browse laboratory research compound information, UK peptide supply
-              guidance, ordering details, and quality documentation available on
-              selected product lines through Peptide Products.
+              Review factual Melanotan product information and current availability
+              status. Melanotan II products are not currently offered for sale or
+              product enquiries through Peptide Products.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
               <div className="trust-pill">Research use only</div>
-              <div className="trust-pill">Tracked UK dispatch</div>
-              <div className="trust-pill">Secure checkout</div>
+              <div className="trust-pill">Product information only</div>
+              <div className="trust-pill">Not available to order</div>
               <div className="trust-pill">
                 Documentation available on selected lines
               </div>
@@ -70,27 +70,27 @@ export default function MelanotanUKPage() {
 
           <section className="mt-10 grid gap-6 md:grid-cols-2">
             <div className="rounded-xl3 border border-line bg-white p-6 shadow-soft">
-              <div className="soft-label">Ordering information</div>
+              <div className="soft-label">Availability information</div>
 
               <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-ink">
-                UK peptide supply information
+                Current Melanotan II status
               </h2>
 
               <div className="mt-5 grid gap-3 text-sm text-muted">
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                  Secure checkout available through Stripe
+                  Melanotan II product pages are provided for factual information only
                 </div>
 
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                  UK tracked dispatch available after processing
+                  Online checkout is not available for Melanotan II products
                 </div>
 
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                  Discreet packaging for all orders
+                  Product enquiries are not currently accepted for Melanotan II
                 </div>
 
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                  Documentation available on selected products
+                  Other catalogue products retain their own separate availability status
                 </div>
               </div>
             </div>

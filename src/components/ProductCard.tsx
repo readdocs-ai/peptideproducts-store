@@ -14,6 +14,9 @@ export function ProductCard({
 }) {
   const displayImage = imageOverride ?? p.image;
   const inStock = p.stockStatus === "in_stock";
+  const enquiryOnly = Boolean(p.enquiryOnly);
+  const informationOnly = Boolean(p.informationOnly);
+  const purchaseRestricted = enquiryOnly || informationOnly;
   const hasTestReport = Boolean(p.coa);
   const isFlagship = p.id === "retatrutide";
 
@@ -44,7 +47,7 @@ export function ProductCard({
         >
           <Image
             src={displayImage}
-            alt={`${p.name} product image`}
+            alt={p.imageAlt ?? `${p.name} product image`}
             fill
             sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
             className={
@@ -97,7 +100,7 @@ export function ProductCard({
 
         <div className="mt-4 flex flex-wrap gap-2">
           <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-bold text-slate-700">
-            Research use only
+            {informationOnly ? "Information only" : "Research use only"}
           </span>
           {hasTestReport ? (
             <a
@@ -119,7 +122,7 @@ export function ProductCard({
                 Price
               </div>
               <div className="mt-1 text-3xl font-black tracking-[-0.04em] text-slate-950">
-                {formatGBP(p.priceGBP)}
+                {informationOnly ? "Information only" : enquiryOnly ? "Enquire" : formatGBP(p.priceGBP)}
               </div>
             </div>
             <Link
@@ -144,19 +147,23 @@ export function ProductCard({
             </Link>
             <button
               type="button"
-              disabled={!inStock}
+              disabled={!inStock || purchaseRestricted}
               onClick={() => {
-                if (inStock) addToCart(p.id, 1);
+                if (inStock && !purchaseRestricted) addToCart(p.id, 1);
               }}
               aria-label={`Add ${p.name} to cart`}
               className={
                 "min-h-12 rounded-2xl px-4 py-3 text-sm font-black transition sm:min-w-14 " +
-                (inStock
+                (inStock && !purchaseRestricted
                   ? "border border-slate-200 bg-white text-slate-950 hover:border-slate-400 hover:bg-slate-50"
-                  : "cursor-not-allowed bg-red-100 text-red-700")
+                  : enquiryOnly
+                    ? "cursor-not-allowed bg-amber-100 text-amber-800"
+                    : informationOnly
+                      ? "cursor-not-allowed bg-slate-100 text-slate-700"
+                      : "cursor-not-allowed bg-red-100 text-red-700")
               }
             >
-              {inStock ? "+ Cart" : "Unavailable"}
+              {informationOnly ? "Info" : enquiryOnly ? "Enquire" : inStock ? "+ Cart" : "Unavailable"}
             </button>
           </div>
         </div>

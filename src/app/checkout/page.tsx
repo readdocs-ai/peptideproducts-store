@@ -128,8 +128,16 @@ export default function Checkout() {
   );
 
   const enquiryOnlyItems = useMemo(
-    () => orderItems.filter((item) => ENQUIRY_ONLY_PRODUCT_IDS.has(item.id)),
-    [orderItems]
+    () =>
+      orderItems.filter((item) => {
+        const product = productMap.get(item.id);
+        return Boolean(
+          product?.enquiryOnly ||
+            product?.informationOnly ||
+            ENQUIRY_ONLY_PRODUCT_IDS.has(item.id)
+        );
+      }),
+    [orderItems, productMap]
   );
   const hasEnquiryOnlyItems = enquiryOnlyItems.length > 0;
 

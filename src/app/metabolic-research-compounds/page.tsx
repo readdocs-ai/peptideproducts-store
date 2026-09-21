@@ -57,7 +57,7 @@ const products = [
     "name": "Melanotan MT-2 10mg",
     "href": "/product/melanotan-mt2-10mg",
     "role": "Additional metabolic category product page.",
-    "copy": "Open Melanotan MT-2 product details, availability, ordering information, and research-use-only notes."
+    "copy": "Open factual Melanotan MT-2 product details and current availability status."
   }
 ] as const;
 

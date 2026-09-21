@@ -52,8 +52,23 @@ const pillars = [
 const uploadedDocuments = [
   {
     title: "Alluvi Retatrutide 40mg",
-    href: "/docs/coa/alluvi-retatrutide-40mg.pdf",
-    preview: "/docs/previews/alluvi-retatrutide-40mg.jpg",
+    href: "https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ",
+    source: "Janoshik Analytical verification",
+  },
+  {
+    title: "Alluvi Tirzepatide 40mg",
+    href: "https://verify.janoshik.com/tests/147174-ALLUVI_TIRZEPATIDE_40MG_KIT_T5MBWRAYD4HN",
+    source: "Janoshik Analytical verification",
+  },
+  {
+    title: "Alluvi Glow 70mg",
+    href: "https://verify.janoshik.com/tests/163217-ALLUVI_GLOW_70MG_KIT_DCL3AJSE4JQP",
+    source: "Janoshik Analytical verification",
+  },
+  {
+    title: "Alluvi BPC157 + TB500 40mg",
+    href: "https://verify.janoshik.com/tests/163218-ALLUVI_BPC157_TB500_40MG_KIT_EAI125ZEF8TB",
+    source: "Janoshik Analytical verification",
   },
   {
     title: "GHK-CU 100mg",
@@ -182,20 +197,33 @@ export default function QualityAssurancePage() {
                     rel="noreferrer"
                     className="surface-card overflow-hidden"
                   >
-                    <div className="relative h-[180px] bg-panel">
-                      <Image
-                        src={item.preview}
-                        alt={`${item.title} test report preview`}
-                        fill
-                        sizes="(min-width:1024px) 30vw, 100vw"
-                        className="object-cover object-top"
-                      />
-                    </div>
+                    {"preview" in item ? (
+                      <div className="relative h-[180px] bg-panel">
+                        <Image
+                          src={item.preview}
+                          alt={`${item.title} test report preview`}
+                          fill
+                          sizes="(min-width:1024px) 30vw, 100vw"
+                          className="object-cover object-top"
+                        />
+                      </div>
+                    ) : (
+                      <div className="flex h-[180px] items-center justify-center bg-gradient-to-br from-amber-50 to-white p-6 text-center">
+                        <div>
+                          <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-amber-700">Independent test report</div>
+                          <div className="mt-3 text-lg font-extrabold text-ink">Janoshik Analytical</div>
+                          <div className="mt-2 text-xs font-semibold text-muted">Official verification link</div>
+                        </div>
+                      </div>
+                    )}
 
                     <div className="p-4">
                       <div className="text-base font-extrabold text-ink">
                         {item.title}
                       </div>
+                      {"source" in item ? (
+                        <div className="mt-1 text-xs font-semibold text-muted">{item.source}</div>
+                      ) : null}
                       <div className="mt-3 text-sm font-extrabold text-ink">
                         View Test Report →
                       </div>

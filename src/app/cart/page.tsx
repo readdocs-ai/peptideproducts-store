@@ -90,7 +90,9 @@ export default function CartPage() {
   const shipping = subtotal > 0 ? UK_SHIPPING_FEE_GBP : 0;
   const total = roundGBP(subtotal + shipping);
   const hasEnquiryOnlyItems = rows.some(({ product }) =>
-    product ? ENQUIRY_ONLY_PRODUCT_IDS.has(product.id) : true
+    product
+      ? Boolean(product.enquiryOnly || product.informationOnly || ENQUIRY_ONLY_PRODUCT_IDS.has(product.id))
+      : true
   );
   const checkoutHelpHref = getWhatsAppHref(country, total);
 
@@ -228,14 +230,14 @@ export default function CartPage() {
                                     Line total
                                   </div>
                                   <div className="mt-1 text-xl font-extrabold text-ink">
-                                    {formatGBP(p.priceGBP * item.qty)}
+                                    {p.informationOnly ? "Information only" : p.enquiryOnly ? "Enquiry only" : formatGBP(p.priceGBP * item.qty)}
                                   </div>
                                 </div>
                               </div>
 
                               <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                                 <div className="flex flex-wrap gap-2 text-xs font-semibold text-muted">
-                                  <span className="trust-pill">Unit price: {formatGBP(p.priceGBP)}</span>
+                                  <span className="trust-pill">{p.informationOnly ? "Not available to order" : p.enquiryOnly ? "Availability by enquiry" : `Unit price: ${formatGBP(p.priceGBP)}`}</span>
                                   {p.coa ? <span className="premium-badge">Test report available</span> : null}
                                 </div>
 

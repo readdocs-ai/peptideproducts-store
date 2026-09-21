@@ -379,7 +379,7 @@ delivery, packaging, communication, and support from Peptide Products UK. Custom
   </div>
 
   <p className="mt-2 text-sm text-muted">
-    View Melanotan MT-2 product information, stock status, and ordering options.
+    View factual Melanotan MT-2 product information and current availability status.
   </p>
 </Link>
               </div>
