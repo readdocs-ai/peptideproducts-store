@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { RetatrutideLandingPage } from "@/components/RetatrutideLandingPage";
 import { Container } from "@/components/Container";
 import { retatrutideSeoPages } from "@/data/retatrutideSeoPages";
@@ -42,13 +43,23 @@ export default function Page() {
           <p className="mt-2 max-w-3xl text-sm leading-7 text-muted">
             The previous 40mg Tirzepatide format is not part of the current catalogue, but its independent Janoshik verification link remains available for documentation reference.
           </p>
+          <div className="mt-5 overflow-hidden rounded-xl2 border border-line bg-white">
+  <div className="relative aspect-[1.414/1] w-full bg-panel">
+    <Image
+      src="/docs/coa/alluvi-tirzepatide-40mg-janoshik-147174.png"
+      alt="Janoshik test report for Alluvi Tirzepatide 40mg, test 147174"
+      fill
+      sizes="(min-width: 1024px) 720px, 100vw"
+      className="object-contain"
+    />
+  </div>
+</div>
           <a
             href="https://verify.janoshik.com/tests/147174-ALLUVI_TIRZEPATIDE_40MG_KIT_T5MBWRAYD4HN"
             target="_blank"
             rel="noreferrer"
             className="mt-4 inline-flex rounded-xl2 bg-ink px-4 py-3 text-sm font-extrabold text-white shadow-soft transition hover:bg-ink/90"
-          >
-            View Janoshik Test Report →
+          >Verify on Janoshik →
           </a>
         </section>
       </Container>

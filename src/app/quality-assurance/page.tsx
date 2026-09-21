@@ -50,25 +50,29 @@ const pillars = [
 ] as const;
 
 const uploadedDocuments = [
-  {
+   {
     title: "Alluvi Retatrutide 40mg",
     href: "https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ",
-    source: "Janoshik Analytical verification",
+    preview: "/docs/coa/alluvi-retatrutide-40mg-janoshik-163216.png",
+    source: "Janoshik Analytical · Test #163216 · Batch AR1739JAT",
   },
   {
     title: "Alluvi Tirzepatide 40mg",
     href: "https://verify.janoshik.com/tests/147174-ALLUVI_TIRZEPATIDE_40MG_KIT_T5MBWRAYD4HN",
-    source: "Janoshik Analytical verification",
+    preview: "/docs/coa/alluvi-tirzepatide-40mg-janoshik-147174.png",
+    source: "Janoshik Analytical · Test #147174 · Batch TR786PAOS",
   },
   {
     title: "Alluvi Glow 70mg",
     href: "https://verify.janoshik.com/tests/163217-ALLUVI_GLOW_70MG_KIT_DCL3AJSE4JQP",
-    source: "Janoshik Analytical verification",
+    preview: "/docs/coa/alluvi-glow-70mg-janoshik-163217.png",
+    source: "Janoshik Analytical · Test #163217 · Batch GL0621XSA",
   },
   {
     title: "Alluvi BPC157 + TB500 40mg",
     href: "https://verify.janoshik.com/tests/163218-ALLUVI_BPC157_TB500_40MG_KIT_EAI125ZEF8TB",
-    source: "Janoshik Analytical verification",
+    preview: "/docs/coa/alluvi-bpc157-tb500-40mg-janoshik-163218.png",
+    source: "Janoshik Analytical · Test #163218 · Batch BP1701FSR",
   },
   {
     title: "GHK-CU 100mg",

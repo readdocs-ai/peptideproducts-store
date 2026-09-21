@@ -92,6 +92,7 @@ export const products: Product[] = [
     notes: "For research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
     coa: "https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ",
+    coaPreview: "/docs/coa/alluvi-retatrutide-40mg-janoshik-163216.png",
   },
 
   {
@@ -330,6 +331,7 @@ export const products: Product[] = [
       "Supplied strictly for laboratory research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
     coa: "https://verify.janoshik.com/tests/163217-ALLUVI_GLOW_70MG_KIT_DCL3AJSE4JQP",
+    coaPreview: "/docs/coa/alluvi-glow-70mg-janoshik-163217.png",
   },
 
   {
@@ -370,6 +372,7 @@ export const products: Product[] = [
       "Supplied strictly for laboratory research use only. Not for human or veterinary use.",
     stockStatus: "in_stock",
     coa: "https://verify.janoshik.com/tests/163218-ALLUVI_BPC157_TB500_40MG_KIT_EAI125ZEF8TB",
+    coaPreview: "/docs/coa/alluvi-bpc157-tb500-40mg-janoshik-163218.png",
   },
 
   {
