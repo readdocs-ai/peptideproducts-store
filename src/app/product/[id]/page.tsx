@@ -118,7 +118,6 @@ export default function ProductPage({ params }: Props) {
 
  const isRetatrutidePen = p.id === "retatrutide";
  const isFlagshipRetatrutide = p.id === "retatrutide";
- const isSynexaGlow = p.id === "synexa-glow-ghk-cu-70mg-pen";
  const faqs = p.informationOnly
   ? [
       {
@@ -136,25 +135,6 @@ export default function ProductPage({ params }: Props) {
       {
         q: "Does this page provide delivery or ordering information?",
         a: "No. Delivery and ordering information does not apply because this product is not offered for sale through Peptide Products.",
-      },
-    ]
-  : isSynexaGlow
-  ? [
-      {
-        q: "What is Synexa Glow GHK-CU 70mg?",
-        a: "Synexa Glow GHK-CU 70mg is a multi-compound research product containing GHK-CU 50mg, BPC-157 10mg and TB-500 10mg in a pre-filled pen format.",
-      },
-      {
-        q: "How much compound does the Synexa Glow pen contain?",
-        a: "The manufacturer packaging declares 70mg total content: GHK-CU 50mg, BPC-157 10mg and TB-500 10mg.",
-      },
-      {
-        q: "Is Synexa Glow supplied for human use?",
-        a: "No. Peptide Products supplies this item strictly for laboratory, analytical and educational research use only. It is not supplied for human consumption or administration.",
-      },
-      {
-        q: "Does Synexa Glow have an independent test report on this listing?",
-        a: "No product-specific independent test report is currently represented on this listing. Where documentation becomes available, it will be shown only when it matches the listed product and batch.",
       },
     ]
   : isRetatrutidePen
