@@ -13,6 +13,8 @@ ${brand.name} is a UK-based supplier of laboratory research compounds and resear
 - Shop: https://www.peptideproducts.co.uk/shop
 - Retatrutide product page: https://www.peptideproducts.co.uk/product/retatrutide
 - Retatrutide research hub: https://www.peptideproducts.co.uk/retatrutide
+- Synexa Retatrutide 40mg RapidPen: https://www.peptideproducts.co.uk/product/synexa-retatrutide-40mg
+- Synexa Glow GHK-CU 70mg research pen: https://www.peptideproducts.co.uk/product/synexa-glow-ghk-cu-70mg-pen
 - Retatrutide UK guide: https://www.peptideproducts.co.uk/retatrutide-uk
 - Retatrutide price guide: https://www.peptideproducts.co.uk/retatrutide-price-uk
 - Where to buy Retatrutide UK: https://www.peptideproducts.co.uk/buy-retatrutide-uk
@@ -29,6 +31,9 @@ ${brand.name} is a UK-based supplier of laboratory research compounds and resear
 - Retatrutide research peptide UK
 - Retatrutide 40mg research product
 - Laboratory research compounds UK
+- Pre-filled research peptide pens UK
+- Synexa Glow GHK-CU 70mg research product
+- GHK-CU, BPC-157 and TB-500 research compounds
 - Peptide quality information and test reports
 - Research-use-only product documentation
 - UK dispatch and order support

@@ -1,0 +1,26 @@
+PEPTIDE PRODUCTS PP11.1 - BRIGHT PREMIUM FINAL UPDATE
+Date: 24 September 2026
+
+This master source was rebuilt from the latest full project supplied by the user.
+
+Included updates:
+- Bright premium homepage redesign with controlled hero proportions.
+- Existing homepage SEO metadata and canonical preserved.
+- Existing high-value internal SEO links retained and expanded.
+- Flagship Alluvi Retatrutide 40mg remains prominent.
+- Homepage presents real pens and vials using existing product assets.
+- Added Synexa Glow GHK-CU 70mg research pen at GBP 130.
+- Synexa Glow composition: GHK-CU 50mg + BPC-157 10mg + TB-500 10mg.
+- Added four optimized WebP Synexa Glow product images.
+- Added product-specific Synexa Glow SEO content and FAQs.
+- Restocked Synexa Retatrutide 40mg RapidPen at GBP 125.
+- Updated llms.txt product discovery links for both Synexa products.
+- Existing Janoshik certificate work retained, including the Retatrutide certificate preview.
+- Existing checkout remains dynamic-price based, so Synexa Glow does not require a Stripe price ID.
+- Sitemap continues to generate product URLs from the products data array, so the new product is included automatically.
+
+Research-use-only positioning preserved. Human-use wording from manufacturer packaging is not reproduced in the customer-facing product copy.
+
+QA:
+- TypeScript/TSX syntax transpilation checks passed for all changed source files.
+- A full npm build should still be run on Windows before deployment because package installation could not be completed in the artifact environment.

@@ -71,15 +71,29 @@ const productSpecific: Record<string, Partial<ProductSeoContent>> = {
       "Use this listing as the main Retatrutide product page. The supporting Retatrutide information pages should point back here for current stock, price, product images, and checkout details.",
   },
   "synexa-retatrutide-40mg": {
-    title: "Synexa Retatrutide 40mg RapidPen® | Sold Out | Peptide Products",
+    title: "Synexa Retatrutide 40mg RapidPen® UK | Peptide Products",
     description:
-      "Synexa Retatrutide 40mg RapidPen® research presentation is currently sold out. View the current main Retatrutide 40mg listing for available stock and product information.",
+      "Synexa Retatrutide 40mg RapidPen® research presentation is back in stock in the UK. View product images, pack information, price, delivery guidance and secure checkout.",
     intro:
-      "Synexa Retatrutide 40mg RapidPen® is retained in the Peptide Products catalogue as a previous Retatrutide presentation and is currently sold out. The main Retatrutide product journey now shows the currently available Alluvi presentation.",
+      "Synexa Retatrutide 40mg RapidPen® is an in-stock Retatrutide research presentation supplied in a single pre-filled pen format. This page provides a dedicated Synexa product record covering current price, stock status, imagery, delivery information and research-use-only positioning.",
     documentation:
-      "Review the Synexa product gallery and research-use-only information. This presentation is currently sold out.",
+      "Review the Synexa product gallery, pack format, stock status and research-use-only information before ordering. Product-specific test documentation should be confirmed where available.",
     comparison:
-      "For current Retatrutide 40mg availability, use the main Retatrutide product page, which now features the Alluvi presentation.",
+      "Researchers comparing Retatrutide 40mg pen presentations can review this Synexa RapidPen® alongside the flagship Alluvi Retatrutide 40mg listing.",
+  },
+  "synexa-glow-ghk-cu-70mg-pen": {
+    title: "Synexa Glow GHK-CU 70mg Pen UK | BPC-157, TB-500 & GHK-CU",
+    description:
+      "Synexa Glow GHK-CU 70mg pre-filled research pen containing GHK-CU 50mg, BPC-157 10mg and TB-500 10mg. Original Synexa packaging. UK research supply.",
+    intro:
+      "Synexa Glow GHK-CU 70mg is a multi-compound research product containing GHK-CU 50mg, BPC-157 10mg and TB-500 10mg in a single pre-filled pen format. It is supplied in original Synexa branded packaging for laboratory, analytical and educational research procurement.",
+    documentation:
+      "Review the product packaging, compound composition, stock status and research-use-only notice before ordering. No independent test report is currently represented on this listing unless product-specific documentation is added separately.",
+    handling:
+      "Store and handle the Synexa Glow GHK-CU research product according to the manufacturer label and appropriate laboratory procedures. Peptide Products does not provide human dosing or administration instructions.",
+    comparison:
+      "This Synexa 70mg combination contains GHK-CU 50mg, BPC-157 10mg and TB-500 10mg and can be compared with other regenerative research compounds and pre-filled pen presentations in the catalogue.",
+    categoryPage: { href: "/regenerative-peptides", label: "Regenerative peptides" },
   },
   "reta-research-compound-10mg-vial": {
     title: "Reta Research Compound 10mg Vial UK | Peptide Products",
