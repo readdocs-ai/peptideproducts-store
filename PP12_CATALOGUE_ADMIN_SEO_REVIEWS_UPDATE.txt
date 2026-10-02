@@ -1,0 +1,9 @@
+PP12 catalogue/admin/SEO/reviews update
+
+- Homepage hero product imagery normalised into consistent product cards.
+- Admin Orders default visible limit increased from 50 to 100; older-order load step increased to 100.
+- Synexa Retatrutide 40mg RapidPen moved directly after Alluvi Retatrutide in the catalogue so both appear on the first desktop row.
+- Alloya MT2 10mg changed from information-only to in-stock purchasable research product at £130.
+- Synexa Retatrutide SEO title, description, content, alt text, FAQs and Retatrutide-cluster internal linking strengthened.
+- Added three genuine 5-star service reviews supplied by the site owner: Vincent Walker, Adam and Mark Douglas. Private emails/order details were not published.
+- Existing Git repository retained; node_modules and .next remain excluded from the master ZIP.

@@ -16,6 +16,18 @@ export const metadata: Metadata = {
 export default function ReviewsPage() {
   const reviews = [
   {
+    name: "Vincent Walker, UK",
+    text: "Excellent service quick delivery",
+  },
+  {
+    name: "Adam, UK",
+    text: "Ordered last night arrived today all packaged well everything in the box with all instructions great service thanks guys will definitely be ordering again.",
+  },
+  {
+    name: "Mark Douglas, UK",
+    text: "Great customer service fast delivery. All round brilliant",
+  },
+  {
     name: "Marie, UK",
     text: "Outstanding fast delivery, outstanding service, and excellent prices! I was initially a little sceptical about ordering from a new supplier, but communication was excellent and I received an update within a few hours. My order arrived quickly and the whole process was smooth. I will definitely be ordering again. Thank you!",
   },

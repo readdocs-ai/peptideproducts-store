@@ -91,7 +91,7 @@ export default async function AdminOrdersPage({
 }: {
   searchParams?: { limit?: string; q?: string; status?: string };
 }) {
-  const limit = Math.max(50, Math.min(5000, Number(searchParams?.limit || 50)));
+  const limit = Math.max(100, Math.min(5000, Number(searchParams?.limit || 100)));
   const searchQuery = normaliseSearch(searchParams?.q);
   const statusFilter = normaliseSearch(searchParams?.status).toLowerCase();
   const checkoutProtection = await getCheckoutProtectionSummary(50);
@@ -146,7 +146,7 @@ export default async function AdminOrdersPage({
     .filter((order) => order.status === "paid" || order.status === "shipped")
     .reduce((sum, order) => sum + order.total, 0);
   const latestOrderId = allOrders[0]?.id || "";
-  const nextLimit = Math.min(5000, limit + 50);
+  const nextLimit = Math.min(5000, limit + 100);
 
   return (
     <main id="top" className="mx-auto max-w-7xl px-6 py-10">
@@ -586,7 +586,7 @@ export default async function AdminOrdersPage({
                 href={`/admin/orders?limit=${nextLimit}${statusFilter ? `&status=${encodeURIComponent(statusFilter)}` : ""}#orders-list`}
                 className="inline-flex rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
               >
-                Load 50 older orders
+                Load 100 older orders
               </Link>
             </div>
           ) : null}

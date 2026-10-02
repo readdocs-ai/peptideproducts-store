@@ -149,104 +149,67 @@ export default function Home() {
               </div>
 
               <div className="relative z-10 rounded-[2rem] border border-blue-100 bg-white/90 p-4 shadow-[0_30px_80px_rgba(37,99,235,0.14)] backdrop-blur sm:p-5">
-                <div className="grid gap-4 md:grid-cols-[1.35fr_0.85fr]">
-                  {retatrutide && (
-                    <Link
-                      href="/product/retatrutide"
-                      className="group relative min-h-[360px] overflow-hidden rounded-[1.5rem] border border-slate-200 bg-[linear-gradient(145deg,#eff6ff,#ffffff_48%,#eefcf8)] sm:min-h-[420px]"
-                    >
-                      <Image
-                        src={retatrutide.image}
-                        alt={retatrutide.imageAlt || "Alluvi Retatrutide 40mg research pen"}
-                        fill
-                        priority
-                        sizes="(min-width: 1024px) 44vw, 100vw"
-                        className="object-contain p-5 transition duration-700 group-hover:scale-[1.025]"
-                      />
-                      <div className="absolute left-4 top-4 rounded-full border border-white/90 bg-white/95 px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-blue-700 shadow-sm">
-                        Flagship Retatrutide
-                      </div>
-                      <div className="absolute inset-x-4 bottom-4 rounded-[1.25rem] border border-white/90 bg-white/95 p-4 shadow-xl backdrop-blur">
-                        <div className="flex flex-wrap items-end justify-between gap-3">
-                          <div>
-                            <div className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400">Alluvi presentation</div>
-                            <div className="mt-1 text-xl font-black tracking-[-0.03em] text-slate-950">Retatrutide 40mg Pen</div>
-                            <div className="mt-1 text-sm font-bold text-blue-700">£{retatrutide.priceGBP.toFixed(2)}</div>
-                          </div>
-                          <span className="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-black text-emerald-700">In stock</span>
-                        </div>
-                      </div>
-                    </Link>
-                  )}
-
-                  <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1">
-                    {synexaGlow && (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    { product: retatrutide, href: "/product/retatrutide", eyebrow: "Alluvi Retatrutide", accent: "text-blue-700" },
+                    { product: synexaReta, href: "/product/synexa-retatrutide-40mg", eyebrow: "Synexa Retatrutide", accent: "text-amber-700" },
+                  ].map(({ product, href, eyebrow, accent }) =>
+                    product ? (
                       <Link
-                        href="/product/synexa-glow-ghk-cu-70mg-pen"
-                        className="group overflow-hidden rounded-[1.35rem] border border-pink-100 bg-[linear-gradient(145deg,#fff7fb,#ffffff)] shadow-sm transition hover:-translate-y-0.5"
+                        key={href}
+                        href={href}
+                        className="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
                       >
-                        <div className="relative aspect-[16/9] overflow-hidden bg-[#f8e8f0]">
-                          <Image
-                            src={synexaGlow.image}
-                            alt={synexaGlow.imageAlt || synexaGlow.name}
-                            fill
-                            sizes="(min-width: 1024px) 22vw, 50vw"
-                            className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                          />
-                        </div>
-                        <div className="p-4">
-                          <div className="text-[10px] font-black uppercase tracking-[0.17em] text-pink-700">New · £130</div>
-                          <div className="mt-1 text-base font-black leading-tight text-slate-950">Synexa Glow GHK-CU 70mg</div>
-                          <div className="mt-2 text-xs text-slate-500">GHK-CU 50mg · BPC-157 10mg · TB-500 10mg</div>
-                        </div>
-                      </Link>
-                    )}
-
-                    {synexaReta && (
-                      <Link
-                        href="/product/synexa-retatrutide-40mg"
-                        className="group overflow-hidden rounded-[1.35rem] border border-amber-100 bg-[linear-gradient(145deg,#fffaf0,#ffffff)] shadow-sm transition hover:-translate-y-0.5"
-                      >
-                        <div className="relative aspect-[16/9] overflow-hidden">
-                          <Image
-                            src={synexaReta.image}
-                            alt={synexaReta.imageAlt || synexaReta.name}
-                            fill
-                            sizes="(min-width: 1024px) 22vw, 50vw"
-                            className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                          />
-                        </div>
-                        <div className="p-4">
-                          <div className="text-[10px] font-black uppercase tracking-[0.17em] text-blue-700">Restocked · £125</div>
-                          <div className="mt-1 text-base font-black leading-tight text-slate-950">Synexa Retatrutide 40mg RapidPen®</div>
-                        </div>
-                      </Link>
-                    )}
-                  </div>
-                </div>
-
-                <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                  {["alloya-mots-c-40mg-pen", "alloya-tesamorelin-20mg-pen", "bpc-157-5mg", "ghk-cu-100mg"].map((id) => {
-                    const product = getProduct(id);
-                    if (!product) return null;
-                    return (
-                      <Link
-                        key={id}
-                        href={`/product/${product.id}`}
-                        className="group rounded-2xl border border-slate-200 bg-white p-2 shadow-sm transition hover:-translate-y-0.5"
-                      >
-                        <div className="relative aspect-square overflow-hidden rounded-xl bg-slate-50">
+                        <div className="relative aspect-[4/3] overflow-hidden bg-[linear-gradient(145deg,#f7faff,#ffffff)]">
                           <Image
                             src={product.image}
                             alt={product.imageAlt || product.name}
                             fill
-                            sizes="(min-width: 1024px) 12vw, 25vw"
-                            className="object-contain p-2 transition duration-500 group-hover:scale-[1.04]"
+                            priority={href === "/product/retatrutide"}
+                            sizes="(min-width: 1024px) 27vw, (min-width: 640px) 45vw, 92vw"
+                            className="object-contain p-5 transition duration-500 group-hover:scale-[1.025]"
                           />
                         </div>
+                        <div className="border-t border-slate-100 p-4">
+                          <div className={`text-[10px] font-black uppercase tracking-[0.17em] ${accent}`}>{eyebrow}</div>
+                          <div className="mt-1 text-lg font-black leading-tight text-slate-950">{product.name}</div>
+                          <div className="mt-3 flex items-center justify-between gap-3">
+                            <span className="text-sm font-black text-slate-950">£{product.priceGBP.toFixed(2)}</span>
+                            <span className="rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-black text-emerald-700">In stock</span>
+                          </div>
+                        </div>
                       </Link>
-                    );
-                  })}
+                    ) : null,
+                  )}
+                </div>
+
+                <div className="mt-4 grid grid-cols-3 gap-3">
+                  {[
+                    synexaGlow,
+                    getProduct("alloya-mots-c-40mg-pen"),
+                    getProduct("bpc-157-5mg"),
+                  ].map((product) =>
+                    product ? (
+                      <Link
+                        key={product.id}
+                        href={`/product/${product.id}`}
+                        className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5"
+                      >
+                        <div className="relative aspect-square overflow-hidden bg-slate-50">
+                          <Image
+                            src={product.image}
+                            alt={product.imageAlt || product.name}
+                            fill
+                            sizes="(min-width: 1024px) 18vw, 30vw"
+                            className="object-contain p-3 transition duration-500 group-hover:scale-[1.035]"
+                          />
+                        </div>
+                        <div className="border-t border-slate-100 px-3 py-2.5">
+                          <div className="line-clamp-2 text-[11px] font-black leading-4 text-slate-800">{product.name}</div>
+                        </div>
+                      </Link>
+                    ) : null,
+                  )}
                 </div>
               </div>
             </div>
