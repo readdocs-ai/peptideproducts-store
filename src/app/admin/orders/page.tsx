@@ -1,11 +1,17 @@
 import Link from "next/link";
-import { getOrderForAdminSearch, getRecentOrders, isKvConfigured, listOrders } from "@/lib/orders";
+import { getOrderForAdminSearch, isKvConfigured, listOrders } from "@/lib/orders";
 import { StatusBadge } from "@/components/admin/StatusBadge";
 import { PaymentMethodBadge } from "@/components/admin/PaymentMethodBadge";
 import { OrderStatusControls } from "@/components/admin/OrderStatusControls";
 import { AdminOrderAlerts } from "@/components/admin/AdminOrderAlerts";
 import { getCheckoutProtectionSummary } from "@/lib/checkout-protection";
 import { CheckoutProtectionPanel } from "@/components/admin/CheckoutProtectionPanel";
+import { CustomerReviewFlagControls } from "@/components/admin/CustomerReviewFlagControls";
+import {
+  getFlagMatchesForOrder,
+  listCustomerReviewFlags,
+  previousOrderCount,
+} from "@/lib/customer-review";
 
 function formatDate(value: string | number) {
   const date = new Date(value);
@@ -100,11 +106,11 @@ export default async function AdminOrdersPage({
       ? await getOrderForAdminSearch(searchQuery)
       : null;
 
-  const allOrders = isKvConfigured()
-    ? searchQuery
-      ? await listOrders(5000)
-      : await getRecentOrders(limit)
-    : [];
+  const customerHistoryOrders = isKvConfigured() ? await listOrders(5000) : [];
+  const allOrders = searchQuery
+    ? customerHistoryOrders
+    : customerHistoryOrders.slice(0, limit);
+  const customerReviewFlags = isKvConfigured() ? await listCustomerReviewFlags(1000) : [];
 
   const indexedMatches = searchQuery
     ? allOrders.filter((order) => orderMatchesSearch(order, searchQuery))
@@ -147,6 +153,12 @@ export default async function AdminOrdersPage({
     .reduce((sum, order) => sum + order.total, 0);
   const latestOrderId = allOrders[0]?.id || "";
   const nextLimit = Math.min(5000, limit + 100);
+  const previousOrderCounts = new Map(
+    orders.map((order) => [order.id, previousOrderCount(order, customerHistoryOrders)]),
+  );
+  const reviewFlagMatches = new Map(
+    orders.map((order) => [order.id, getFlagMatchesForOrder(order, customerReviewFlags)]),
+  );
 
   return (
     <main id="top" className="mx-auto max-w-7xl px-6 py-10">
@@ -340,6 +352,14 @@ export default async function AdminOrdersPage({
                       </div>
                       <StatusBadge status={order.status} />
                       <PaymentMethodBadge paymentMethod={order.paymentMethod} />
+                      <span className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-extrabold text-blue-800">
+                        Previous orders: {previousOrderCounts.get(order.id) || 0}
+                      </span>
+                      {(reviewFlagMatches.get(order.id) || []).length > 0 ? (
+                        <span className="rounded-full border border-red-300 bg-red-50 px-3 py-1 text-xs font-extrabold text-red-800">
+                          FLAGGED FOR REVIEW
+                        </span>
+                      ) : null}
                       {order.status === "pending" && order.paymentMethod === "card" && order.stripeSessionId ? (
                         <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-extrabold text-amber-800">
                           Payment not completed
@@ -350,6 +370,15 @@ export default async function AdminOrdersPage({
                     <div className="mt-2 text-sm text-muted">
                       {formatDate(order.createdAt)}
                     </div>
+
+                    {(reviewFlagMatches.get(order.id) || []).length > 0 ? (
+                      <div className="mt-4 rounded-xl2 border border-red-300 bg-red-50 p-4 text-sm text-red-900">
+                        <div className="font-extrabold">Manual review required before fulfilment</div>
+                        <div className="mt-1 text-xs leading-5">
+                          This order matches {reviewFlagMatches.get(order.id)?.length || 0} active customer review flag{(reviewFlagMatches.get(order.id)?.length || 0) === 1 ? "" : "s"}. Review the reason and matching details in Actions before processing the order.
+                        </div>
+                      </div>
+                    ) : null}
 
                     <div className="mt-5 grid gap-4 md:grid-cols-2">
                       <div className="rounded-xl2 border border-line bg-panel p-4">
@@ -573,6 +602,12 @@ export default async function AdminOrdersPage({
                     </div>
                     <div className="mt-4">
                       <OrderStatusControls order={order} />
+                    </div>
+                    <div className="mt-4">
+                      <CustomerReviewFlagControls
+                        orderId={order.id}
+                        matches={reviewFlagMatches.get(order.id) || []}
+                      />
                     </div>
                   </div>
                 </div>
