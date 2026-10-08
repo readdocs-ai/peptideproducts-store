@@ -4,7 +4,7 @@ import { sendOrderEmails } from "@/lib/email";
 import {
   getOrder,
   getOrderByStripeSessionId,
-  updateOrderStatus,
+  confirmOrderPaidAtomically,
   cancelOlderPendingCardOrders,
 } from "@/lib/orders";
 
@@ -96,6 +96,28 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+    if (session.currency?.toLowerCase() !== "gbp") {
+      console.error("Stripe currency mismatch", {
+        orderId: order.id,
+        currency: session.currency,
+      });
+
+      return NextResponse.json(
+        { error: "Payment currency mismatch" },
+        { status: 400 }
+      );
+    }
+    if (order.stripeSessionId !== session.id) {
+      console.error("Stripe checkout session mismatch", {
+        orderId: order.id,
+        sessionId: session.id,
+      });
+
+      return NextResponse.json(
+        { error: "Checkout session does not match order" },
+        { status: 400 }
+      );
+    }
 
     const expectedAmount = Math.round(order.total * 100);
 
@@ -114,16 +136,47 @@ export async function POST(req: Request) {
       );
     }
 
-    if (order.status === "paid" || order.status === "shipped") {
+
+    const paymentResult = await confirmOrderPaidAtomically(order.id, {
+      provider: "stripe",
+      checkoutId: session.id,
+      amountGBP: session.amount_total / 100,
+    });
+
+    if (paymentResult.outcome === "not_found") {
+      return NextResponse.json(
+        { error: "Order not found during payment confirmation" },
+        { status: 404 }
+      );
+    }
+
+    if (paymentResult.outcome === "payment_mismatch") {
+      console.error("Stripe atomic payment verification mismatch", {
+        orderId: order.id,
+        sessionId: session.id,
+      });
+      return NextResponse.json(
+        { error: "Payment details require manual review" },
+        { status: 409 },
+      );
+    }
+
+    if (paymentResult.outcome === "already_paid") {
       return NextResponse.json({ ok: true, duplicate: true });
     }
 
-    const paidOrder = await updateOrderStatus({
-      orderId: order.id,
-      status: "paid",
-    });
+    if (paymentResult.outcome === "not_pending") {
+      console.error("Stripe payment received for non-pending order", {
+        orderId: order.id,
+        status: paymentResult.order.status,
+      });
+      return NextResponse.json(
+        { error: "Order requires manual payment review" },
+        { status: 409 }
+      );
+    }
 
-    const finalOrder = paidOrder || order;
+    const finalOrder = paymentResult.order;
 
     try {
       const abandonedOrders = await cancelOlderPendingCardOrders({

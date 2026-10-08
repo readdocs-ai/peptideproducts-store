@@ -158,20 +158,161 @@ function normalizeOrder(raw: Partial<StoredOrder>): StoredOrder {
     royalMailError: raw.royalMailError ?? null,
   };
 }
-
-async function saveOrder(order: StoredOrder) {
+type OrderUpdater = (current: StoredOrder) => StoredOrder;
+async function updateOrderSafely(
+  orderId: string,
+  updater: OrderUpdater,
+): Promise<StoredOrder | null> {
   if (!redis) throw new Error("REDIS_URL is not configured");
 
-  const multi = redis.multi();
-  multi.set(orderKey(order.id), JSON.stringify(order));
-  if (order.stripeSessionId) {
-    multi.set(stripeSessionKey(order.stripeSessionId), order.id);
+  const key = orderKey(orderId);
+
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const connection = redis.duplicate({ lazyConnect: true });
+
+    try {
+      await connection.connect();
+      await connection.watch(key);
+
+      const raw = await connection.get(key);
+
+      if (!raw) {
+        await connection.unwatch();
+        return null;
+      }
+
+      const current = normalizeOrder(JSON.parse(raw));
+      const updated = updater(current);
+
+      const transaction = connection.multi();
+      transaction.set(key, JSON.stringify(updated));
+
+      if (updated.stripeSessionId) {
+        transaction.set(
+          stripeSessionKey(updated.stripeSessionId),
+          updated.id,
+        );
+      }
+
+      if (updated.sumupCheckoutId) {
+        transaction.set(
+          sumupCheckoutKey(updated.sumupCheckoutId),
+          updated.id,
+        );
+      }
+
+      const result = await transaction.exec();
+
+      if (result !== null) {
+        return updated;
+      }
+    } finally {
+      connection.disconnect();
+    }
   }
-  if (order.sumupCheckoutId) {
-    multi.set(sumupCheckoutKey(order.sumupCheckoutId), order.id);
-  }
-  await multi.exec();
+
+  throw new Error(
+    "Order was updated simultaneously too many times. Please retry.",
+  );
 }
+
+
+export type AtomicPaymentResult =
+  | { outcome: "paid"; order: StoredOrder }
+  | { outcome: "already_paid"; order: StoredOrder }
+  | { outcome: "not_pending"; order: StoredOrder }
+  | { outcome: "payment_mismatch"; order: StoredOrder }
+  | { outcome: "not_found"; order: null };
+
+export async function confirmOrderPaidAtomically(
+  orderId: string,
+  payment: { provider: "stripe" | "sumup"; checkoutId: string; amountGBP: number },
+): Promise<AtomicPaymentResult> {
+  if (!payment.checkoutId.trim() || !Number.isFinite(payment.amountGBP) || payment.amountGBP < 0) {
+    throw new Error("Invalid payment verification details");
+  }
+  if (!redis) throw new Error("REDIS_URL is not configured");
+
+  const script = `
+    local raw = redis.call("GET", KEYS[1])
+    if not raw then
+      return { "not_found", "" }
+    end
+
+    local order = cjson.decode(raw)
+    local status = order.status
+
+    local checkoutId = ARGV[3]
+    local reference = ARGV[2] == "stripe" and order.stripeSessionId or order.sumupCheckoutId
+    local total = tonumber(order.total)
+    local expectedCents = tonumber(ARGV[4])
+    if order.paymentMethod ~= "card" or type(reference) ~= "string" or reference ~= checkoutId or
+       total == nil or expectedCents == nil or math.floor(total * 100 + 0.5) ~= expectedCents then
+      return { "payment_mismatch", raw }
+    end
+
+    if status == "paid" or status == "shipped" then
+      return { "already_paid", raw }
+    end
+
+    if status ~= "pending" then
+      return { "not_pending", raw }
+    end
+
+    order.status = "paid"
+
+    if order.paidAt == nil or order.paidAt == cjson.null then
+      order.paidAt = ARGV[1]
+    end
+
+    order.shippedAt = cjson.null
+    order.cancelledAt = cjson.null
+
+    local updated = cjson.encode(order)
+    redis.call("SET", KEYS[1], updated)
+
+    return { "paid", updated }
+  `;
+
+  const result = await redis.eval(
+    script,
+    1,
+    orderKey(orderId),
+    new Date().toISOString(),
+    payment.provider,
+    payment.checkoutId,
+    String(Math.round(payment.amountGBP * 100)),
+  );
+
+  if (!Array.isArray(result) || result.length !== 2) {
+    throw new Error("Unexpected Redis payment confirmation result");
+  }
+
+  const [outcome, raw] = result;
+
+  if (outcome === "not_found") {
+    return { outcome: "not_found", order: null };
+  }
+
+  if (
+    outcome !== "paid" &&
+    outcome !== "already_paid" &&
+    outcome !== "payment_mismatch" &&
+    outcome !== "not_pending"
+  ) {
+    throw new Error("Unexpected payment confirmation outcome");
+  }
+
+  if (typeof raw !== "string") {
+    throw new Error("Invalid Redis order response");
+  }
+
+  return {
+    outcome,
+    order: normalizeOrder(JSON.parse(raw)),
+  };
+}
+
 
 export function isKvConfigured() {
   return Boolean(redis);
@@ -198,7 +339,7 @@ export async function createOrder(input: {
 
   const indexType = await redis.type(ORDER_INDEX_KEY);
   if (indexType !== "none" && indexType !== "list") {
-    await redis.del(ORDER_INDEX_KEY);
+    throw new Error(`Order index safety check failed: expected list, found ${indexType}`);
   }
 
   const order: StoredOrder = {
@@ -355,11 +496,15 @@ export async function updateOrderStripeSessionId(params: {
   sessionId: string;
 }) {
   if (!redis) throw new Error("REDIS_URL is not configured");
-  const order = await getOrder(params.orderId);
-  if (!order) return null;
-  const updated: StoredOrder = { ...order, stripeSessionId: params.sessionId };
-  await saveOrder(updated);
-  return updated;
+  return updateOrderSafely(params.orderId, (order) => {
+    if (order.status !== "pending") throw new Error("Cannot assign Stripe session after payment status changes");
+    if (order.stripeSessionId && order.stripeSessionId !== params.sessionId) {
+      throw new Error("Stripe session already assigned to this order");
+    }
+    if (!params.sessionId.trim()) throw new Error("Stripe session ID is required");
+    const updated: StoredOrder = { ...order, stripeSessionId: params.sessionId };
+    return updated;
+  });
 }
 
 export async function updateOrderSumUpCheckoutId(params: {
@@ -367,11 +512,15 @@ export async function updateOrderSumUpCheckoutId(params: {
   checkoutId: string;
 }) {
   if (!redis) throw new Error("REDIS_URL is not configured");
-  const order = await getOrder(params.orderId);
-  if (!order) return null;
-  const updated: StoredOrder = { ...order, sumupCheckoutId: params.checkoutId };
-  await saveOrder(updated);
-  return updated;
+  return updateOrderSafely(params.orderId, (order) => {
+    if (order.status !== "pending") throw new Error("Cannot assign SumUp checkout after payment status changes");
+    if (order.sumupCheckoutId && order.sumupCheckoutId !== params.checkoutId) {
+      throw new Error("SumUp checkout already assigned to this order");
+    }
+    if (!params.checkoutId.trim()) throw new Error("SumUp checkout ID is required");
+    const updated: StoredOrder = { ...order, sumupCheckoutId: params.checkoutId };
+    return updated;
+  });
 }
 
 export async function updateOrderShippingDetails(params: {
@@ -381,18 +530,17 @@ export async function updateOrderShippingDetails(params: {
   phone?: string | null;
 }) {
   if (!redis) throw new Error("REDIS_URL is not configured");
-  const order = await getOrder(params.orderId);
-  if (!order) return null;
+  return updateOrderSafely(params.orderId, (order) => {
 
-  const updated: StoredOrder = {
-    ...order,
-    phone: params.phone?.trim() || order.phone,
-    shippingRegion: params.shippingRegion,
-    shippingAddress: normalizeShippingAddress(params.shippingAddress),
-  };
+    const updated: StoredOrder = {
+      ...order,
+      phone: params.phone?.trim() || order.phone,
+      shippingRegion: params.shippingRegion,
+      shippingAddress: normalizeShippingAddress(params.shippingAddress),
+    };
 
-  await saveOrder(updated);
-  return updated;
+    return updated;
+  });
 }
 
 export async function updateOrderCustomerEmail(params: {
@@ -400,17 +548,16 @@ export async function updateOrderCustomerEmail(params: {
   email: string;
 }) {
   if (!redis) throw new Error("REDIS_URL is not configured");
-  const order = await getOrder(params.orderId);
-  if (!order) return null;
+  return updateOrderSafely(params.orderId, (order) => {
 
-  const email = params.email.trim().toLowerCase();
-  if (!email || !email.includes("@") || !email.includes(".")) {
-    throw new Error("Valid customer email is required");
-  }
+    const email = params.email.trim().toLowerCase();
+    if (!email || !email.includes("@") || !email.includes(".")) {
+      throw new Error("Valid customer email is required");
+    }
 
-  const updated: StoredOrder = { ...order, email };
-  await saveOrder(updated);
-  return updated;
+    const updated: StoredOrder = { ...order, email };
+    return updated;
+  });
 }
 
 export async function updateOrderCustomerDetails(params: {
@@ -421,36 +568,35 @@ export async function updateOrderCustomerDetails(params: {
   shippingAddress: Partial<StoredShippingAddress>;
 }) {
   if (!redis) throw new Error("REDIS_URL is not configured");
-  const order = await getOrder(params.orderId);
-  if (!order) return null;
+  return updateOrderSafely(params.orderId, (order) => {
 
-  const name = params.name.trim();
-  const email = params.email.trim().toLowerCase();
-  const address = normalizeShippingAddress(params.shippingAddress);
+    const name = params.name.trim();
+    const email = params.email.trim().toLowerCase();
+    const address = normalizeShippingAddress(params.shippingAddress);
 
-  if (name.length < 2) {
-    throw new Error("Customer name is required");
-  }
-  if (!email || !email.includes("@") || !email.includes(".")) {
-    throw new Error("Valid customer email is required");
-  }
-  if (!address.line1.trim() || !address.city.trim() || !address.postalCode.trim()) {
-    throw new Error("A complete delivery address is required");
-  }
+    if (name.length < 2) {
+      throw new Error("Customer name is required");
+    }
+    if (!email || !email.includes("@") || !email.includes(".")) {
+      throw new Error("Valid customer email is required");
+    }
+    if (!address.line1.trim() || !address.city.trim() || !address.postalCode.trim()) {
+      throw new Error("A complete delivery address is required");
+    }
 
-  address.country = address.country.trim().toUpperCase();
+    address.country = address.country.trim().toUpperCase();
 
-  const updated: StoredOrder = {
-    ...order,
-    name,
-    email,
-    phone: params.phone?.trim() || "",
-    shippingRegion: address.country === "GB" ? "UK" : "International",
-    shippingAddress: address,
-  };
+    const updated: StoredOrder = {
+      ...order,
+      name,
+      email,
+      phone: params.phone?.trim() || "",
+      shippingRegion: address.country === "GB" ? "UK" : "International",
+      shippingAddress: address,
+    };
 
-  await saveOrder(updated);
-  return updated;
+    return updated;
+  });
 }
 
 export async function updateOrderStatus(params: {
@@ -460,64 +606,68 @@ export async function updateOrderStatus(params: {
   refundedAmount?: number | null;
   adjustedTotal?: number | null;
   adminNote?: string | null;
+  onlyIfPending?: boolean;
 }) {
   if (!redis) throw new Error("REDIS_URL is not configured");
-  const order = await getOrder(params.orderId);
-  if (!order) return null;
+  return updateOrderSafely(params.orderId, (order) => {
+    if (params.onlyIfPending && order.status !== "pending") return order;
+    if (params.status === "pending" && order.status !== "pending") {
+      throw new Error("Cannot reset a confirmed or cancelled order to pending");
+    }
 
-  const refundedAmount =
-    typeof params.refundedAmount === "number" && Number.isFinite(params.refundedAmount)
-      ? Math.max(0, Math.round(params.refundedAmount * 100) / 100)
-      : order.refundedAmount;
+    const refundedAmount =
+      typeof params.refundedAmount === "number" && Number.isFinite(params.refundedAmount)
+        ? Math.max(0, Math.round(params.refundedAmount * 100) / 100)
+        : order.refundedAmount;
 
-  const adjustedTotal =
-    typeof params.adjustedTotal === "number" && Number.isFinite(params.adjustedTotal)
-      ? Math.max(0, Math.round(params.adjustedTotal * 100) / 100)
-      : order.adjustedTotal;
+    const adjustedTotal =
+      typeof params.adjustedTotal === "number" && Number.isFinite(params.adjustedTotal)
+        ? Math.max(0, Math.round(params.adjustedTotal * 100) / 100)
+        : order.adjustedTotal;
 
-  const adminNote =
-    typeof params.adminNote === "string" ? params.adminNote.trim() : order.adminNote;
+    const adminNote =
+      typeof params.adminNote === "string" ? params.adminNote.trim() : order.adminNote;
 
-  const updated: StoredOrder = {
-    ...order,
-    status: params.status,
-    refundedAmount,
-    adjustedTotal,
-    adminNote,
-    paidAt:
-      params.status === "paid" || params.status === "shipped"
-        ? order.paidAt || new Date().toISOString()
-        : order.paidAt,
-    shippedAt:
-      params.status === "shipped"
-        ? order.shippedAt || new Date().toISOString()
-        : null,
-    trackingNumber:
-      params.status === "shipped"
-        ? params.trackingNumber?.trim() || order.trackingNumber || null
-        : order.trackingNumber,
-    cancelledAt:
-      params.status === "cancelled"
-        ? order.cancelledAt || new Date().toISOString()
-        : null,
-  };
+    const updated: StoredOrder = {
+      ...order,
+      status: params.status,
+      refundedAmount,
+      adjustedTotal,
+      adminNote,
+      paidAt:
+        params.status === "paid" || params.status === "shipped"
+          ? order.paidAt || new Date().toISOString()
+          : order.paidAt,
+      shippedAt:
+        params.status === "shipped"
+          ? order.shippedAt || new Date().toISOString()
+          : null,
+      trackingNumber:
+        params.status === "shipped"
+          ? params.trackingNumber?.trim() || order.trackingNumber || null
+          : order.trackingNumber,
+      cancelledAt:
+        params.status === "cancelled"
+          ? order.cancelledAt || new Date().toISOString()
+          : null,
+    };
 
-  if (params.status === "pending") {
-    updated.paidAt = null;
-    updated.shippedAt = null;
-    updated.trackingNumber = null;
-    updated.cancelledAt = null;
-  }
+    if (params.status === "pending") {
+      updated.paidAt = null;
+      updated.shippedAt = null;
+      updated.trackingNumber = null;
+      updated.cancelledAt = null;
+    }
 
-  if (params.status === "paid") {
-    updated.shippedAt = null;
-    updated.cancelledAt = null;
-  }
+    if (params.status === "paid") {
+      updated.shippedAt = null;
+      updated.cancelledAt = null;
+    }
 
-  if (params.status === "shipped") updated.cancelledAt = null;
+    if (params.status === "shipped") updated.cancelledAt = null;
 
-  await saveOrder(updated);
-  return updated;
+    return updated;
+  });
 }
 
 export async function cancelOlderPendingCardOrders(params: {
@@ -568,9 +718,10 @@ export async function cancelOlderPendingCardOrders(params: {
       orderId: order.id,
       status: "cancelled",
       adminNote,
+      onlyIfPending: true,
     });
 
-    if (updated) cancelled.push(updated);
+    if (updated?.status === "cancelled") cancelled.push(updated);
   }
 
   return cancelled;
@@ -584,19 +735,21 @@ export async function updateOrderPaymentDetails(params: {
   items: StoredOrderItem[];
 }) {
   if (!redis) throw new Error("REDIS_URL is not configured");
-  const order = await getOrder(params.orderId);
-  if (!order) return null;
+  return updateOrderSafely(params.orderId, (order) => {
+    if (order.status !== "pending" || order.stripeSessionId || order.sumupCheckoutId) {
+      throw new Error("Cannot change items or payment totals after checkout has started");
+    }
 
-  const updated: StoredOrder = {
-    ...order,
-    subtotal: params.subtotal,
-    shipping: params.shipping,
-    total: params.total,
-    items: params.items,
-  };
+    const updated: StoredOrder = {
+      ...order,
+      subtotal: params.subtotal,
+      shipping: params.shipping,
+      total: params.total,
+      items: params.items,
+    };
 
-  await saveOrder(updated);
-  return updated;
+    return updated;
+  });
 }
 
 export async function updateOrderRoyalMailDetails(params: {
@@ -609,34 +762,33 @@ export async function updateOrderRoyalMailDetails(params: {
   trackingNumber?: string | null;
 }) {
   if (!redis) throw new Error("REDIS_URL is not configured");
-  const order = await getOrder(params.orderId);
-  if (!order) return null;
+  return updateOrderSafely(params.orderId, (order) => {
 
-  const updated: StoredOrder = {
-    ...order,
-    royalMailStatus: params.royalMailStatus,
-    royalMailOrderIdentifier:
-      params.royalMailOrderIdentifier !== undefined
-        ? params.royalMailOrderIdentifier
-        : order.royalMailOrderIdentifier,
-    royalMailCreatedAt:
-      params.royalMailCreatedAt !== undefined
-        ? params.royalMailCreatedAt
-        : order.royalMailCreatedAt,
-    royalMailLastCheckedAt:
-      params.royalMailLastCheckedAt !== undefined
-        ? params.royalMailLastCheckedAt
-        : order.royalMailLastCheckedAt,
-    royalMailError:
-      params.royalMailError !== undefined
-        ? params.royalMailError
-        : order.royalMailError,
-    trackingNumber:
-      params.trackingNumber !== undefined
-        ? params.trackingNumber?.trim() || null
-        : order.trackingNumber,
-  };
+    const updated: StoredOrder = {
+      ...order,
+      royalMailStatus: params.royalMailStatus,
+      royalMailOrderIdentifier:
+        params.royalMailOrderIdentifier !== undefined
+          ? params.royalMailOrderIdentifier
+          : order.royalMailOrderIdentifier,
+      royalMailCreatedAt:
+        params.royalMailCreatedAt !== undefined
+          ? params.royalMailCreatedAt
+          : order.royalMailCreatedAt,
+      royalMailLastCheckedAt:
+        params.royalMailLastCheckedAt !== undefined
+          ? params.royalMailLastCheckedAt
+          : order.royalMailLastCheckedAt,
+      royalMailError:
+        params.royalMailError !== undefined
+          ? params.royalMailError
+          : order.royalMailError,
+      trackingNumber:
+        params.trackingNumber !== undefined
+          ? params.trackingNumber?.trim() || null
+          : order.trackingNumber,
+    };
 
-  await saveOrder(updated);
-  return updated;
+    return updated;
+  });
 }

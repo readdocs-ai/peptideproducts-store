@@ -2,7 +2,7 @@ import { sendOrderEmails } from "@/lib/email";
 import {
   getOrder,
   getOrderBySumUpCheckoutId,
-  updateOrderStatus,
+  confirmOrderPaidAtomically,
 } from "@/lib/orders";
 import { getSumUpCheckout } from "@/lib/sumup";
 
@@ -39,14 +39,29 @@ export async function verifyAndFinalizeSumUpCheckout(params: {
     return { order, checkout, paid: false as const };
   }
 
-  const wasAlreadyPaid = order.status === "paid" || order.status === "shipped";
-  const updated = wasAlreadyPaid
-    ? order
-    : await updateOrderStatus({ orderId: order.id, status: "paid" });
+  const paymentResult = await confirmOrderPaidAtomically(order.id, {
+    provider: "sumup",
+    checkoutId: checkout.id,
+    amountGBP: checkout.amount,
+  });
 
-  if (!updated) throw new Error("Unable to update paid order");
+  if (paymentResult.outcome === "not_found") {
+    throw new Error("SumUp order not found during payment confirmation");
+  }
 
-  if (!wasAlreadyPaid) {
+  if (paymentResult.outcome === "payment_mismatch") {
+    throw new Error("SumUp payment details require manual review");
+  }
+
+  if (paymentResult.outcome === "not_pending") {
+    throw new Error(
+      "SumUp payment received for an order requiring manual review"
+    );
+  }
+
+  const updated = paymentResult.order;
+
+  if (paymentResult.outcome === "paid") {
     try {
       await sendOrderEmails({
         orderId: updated.id,
