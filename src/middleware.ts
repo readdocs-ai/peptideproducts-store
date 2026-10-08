@@ -1,3 +1,4 @@
+import { ORDERING_PAUSED } from "@/lib/maintenance";
 import { NextRequest, NextResponse } from "next/server";
 
 function unauthorizedResponse() {
@@ -10,6 +11,15 @@ function unauthorizedResponse() {
 }
 
 export function middleware(req: NextRequest) {
+  const path = req.nextUrl.pathname;
+  if (ORDERING_PAUSED) {
+    if (path === "/cart" || path.startsWith("/cart/") || path === "/checkout" || path.startsWith("/checkout/")) {
+      return NextResponse.redirect(new URL("/ordering-paused", req.url), 307);
+    }
+    if (req.method === "POST" && (path === "/api/checkout" || path === "/api/order")) {
+      return NextResponse.json({ ok: false, error: "New orders are temporarily suspended for maintenance." }, { status: 503, headers: { "Cache-Control": "no-store", "Retry-After": "3600" } });
+    }
+  }
   const host = req.headers.get("host");
 
   if (host === "peptideproducts.co.uk") {

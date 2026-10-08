@@ -1,3 +1,4 @@
+import { ORDERING_PAUSED } from "@/lib/maintenance";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { products } from "@/data/products";
@@ -108,6 +109,7 @@ function buildStripeLineItems(items: StoredOrderItem[]): Stripe.Checkout.Session
 }
 
 export async function POST(req: Request) {
+  if (ORDERING_PAUSED) return NextResponse.json({ ok: false, error: "New orders are temporarily suspended for maintenance." }, { status: 503 });
   try {
     const body = (await req.json()) as Body;
     const name = body.name?.trim() || "";

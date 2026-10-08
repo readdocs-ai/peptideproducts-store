@@ -1,3 +1,4 @@
+import { ORDERING_PAUSED } from "@/lib/maintenance";
 import type { Metadata } from "next";
 import "./globals.css";
 import { brand } from "@/theme/brand";
@@ -162,6 +163,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
 
+        {ORDERING_PAUSED && (
+          <div role="status" style={{background:"#14253d",color:"#fff",padding:"13px 18px",textAlign:"center",fontSize:"14px",lineHeight:"1.6",borderBottom:"2px solid #c5a66a"}}>
+            <strong>Temporary ordering suspension.</strong> We are carrying out essential system maintenance and cannot accept new orders at present. Product information and existing order support remain available.{" "}
+            <a href="/ordering-paused" style={{color:"#f0d397",textDecoration:"underline"}}>Read more</a>
+          </div>
+        )}
         {children}
       </body>
     </html>
