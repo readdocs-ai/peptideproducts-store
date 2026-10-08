@@ -119,6 +119,7 @@ export default function ProductPage({ params }: Props) {
  const isRetatrutidePen = p.id === "retatrutide";
  const isFlagshipRetatrutide = p.id === "retatrutide";
  const isSynexaGlow = p.id === "synexa-glow-ghk-cu-70mg-pen";
+ const isSynexaRetatrutide = p.id === "synexa-retatrutide-40mg";
  const faqs = p.informationOnly
   ? [
       {
@@ -136,6 +137,25 @@ export default function ProductPage({ params }: Props) {
       {
         q: "Does this page provide delivery or ordering information?",
         a: "No. Delivery and ordering information does not apply because this product is not offered for sale through Peptide Products.",
+      },
+    ]
+  : isSynexaRetatrutide
+  ? [
+      {
+        q: "What is Synexa Retatrutide 40mg RapidPen?",
+        a: "Synexa Retatrutide 40mg RapidPen is a pre-filled 40mg Retatrutide research peptide presentation supplied in original Synexa branded packaging.",
+      },
+      {
+        q: "Is Synexa Retatrutide 40mg in stock in the UK?",
+        a: "Yes. The live product listing currently shows Synexa Retatrutide 40mg RapidPen in stock at £125 for UK research supply.",
+      },
+      {
+        q: "How does Synexa Retatrutide compare with the Alluvi Retatrutide 40mg pen?",
+        a: "Both are separate Retatrutide 40mg research pen presentations. Each listing keeps its own brand, product images, stock status, documentation and checkout route so customers can compare the available formats.",
+      },
+      {
+        q: "Is Synexa Retatrutide supplied for human use?",
+        a: "No. Peptide Products supplies Synexa Retatrutide strictly for laboratory, analytical and scientific research use only and does not provide human dosing or administration guidance.",
       },
     ]
   : isSynexaGlow

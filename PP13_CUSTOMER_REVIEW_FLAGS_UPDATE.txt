@@ -1,0 +1,29 @@
+PP13 CUSTOMER REVIEW FLAGS + REPEAT ORDER HISTORY
+Date: 2026-10-04
+
+Admin-only update. No customer-facing checkout blocking has been added.
+
+Changes:
+- Added a manual "Flag customer" control to each order in /admin/orders.
+- Review reasons: complaint/dissatisfaction, reported non-delivery, refund/chargeback concern, product issue, payment issue, or other.
+- Optional internal notes are stored with the flag.
+- A flag snapshots customer name, email, phone and delivery address from the source order.
+- Future orders are highlighted when they match an active flag by email, phone, address, or name + postcode.
+- Flagged orders show a red "FLAGGED FOR REVIEW" badge and a manual-review warning.
+- Flags do NOT automatically block checkout or fulfilment; the administrator remains in control.
+- Active flags can be removed from the order Actions area.
+- Every admin order now shows "Previous orders: N".
+- Previous-order matching checks email, phone, delivery address, or name + postcode and ignores cancelled orders and abandoned/pending card checkouts.
+- Historical orders are included in the previous-order count using the existing Redis order index.
+
+New files:
+- src/lib/customer-review.ts
+- src/components/admin/CustomerReviewFlagControls.tsx
+- src/app/admin/api/orders/[id]/customer-review/route.ts
+
+Updated file:
+- src/app/admin/orders/page.tsx
+
+Validation performed in build workspace:
+- TypeScript transpile/syntax validation passed for all changed/new TypeScript/TSX files.
+- Full npm build could not be run in the isolated workspace because dependencies were not present and package installation timed out. Run npm install (if needed) and npm run build before deployment.

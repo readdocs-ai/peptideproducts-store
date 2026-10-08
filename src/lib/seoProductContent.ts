@@ -44,12 +44,13 @@ const productSpecific: Record<string, Partial<ProductSeoContent>> = {
     comparison: "This page provides a dedicated 10mg pen-format listing for researchers comparing PT-141 with other peptide research products in the catalogue.",
   },
   "alloya-mt2-10mg-pen": {
-    title: "MT2 10mg Pen | Product Information | Peptide Products",
-    description: "Factual product information concerning the Alloya Health Care MT2 10mg pen and its current availability status in the UK.",
-    intro: "The packaging supplied to Peptide Products identifies this item as an Alloya Health Care MT2 10mg Pen. MT2 commonly refers to Melanotan II. This page is retained for factual product information only; the product is not offered for sale or enquiry through Peptide Products.",
-    documentation: "Melanotan II pen products have a specific UK regulatory position. This listing is therefore informational and does not offer the product for purchase or product enquiry.",
-    handling: "Store and handle MT2 research material according to the manufacturer label and appropriate laboratory procedures. This listing does not provide administration or dosing instructions.",
-    comparison: "This page provides factual identification of the photographed Alloya MT2 10mg presentation and its current unavailable status.",
+    title: "Alloya MT2 10mg Pen UK | Melanotan II Research Pen | Peptide Products",
+    description: "Alloya MT2 10mg pre-filled research pen, also identified as Melanotan II. In stock at £130 for UK laboratory and analytical research supply.",
+    intro: "Alloya MT2 10mg Pen is a pre-filled research presentation containing 10mg of MT2, commonly referred to as Melanotan II. It is listed at £130 and supplied strictly for laboratory, analytical and scientific research use only.",
+    documentation: "Review the photographed Alloya packaging, declared 10mg content, current stock status and research-use-only notice before ordering. Product-specific documentation is shown only where it matches the listed product and batch.",
+    handling: "Store and handle MT2 research material according to the manufacturer label and appropriate laboratory procedures. Peptide Products does not provide human dosing or administration instructions.",
+    comparison: "This listing provides a dedicated Alloya MT2 10mg pre-filled pen format within the metabolic research catalogue for customers comparing current research presentations and pack formats.",
+    categoryPage: { href: "/metabolic-research-compounds", label: "Metabolic research compounds" },
   },
   "alloya-tesamorelin-20mg-pen": {
     title: "Tesamorelin 20mg Pen UK | Alloya Health Care | Peptide Products",
@@ -71,15 +72,18 @@ const productSpecific: Record<string, Partial<ProductSeoContent>> = {
       "Use this listing as the main Retatrutide product page. The supporting Retatrutide information pages should point back here for current stock, price, product images, and checkout details.",
   },
   "synexa-retatrutide-40mg": {
-    title: "Synexa Retatrutide 40mg RapidPen® UK | Peptide Products",
+    title: "Synexa Retatrutide 40mg RapidPen UK | Retatrutide Pen | Peptide Products",
     description:
-      "Synexa Retatrutide 40mg RapidPen® research presentation is back in stock in the UK. View product images, pack information, price, delivery guidance and secure checkout.",
+      "Synexa Retatrutide 40mg RapidPen research peptide pen in stock in the UK at £125. View original Synexa packaging, 40mg pen format, delivery details and secure checkout.",
     intro:
-      "Synexa Retatrutide 40mg RapidPen® is an in-stock Retatrutide research presentation supplied in a single pre-filled pen format. This page provides a dedicated Synexa product record covering current price, stock status, imagery, delivery information and research-use-only positioning.",
+      "Synexa Retatrutide 40mg RapidPen® is a featured Retatrutide research peptide presentation supplied as one pre-filled 40mg pen in original Synexa branded packaging. The listing brings together the current £125 price, live UK stock status, product gallery, pack format, tracked delivery information and secure checkout in one dedicated Synexa Retatrutide product page.",
     documentation:
-      "Review the Synexa product gallery, pack format, stock status and research-use-only information before ordering. Product-specific test documentation should be confirmed where available.",
+      "Review the original Synexa product gallery, declared Retatrutide 40mg content, pack format, stock status and research-use-only information before ordering. Product-specific independent test documentation is shown only where it matches the listed product and batch.",
+    handling:
+      "Store and handle the Synexa Retatrutide 40mg research presentation according to the manufacturer label and appropriate laboratory procedures. Peptide Products does not provide human dosing or administration instructions.",
     comparison:
-      "Researchers comparing Retatrutide 40mg pen presentations can review this Synexa RapidPen® alongside the flagship Alluvi Retatrutide 40mg listing.",
+      "Customers comparing Retatrutide 40mg pen formats can review the Synexa RapidPen® alongside the Alluvi Retatrutide 40mg presentation, with each product keeping its own imagery, documentation, stock status and checkout route.",
+    categoryPage: { href: "/metabolic-research-compounds", label: "Metabolic research compounds" },
   },
   "synexa-glow-ghk-cu-70mg-pen": {
     title: "Synexa Glow GHK-CU 70mg Pen UK | BPC-157, TB-500 & GHK-CU",

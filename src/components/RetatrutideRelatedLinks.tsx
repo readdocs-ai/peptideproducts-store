@@ -6,6 +6,12 @@ type RetatrutideRelatedLinksProps = {
 
 const retatrutideLinks = [
   {
+    href: "/product/synexa-retatrutide-40mg",
+    label: "Synexa Retatrutide 40mg RapidPen",
+    description:
+      "Dedicated Synexa Retatrutide 40mg RapidPen product page with current £125 price, UK stock status, original product imagery and secure checkout.",
+  },
+  {
     href: "/product/retatrutide",
     label: "Retatrutide 40mg product",
     description:
