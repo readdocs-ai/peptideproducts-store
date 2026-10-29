@@ -7,8 +7,9 @@ function gbp(value: number) {
   return new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }).format(value);
 }
 
-export default async function PrintableOrderPage({ params }: { params: { id: string } }) {
-  const order = await getOrder(decodeURIComponent(params.id));
+export default async function PrintableOrderPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const order = await getOrder(decodeURIComponent(id));
 
   if (!order) {
     return <main className="mx-auto max-w-3xl p-8"><h1 className="text-2xl font-black">Order not found</h1><Link href="/admin/orders" className="mt-4 inline-block font-bold text-accent">Back to orders</Link></main>;

@@ -50,10 +50,11 @@ async function saveSummary(
 
 export async function GET(
   _req: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    const order = await getOrder(params.id);
+    const { id: routeId } = await params;
+    const order = await getOrder(routeId);
 
     if (!order) {
       return NextResponse.json({ error: "Order not found." }, { status: 404 });
@@ -103,9 +104,10 @@ export async function GET(
 
 export async function POST(
   _req: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
-  const order = await getOrder(params.id);
+  const { id: routeId } = await params;
+  const order = await getOrder(routeId);
 
   if (!order) {
     return NextResponse.json({ error: "Order not found." }, { status: 404 });

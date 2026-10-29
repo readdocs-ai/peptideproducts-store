@@ -1,4 +1,6 @@
 import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 import { isKvConfigured, listOrders, StoredOrder } from "@/lib/orders";
 import { CustomerReviewEmailButton } from "@/components/admin/CustomerReviewEmailButton";
 
@@ -173,10 +175,11 @@ function buildCustomerList(orders: StoredOrder[]) {
 export default async function AdminCustomersPage({
   searchParams,
 }: {
-  searchParams?: { limit?: string; q?: string };
+  searchParams?: Promise<{ limit?: string; q?: string }>;
 }) {
-  const limit = Math.max(100, Number(searchParams?.limit || 500));
-  const query = (searchParams?.q || "").trim().toLowerCase();
+  const params = await searchParams;
+  const limit = Math.max(100, Number(params?.limit || 500));
+  const query = (params?.q || "").trim().toLowerCase();
   const orders = isKvConfigured() ? await listOrders(Math.min(limit, 2000)) : [];
   const genuineOrders = orders.filter((order) => order.status === "paid" || order.status === "shipped");
   const allCustomers = buildCustomerList(genuineOrders);
@@ -233,7 +236,7 @@ export default async function AdminCustomersPage({
         <form action="/admin/customers" className="flex flex-col gap-3 sm:flex-row">
           <input
             name="q"
-            defaultValue={searchParams?.q || ""}
+            defaultValue={query || ""}
             placeholder="Search name, email, phone, postcode or product"
             className="min-w-0 flex-1 rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink outline-none focus:border-accent focus:bg-white"
           />

@@ -86,9 +86,10 @@ function isGenuineSale(order: Awaited<ReturnType<typeof listOrders>>[number]) {
 export default async function AdminReportsPage({
   searchParams,
 }: {
-  searchParams?: { range?: string };
+  searchParams?: Promise<{ range?: string }>;
 }) {
-  const rawRange = searchParams?.range || "last30";
+  const params = await searchParams;
+  const rawRange = params?.range || "last30";
   const allowedRanges: RangeKey[] = [
     "today",
     "yesterday",

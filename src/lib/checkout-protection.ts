@@ -1,7 +1,10 @@
 import crypto from "node:crypto";
 import Redis from "ioredis";
 
-const redisUrl = process.env.REDIS_URL || "";
+// Preview must use the separate test Redis instance. Never fall back to live orders.
+const redisUrl = process.env.VERCEL_ENV === "preview"
+  ? (process.env.PP_TEST_REDIS_REDIS_URL || "")
+  : (process.env.REDIS_URL || "");
 const redis = redisUrl
   ? new Redis(redisUrl, {
       maxRetriesPerRequest: 2,

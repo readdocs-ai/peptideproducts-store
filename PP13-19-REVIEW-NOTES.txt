@@ -1,0 +1,13 @@
+PP13.19 - PREVIEW TEST CANDIDATE (NOT PRODUCTION)
+
+Updated confirmation page order status link with order ID and customer email from checkout session.
+Updated order status form to prefill from URL parameters.
+Updated customer, shipped, and order update email links to use Vercel Preview deployment URL in Preview and canonical website in Production.
+Removed duplicated payment warning block from initial customer email, preserving single payment warning and bank instructions.
+Receiving account disclosure now uses exact Vercel configured account name with corrected wording on page and email.
+
+IMPORTANT: For Production to show Bling Beauty Products Ltd, BANK_TRANSFER_ACCOUNT_NAME must exactly match that name. Do not change the actual bank account name to a name that does not match bank records.
+
+NOT VERIFIED: Full build (dependency installation timed out in this environment); actual email delivery; Preview/Production order-status lookup; admin record; npm audit warnings.
+
+Do not deploy to Production or reopen ordering before Preview checks and explicit approval.

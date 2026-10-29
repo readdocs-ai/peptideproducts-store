@@ -1,8 +1,8 @@
-import { ORDERING_PAUSED } from "@/lib/maintenance";
+import { ORDERING_PAUSED, IS_PREVIEW } from "@/lib/maintenance";
 import { NextResponse } from "next/server";
-import Stripe from "stripe";
 import { products } from "@/data/products";
-import { createOrder, updateOrderStripeSessionId, type StoredOrderItem } from "@/lib/orders";
+import { createOrder, type StoredOrderItem } from "@/lib/orders";
+import { sendOrderEmails } from "@/lib/email";
 import { checkCheckoutProtection, getRequestIp } from "@/lib/checkout-protection";
 
 export const runtime = "nodejs";
@@ -45,20 +45,15 @@ const ENQUIRY_ONLY_PRODUCT_IDS = new Set([
   "retatrutide-research-compound-40mg-vial",
 ]);
 
-function getStripe() {
-  const secretKey = process.env.STRIPE_SECRET_KEY;
-  if (!secretKey) throw new Error("STRIPE_SECRET_KEY is not configured");
-  return new Stripe(secretKey);
-}
-
 function roundGBP(value: number) {
   return Math.round(value * 100) / 100;
 }
 
 function normaliseQty(value: number | string | undefined) {
+  // Reject fractional, negative and excessive quantities rather than silently changing an order.
   const qty = Number(value);
-  if (!Number.isFinite(qty)) return 0;
-  return Math.max(0, Math.min(99, Math.floor(qty)));
+  if (!Number.isSafeInteger(qty) || qty < 1 || qty > 99) return 0;
+  return qty;
 }
 
 function isUkCountry(country: string) {
@@ -86,6 +81,9 @@ function buildItems(rawItems: IncomingCartItem[]) {
     }
 
     const existing = merged.get(product.id);
+    if ((existing?.qty || 0) + qty > 99) {
+      throw new Error("Maximum quantity per product is 99.");
+    }
     merged.set(product.id, {
       id: product.id,
       name: product.name,
@@ -97,25 +95,46 @@ function buildItems(rawItems: IncomingCartItem[]) {
   return Array.from(merged.values());
 }
 
-function buildStripeLineItems(items: StoredOrderItem[]): Stripe.Checkout.SessionCreateParams.LineItem[] {
-  return items.map((item) => ({
-    quantity: item.qty,
-    price_data: {
-      currency: "gbp",
-      unit_amount: Math.round(item.priceGBP * 100),
-      product_data: { name: item.name, metadata: { product_id: item.id } },
-    },
-  }));
-}
-
 export async function POST(req: Request) {
   if (ORDERING_PAUSED) return NextResponse.json({ ok: false, error: "New orders are temporarily suspended for maintenance." }, { status: 503 });
   try {
-    const body = (await req.json()) as Body;
+    const declaredSize = Number(req.headers.get("content-length") || "0");
+    if (declaredSize > 32768) {
+      return NextResponse.json({ ok: false, error: "Checkout request is too large." }, { status: 413 });
+    }
+    const parsed: unknown = await req.json();
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return NextResponse.json({ ok: false, error: "Invalid checkout details." }, { status: 400 });
+    }
+    const body = parsed as Body;
+    const address = body.shippingAddress;
+    const textFields = [body.name, body.email, body.phone,
+      address?.line1, address?.line2, address?.city, address?.state,
+      address?.postalCode, address?.country, body.researchDeclarationVersion];
+    if (textFields.some((value) => value !== undefined && typeof value !== "string")) {
+      return NextResponse.json({ ok: false, error: "Invalid checkout details." }, { status: 400 });
+    }
+    if (body.website !== undefined && typeof body.website !== "string") {
+      return NextResponse.json({ ok: false, error: "Invalid checkout details." }, { status: 400 });
+    }
     const name = body.name?.trim() || "";
     const email = body.email?.trim().toLowerCase() || "";
+    // Preview is restricted to the explicitly designated test inbox.
+    if (IS_PREVIEW && (!process.env.PP_TEST_ORDER_EMAIL?.trim() ||
+        email !== process.env.PP_TEST_ORDER_EMAIL.trim().toLowerCase())) {
+      return NextResponse.json({ ok: false, error: "Preview testing only: use the designated test email address." }, { status: 403 });
+    }
     const phone = body.phone?.trim() || "";
     const rawItems = Array.isArray(body.items) ? body.items : [];
+    if (rawItems.some((item) => !item || typeof item !== "object" || Array.isArray(item))) {
+      return NextResponse.json({ ok: false, error: "Invalid cart items." }, { status: 400 });
+    }
+    if (rawItems.length > 100) {
+      return NextResponse.json({ ok: false, error: "Too many cart items." }, { status: 400 });
+    }
+    if (body.shippingAddress && (typeof body.shippingAddress !== "object" || Array.isArray(body.shippingAddress))) {
+      return NextResponse.json({ ok: false, error: "Invalid shipping address." }, { status: 400 });
+    }
     const shippingAddress = {
       line1: body.shippingAddress?.line1?.trim() || "",
       line2: body.shippingAddress?.line2?.trim() || "",
@@ -125,10 +144,11 @@ export async function POST(req: Request) {
       country: body.shippingAddress?.country?.trim().toUpperCase() || "",
     };
 
-    if (name.length < 2 || !email.includes("@") || phone.length < 7) {
+    if (name.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || phone.length < 7) {
       return NextResponse.json({ ok: false, error: "Valid contact details are required." }, { status: 400 });
     }
-    if (!shippingAddress.line1 || !shippingAddress.city || !shippingAddress.postalCode) {
+    if (!shippingAddress.line1 || !shippingAddress.city || !shippingAddress.postalCode ||
+        !/^(GIR\s?0AA|(?:[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}))$/i.test(shippingAddress.postalCode)) {
       return NextResponse.json({ ok: false, error: "A complete shipping address is required." }, { status: 400 });
     }
     if (!ALLOWED_COUNTRIES.has(shippingAddress.country)) {
@@ -184,72 +204,39 @@ export async function POST(req: Request) {
     const total = roundGBP(subtotal + shipping);
     const shippingRegion = "UK";
 
+    const accountName = process.env.BANK_TRANSFER_ACCOUNT_NAME?.trim() || "";
+    const sortCode = process.env.BANK_TRANSFER_SORT_CODE || "";
+    const accountNumber = process.env.BANK_TRANSFER_ACCOUNT_NUMBER || "";
+    if (!accountName || !/^\d{6}$/.test(sortCode.replace(/\D/g, "")) || !/^\d{8}$/.test(accountNumber.replace(/\D/g, ""))) {
+      return NextResponse.json({ ok: false, error: "Bank transfer is temporarily unavailable. Please contact us before placing an order." }, { status: 503 });
+    }
+
     const order = await createOrder({
-      name,
-      email,
-      phone,
+      name, email, phone,
       marketingOptIn: body.marketingOptIn === true,
       researchUseAccepted: true,
       researchDeclarationVersion: body.researchDeclarationVersion || "research-use-v1",
-      shippingRegion,
-      shippingAddress,
-      subtotal,
-      shipping,
-      total,
-      items,
-      paymentMethod: "card",
+      shippingRegion, shippingAddress, subtotal, shipping, total, items,
+      paymentMethod: "bank_transfer",
     });
 
-    const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "https://www.peptideproducts.co.uk").replace(/\/$/, "");
-    const stripe = getStripe();
-    const lineItems = buildStripeLineItems(items);
-
-
-    const session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      customer_email: email,
-      client_reference_id: order.id,
-      line_items: lineItems,
-      success_url: `${siteUrl}/order-success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteUrl}/checkout?payment=cancelled`,
-      metadata: {
-        app: "peptide-products",
-        order_id: order.id,
-        shipping_country: shippingAddress.country,
-        checkout_version: "pp-dynamic-payments-v1",
-        research_use_accepted: "true",
-        research_declaration_version: body.researchDeclarationVersion || "research-use-v1",
-      },
-      payment_intent_data: {
-        metadata: {
-          app: "peptide-products",
-          order_id: order.id,
-          checkout_version: "pp-dynamic-payments-v1",
-        research_use_accepted: "true",
-        research_declaration_version: body.researchDeclarationVersion || "research-use-v1",
-        },
-      },
-    });
-
-    if (!session.url) throw new Error("Stripe did not return a checkout URL");
-
-    await updateOrderStripeSessionId({ orderId: order.id, sessionId: session.id });
+    // The order is saved first. An email failure must not create duplicate orders.
+    try {
+      await sendOrderEmails({
+        orderId: order.id, customerName: name, customerEmail: email, customerPhone: phone,
+        paymentMethod: "bank_transfer", subtotalGBP: subtotal, shippingGBP: shipping,
+        totalGBP: total, items, shippingRegion, shippingAddress,
+      });
+    } catch (emailError) {
+      console.error("BANK TRANSFER ORDER EMAIL ERROR:", emailError);
+    }
 
     return NextResponse.json({
-      ok: true,
-      orderId: order.id,
-      paymentMethod: "card",
-      checkoutUrl: session.url,
-      subtotal,
-      promoDiscount: 0,
-      shipping,
-      total,
+      ok: true, orderId: order.id, paymentMethod: "bank_transfer", subtotal, shipping, total,
+      bank: { accountName, sortCode, accountNumber },
     });
   } catch (error) {
-    console.error("STRIPE CHECKOUT ERROR:", error);
-    return NextResponse.json(
-      { ok: false, error: error instanceof Error ? error.message : "Unable to start secure card checkout." },
-      { status: 500 }
-    );
+    console.error("BANK TRANSFER CHECKOUT ERROR:", error);
+    return NextResponse.json({ ok: false, error: "Unable to place the order. Please contact us if the problem continues." }, { status: 500 });
   }
 }

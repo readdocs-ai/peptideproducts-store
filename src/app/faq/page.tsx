@@ -38,12 +38,12 @@ const faqs = [
   {
     question: "How do I place an order?",
     answer:
-      "Add products to your cart, review your order, enter your delivery details, then continue to Stripe to complete secure card payment.",
+      "Add products to your cart, review your order and enter your delivery details. Place the order to receive bank-transfer instructions and use your order number as the payment reference.",
   },
   {
     question: "What payment methods do you accept?",
     answer:
-      "We accept secure debit and credit card payments through Stripe. Stripe may also show saved or wallet payment options when available on your device.",
+      "We currently accept UK bank transfer. After placing an order, you will see the bank details and receive payment instructions by email. Please use your order number as the payment reference.",
   },
   
  
@@ -138,8 +138,8 @@ product supply.
               <div className="mt-5 flex flex-wrap gap-2">
                 <span className="trust-pill">Research use only</span>
                 <span className="trust-pill">Tracked UK dispatch</span>
-                <span className="trust-pill">Secure card checkout</span>
-                <span className="trust-pill">Stripe secure checkout</span>
+                <span className="trust-pill">UK bank transfer checkout</span>
+                <span className="trust-pill">Order instructions by email</span>
               </div>
             </section>
 

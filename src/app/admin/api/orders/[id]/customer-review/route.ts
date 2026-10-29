@@ -17,10 +17,11 @@ const allowedReasons: CustomerReviewReason[] = [
 
 export async function POST(
   req: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    const order = await getOrder(params.id);
+    const { id: routeId } = await params;
+    const order = await getOrder(routeId);
     if (!order) return NextResponse.json({ error: "Order not found" }, { status: 404 });
 
     const body = await req.json();

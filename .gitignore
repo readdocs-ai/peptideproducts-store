@@ -1,9 +1,9 @@
-node_modules
-.next
+node_modules/
+.next/
+.vercel/
 .env
-.env.local
-.vercel
-dist
-build
+.env.*
+*.zip
+*.tsbuildinfo
 *.log
-env.local
+*.bak

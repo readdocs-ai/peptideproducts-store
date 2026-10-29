@@ -1,3 +1,4 @@
+import { randomInt } from "node:crypto";
 import Redis from "ioredis";
 
 export type StoredOrderItem = {
@@ -55,7 +56,10 @@ export type StoredOrder = {
   royalMailError: string | null;
 };
 
-const redisUrl = process.env.REDIS_URL || "";
+// Preview must use the separate test Redis instance. Never fall back to live orders.
+const redisUrl = process.env.VERCEL_ENV === "preview"
+  ? (process.env.PP_TEST_REDIS_REDIS_URL || "")
+  : (process.env.REDIS_URL || "");
 const redis = redisUrl
   ? new Redis(redisUrl, {
       maxRetriesPerRequest: 2,
@@ -87,7 +91,7 @@ function makeOrderId() {
   let suffix = "";
 
   for (let i = 0; i < 6; i += 1) {
-    suffix += chars[Math.floor(Math.random() * chars.length)];
+    suffix += chars[randomInt(chars.length)];
   }
 
   return `PP-${y}${m}${d}-${suffix}`;

@@ -10,7 +10,7 @@ function unauthorizedResponse() {
   });
 }
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname;
   if (ORDERING_PAUSED) {
     if (path === "/cart" || path.startsWith("/cart/") || path === "/checkout" || path.startsWith("/checkout/")) {
@@ -53,12 +53,25 @@ export function middleware(req: NextRequest) {
     return unauthorizedResponse();
   }
 
-  const base64Credentials = authHeader.split(" ")[1];
-  const decoded = atob(base64Credentials);
-  const [providedUsername, providedPassword] = decoded.split(":");
+  let providedUsername = "";
+let providedPassword = "";
 
-  if (providedUsername !== username || providedPassword !== password) {
+try {
+  const base64Credentials = authHeader.slice(6).trim();
+  const decoded = atob(base64Credentials);
+  const separator = decoded.indexOf(":");
+
+  if (separator === -1) {
     return unauthorizedResponse();
+  }
+
+  providedUsername = decoded.slice(0, separator);
+  providedPassword = decoded.slice(separator + 1);
+} catch {
+  return unauthorizedResponse();
+}
+
+if (providedUsername !== username || providedPassword !== password) {    return unauthorizedResponse();
   }
 
   return NextResponse.next();

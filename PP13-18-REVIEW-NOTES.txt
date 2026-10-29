@@ -1,0 +1,32 @@
+PP13.18 - BANK TRANSFER CONTENT REVIEW - PREVIEW ONLY
+
+Based on user-supplied PP13.16 candidate containing PP13.17 admin fixes.
+
+WHAT CHANGED
+- Replaced outdated Stripe/card-payment marketing copy on customer-facing product, category, FAQ, cart-related, shipping, returns, privacy and terms pages.
+- Preserved existing cart and UK bank-transfer checkout.
+- Removed unrelated Bling Beauty Products fallback bank account name from checkout response and email templates. Checkout now rejects orders if bank account name or valid sort code/account number are missing.
+- Updated legacy order-success wording to avoid promising that a payment succeeded merely because a user returned to the page. Historical Stripe session logic remains for old transactions.
+
+PRESERVED
+- Admin order fix and historical Stripe session references for reconciliation.
+- Product catalogue, prices, SEO routes, existing Redis orders (no live DB accessed).
+- Production ordering launch flag remains unchanged and OFF unless explicitly set in Vercel.
+- Preview-only safety guards remain in place.
+
+CHECKS COMPLETED
+- 146 TS/TSX/JS files passed TypeScript syntax/transpilation checks (not full typecheck).
+- No Stripe/card-payment references found in current customer-facing TSX except legacy /order-success internal historical references.
+- No secret .env files, .next build output or node_modules included.
+
+NOT YET VERIFIED
+- Full npm build: dependency installation timed out in this execution environment.
+- Actual email delivery or content with Production settings: cannot test without connected live secrets/Resend.
+- Live Vercel deployment and real customer checkout: NOT performed.
+
+NEXT
+- Unzip to a NEW folder on Windows; run npm ci and npm run build.
+- Deploy to Vercel Preview only, verify bank transfer confirmation page and email to designated test inbox.
+- Check RESEND_API_KEY warning and bank settings in Production before user-approved reopening.
+
+NEVER copy a .env file into a public ZIP or enable production orders without explicit approval.

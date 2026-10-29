@@ -16,6 +16,18 @@ export const metadata: Metadata = {
 export default function ReviewsPage() {
   const reviews = [
   {
+    name: "John Brannan",
+    text: "Great communication, very quick delivery and product was well presented with excellent packaging.",
+  },
+  {
+    name: "Angela",
+    text: "Quick and easy to order , good price ... Excellent , fast delivery .. Thank you .",
+  },
+  {
+    name: "Patricia",
+    text: "I was sceptical also, as I've been let down twice in the past from other suppliers, Great service, arrived so quickly Thankyou 5*",
+  },
+  {
     name: "Vincent Walker, UK",
     text: "Excellent service quick delivery",
   },
@@ -164,8 +176,6 @@ delivery, packaging, communication, and support from Peptide Products UK. Custom
               <div className="mt-5 flex flex-wrap gap-2">
                 <span className="trust-pill">UK-based supplier</span>
                 <span className="trust-pill">Tracked delivery available</span>
-               <span className="trust-pill">Secure card checkout</span>
-<span className="trust-pill">Stripe card payments</span>
                 <span className="trust-pill">Simple mobile checkout</span>
                 <span className="trust-pill">Laboratory research use only</span>
               </div>
@@ -311,11 +321,11 @@ delivery, packaging, communication, and support from Peptide Products UK. Custom
 
                <div className="rounded-xl2 border border-line bg-panel p-4">
   <div className="text-sm font-extrabold text-ink">
-    Alternative checkout
+    Bank transfer checkout
   </div>
 
   <p className="mt-2 text-sm leading-6 text-muted">
-    Secure Stripe card checkout is available, with order updates sent by email after payment confirmation.
+    UK bank transfer is available, with order updates sent by email after payment confirmation.
   </p>
 </div>
 

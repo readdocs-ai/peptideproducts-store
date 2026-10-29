@@ -1,4 +1,6 @@
 import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 import { getOrderForAdminSearch, isKvConfigured, listOrders } from "@/lib/orders";
 import { StatusBadge } from "@/components/admin/StatusBadge";
 import { PaymentMethodBadge } from "@/components/admin/PaymentMethodBadge";
@@ -95,11 +97,12 @@ function formatCountry(code: string) {
 export default async function AdminOrdersPage({
   searchParams,
 }: {
-  searchParams?: { limit?: string; q?: string; status?: string };
+  searchParams?: Promise<{ limit?: string; q?: string; status?: string }>;
 }) {
-  const limit = Math.max(100, Math.min(5000, Number(searchParams?.limit || 100)));
-  const searchQuery = normaliseSearch(searchParams?.q);
-  const statusFilter = normaliseSearch(searchParams?.status).toLowerCase();
+  const params = await searchParams;
+  const limit = Math.max(100, Math.min(5000, Number(params?.limit || 100)));
+  const searchQuery = normaliseSearch(params?.q);
+  const statusFilter = normaliseSearch(params?.status).toLowerCase();
   const checkoutProtection = await getCheckoutProtectionSummary(50);
   const exactOrderLookup =
     isKvConfigured() && /^pp-\d{6}-[a-z0-9]+$/i.test(searchQuery)

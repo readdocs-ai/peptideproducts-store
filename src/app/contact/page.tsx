@@ -129,7 +129,7 @@ export default function Contact() {
             </form>
 
             <div className="mt-8 text-xs text-muted">
-              Mobile: <span className="font-semibold text-ink">07429098887</span>
+              Mobile: <span className="font-semibold text-ink">07459676630</span>
             </div>
           </div>
         </Container>

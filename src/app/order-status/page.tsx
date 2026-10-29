@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -18,7 +18,7 @@ type LookupOrder = {
 };
 
 const whatsappHref =
-  "https://wa.me/447429098887?text=Hi%20Peptide%20Products%2C%20I%20need%20help%20with%20my%20order%20status.";
+  "https://wa.me/447459676630?text=Hi%20Peptide%20Products%2C%20I%20need%20help%20with%20my%20order%20status.";
 
 function WhatsAppIcon() {
   return (
@@ -98,6 +98,14 @@ export default function OrderStatusPage() {
   const [error, setError] = useState("");
   const [order, setOrder] = useState<LookupOrder | null>(null);
 
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const initialOrderId = query.get("orderId");
+    const initialEmail = query.get("email");
+    if (initialOrderId) setOrderId(initialOrderId);
+    if (initialEmail) setEmail(initialEmail);
+  }, []);
+
   async function handleLookup(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
@@ -127,7 +135,7 @@ export default function OrderStatusPage() {
   }
 
   const whatsappOrderHref = order
-    ? `https://wa.me/447429098887?text=${encodeURIComponent(
+    ? `https://wa.me/447459676630?text=${encodeURIComponent(
         `Hi Peptide Products, I need help with order ${order.id}.`
       )}`
     : whatsappHref;

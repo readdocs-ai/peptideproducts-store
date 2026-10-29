@@ -11,7 +11,7 @@ import { formatGBP, readCart } from "@/lib/cart";
 import type { StoredOrderItem } from "@/lib/orders";
 
 const UK_SHIPPING_FEE_GBP = 0;
-const WHATSAPP_NUMBER = "447429098887";
+const WHATSAPP_NUMBER = "447459676630";
 const CHECKOUT_DETAILS_KEY = "pp_checkout_details_v2";
 const CHECKOUT_ATTEMPT_KEY = "pp_checkout_attempt_v1";
 const CHECKOUT_REUSE_WINDOW_MS = 20 * 60 * 1000;
@@ -41,7 +41,7 @@ type OrderApiResponse = {
   ok?: boolean;
   error?: string;
   orderId?: string;
-  checkoutUrl?: string;
+  bank?: { accountName: string; sortCode: string; accountNumber: string };
   subtotal?: number;
   shipping?: number;
   total?: number;
@@ -88,7 +88,7 @@ function getHelpHref(country: string, total: number) {
     COUNTRY_OPTIONS.find((option) => option.value === country)?.label || country;
 
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    `Hi Peptide Products, I need help completing a card payment. My order total is ${formatGBP(
+    `Hi Peptide Products, I need help completing a bank transfer. My order total is ${formatGBP(
       total
     )} and my shipping country is ${selectedCountry}.`
   )}`;
@@ -244,6 +244,8 @@ export default function Checkout() {
 
     setSubmitting(true);
     setError(null);
+    // Do not allow a previous order's payment instructions to appear as this order.
+    try { window.sessionStorage.removeItem("pp_bank_order_confirmation"); } catch { /* Storage may be unavailable. */ }
 
     try {
       const payload = {
@@ -266,24 +268,6 @@ export default function Checkout() {
         website,
       };
 
-      const fingerprint = JSON.stringify(payload);
-
-      // If the customer has just returned from Stripe without paying, reuse the
-      // same still-live Checkout Session instead of creating another pending order.
-      try {
-        const rawAttempt = window.localStorage.getItem(CHECKOUT_ATTEMPT_KEY);
-        if (rawAttempt) {
-          const previous = JSON.parse(rawAttempt) as SavedCheckoutAttempt;
-          const isRecent = Date.now() - previous.createdAt < CHECKOUT_REUSE_WINDOW_MS;
-          if (isRecent && previous.fingerprint === fingerprint && previous.checkoutUrl) {
-            window.location.assign(previous.checkoutUrl);
-            return;
-          }
-        }
-      } catch {
-        // If storage is unavailable, create a normal fresh Stripe session.
-      }
-
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -292,28 +276,16 @@ export default function Checkout() {
 
       const data = (await response.json()) as OrderApiResponse;
 
-      if (!response.ok || !data.ok || !data.orderId || !data.checkoutUrl) {
-        setError(data.error || "We could not open the secure payment page. Please try again or message us for help.");
+      if (!response.ok || !data.ok || !data.orderId || !data.bank) {
+        setError(data.error || "We could not place your order. Please contact us if this continues.");
         return;
       }
-
-      try {
-        const attempt: SavedCheckoutAttempt = {
-          fingerprint,
-          checkoutUrl: data.checkoutUrl,
-          orderId: data.orderId,
-          createdAt: Date.now(),
-        };
-        window.localStorage.setItem(CHECKOUT_ATTEMPT_KEY, JSON.stringify(attempt));
-      } catch {
-        // Reuse is an optimisation only; checkout still works without storage.
-      }
-
-      // Keep the cart and contact details until Stripe confirms success.
-      // If the customer presses Back or cancels, they can retry without starting over.
-      window.location.assign(data.checkoutUrl);
+      window.sessionStorage.setItem("pp_bank_order_confirmation", JSON.stringify({
+        orderId: data.orderId, customerEmail: email.trim(), total: data.total, bank: data.bank,
+      }));
+      window.location.assign("/bank-transfer-confirmation");
     } catch {
-      setError("We could not connect to the secure payment page. Please check your connection and try again.");
+      setError("We could not confirm whether your order was received. Please check your email and order status, or contact us, before trying again. This helps avoid duplicate orders.");
     } finally {
       setSubmitting(false);
     }
@@ -326,7 +298,7 @@ export default function Checkout() {
         <Container>
           <div className="mx-auto max-w-6xl">
             <div className="rounded-[1.5rem] border border-line bg-white p-4 shadow-soft sm:p-6 lg:p-8">
-              <div className="eyebrow">Secure card checkout</div>
+              <div className="eyebrow">Bank transfer checkout</div>
               <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden">
                 <label htmlFor="website">Website</label>
                 <input
@@ -340,16 +312,16 @@ export default function Checkout() {
                 />
               </div>
               <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl lg:text-4xl">
-                Complete your details, then pay securely with Stripe.
+                Place your order, then pay by UK bank transfer.
               </h1>
               <p className="mt-3 max-w-3xl text-sm leading-7 text-muted sm:text-base">
-                One simple checkout. We collect your delivery details here, then Stripe opens securely for the final card payment. Your card details are never stored by Peptide Products.
+                Complete your details to receive an order number and bank transfer instructions. No payment is taken when you place your order.
               </p>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">1. Enter delivery details</div>
-                <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">2. Continue to Stripe</div>
-                <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">3. Confirm secure payment</div>
+                <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">2. Place your order</div>
+                <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">3. Transfer using your order reference</div>
               </div>
             </div>
 
@@ -362,9 +334,9 @@ export default function Checkout() {
 
             {paymentCancelled ? (
               <div className="mt-5 rounded-[1.25rem] border border-amber-300 bg-amber-50 p-4 sm:p-5">
-                <div className="text-base font-extrabold text-amber-950">Payment was not completed — you have not been charged.</div>
+                <div className="text-base font-extrabold text-amber-950">Your previous payment was not completed</div>
                 <p className="mt-2 text-sm leading-6 text-amber-900">
-                  Your basket and the details you entered have been kept. Check them below and press the payment button when you are ready to try again.
+                  Your basket and delivery details have been kept. Review them below and place your order using UK bank transfer. No money is taken when you place an order.
                 </p>
               </div>
             ) : null}
@@ -389,7 +361,7 @@ export default function Checkout() {
             {orderItems.length === 0 ? (
               <div className="mt-6 rounded-[1.5rem] border border-line bg-white p-8 text-center shadow-soft">
                 <h2 className="text-2xl font-extrabold text-ink">Your basket is empty.</h2>
-                <p className="mt-3 text-sm text-muted">Add a product before continuing to secure payment.</p>
+                <p className="mt-3 text-sm text-muted">Add a product before placing your order.</p>
                 <Link href="/shop" className="mt-5 inline-flex rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft">
                   Browse products
                 </Link>
@@ -555,7 +527,7 @@ export default function Checkout() {
                       </span>
                     </label>
                     <p className="mt-3 text-xs leading-5 text-muted">
-                      This declaration must be accepted before secure card payment can begin. Acceptance is recorded with the order for compliance purposes.
+                      This declaration must be accepted before placing your order. Acceptance is recorded with the order for compliance purposes.
                     </p>
                   </section>
 
@@ -563,17 +535,16 @@ export default function Checkout() {
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div>
                         <div className="text-xs font-extrabold uppercase tracking-[0.16em] text-blue-700">Payment</div>
-                        <h2 className="mt-2 text-xl font-extrabold text-blue-950">Secure card payment with Stripe</h2>
+                        <h2 className="mt-2 text-xl font-extrabold text-blue-950">UK bank transfer</h2>
                       </div>
-                      <span className="rounded-full bg-white px-3 py-1 text-xs font-extrabold text-blue-700">Recommended secure checkout</span>
+                      <span className="rounded-full bg-white px-3 py-1 text-xs font-extrabold text-blue-700">No card details required</span>
                     </div>
                     <p className="mt-3 text-sm leading-6 text-blue-900">
-                      Press the button below and Stripe will open for the final payment. Your email is passed across so you do not need to start again. Stripe may also show saved or wallet payment options when available on your device.
-                    </p>
+                   Place your order to receive the bank details and your unique payment reference. Your order will remain awaiting payment until your bank transfer has been verified. </p>
 
                     {!researchUseAccepted ? (
                       <div className="mt-4 rounded-xl2 border border-amber-200 bg-amber-50 p-3 text-sm font-semibold text-amber-900">
-                        Please accept the Research Use Declaration above to continue to Stripe.
+                        Please accept the Research Use Declaration above to place your order.
                       </div>
                     ) : null}
 
@@ -590,10 +561,10 @@ export default function Checkout() {
                         (canSubmit ? "bg-accent hover:bg-accent/90" : "cursor-not-allowed bg-accent/40")
                       }
                     >
-                      {submitting ? "Opening secure payment..." : `Continue to secure payment — ${formatGBP(total)}`}
+                      {submitting ? "Placing your order..." : `Place order — ${formatGBP(total)}`}
                     </button>
                     <p className="mt-3 text-center text-xs leading-5 text-blue-800">
-                      You are not charged until you confirm the payment on Stripe.
+                      No payment is taken now. Bank details are displayed after the order is placed.
                     </p>
                   </section>
                 </div>
@@ -626,14 +597,14 @@ export default function Checkout() {
                   </div>
 
                   <div className="mt-5 grid gap-2 text-xs font-semibold text-muted">
-                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">Secure Stripe card checkout</div>
-                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">Your cart stays saved if you return from Stripe</div>
-                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">Order confirmation sent after successful payment</div>
+                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">UK bank transfer only</div>
+                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">Bank details displayed after ordering</div>
+                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">Order confirmation emailed after ordering</div>
                   </div>
 
                   <div className="mt-5 rounded-xl2 border border-emerald-200 bg-emerald-50 p-4">
                     <div className="text-sm font-extrabold text-emerald-950">Having trouble paying?</div>
-                    <p className="mt-1 text-xs leading-5 text-emerald-800">Message us and we can guide you through the secure card checkout.</p>
+                    <p className="mt-1 text-xs leading-5 text-emerald-800">Message us if you need help with your bank transfer.</p>
                     <a
                       href={getHelpHref(country, total)}
                       target="_blank"

@@ -114,7 +114,7 @@ export default function Page() {
                     Secure checkout
                   </div>
                   <p className="mt-2 text-sm text-muted">
-                    Payments are processed securely through Stripe.
+                    Payment is by UK bank transfer. Bank details are provided after ordering.
                   </p>
                 </div>
 

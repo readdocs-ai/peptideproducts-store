@@ -10,7 +10,7 @@ import { products } from "@/data/products";
 import { CartItem, cartTotalGBP, clearCart, formatGBP, readCart, setQty } from "@/lib/cart";
 
 const UK_SHIPPING_FEE_GBP = 0;
-const WHATSAPP_NUMBER = "447429098887";
+const WHATSAPP_NUMBER = "447459676630";
 
 const ENQUIRY_ONLY_PRODUCT_IDS = new Set([
   "reta-research-compound-10mg-vial",
@@ -109,7 +109,7 @@ export default function CartPage() {
                   Review your order before payment.
                 </h1>
                 <p className="mt-2 max-w-3xl text-sm leading-7 text-muted">
-                  Check your products, quantities and delivery country, then continue to our simplified secure card checkout.
+                  Check your products, quantities and delivery country, then continue to checkout to place your order and receive bank-transfer instructions.
                 </p>
               </div>
 
@@ -155,8 +155,8 @@ export default function CartPage() {
               <aside className="rounded-[1.75rem] border border-line bg-white p-6 shadow-soft">
                 <div className="text-sm font-extrabold text-ink">Order confidence</div>
                 <div className="mt-4 grid gap-2 text-sm text-muted">
-                  <div className="rounded-xl2 border border-line bg-panel px-4 py-3">Secure card checkout</div>
-                  <div className="rounded-xl2 border border-line bg-panel px-4 py-3">Secure card checkout available</div>
+                  <div className="rounded-xl2 border border-line bg-panel px-4 py-3">UK bank transfer checkout</div>
+                  <div className="rounded-xl2 border border-line bg-panel px-4 py-3">Bank details provided after ordering</div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">Free UK shipping where available</div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">Order updates sent by email</div>
                 </div>
@@ -370,7 +370,7 @@ export default function CartPage() {
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                     {hasEnquiryOnlyItems
                       ? "Contact support to confirm availability before ordering"
-                      : "Secure card payment continues through Stripe."}
+                      : "Place your order to receive UK bank-transfer instructions."}
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                     Free UK delivery — Royal Mail Tracked 24
@@ -379,7 +379,7 @@ export default function CartPage() {
                     Tracked dispatch and order status updates
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                    Card details are entered securely on Stripe
+                    Payment by UK bank transfer
                   </div>
                 </div>
 
@@ -387,8 +387,8 @@ export default function CartPage() {
                   <div className="text-sm font-extrabold text-ink">What happens next?</div>
                   <div className="mt-3 grid gap-2 text-sm text-muted">
                     <div>1. Continue to checkout and enter delivery details</div>
-                    <div>2. Continue to Stripe secure payment</div>
-                    <div>3. Confirm your card payment securely</div>
+                    <div>2. Place your order and receive bank details</div>
+                    <div>3. Make your bank transfer using your order reference</div>
                   </div>
                 </div>
 

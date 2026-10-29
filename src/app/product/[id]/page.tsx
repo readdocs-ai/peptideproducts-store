@@ -10,7 +10,7 @@ import { ProductBuyBox, ProductImageGallery } from "./ui";
 import { getProductSeoContent } from "@/lib/seoProductContent";
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 const legacyProductRedirects: Record<string, string> = {
@@ -47,7 +47,8 @@ function getFormatLabel(pack: string) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedId = legacyProductRedirects[params.id] || params.id;
+  const { id } = await params;
+  const resolvedId = legacyProductRedirects[id] || id;
   const p = getProduct(resolvedId);
 
   if (!p) {
@@ -85,11 +86,12 @@ const ogImage = `https://www.peptideproducts.co.uk${p.gallery?.[0] ?? p.image}`;
   };
 }
 
-export default function ProductPage({ params }: Props) {
-  const legacyTarget = legacyProductRedirects[params.id];
+export default async function ProductPage({ params }: Props) {
+  const { id } = await params;
+  const legacyTarget = legacyProductRedirects[id];
   if (legacyTarget) redirect(`/product/${legacyTarget}`);
 
-  const p = getProduct(params.id);
+  const p = getProduct(id);
   if (!p) return notFound();
 
   const seo = getProductSeoContent(p);
@@ -193,7 +195,7 @@ export default function ProductPage({ params }: Props) {
       },
       {
         q: "How does ordering work?",
-        a: "Add an in-stock product to cart, review your order, enter your delivery details, then complete secure card payment through Stripe. Order updates are sent by email.",
+        a: "Add an in-stock product to your cart, review your order and enter your delivery details. Bank-transfer instructions are provided after ordering, and order updates are sent by email.",
       },
     ]
   : [
@@ -211,7 +213,7 @@ export default function ProductPage({ params }: Props) {
         q: "How is ordering handled?",
         a: p.enquiryOnly
           ? "Online purchasing is not currently enabled for this product. Use the product enquiry option to contact Peptide Products about availability and product information."
-          : "Add the product to cart, enter your delivery details, then complete secure card payment through Stripe.",
+          : "Add the product to your cart, enter your delivery details and place your order to receive UK bank-transfer instructions.",
       },
       {
         q: "Do you provide delivery?",
@@ -531,7 +533,7 @@ const shippingDetails = [
                     ["Presentation", "Alluvi"],
                     ["Stock", "In stock in the UK"],
                     ["Availability", "Current UK stock shown live"],
-                    ["Checkout", "Secure card payment"],
+                    ["Checkout", "UK bank transfer"],
                     ["Intended listing", "Laboratory research use only"],
                   ].map(([label, value]) => (
                     <div key={label} className="border-b border-line p-4 even:bg-panel sm:[&:nth-last-child(-n+2)]:border-b-0">
@@ -575,10 +577,10 @@ const shippingDetails = [
 
             <div className="mt-4 grid gap-3 text-sm text-muted md:grid-cols-2 xl:grid-cols-4">
               <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                Secure card checkout
+                UK bank transfer checkout
               </div>
               <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                Secure card checkout available
+                UK bank transfer checkout available
               </div>
               <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                 Free UK delivery / Royal Mail Tracked 24
@@ -595,7 +597,7 @@ const shippingDetails = [
                 Secure checkout
               </div>
               <p className="mt-2 text-sm leading-6 text-muted">
-                Secure card checkout is currently available. Payment instructions are provided after an order is placed.
+                UK bank transfer checkout is currently available. Payment instructions are provided after an order is placed.
               </p>
             </div>
 
@@ -675,10 +677,10 @@ const shippingDetails = [
 
               <div className="mt-5 grid gap-3 text-sm text-muted">
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                  Secure card checkout
+                  UK bank transfer checkout
                 </div>
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                  Secure card checkout available
+                  UK bank transfer checkout available
                 </div>
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                   Free UK delivery / Royal Mail Tracked 24

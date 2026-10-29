@@ -56,7 +56,7 @@ export default function Page() {
             <div className="mt-5 flex flex-wrap gap-2">
               <span className="trust-pill">UK-based supplier</span>
               <span className="trust-pill">Current pricing online</span>
-              <span className="trust-pill">Secure checkout via Stripe</span>
+              <span className="trust-pill">UK bank transfer checkout</span>
               <span className="trust-pill">Laboratory research use only</span>
             </div>
 
@@ -190,7 +190,7 @@ export default function Page() {
                     Secure checkout
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted">
-                    Payments are processed securely through Stripe.
+                    Payment is by UK bank transfer. Bank details are provided after ordering.
                   </p>
                 </div>
 

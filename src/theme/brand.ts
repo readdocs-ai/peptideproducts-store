@@ -4,7 +4,7 @@ export const brand = {
   description:
     "UK supplier of research peptides and laboratory compounds. Explore antioxidant, regenerative, hydration, and retatrutide-related products with secure checkout and documentation available on selected lines.",
   domain: "peptideproducts.co.uk",
-  phone: "07429 098887",
+  phone: "07459 676630",
   wholesale: "Wholesale enquiries welcome",
   supportEmail: "info@peptideproducts.co.uk",
 } as const;

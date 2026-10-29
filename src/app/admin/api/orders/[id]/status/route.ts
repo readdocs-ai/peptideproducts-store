@@ -24,10 +24,11 @@ function isValidEmail(value: string) {
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = params.id;
+    const { id: routeId } = await params;
+    const id = routeId;
     const body = await req.json();
 
     if (body.action === "update_customer_details") {

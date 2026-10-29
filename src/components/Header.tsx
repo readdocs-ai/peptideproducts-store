@@ -18,9 +18,9 @@ const helpLinks = [
   { href: "/wholesale", label: "Wholesale enquiries" },
 ] as const;
 
-const whatsappNumber = "447429098887";
+const whatsappNumber = "447459676630";
 const whatsappHref =
-  "https://wa.me/447429098887?text=Hi%20Peptide%20Products%2C%20I%20have%20a%20question%20about%20an%20order%20or%20product.";
+  "https://wa.me/447459676630?text=Hi%20Peptide%20Products%2C%20I%20have%20a%20question%20about%20an%20order%20or%20product.";
 
 function WhatsAppIcon() {
   return (

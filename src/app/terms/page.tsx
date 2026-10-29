@@ -168,7 +168,7 @@ page or contact support before ordering.
                 </p>
 
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  Card payments are processed securely through Stripe. Orders are processed after successful payment confirmation.
+                  Orders are paid by UK bank transfer and processed after payment has been verified.
                 </p>
 
                 <p className="mt-3 text-sm leading-7 text-muted">

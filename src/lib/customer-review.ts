@@ -30,7 +30,10 @@ export type CustomerFlagMatch = {
   matchedBy: Array<"email" | "phone" | "address" | "name + postcode">;
 };
 
-const redisUrl = process.env.REDIS_URL || "";
+// Preview must use the separate test Redis instance. Never fall back to live orders.
+const redisUrl = process.env.VERCEL_ENV === "preview"
+  ? (process.env.PP_TEST_REDIS_REDIS_URL || "")
+  : (process.env.REDIS_URL || "");
 const redis = redisUrl
   ? new Redis(redisUrl, {
       maxRetriesPerRequest: 2,

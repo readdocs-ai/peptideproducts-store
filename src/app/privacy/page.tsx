@@ -83,8 +83,7 @@ export default function Privacy() {
                 </h2>
 
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  Card payments are processed through Stripe. We do not store full
-                  card numbers or full card payment details on our website.
+                  Current orders are paid by UK bank transfer. We provide payment instructions after an order is placed. We retain order references and payment status to administer purchases.
                 </p>
 
                 <p className="mt-3 text-sm leading-7 text-muted">
@@ -140,7 +139,7 @@ export default function Privacy() {
                 </p>
 
                 <ul className="mt-4 grid gap-2 text-sm leading-7 text-muted">
-                  <li>• Stripe for secure card payment processing.</li>
+                  <li>• Banking providers for receiving and reconciling bank-transfer payments.</li>
                   <li>• Resend or email providers for order, contact, and support emails.</li>
                   <li>• Vercel or hosting providers for website hosting and deployment.</li>
                   <li>• Courier or delivery partners where needed to fulfil orders.</li>

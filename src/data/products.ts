@@ -113,6 +113,8 @@ export const products: Product[] = [
       "/products/synexa-retatrutide-40mg-gallery-angle.webp",
       "/products/synexa-retatrutide-40mg-gallery-back.webp",
     ],
+    coa: "/docs/coa/synexa-retatrutide-rapidpen-janoshik-215083.png",
+    coaPreview: "/docs/coa/synexa-retatrutide-rapidpen-janoshik-215083.png",
     quickFacts: [
       "Retatrutide 40mg",
       "Synexa RapidPen® presentation",

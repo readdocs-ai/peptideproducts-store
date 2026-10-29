@@ -145,7 +145,7 @@ export default function ShippingPage() {
             <section className="mt-8 rounded-xl3 border border-line bg-white p-6 shadow-soft">
               <h2 className="text-2xl font-extrabold tracking-tight text-ink">Dispatch, payment confirmation and tracking</h2>
               <p className="mt-3 text-sm leading-7 text-muted">
-                Orders are dispatched after successful payment confirmation through Stripe. UK orders are sent using Royal Mail Tracked 24 and the tracking number is provided after dispatch.
+                Orders are dispatched after the bank transfer has been received and verified. UK orders are sent using Royal Mail Tracked 24 and the tracking number is provided after dispatch.
               </p>
               <p className="mt-3 text-sm leading-7 text-muted">
                 International shipping is temporarily suspended. UK orders continue as normal.

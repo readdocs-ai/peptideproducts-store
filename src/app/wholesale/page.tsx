@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { FormStatus } from "@/components/FormStatus";
 
-const WHATSAPP_NUMBER = "447429098887";
+const WHATSAPP_NUMBER = "447459676630";
 
 const countries = [
   "United Kingdom",
@@ -419,7 +419,7 @@ export default function Wholesale() {
 
                 <div className="mt-6 rounded-xl2 border border-line bg-panel p-4 text-xs leading-6 text-muted">
                   For urgent enquiries, you can also call{" "}
-                  <span className="font-semibold text-ink">07429098887</span>{" "}
+                  <span className="font-semibold text-ink">07459676630</span>{" "}
                   or message us on WhatsApp.
                 </div>
               </div>

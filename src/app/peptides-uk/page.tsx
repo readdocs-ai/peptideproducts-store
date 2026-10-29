@@ -165,9 +165,7 @@ export default function Page() {
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
-                Card payments are processed securely through Stripe. Alternative
-                payment options may also be available through the checkout
-                process. Customers can also use the{" "}
+                Orders are placed online and paid by UK bank transfer. Customers can also use the{" "}
                 <Link href="/order-status" className="font-semibold text-ink hover:text-accent">
                   order status page
                 </Link>{" "}
@@ -180,7 +178,7 @@ export default function Page() {
                     Secure checkout
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted">
-                    Card payments are processed securely through Stripe.
+                    Payment is by UK bank transfer. Bank details are provided after ordering.
                   </p>
                 </div>
 

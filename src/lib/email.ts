@@ -12,9 +12,9 @@ export function getResend() {
 
 export const PAYMENT_DETAILS = {
   bank: {
-    accountName: "Bank transfer unavailable",
-    sortCode: "",
-    accountNumber: "",
+    accountName: process.env.BANK_TRANSFER_ACCOUNT_NAME?.trim() || "",
+    sortCode: process.env.BANK_TRANSFER_SORT_CODE || "",
+    accountNumber: process.env.BANK_TRANSFER_ACCOUNT_NUMBER || "",
     bankName: "",
     bankAddress: "",
     iban: "",
@@ -28,9 +28,16 @@ export const PAYMENT_DETAILS = {
   },
 };
 
-const SITE_URL = "https://www.peptideproducts.co.uk";
+const SITE_URL = process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "https://www.peptideproducts.co.uk";
+
+function getOrderStatusUrl(orderId: string, email?: string) {
+  const params = new URLSearchParams({ orderId, ...(email ? { email } : {}) });
+  return `${SITE_URL}/order-status?${params.toString()}`;
+}
 const SUPPORT_EMAIL = "info@peptideproducts.co.uk";
-const WHATSAPP_NUMBER = "447429098887";
+const WHATSAPP_NUMBER = "447459676630";
 
 type EmailOrderItem = {
   name: string;
@@ -53,6 +60,7 @@ type SendOrderEmailsParams = {
   orderId: string;
   customerName: string;
   customerEmail: string;
+  customerPhone?: string;
   paymentMethod: PaymentMethod;
   subtotalGBP: number;
   shippingGBP: number;
@@ -273,7 +281,7 @@ function getPaymentMethodLabel(paymentMethod: PaymentMethod) {
 
 function getPaymentStatusText(paymentMethod: PaymentMethod) {
   if (paymentMethod === "bank_transfer") {
-    return "Bank transfer unavailable - contact support";
+    return "Awaiting bank transfer payment";
   }
 
   if (paymentMethod === "crypto") {
@@ -295,7 +303,7 @@ function getPendingPaymentReminderText(params: {
       `Amount due: ${formatGBP(params.totalGBP)}`,
       `Payment reference: ${params.orderId}`,
       "",
-      "Bank transfer is no longer available. Please contact support for assistance with this existing order.",
+      "Please use the bank details in your order confirmation email to complete the transfer. Contact support if you need those details again.",
       "Use your order number as the payment reference so we can match the payment to your order quickly.",
       "Please do not place the order again. Duplicate orders can delay processing.",
       "If you are unsure what to do, reply to this email or message us on WhatsApp.",
@@ -333,7 +341,7 @@ function getPendingPaymentReminderHtml(params: {
           Your order is currently pending because payment has not yet been confirmed.
         </p>
         <p style="margin:0 0 10px 0;color:#7c2d12;line-height:1.6;">
-          Bank transfer is no longer available. Please contact support for assistance with this existing order.
+          Please use the bank details in your order confirmation email to complete the transfer. Contact support if you need those details again.
           Use your order number as the payment reference so we can match the payment quickly.
         </p>
         <div style="background:#ffffff;border:1px solid #fed7aa;border-radius:14px;padding:14px;margin-top:12px;">
@@ -405,7 +413,7 @@ function getPaymentInstructionsHtml(
 
         <div style="background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:14px;">
           <p style="margin:0 0 8px 0;"><strong>Account name:</strong> ${
-            PAYMENT_DETAILS.bank.accountName
+            escapeHtml(PAYMENT_DETAILS.bank.accountName)
           }</p>
           <p style="margin:0 0 8px 0;"><strong>Sort code:</strong> ${
             PAYMENT_DETAILS.bank.sortCode
@@ -420,34 +428,7 @@ function getPaymentInstructionsHtml(
         </div>
       </div>
 
-      <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:18px;padding:18px;margin-top:18px;">
-        <h2 style="margin:0 0 10px 0;font-size:20px;color:#111827;">International bank transfer details</h2>
-        <p style="margin:0 0 12px 0;color:#4b5563;line-height:1.6;">
-          International customers may need the IBAN, SWIFT/BIC, bank name, and bank address below.
-          Payments can be sent in ${PAYMENT_DETAILS.bank.currencies}.
-        </p>
-
-        <div style="background:#ffffff;border:1px solid #e5e7eb;border-radius:14px;padding:14px;">
-          <p style="margin:0 0 8px 0;"><strong>Account name:</strong> ${
-            PAYMENT_DETAILS.bank.accountName
-          }</p>
-          <p style="margin:0 0 8px 0;"><strong>Bank name:</strong> ${
-            PAYMENT_DETAILS.bank.bankName
-          }</p>
-          <p style="margin:0 0 8px 0;"><strong>Bank address:</strong> ${
-            PAYMENT_DETAILS.bank.bankAddress
-          }</p>
-          <p style="margin:0 0 8px 0;"><strong>IBAN:</strong> ${
-            PAYMENT_DETAILS.bank.iban
-          }</p>
-          <p style="margin:0 0 8px 0;"><strong>SWIFT/BIC:</strong> ${
-            PAYMENT_DETAILS.bank.swiftBic
-          }</p>
-          <p style="margin:0 0 8px 0;"><strong>Currency:</strong> ${
-            PAYMENT_DETAILS.bank.currencies
-          }</p>
-          <p style="margin:0;"><strong>Payment reference:</strong> ${safeOrderId}</p>
-        </div>
+      <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:18px;padding:18px;margin-top:18px;"><p style="color:#334155;line-height:1.6;">The receiving bank account is held in the name of <strong>${escapeHtml(PAYMENT_DETAILS.bank.accountName)}</strong>, which collects payments on behalf of Peptide Products. Please check the account name in your banking app before authorising payment. Your order remains unpaid until the transfer has been verified.</p>
 
         <p style="margin:12px 0 0 0;color:#4b5563;line-height:1.6;">
           Your order will be processed once payment is received and matched to your order number.
@@ -529,14 +510,9 @@ function getPaymentInstructionsText(
       `Account number: ${PAYMENT_DETAILS.bank.accountNumber}`,
       `Payment reference: ${orderId}`,
       "",
-      "International bank transfer details",
-      `Account name: ${PAYMENT_DETAILS.bank.accountName}`,
-      `Bank name: ${PAYMENT_DETAILS.bank.bankName}`,
-      `Bank address: ${PAYMENT_DETAILS.bank.bankAddress}`,
-      `IBAN: ${PAYMENT_DETAILS.bank.iban}`,
-      `SWIFT/BIC: ${PAYMENT_DETAILS.bank.swiftBic}`,
-      `Currency: ${PAYMENT_DETAILS.bank.currencies}`,
-      `Payment reference: ${orderId}`,
+      `The receiving bank account is held in the name of ${PAYMENT_DETAILS.bank.accountName}, which collects payments on behalf of Peptide Products.`,
+      "Please check the recipient details in your banking app before authorising the transfer.",
+      "Your order remains unpaid until payment has been verified.",
       "",
       "Please use your order number as the payment reference.",
       "Your order will be processed once payment is received.",
@@ -566,6 +542,11 @@ function getPaymentInstructionsText(
 }
 
 export async function sendOrderEmails(params: SendOrderEmailsParams) {
+  const isPreview = process.env.VERCEL_ENV === "preview";
+  const testInbox = process.env.PP_TEST_ORDER_EMAIL?.trim();
+  if (isPreview && (!testInbox || params.customerEmail.toLowerCase() !== testInbox.toLowerCase())) {
+    throw new Error("Preview order email blocked: designated test inbox required");
+  }
   const resend = getResend();
 
   const totals = getOrderTotals(params);
@@ -579,7 +560,7 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
   const shippingAddressHtml = renderShippingAddress(params.shippingAddress);
   const researchUseNoticeHtml = renderResearchUseNotice();
 
-  const orderStatusUrl = `${SITE_URL}/order-status`;
+  const orderStatusUrl = getOrderStatusUrl(params.orderId, params.customerEmail);
   const whatsappUrl = getWhatsAppHref(params.orderId);
   const safeOrderId = escapeHtml(params.orderId);
 
@@ -588,14 +569,9 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
     "",
     `Hello ${params.customerName},`,
     "Your order has been received and saved successfully.",
-    params.paymentMethod === "bank_transfer"
-      ? "Important: payment is still required by bank transfer before your order can be processed."
-      : "",
-    params.paymentMethod === "bank_transfer"
-      ? "Please do not place the order again. Use the payment reference below or contact us if you are unsure."
-      : "",
     `Order number: ${params.orderId}`,
     `Payment status: ${getPaymentStatusText(params.paymentMethod)}`,
+    `Contact telephone: ${params.customerPhone || "Not provided"}`,
     `Payment method: ${getPaymentMethodLabel(params.paymentMethod)}`,
     `Subtotal: ${formatGBP(totals.subtotalGBP)}`,
     `Shipping: ${formatGBP(totals.shippingGBP)}`,
@@ -627,6 +603,7 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
     `New order received: ${params.orderId}`,
     `Customer: ${params.customerName}`,
     `Email: ${params.customerEmail}`,
+    `Contact telephone: ${params.customerPhone || "Not provided"}`,
     `Payment method: ${getPaymentMethodLabel(params.paymentMethod)}`,
     `Total: ${formatGBP(totals.totalGBP)}`,
     "",
@@ -648,21 +625,7 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
         <div style="padding:24px;">
           <p style="margin-top:0;">Hello ${escapeHtml(params.customerName)},</p>
 <p>Your order has been received and saved successfully.</p>
-${
-  params.paymentMethod === "bank_transfer"
-    ? `
-      <div style="background:#fff7ed;border:2px solid #fb923c;border-radius:18px;padding:18px;margin:18px 0;">
-        <h2 style="margin:0 0 8px 0;font-size:22px;color:#9a3412;">Payment still required</h2>
-        <p style="margin:0;color:#7c2d12;line-height:1.6;font-weight:700;">
-          Your order is not paid yet. Please complete the bank transfer below using your order number as the payment reference.
-        </p>
-        <p style="margin:10px 0 0 0;color:#7c2d12;line-height:1.6;">
-          Please do not place the order again. Duplicate orders can delay processing. If you are unsure what to do, reply to this email or message us on WhatsApp.
-        </p>
-      </div>
-    `
-    : ""
-}
+
 <p style="color:#4b5563;">
   Please keep this email for your records. If you need to check progress later,
   use your order number on the order status page or contact us with your order number.
@@ -670,6 +633,7 @@ ${
 <p style="color:#4b5563;">
   If this email arrived in junk or spam, please mark Peptide Products as safe so future tracking updates arrive in your inbox.
 </p>
+          <p><strong>Contact telephone:</strong> ${escapeHtml(params.customerPhone || "Not provided")}</p>
           <div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:18px;padding:18px;margin:18px 0;">
             <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.12em;color:#4f46e5;font-weight:800;">
               Order number
@@ -753,6 +717,7 @@ ${
             <p style="margin:0 0 8px 0;"><strong>Email:</strong> ${escapeHtml(
               params.customerEmail,
             )}</p>
+            <p style="margin:0 0 8px 0;"><strong>Contact telephone:</strong> ${escapeHtml(params.customerPhone || "Not provided")}</p>
             <p style="margin:0;"><strong>Payment method:</strong> ${getPaymentMethodLabel(
               params.paymentMethod,
             )}</p>
@@ -781,7 +746,7 @@ ${
     </div>
   `;
 
-  await Promise.all([
+  const [customerResult, adminResult] = await Promise.all([
     resend.emails.send({
       from: "Peptide Products <info@peptideproducts.co.uk>",
       to: params.customerEmail,
@@ -795,20 +760,28 @@ ${
     }),
     resend.emails.send({
       from: "Peptide Products <info@peptideproducts.co.uk>",
-      to: "info@peptideproducts.co.uk",
-      subject: `New order received: ${params.orderId}`,
+      to: isPreview ? testInbox! : "info@peptideproducts.co.uk",
+      subject: `${isPreview ? "[PREVIEW TEST] " : ""}New order received: ${params.orderId}`,
       replyTo: params.customerEmail,
       html: adminHtml,
       text: adminText,
     }),
   ]);
+
+  // Resend can return an error result without rejecting the Promise.
+  // Surface failures to the checkout handler for logging while retaining the saved order.
+  if (customerResult.error || adminResult.error) {
+    throw new Error(
+      `Order email delivery failed: customer=${customerResult.error?.message || "accepted"}; admin=${adminResult.error?.message || "accepted"}`,
+    );
+  }
 }
 
 export async function sendShippedEmail(params: SendShippedEmailParams) {
   const resend = getResend();
 
   const whatsappUrl = getWhatsAppHref(params.orderId);
-  const orderStatusUrl = `${SITE_URL}/order-status`;
+  const orderStatusUrl = getOrderStatusUrl(params.orderId, params.customerEmail);
 
   const customerText = [
     `Your order ${params.orderId} has shipped`,
@@ -884,19 +857,20 @@ export async function sendShippedEmail(params: SendShippedEmailParams) {
     </div>
   `;
 
-  await resend.emails.send({
+  const emailResult = await resend.emails.send({
     from: "Peptide Products <info@peptideproducts.co.uk>",
     to: params.customerEmail,
     subject: `Your order ${params.orderId} has shipped`,
     html: customerHtml,
   });
+  if (emailResult.error) throw new Error(`Shipped email failed: ${emailResult.error.message}`);
 }
 
 export async function sendOrderUpdateEmail(params: SendOrderUpdateEmailParams) {
   const resend = getResend();
 
   const whatsappUrl = getWhatsAppHref(params.orderId);
-  const orderStatusUrl = `${SITE_URL}/order-status`;
+  const orderStatusUrl = getOrderStatusUrl(params.orderId, params.customerEmail);
 
   const statusLabel =
     params.status === "cancelled"
@@ -1050,7 +1024,7 @@ export async function sendOrderUpdateEmail(params: SendOrderUpdateEmailParams) {
     </div>
   `;
 
-  await resend.emails.send({
+  const emailResult = await resend.emails.send({
     from: "Peptide Products <info@peptideproducts.co.uk>",
     to: params.customerEmail,
     subject:
@@ -1061,6 +1035,7 @@ export async function sendOrderUpdateEmail(params: SendOrderUpdateEmailParams) {
     html: customerHtml,
     text: customerText,
   });
+  if (emailResult.error) throw new Error(`Order update email failed: ${emailResult.error.message}`);
 }
 
 export async function sendWholesaleEmail(params: {
@@ -1085,10 +1060,11 @@ export async function sendWholesaleEmail(params: {
     </div>
   `;
 
-  await resend.emails.send({
+  const emailResult = await resend.emails.send({
     from: "Peptide Products <info@peptideproducts.co.uk>",
     to: "info@peptideproducts.co.uk",
     subject: `New wholesale enquiry from ${params.name}`,
     html: adminHtml,
   });
+  if (emailResult.error) throw new Error(`Wholesale email failed: ${emailResult.error.message}`);
 }

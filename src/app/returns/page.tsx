@@ -109,7 +109,7 @@ export default function ReturnsPage() {
               </h2>
 
               <p className="mt-3 text-sm leading-7 text-muted">
-                Orders are processed after successful card payment has been confirmed through Stripe.
+                Orders are processed after the bank transfer has been received and verified.
               </p>
 
               <p className="mt-3 text-sm leading-7 text-muted">

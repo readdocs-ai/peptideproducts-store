@@ -162,10 +162,7 @@ export default function Page() {
 
               <p className="mt-4 text-sm leading-7 text-muted">
                 Customers can browse the catalogue, open individual product
-                pages, add products to cart, and complete checkout online. Card
-                payments are processed securely through Stripe, and selected
-                alternative payment options may also be available through the
-                checkout process.
+                pages, add products to cart, and place an order online. Payment is by UK bank transfer. Bank details and a unique order reference are provided after checkout.
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
@@ -185,7 +182,7 @@ export default function Page() {
                     Secure checkout
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted">
-                    Card payments are processed securely through Stripe.
+                    Payment is by UK bank transfer. Bank details are provided after ordering.
                   </p>
                 </div>
 

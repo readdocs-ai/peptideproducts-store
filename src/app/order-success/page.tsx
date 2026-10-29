@@ -9,7 +9,7 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { clearCart } from "@/lib/cart";
 
-const WHATSAPP_NUMBER = "447429098887";
+const WHATSAPP_NUMBER = "447459676630";
 const GOOGLE_ADS_PURCHASE_SEND_TO = "AW-18121290521/6Y3NCL7agq8cEJnm88BD";
 const CHECKOUT_DETAILS_KEY = "pp_checkout_details_v2";
 const CHECKOUT_ATTEMPT_KEY = "pp_checkout_attempt_v1";
@@ -17,7 +17,7 @@ const CHECKOUT_ATTEMPT_KEY = "pp_checkout_attempt_v1";
 function getWhatsAppHref(reference?: string) {
   const message = reference
     ? `Hi Peptide Products, I have completed payment and need help with reference ${reference}.`
-    : "Hi Peptide Products, I have completed a card payment and need help with my order.";
+    : "Hi Peptide Products, I need help checking a previous order.";
 
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
@@ -74,16 +74,16 @@ function OrderSuccessContent() {
 
       <div className="mx-auto max-w-4xl rounded-xl3 border border-line bg-white p-6 shadow-soft sm:p-8">
         <div className="inline-flex rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-extrabold text-emerald-700">
-          Payment completed
+          Previous checkout return
         </div>
 
-        <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-ink">Payment successful</h1>
+        <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-ink">Check your payment status</h1>
         <p className="mt-4 text-sm leading-7 text-muted">
-          Thank you. Stripe has returned you to Peptide Products after payment. Your order will appear in our system as paid once the Stripe confirmation has been processed.
+          This page relates to a previous payment checkout. Please check your order status to confirm whether payment was received. Current orders use UK bank transfer, with instructions provided after ordering.
         </p>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">Payment completed securely</div>
+          <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">Check payment status</div>
           <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">Order confirmation by email</div>
           <div className="rounded-xl2 border border-line bg-panel p-4 text-sm font-semibold text-ink">Tracking available after dispatch</div>
         </div>

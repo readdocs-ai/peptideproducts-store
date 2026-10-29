@@ -191,7 +191,7 @@ export default function AboutPage() {
                   </h3>
 
                   <p className="mt-2 text-sm leading-7 text-muted">
-                    Secure debit and credit card checkout is provided through Stripe.
+                    Checkout is available by UK bank transfer. Payment instructions are provided after ordering.
                   </p>
                 </div>
 

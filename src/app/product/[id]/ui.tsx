@@ -30,14 +30,14 @@ const retatrutideRelatedLinks = [
 ] as const;
 
 const SUPPORT_WHATSAPP_URL =
-  "https://wa.me/447429098887?text=" +
+  "https://wa.me/447459676630?text=" +
   encodeURIComponent(
     "Hi Peptide Products, I have a question before ordering Retatrutide 40mg."
   );
 
 function getProductSupportUrl(product: Product) {
   return (
-    "https://wa.me/447429098887?text=" +
+    "https://wa.me/447459676630?text=" +
     encodeURIComponent(
       `Hi Peptide Products, I have a question before ordering ${product.name} for research.`
     )
@@ -263,7 +263,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
           <div className="mt-5 grid gap-3 border-t border-white/10 pt-5 text-sm sm:grid-cols-3">
             <div><div className="font-extrabold">Tracked dispatch</div><div className="mt-1 text-xs leading-5 text-white/55">Order updates provided</div></div>
             <div><div className="font-extrabold">Free UK delivery</div><div className="mt-1 text-xs leading-5 text-white/55">Royal Mail Tracked 24</div></div>
-            <div><div className="font-extrabold">Secure card checkout</div><div className="mt-1 text-xs leading-5 text-white/55">Processed securely through Stripe</div></div>
+            <div><div className="font-extrabold">UK bank transfer checkout</div><div className="mt-1 text-xs leading-5 text-white/55">Bank details provided after ordering</div></div>
           </div>
         </div>
       </aside>
@@ -307,7 +307,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
             {product.id === "retatrutide" ? "Retatrutide 40mg" : "Research supply"}
           </div>
           <div className="trust-pill">Tracked UK dispatch</div>
-          <div className="trust-pill">Secure card checkout</div>
+          <div className="trust-pill">UK bank transfer checkout</div>
           {hasTestReport ? (
             <div className="premium-badge">Test report available</div>
           ) : null}
@@ -435,10 +435,10 @@ export function ProductBuyBox({ product }: { product: Product }) {
           <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
             {orderByEnquiry
               ? "Contact support to confirm availability before ordering"
-              : "Continue to our secure Stripe card checkout."}
+              : "Continue to checkout to place your order and receive bank-transfer instructions."}
           </div>
           <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-            Stripe secure card checkout
+            UK bank transfer checkout
           </div>
           <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
             Free UK delivery / Royal Mail Tracked 24
