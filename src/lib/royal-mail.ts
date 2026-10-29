@@ -329,34 +329,43 @@ export async function createRoyalMailOrder(order: StoredOrder) {
   const optionalPhone = clean(order.phone, 25);
   const optionalEmail = clean(order.email, 100);
 
-  // Keep the first request deliberately minimal. Empty optional strings and
-  // optional commercial fields can cause the Public API to reject an entire
-  // order with HTTP 400. Postage and service are still selected manually in
-  // Click & Drop after the order has imported.
+  // Click & Drop can require billing details independently of the recipient
+  // address, depending on its integration settings. Our order records store
+  // one customer shipping address, so supply that same address for both.
+  // This does not create or reference an address-book entry.
+  const royalMailAddress = {
+    fullName: clean(address.name || order.name, 200),
+    addressLine1: clean(address.line1, 100),
+    ...(optionalAddressLine2 ? { addressLine2: optionalAddressLine2 } : {}),
+    city: clean(address.city, 100),
+    ...(optionalCounty ? { county: optionalCounty } : {}),
+    postcode: clean(address.postalCode, 20),
+    countryCode: countryCodeForOrder(order),
+  };
+
+  const contactDetails = {
+    ...(optionalPhone ? { phoneNumber: optionalPhone } : {}),
+    ...(optionalEmail ? { emailAddress: optionalEmail } : {}),
+  };
+
+  // Import the order without choosing a postage service; the operator will
+  // select postage and print the label in Click & Drop.
   const payload = {
     items: [
       {
-       
-  orderReference: clean(order.id, 40),
-  orderDate: new Date(order.createdAt).toISOString(),
-  subtotal: Number(order.subtotal.toFixed(2)),
-  shippingCostCharged: Number(order.shipping.toFixed(2)),
-  total: Number(order.total.toFixed(2)),
-  isRecipientABusiness: false,
+        orderReference: clean(order.id, 40),
+        orderDate: new Date(order.createdAt).toISOString(),
+        subtotal: Number(order.subtotal.toFixed(2)),
+        shippingCostCharged: Number(order.shipping.toFixed(2)),
+        total: Number(order.total.toFixed(2)),
+        isRecipientABusiness: false,
         recipient: {
-          address: {
-            fullName: clean(address.name || order.name, 200),
-            addressLine1: clean(address.line1, 100),
-            ...(optionalAddressLine2
-              ? { addressLine2: optionalAddressLine2 }
-              : {}),
-            city: clean(address.city, 100),
-            ...(optionalCounty ? { county: optionalCounty } : {}),
-            postcode: clean(address.postalCode, 20),
-            countryCode: countryCodeForOrder(order),
-          },
-          ...(optionalPhone ? { phoneNumber: optionalPhone } : {}),
-          ...(optionalEmail ? { emailAddress: optionalEmail } : {}),
+          address: royalMailAddress,
+          ...contactDetails,
+        },
+        billing: {
+          address: royalMailAddress,
+          ...contactDetails,
         },
         packages: [
           {
