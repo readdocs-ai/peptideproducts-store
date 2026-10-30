@@ -1,3 +1,4 @@
+import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
 import { Resend } from "resend";
 
 export function getResend() {
@@ -37,7 +38,7 @@ function getOrderStatusUrl(orderId: string, email?: string) {
   return `${SITE_URL}/order-status?${params.toString()}`;
 }
 const SUPPORT_EMAIL = "info@peptideproducts.co.uk";
-const WHATSAPP_NUMBER = "447459676630";
+const WHATSAPP_NUMBER = SUPPORT_WHATSAPP_NUMBER;
 
 type EmailOrderItem = {
   name: string;

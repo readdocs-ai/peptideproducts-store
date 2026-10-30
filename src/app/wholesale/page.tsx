@@ -1,5 +1,6 @@
 "use client";
 
+import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
 import { useState } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -7,7 +8,7 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { FormStatus } from "@/components/FormStatus";
 
-const WHATSAPP_NUMBER = "447459676630";
+const WHATSAPP_NUMBER = SUPPORT_WHATSAPP_NUMBER;
 
 const countries = [
   "United Kingdom",

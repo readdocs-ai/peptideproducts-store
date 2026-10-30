@@ -1,5 +1,6 @@
 "use client";
 
+import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -18,7 +19,7 @@ type LookupOrder = {
 };
 
 const whatsappHref =
-  "https://wa.me/447459676630?text=Hi%20Peptide%20Products%2C%20I%20need%20help%20with%20my%20order%20status.";
+  `https://wa.me/${SUPPORT_WHATSAPP_NUMBER}?text=Hi%20Peptide%20Products%2C%20I%20need%20help%20with%20my%20order%20status.`;
 
 function WhatsAppIcon() {
   return (
@@ -135,7 +136,7 @@ export default function OrderStatusPage() {
   }
 
   const whatsappOrderHref = order
-    ? `https://wa.me/447459676630?text=${encodeURIComponent(
+    ? `https://wa.me/${SUPPORT_WHATSAPP_NUMBER}?text=${encodeURIComponent(
         `Hi Peptide Products, I need help with order ${order.id}.`
       )}`
     : whatsappHref;

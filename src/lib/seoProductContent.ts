@@ -71,6 +71,14 @@ const productSpecific: Record<string, Partial<ProductSeoContent>> = {
     comparison:
       "Use this listing as the main Retatrutide product page. The supporting Retatrutide information pages should point back here for current stock, price, product images, and checkout details.",
   },
+  "alluvi-tirzepatide-40mg-pen": {
+    title: "Alluvi Tirzepatide 40mg Research Pen UK | Peptide Products",
+    description: "Alluvi Tirzepatide 40mg research pen in original labelled packaging, £130 with free UK delivery. View product photographs and Janoshik verification links. Research use only.",
+    intro: "Alluvi Tirzepatide 40mg is supplied as one pre-filled research pen in the original labelled Alluvi presentation shown in the product gallery. The listed price is £130 with free UK delivery. Product details, photographic views and laboratory verification links are available on this page for review before ordering.",
+    documentation: "Review the four Janoshik verification links for the Alluvi Tirzepatide 40mg sample, including purity, heavy metals, LC-MS and sterility reports. A report refers to the sample submitted; confirm the batch and findings directly with the laboratory.",
+    handling: "For laboratory research use only. Not for human or veterinary use. Follow the supplied label and suitable laboratory handling procedures. No dosing or administration guidance is provided.",
+    comparison: "This Alluvi Tirzepatide 40mg research pen is a separate format from the Tirzepatide TR10 and TR15 research vials. Compare the packaging, stated content, price and report links for each listing.",
+  },
   "synexa-retatrutide-40mg": {
     title: "Synexa Retatrutide 40mg RapidPen UK | Retatrutide Pen | Peptide Products",
     description:

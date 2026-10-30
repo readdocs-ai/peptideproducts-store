@@ -1,5 +1,6 @@
 "use client";
 
+import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
 import { Suspense, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Script from "next/script";
@@ -9,7 +10,7 @@ import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { clearCart } from "@/lib/cart";
 
-const WHATSAPP_NUMBER = "447459676630";
+const WHATSAPP_NUMBER = SUPPORT_WHATSAPP_NUMBER;
 const GOOGLE_ADS_PURCHASE_SEND_TO = "AW-18121290521/6Y3NCL7agq8cEJnm88BD";
 const CHECKOUT_DETAILS_KEY = "pp_checkout_details_v2";
 const CHECKOUT_ATTEMPT_KEY = "pp_checkout_attempt_v1";

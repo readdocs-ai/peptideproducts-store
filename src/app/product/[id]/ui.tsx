@@ -1,5 +1,6 @@
 "use client";
 
+import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import Link from "next/link";
@@ -30,14 +31,14 @@ const retatrutideRelatedLinks = [
 ] as const;
 
 const SUPPORT_WHATSAPP_URL =
-  "https://wa.me/447459676630?text=" +
+  `https://wa.me/${SUPPORT_WHATSAPP_NUMBER}?text=` +
   encodeURIComponent(
     "Hi Peptide Products, I have a question before ordering Retatrutide 40mg."
   );
 
 function getProductSupportUrl(product: Product) {
   return (
-    "https://wa.me/447459676630?text=" +
+    `https://wa.me/${SUPPORT_WHATSAPP_NUMBER}?text=` +
     encodeURIComponent(
       `Hi Peptide Products, I have a question before ordering ${product.name} for research.`
     )
@@ -45,105 +46,85 @@ function getProductSupportUrl(product: Product) {
 }
 
 export function ProductImageGallery({ product }: { product: Product }) {
-  const baseGallery = product.gallery?.length ? product.gallery : [product.image];
-  const gallery = product.coaPreview && !baseGallery.includes(product.coaPreview)
-    ? [...baseGallery, product.coaPreview]
-    : baseGallery;
+  const imagePaths = product.gallery?.length ? product.gallery : [product.image];
+  const withCertificate = product.coaPreview && !imagePaths.includes(product.coaPreview)
+    ? [...imagePaths, product.coaPreview]
+    : imagePaths;
+  const slides: Array<
+    | { kind: "photo"; src: string }
+    | { kind: "report"; title: string; testId: number; href: string }
+  > = [
+    ...withCertificate.map((src) => ({ kind: "photo" as const, src })),
+    ...(product.testReports?.map((r) => ({ kind: "report" as const, ...r })) ?? []),
+  ];
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const selected = gallery[selectedIndex];
+  const selected = slides[selectedIndex] ?? slides[0];
   const inStock = product.stockStatus === "in_stock";
-  const hasTestReport = Boolean(product.coa);
-
+  const primaryReport = product.testReports?.[0]?.href ?? product.coa;
   return (
     <div className="grid gap-4 lg:grid-cols-[96px_minmax(0,1fr)]">
       <div className="order-2 lg:order-1">
-        <div className="flex gap-3 overflow-x-auto pb-1 lg:grid lg:max-h-[640px] lg:grid-cols-1 lg:overflow-visible">
-          {gallery.map((src, index) => {
+        <div className="flex gap-3 overflow-x-auto pb-1 lg:grid lg:max-h-[640px] lg:grid-cols-1 lg:overflow-y-auto">
+          {slides.map((slide, index) => {
             const active = index === selectedIndex;
-            const isCertificate = src.includes("/certificates/") || src.includes("/docs/previews/");
-
+            const isCertificate = slide.kind === "photo" && (slide.src.includes("/certificates/") || slide.src.includes("/docs/"));
             return (
               <button
-                key={`${src}-${index}`}
+                key={slide.kind === "report" ? slide.href : `${slide.src}-${index}`}
                 type="button"
                 onClick={() => setSelectedIndex(index)}
-                className={`relative h-24 min-w-[96px] overflow-hidden rounded-xl2 border bg-white transition lg:h-24 lg:min-w-0 ${
-                  active
-                    ? "border-ink shadow-soft ring-2 ring-ink/10"
-                    : "border-line hover:border-ink/40"
-                }`}
-                aria-label={`View image ${index + 1} for ${product.name}`}
+                className={`relative h-24 min-w-[96px] overflow-hidden rounded-xl2 border bg-white transition lg:min-w-0 ${active ? "border-ink shadow-soft ring-2 ring-ink/10" : "border-line hover:border-ink/40"}`}
+                aria-label={slide.kind === "report" ? `View ${slide.title} verification link for ${product.name}` : `View image ${index + 1} for ${product.name}`}
               >
-                <Image
-                  src={src}
-                  alt={isCertificate ? `${product.name} independent test report` : `${product.imageAlt ?? product.name}${index ? ` - image ${index + 1}` : ""}`}
-                  fill
-                  sizes="96px"
-                  className={isCertificate ? "object-cover object-top" : "object-contain p-2"}
-                />
-                {isCertificate ? (
-                  <span className="absolute inset-x-1 bottom-1 rounded bg-ink/90 px-1 py-0.5 text-[8px] font-extrabold uppercase tracking-wide text-white">Test report</span>
-                ) : null}
+                {slide.kind === "photo" ? (
+                  <Image src={slide.src} alt={isCertificate ? `${product.name} test report` : `${product.imageAlt ?? product.name} - gallery image ${index + 1}`} fill sizes="96px" className={isCertificate ? "object-contain p-1" : "object-contain p-2"} />
+                ) : (
+                  <span className="flex h-full flex-col items-center justify-center gap-1 bg-gradient-to-br from-amber-50 to-white px-2 text-center">
+                    <span className="text-[9px] font-extrabold uppercase tracking-wide text-amber-800">Lab report</span>
+                    <span className="text-[10px] font-bold leading-tight text-ink">{slide.title}</span>
+                    <span className="text-[9px] text-muted">#{slide.testId}</span>
+                  </span>
+                )}
+                {isCertificate ? <span className="absolute inset-x-1 bottom-1 rounded bg-ink/90 px-1 py-0.5 text-[8px] font-bold text-white">Test report</span> : null}
               </button>
             );
           })}
         </div>
       </div>
-
       <div className="order-1 lg:order-2">
         <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-soft">
           <div className={`group relative overflow-hidden bg-panel ${product.id === "retatrutide" ? "aspect-[4/3]" : "aspect-square"}`}>
-            <Image
-              src={selected}
-              alt={product.imageAlt ?? `${product.name} product image`}
-              fill
-              priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className={(selected.includes("/certificates/") || selected.includes("/docs/previews/")) ? "object-contain bg-white p-3" : product.id === "retatrutide" ? "object-contain p-1 transition duration-300 group-hover:scale-[1.02]" : "object-contain p-6 transition duration-300 group-hover:scale-[1.03]"}
-            />
-
-            <div className="absolute left-4 top-4 rounded-full bg-white/92 px-3 py-1 text-xs font-extrabold text-ink shadow-soft">
-              {product.category}
-            </div>
-
-            <div
-              className={
-                "absolute right-4 top-4 rounded-full px-3 py-1 text-xs font-extrabold shadow-soft " +
-                (inStock
-                  ? "border border-emerald-200 bg-emerald-50 text-emerald-700"
-                  : "border border-red-200 bg-red-50 text-red-700")
-              }
-            >
-              {product.availabilityLabel ?? (inStock ? "In stock" : "Sold out")}
-            </div>
-
-            {hasTestReport ? (
-              <a
-                href={product.coa}
-                target="_blank"
-                rel="noreferrer"
-                className="absolute bottom-4 right-4 z-10 rounded-full border border-premium/30 bg-white/95 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em] text-premium shadow-soft transition hover:-translate-y-0.5 hover:bg-amber-50"
-                aria-label={`Open test report for ${product.name}`}
-              >
-                Test report available
-              </a>
-            ) : null}
-
-            {hasTestReport && product.coaPreview && selected === product.coaPreview ? (
-              <a
-                href={product.coa}
-                target="_blank"
-                rel="noreferrer"
-                className="absolute bottom-4 left-4 z-10 rounded-xl2 bg-ink px-4 py-2 text-xs font-extrabold text-white shadow-soft transition hover:bg-ink/90"
-              >
-                View full test report →
-              </a>
+            {selected.kind === "photo" ? (
+              <Image
+                src={selected.src}
+                alt={product.imageAlt ?? `${product.name} product image`}
+                fill
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className={selected.src.includes("/docs/") ? "object-contain bg-white p-3" : product.id === "retatrutide" ? "object-contain p-1 transition duration-300 group-hover:scale-[1.02]" : "object-contain p-6 transition duration-300 group-hover:scale-[1.03]"}
+              />
+            ) : (
+              <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-amber-50 via-white to-slate-50 p-6 text-center">
+                <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-amber-700">Janoshik Analytical</div>
+                <div className="mt-4 max-w-xs text-2xl font-extrabold text-ink">{selected.title}</div>
+                <div className="mt-2 text-sm font-semibold text-muted">Test reference #{selected.testId}</div>
+                <p className="mt-4 max-w-sm text-xs leading-6 text-muted">Open the laboratory record to review the actual report, sample and findings. The report is not reproduced in this gallery.</p>
+                <a href={selected.href} target="_blank" rel="noopener noreferrer" className="mt-5 rounded-xl2 bg-ink px-5 py-3 text-sm font-extrabold text-white shadow-soft">View report at Janoshik →</a>
+              </div>
+            )}
+            {selected.kind === "photo" ? (
+              <>
+                <div className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-extrabold text-ink shadow-soft">{product.category}</div>
+                <div className={"absolute right-4 top-4 rounded-full px-3 py-1 text-xs font-extrabold shadow-soft " + (inStock ? "border border-emerald-200 bg-emerald-50 text-emerald-700" : "border border-red-200 bg-red-50 text-red-700")}>
+                  {product.availabilityLabel ?? (inStock ? "In stock" : "Sold out")}
+                </div>
+                {primaryReport ? <a href={primaryReport} target="_blank" rel="noopener noreferrer" className="absolute bottom-4 right-4 rounded-full border border-premium/30 bg-white/95 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-premium shadow-soft">View test report</a> : null}
+              </>
             ) : null}
           </div>
-
-          <div className="flex items-center justify-between border-t border-line px-4 py-3 text-xs text-muted">
-            <div>Product gallery</div>
-            <div>{product.name}</div>
+          <div className="flex items-center justify-between gap-3 border-t border-line px-4 py-3 text-xs text-muted">
+            <span>{selected.kind === "report" ? "Laboratory report link" : "Product gallery"}</span>
+            <span>{product.name}</span>
           </div>
         </div>
       </div>

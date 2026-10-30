@@ -1,5 +1,6 @@
 "use client";
 
+import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -11,7 +12,7 @@ import { formatGBP, readCart } from "@/lib/cart";
 import type { StoredOrderItem } from "@/lib/orders";
 
 const UK_SHIPPING_FEE_GBP = 0;
-const WHATSAPP_NUMBER = "447459676630";
+const WHATSAPP_NUMBER = SUPPORT_WHATSAPP_NUMBER;
 const CHECKOUT_DETAILS_KEY = "pp_checkout_details_v2";
 const CHECKOUT_ATTEMPT_KEY = "pp_checkout_attempt_v1";
 const CHECKOUT_REUSE_WINDOW_MS = 20 * 60 * 1000;

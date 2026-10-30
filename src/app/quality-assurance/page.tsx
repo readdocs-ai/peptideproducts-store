@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { brand } from "@/theme/brand";
+import { alluviRetatrutideReports, alluviTirzepatideReports, alluviNadReports } from "@/data/qualityReports";
 
 export const metadata: Metadata = {
   title: "Quality Information | Test Reports",
@@ -56,18 +57,33 @@ const uploadedDocuments = [
     preview: "/docs/coa/synexa-retatrutide-rapidpen-janoshik-215083.png",
     source: "Janoshik · Test #215083 · Batch SY13055 · Reported purity 99.847%",
   },
-   {
-    title: "Alluvi Retatrutide 40mg",
+  {
+    title: "Alluvi Retatrutide 40mg — original report #163216",
     href: "https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ",
     preview: "/docs/coa/alluvi-retatrutide-40mg-janoshik-163216.png",
     source: "Janoshik Analytical · Test #163216 · Batch AR1739JAT",
   },
   {
-    title: "Alluvi Tirzepatide 40mg",
+    title: "Alluvi Tirzepatide 40mg — original report #147174",
     href: "https://verify.janoshik.com/tests/147174-ALLUVI_TIRZEPATIDE_40MG_KIT_T5MBWRAYD4HN",
     preview: "/docs/coa/alluvi-tirzepatide-40mg-janoshik-147174.png",
     source: "Janoshik Analytical · Test #147174 · Batch TR786PAOS",
   },
+  ...alluviRetatrutideReports.map((report) => ({
+    title: `Alluvi Retatrutide 40mg — ${report.title}`,
+    href: report.href,
+    source: `Janoshik · Test #${report.testId} · Open laboratory verification record`,
+  })),
+  ...alluviTirzepatideReports.map((report) => ({
+    title: `Alluvi Tirzepatide 40mg — ${report.title}`,
+    href: report.href,
+    source: `Janoshik · Test #${report.testId} · Open laboratory verification record`,
+  })),
+  ...alluviNadReports.map((report) => ({
+    title: `Alluvi NAD+ 1000mg Pen Set — ${report.title}`,
+    href: report.href,
+    source: `Janoshik · Test #${report.testId} · Open laboratory verification record`,
+  })),
   {
     title: "Alluvi Glow 70mg",
     href: "https://verify.janoshik.com/tests/163217-ALLUVI_GLOW_70MG_KIT_DCL3AJSE4JQP",
@@ -195,7 +211,7 @@ export default function QualityAssurancePage() {
               <p className="mt-3 text-sm leading-7 text-muted">
                 Selected product lines include test reports or supporting quality
                 files so customers can review available product information before
-                ordering. Reports are labelled by the product and batch identified in the uploaded laboratory document.
+                ordering. Use the Janoshik verification links to confirm each test, sample name, batch and findings with the laboratory. A report concerns the sample tested and is not a general guarantee about every unit.
               </p>
 
               <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">

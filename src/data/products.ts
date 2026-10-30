@@ -1,3 +1,6 @@
+import type { QualityReport } from "@/data/qualityReports";
+import { alluviRetatrutideReports, alluviTirzepatideReports, alluviNadReports } from "@/data/qualityReports";
+
 export type Category =
   | "Antioxidants"
   | "Firming"
@@ -23,6 +26,7 @@ export type Product = {
   stripePriceId?: string;
   coa?: string;
   coaPreview?: string;
+  testReports?: readonly QualityReport[];
   sds?: string;
   brandName?: string;
   availabilityLabel?: string;
@@ -93,6 +97,41 @@ export const products: Product[] = [
     stockStatus: "in_stock",
     coa: "https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ",
     coaPreview: "/docs/coa/alluvi-retatrutide-40mg-janoshik-163216.png",
+    testReports: alluviRetatrutideReports,
+  },
+
+  {
+    id: "alluvi-tirzepatide-40mg-pen",
+    name: "Alluvi Tirzepatide 40mg Pen",
+    brandName: "Alluvi Healthcare",
+    imageAlt: "Alluvi Tirzepatide 40mg pre-filled research pen shown in its original labelled retail packaging",
+    availabilityLabel: "In stock",
+    badge: "New",
+    subtitle: "Alluvi Tirzepatide 40mg research presentation in original labelled packaging",
+    category: "Metabolic",
+    priceGBP: 130,
+    pack: "1 pre-filled research pen x 40mg total",
+    image: "/products/alluvi-tirzepatide-40mg-front.webp",
+    gallery: [
+      "/products/alluvi-tirzepatide-40mg-front.webp",
+      "/products/alluvi-tirzepatide-40mg-top.webp",
+      "/products/alluvi-tirzepatide-40mg-side.webp",
+    ],
+    quickFacts: ["Tirzepatide 40mg", "Alluvi original packaging", "Free UK delivery", "Research use only"],
+    highlights: [
+      "Alluvi-branded Tirzepatide 40mg research pen format",
+      "One pre-filled pen in the supplied original packaging",
+      "Product photography shows the labelled box and pen presentation",
+      "£130 including free UK delivery",
+      "Product-specific Janoshik report verification links provided below",
+    ],
+    actives: ["Tirzepatide 40mg (manufacturer-labelled)"],
+    intendedUse: ["Laboratory research", "Analytical review", "Controlled scientific study"],
+    notes: "£130 with free UK delivery. Supplied for laboratory research use only; not for human or veterinary use. Review the original packaging and matching batch documentation before ordering.",
+    stockStatus: "in_stock",
+    coa: "https://verify.janoshik.com/tests/147174-ALLUVI_TIRZEPATIDE_40MG_KIT_T5MBWRAYD4HN",
+    coaPreview: "/docs/coa/alluvi-tirzepatide-40mg-janoshik-147174.png",
+    testReports: alluviTirzepatideReports,
   },
 
   {
@@ -176,6 +215,8 @@ export const products: Product[] = [
     pack: "2 pre-filled research pens x 500mg NAD+ (1000mg total)",
     image: "/products/alluvi-nad-1000mg-pen-set.jpg",
     gallery: ["/products/alluvi-nad-1000mg-pen-set.jpg"],
+    coa: alluviNadReports[0].href,
+    testReports: alluviNadReports,
     quickFacts: ["NAD+ 1000mg total", "2 x 500mg pens", "Research supply"],
     highlights: [
       "Alluvi NAD+ research presentation with 1000mg total content",

@@ -1,5 +1,6 @@
 "use client";
 
+import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,7 +11,7 @@ import { products } from "@/data/products";
 import { CartItem, cartTotalGBP, clearCart, formatGBP, readCart, setQty } from "@/lib/cart";
 
 const UK_SHIPPING_FEE_GBP = 0;
-const WHATSAPP_NUMBER = "447459676630";
+const WHATSAPP_NUMBER = SUPPORT_WHATSAPP_NUMBER;
 
 const ENQUIRY_ONLY_PRODUCT_IDS = new Set([
   "reta-research-compound-10mg-vial",

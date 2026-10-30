@@ -1,5 +1,6 @@
 "use client";
 
+import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -18,9 +19,9 @@ const helpLinks = [
   { href: "/wholesale", label: "Wholesale enquiries" },
 ] as const;
 
-const whatsappNumber = "447459676630";
+const whatsappNumber = SUPPORT_WHATSAPP_NUMBER;
 const whatsappHref =
-  "https://wa.me/447459676630?text=Hi%20Peptide%20Products%2C%20I%20have%20a%20question%20about%20an%20order%20or%20product.";
+  `https://wa.me/${SUPPORT_WHATSAPP_NUMBER}?text=Hi%20Peptide%20Products%2C%20I%20have%20a%20question%20about%20an%20order%20or%20product.`;
 
 function WhatsAppIcon() {
   return (
