@@ -1,3 +1,4 @@
+import { requireCustomerAccess } from "@/lib/customer-access/require";
 import { NextResponse } from "next/server";
 import { sendWholesaleEmail } from "@/lib/email";
 
@@ -14,6 +15,8 @@ type Body = {
 };
 
 export async function POST(req: Request) {
+  const accessError = await requireCustomerAccess();
+  if (accessError) return accessError;
   try {
     const body = (await req.json()) as Body;
 

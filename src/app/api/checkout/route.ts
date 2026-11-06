@@ -1,3 +1,4 @@
+import { requireCustomerAccess } from "@/lib/customer-access/require";
 import { ORDERING_PAUSED, IS_PREVIEW } from "@/lib/maintenance";
 import { NextResponse } from "next/server";
 import { products } from "@/data/products";
@@ -96,6 +97,8 @@ function buildItems(rawItems: IncomingCartItem[]) {
 }
 
 export async function POST(req: Request) {
+  const accessError = await requireCustomerAccess();
+  if (accessError) return accessError;
   if (ORDERING_PAUSED) return NextResponse.json({ ok: false, error: "New orders are temporarily suspended for maintenance." }, { status: 503 });
   try {
     const declaredSize = Number(req.headers.get("content-length") || "0");

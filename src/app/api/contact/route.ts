@@ -1,3 +1,4 @@
+import { requireCustomerAccess } from "@/lib/customer-access/require";
 import { Resend } from "resend";
 
 type ContactBody = {
@@ -31,6 +32,8 @@ function isValidEmail(email: string) {
 }
 
 export async function POST(req: Request) {
+  const accessError = await requireCustomerAccess();
+  if (accessError) return accessError;
   try {
     const body = (await req.json()) as ContactBody;
 

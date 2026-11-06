@@ -1,3 +1,7 @@
+import { auth } from "@/auth";
+import { hasAccessDeclaration } from "@/lib/customer-access/store";
+import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { ORDERING_PAUSED } from "@/lib/maintenance";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -65,7 +69,14 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.svg" }],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const requestHeaders = await headers();
+  const isAccessPage = requestHeaders.get("x-pp-access-page") === "true";
+  if (!isAccessPage && requestHeaders.get("x-pp-admin-page") !== "true") {
+    const session = await auth();
+    if (!session?.user?.id) redirect("/access");
+    if (!await hasAccessDeclaration(session.user.id)) redirect("/access/confirm");
+  }
   const sitewideSchema = [
     {
       "@context": "https://schema.org",
@@ -125,12 +136,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <script
+        {!isAccessPage && <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(sitewideSchema),
           }}
-        />
+        />}
       </head>
 
       <body>
@@ -139,7 +150,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             (function () {
               var isAdminPage = window.location.pathname.indexOf('/admin') === 0;
 
-              if (isAdminPage) {
+              if (isAdminPage || window.location.pathname.indexOf('/access') === 0) {
                 return;
               }
 
@@ -163,7 +174,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
 
-        {ORDERING_PAUSED && (
+        {ORDERING_PAUSED && !isAccessPage && (
           <div role="status" style={{background:"#14253d",color:"#fff",padding:"13px 18px",textAlign:"center",fontSize:"14px",lineHeight:"1.6",borderBottom:"2px solid #c5a66a"}}>
             <strong>Temporary ordering suspension.</strong> We are carrying out essential system maintenance and cannot accept new orders at present. Product information and existing order support remain available.{" "}
             <a href="/ordering-paused" style={{color:"#f0d397",textDecoration:"underline"}}>Read more</a>

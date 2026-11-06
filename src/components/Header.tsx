@@ -196,6 +196,7 @@ export function Header() {
             </nav>
 
             <div className="flex items-center gap-2">
+              <Link href="/access/account" className="inline-flex min-h-11 items-center rounded-xl px-2 text-xs font-bold text-muted hover:text-accent sm:text-sm">Account</Link>
               <Link
                 href="/cart"
                 className="flex min-h-11 items-center gap-2 rounded-xl2 border border-line bg-white px-3 py-2 text-sm font-semibold shadow-soft transition hover:bg-panel sm:px-4"

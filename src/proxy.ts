@@ -1,3 +1,6 @@
+import { auth } from "@/auth";
+import { hasAccessDeclaration } from "@/lib/customer-access/store";
+import { publicAccessPath } from "@/lib/customer-access/policy";
 import { ORDERING_PAUSED } from "@/lib/maintenance";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -10,7 +13,7 @@ function unauthorizedResponse() {
   });
 }
 
-export function proxy(req: NextRequest) {
+function existingProtection(req: NextRequest) {
   const path = req.nextUrl.pathname;
   if (ORDERING_PAUSED) {
     if (path === "/cart" || path.startsWith("/cart/") || path === "/checkout" || path.startsWith("/checkout/")) {
@@ -75,6 +78,62 @@ if (providedUsername !== username || providedPassword !== password) {    return 
   }
 
   return NextResponse.next();
+}
+
+function privateResponse(response: NextResponse) {
+  response.headers.set("Cache-Control", "private, no-store, max-age=0");
+  response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+  response.headers.set("Referrer-Policy", "same-origin");
+  return response;
+}
+const customerProtection = auth(async (req) => {
+  const path = req.nextUrl.pathname;
+  const session = req.auth;
+  if (!session?.user?.id) {
+    if (path.startsWith("/api/")) return privateResponse(NextResponse.json({ error: "Please sign in to continue." }, { status: 401 }));
+    const destination = new URL("/access", req.url);
+    destination.searchParams.set("next", path + req.nextUrl.search);
+    return privateResponse(NextResponse.redirect(destination));
+  }
+  if (!await hasAccessDeclaration(session.user.id)) {
+    if (path.startsWith("/api/")) return privateResponse(NextResponse.json({ error: "Please confirm your age and research-use declaration." }, { status: 403 }));
+    const destination = new URL("/access/confirm", req.url);
+    destination.searchParams.set("next", path + req.nextUrl.search);
+    return privateResponse(NextResponse.redirect(destination));
+  }
+  const response = existingProtection(req);
+  const headers = new Headers(req.headers);
+  headers.set("x-pp-access-page", "false");
+  headers.set("x-pp-admin-page", "false");
+  return privateResponse(response.headers.get("location") || response.status !== 200 ? response : NextResponse.next({ request: { headers } }));
+});
+
+export async function proxy(req: NextRequest) {
+  const path = req.nextUrl.pathname;
+  if (req.headers.get("host") === "peptideproducts.co.uk") {
+    const destination = req.nextUrl.clone(); destination.hostname = "www.peptideproducts.co.uk"; destination.protocol = "https:";
+    return NextResponse.redirect(destination, 308);
+  }
+  if (path === "/admin" || path.startsWith("/admin/")) {
+    const response = existingProtection(req);
+    if (response.status !== 200) return response;
+    const headers = new Headers(req.headers); headers.set("x-pp-admin-page", "true"); headers.set("x-pp-access-page", "false");
+    return NextResponse.next({ request: { headers } });
+  }
+  if (publicAccessPath(path, req.method)) {
+    const headers = new Headers(req.headers);
+    headers.set("x-pp-admin-page", "false");
+    headers.set("x-pp-access-page", path === "/access" || path.startsWith("/access/") ? "true" : "false");
+    const response = NextResponse.next({ request: { headers } });
+    return path.startsWith("/_next/static/") ? response : privateResponse(response);
+  }
+  // Lazy Auth.js configuration resolves the wrapper asynchronously.
+  try { return await (await customerProtection)(req, { params: Promise.resolve({}) }); }
+  catch {
+    console.error("Customer access gate is temporarily unavailable");
+    // Storage or authentication failure must never reveal protected pages.
+    return privateResponse(new NextResponse("Customer access is temporarily unavailable. Please try again shortly or contact info@peptideproducts.co.uk.", { status: 503, headers: { "Retry-After": "60" } }));
+  }
 }
 
 export const config = {

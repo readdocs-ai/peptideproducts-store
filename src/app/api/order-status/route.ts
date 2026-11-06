@@ -1,7 +1,10 @@
+import { requireCustomerAccess } from "@/lib/customer-access/require";
 import { getOrderForCustomerLookup } from "@/lib/orders";
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
+  const accessError = await requireCustomerAccess();
+  if (accessError) return accessError;
   try {
     const url = new URL(req.url);
     const orderId = (url.searchParams.get("orderId") || "").trim();

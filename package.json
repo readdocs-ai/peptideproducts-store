@@ -7,17 +7,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test:customer-access": "node --import tsx tests/customer-access.test.ts",
+    "test:customer-browser": "node tests/browser-customer-access.mjs"
   },
   "dependencies": {
+    "@auth/unstorage-adapter": "2.11.3",
     "ioredis": "^5.10.0",
-    "next": "16.4.0",
-    "nodemailer": "10.1.0",
+    "next": "16.4.5",
+    "next-auth": "5.0.0-beta.32",
+    "pp-smtp-mailer": "npm:nodemailer@10.3.1",
     "qrcode.react": "^4.2.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "resend": "6.32.1",
-    "stripe": "^21.0.1"
+    "stripe": "^21.0.1",
+    "unstorage": "1.17.4"
   },
   "devDependencies": {
     "@types/node": "20.14.15",
@@ -26,7 +31,7 @@
     "@types/react-dom": "18.3.0",
     "autoprefixer": "10.4.20",
     "eslint": "^9.39.0",
-    "eslint-config-next": "16.4.0",
+    "eslint-config-next": "16.4.5",
     "postcss": "^8.5.23",
     "tailwindcss": "3.4.10",
     "tsx": "^4.23.1",

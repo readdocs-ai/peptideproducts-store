@@ -1,1 +1,1 @@
-declare module "nodemailer";
+declare module "pp-smtp-mailer";

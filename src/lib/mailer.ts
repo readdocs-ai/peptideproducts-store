@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import nodemailer from "pp-smtp-mailer";
 
 export function getTransport() {
   const host = process.env.SMTP_HOST;

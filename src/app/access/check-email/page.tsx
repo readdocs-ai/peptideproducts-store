@@ -1,0 +1,4 @@
+import Link from "next/link";
+export default function CheckEmail() {
+  return <><div aria-hidden="true" className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-2xl text-accent">✉</div><h2 className="text-3xl font-extrabold tracking-tight">Check your inbox</h2><p className="mt-4 text-sm leading-7 text-muted">We’ve sent your secure sign-in link. Open the email from Peptide Products and tap the button to continue.</p><div className="mt-6 rounded-xl bg-panel p-4 text-sm leading-7 text-muted">Your link expires in <strong className="text-ink">10 minutes</strong> and can only be used once. Check your junk folder if it hasn’t arrived.</div><Link href="/access" className="mt-6 inline-block min-h-11 py-3 text-sm font-bold text-accent underline underline-offset-4">Try again or use a different email</Link></>;
+}

@@ -1,3 +1,4 @@
+import { requireCustomerAccess } from "@/lib/customer-access/require";
 import { getResend } from "@/lib/email";
 
 type ReviewBody = {
@@ -18,6 +19,8 @@ function escapeHtml(value: string) {
 }
 
 export async function POST(req: Request) {
+  const accessError = await requireCustomerAccess();
+  if (accessError) return accessError;
   try {
     const body = (await req.json()) as ReviewBody;
 
