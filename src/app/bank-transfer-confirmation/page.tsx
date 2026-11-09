@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { clearCart } from "@/lib/cart";
 
@@ -83,5 +82,5 @@ export default function BankTransferConfirmation() {
       </>}
       <Link className="mt-7 inline-flex rounded-xl bg-accent px-5 py-3 font-bold text-white" href={details ? `/order-status?${new URLSearchParams({ orderId: details.orderId, ...(details.customerEmail ? { email: details.customerEmail } : {}) }).toString()}` : "/order-status"}>Check order status</Link>
     </div>
-  </Container></main><Footer /></>;
+  </Container></main></>;
 }

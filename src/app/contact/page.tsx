@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { FormStatus } from "@/components/FormStatus";
 
@@ -134,7 +133,6 @@ export default function Contact() {
           </div>
         </Container>
       </main>
-      <Footer />
     </div>
   );
 }

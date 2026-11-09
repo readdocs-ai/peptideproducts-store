@@ -6,7 +6,6 @@ import Link from "next/link";
 import Script from "next/script";
 import { useSearchParams } from "next/navigation";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { clearCart } from "@/lib/cart";
 
@@ -143,7 +142,6 @@ export default function OrderSuccessPage() {
           </Suspense>
         </Container>
       </main>
-      <Footer />
     </div>
   );
 }

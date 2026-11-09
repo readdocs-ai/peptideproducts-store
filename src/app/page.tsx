@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { brand } from "@/theme/brand";
 import { products } from "@/data/products";
@@ -363,7 +362,6 @@ export default function Home() {
           </Container>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

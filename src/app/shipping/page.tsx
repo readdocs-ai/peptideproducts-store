@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
@@ -166,7 +165,6 @@ export default function ShippingPage() {
           </div>
         </Container>
       </main>
-      <Footer />
     </div>
   );
 }

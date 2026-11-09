@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { products } from "@/data/products";
 import { formatGBP, readCart } from "@/lib/cart";
@@ -626,7 +625,6 @@ export default function Checkout() {
           </div>
         </Container>
       </main>
-      <Footer />
     </div>
   );
 }

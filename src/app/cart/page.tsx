@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { products } from "@/data/products";
 import { CartItem, cartTotalGBP, clearCart, formatGBP, readCart, setQty } from "@/lib/cart";
@@ -409,7 +408,6 @@ export default function CartPage() {
           </div>
         </Container>
       </main>
-      <Footer />
     </div>
   );
 }

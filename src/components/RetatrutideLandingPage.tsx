@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { RetatrutideRelatedLinks } from "@/components/RetatrutideRelatedLinks";
 import type { RetatrutideSeoPage } from "@/data/retatrutideSeoPages";
@@ -249,7 +248,6 @@ export function RetatrutideLandingPage({ page }: RetatrutideLandingPageProps) {
         </section>
       </main>
 
-      <Footer />
     </div>
   );
 }

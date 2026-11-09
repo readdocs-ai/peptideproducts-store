@@ -4,7 +4,6 @@ import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 
 type LookupOrder = {
@@ -305,7 +304,6 @@ export default function OrderStatusPage() {
           </div>
         </Container>
       </main>
-      <Footer />
     </div>
   );
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { brand } from "@/theme/brand";
 import { alluviRetatrutideReports, alluviTirzepatideReports, alluviNadReports } from "@/data/qualityReports";
@@ -380,7 +379,6 @@ export default function QualityAssurancePage() {
         </Container>
       </main>
 
-      <Footer />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { brand } from "@/theme/brand";
 
@@ -290,7 +289,6 @@ export default function Privacy() {
         </Container>
       </main>
 
-      <Footer />
     </div>
   );
 }

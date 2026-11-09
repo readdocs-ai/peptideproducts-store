@@ -1,3 +1,4 @@
+import { CompanyDetails } from "./CompanyDetails";
 import Link from "next/link";
 import { Container } from "./Container";
 import { brand } from "@/theme/brand";
@@ -90,8 +91,7 @@ export function Footer() {
               use only.
             </p>
             <div className="mt-5 space-y-1 text-sm text-white/70">
-              <div className="font-bold text-white">Peptide Products Ltd</div>
-              <div>Company No. 17073416 · United Kingdom</div>
+              <CompanyDetails />
               <a href={`mailto:${brand.supportEmail}`} className="block hover:text-white">
                 {brand.supportEmail}
               </a>
@@ -137,6 +137,25 @@ export function Footer() {
           </div>
         </div>
       </Container>
+    </footer>
+  );
+}
+
+
+export function CompactFooter() {
+  return (
+    <footer className="border-t border-line bg-panel text-muted">
+      <div className="mx-auto grid max-w-6xl gap-5 px-5 py-7 text-xs leading-6 sm:px-8 md:grid-cols-[1fr_auto]">
+        <div>
+          <CompanyDetails />
+          <p className="mt-3">© {new Date().getFullYear()} {brand.name} · Research use only</p>
+        </div>
+        <div className="flex flex-wrap items-start gap-x-5 gap-y-2">
+          <Link href="/access/privacy" className="underline underline-offset-4">Privacy</Link>
+          <Link href="/access/terms" className="underline underline-offset-4">Access terms</Link>
+          <a href={`mailto:${brand.supportEmail}`} className="underline underline-offset-4">{brand.supportEmail}</a>
+        </div>
+      </div>
     </footer>
   );
 }

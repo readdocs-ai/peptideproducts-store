@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { ShopClient } from "@/components/ShopClient";
 import { products } from "@/data/products";
 
@@ -187,7 +186,6 @@ export default function ShopPage() {
       />
       <Header />
       <ShopClient />
-      <Footer />
     </div>
   );
 }

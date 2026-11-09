@@ -1,3 +1,4 @@
+import { Footer, CompactFooter } from "@/components/Footer";
 import { auth } from "@/auth";
 import { hasAccessDeclaration } from "@/lib/customer-access/store";
 import { redirect } from "next/navigation";
@@ -144,7 +145,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         />}
       </head>
 
-      <body>
+      <body className="flex min-h-screen flex-col">
         <Script id="google-tags" strategy="afterInteractive">
           {`
             (function () {
@@ -180,7 +181,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <a href="/ordering-paused" style={{color:"#f0d397",textDecoration:"underline"}}>Read more</a>
           </div>
         )}
-        {children}
+        <div className="flex-1">{children}</div>
+        {isAccessPage || requestHeaders.get("x-pp-admin-page") === "true" ? <CompactFooter /> : <Footer />}
       </body>
     </html>
   );
