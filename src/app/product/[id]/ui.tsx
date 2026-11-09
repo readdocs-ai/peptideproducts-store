@@ -33,7 +33,7 @@ const retatrutideRelatedLinks = [
 const SUPPORT_WHATSAPP_URL =
   `https://wa.me/${SUPPORT_WHATSAPP_NUMBER}?text=` +
   encodeURIComponent(
-    "Hi Peptide Products, I have a question before ordering Retatrutide 40mg."
+    "Hi Peptide Products, I have a question before ordering GLP-3 RT 40mg."
   );
 
 function getProductSupportUrl(product: Product) {
@@ -93,7 +93,7 @@ export function ProductImageGallery({ product }: { product: Product }) {
       </div>
       <div className="order-1 lg:order-2">
         <div className="overflow-hidden rounded-xl3 border border-line bg-white shadow-soft">
-          <div className={`group relative overflow-hidden bg-panel ${product.id === "retatrutide" ? "aspect-[4/3]" : "aspect-square"}`}>
+          <div className={`group relative overflow-hidden bg-panel ${product.id === "glp-3-rt" ? "aspect-[4/3]" : "aspect-square"}`}>
             {selected.kind === "photo" ? (
               <Image
                 src={selected.src}
@@ -101,7 +101,7 @@ export function ProductImageGallery({ product }: { product: Product }) {
                 fill
                 priority
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className={selected.src.includes("/docs/") ? "object-contain bg-white p-3" : product.id === "retatrutide" ? "object-contain p-1 transition duration-300 group-hover:scale-[1.02]" : "object-contain p-6 transition duration-300 group-hover:scale-[1.03]"}
+                className={selected.src.includes("/docs/") ? "object-contain bg-white p-3" : product.id === "glp-3-rt" ? "object-contain p-1 transition duration-300 group-hover:scale-[1.02]" : "object-contain p-6 transition duration-300 group-hover:scale-[1.03]"}
               />
             ) : (
               <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-amber-50 via-white to-slate-50 p-6 text-center">
@@ -139,7 +139,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
   const hasTestReport = Boolean(product.coa);
   const orderByEnquiry = product.enquiryOnly || product.stockStatus !== "in_stock";
   const orderSupportUrl = getProductSupportUrl(product);
-  const isFlagshipRetatrutide = product.id === "retatrutide";
+  const isFlagshipRetatrutide = product.id === "glp-3-rt";
 
   if (product.informationOnly) {
     return (
@@ -268,7 +268,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
           </div>
 
           <div className="rounded-full border border-line bg-panel px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.16em] text-ink">
-            {product.id === "retatrutide" ? "Flagship line" : "Research supply"}
+            {product.id === "glp-3-rt" ? "Flagship line" : "Research supply"}
           </div>
         </div>
 
@@ -285,7 +285,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
           </div>
 
           <div className="trust-pill">
-            {product.id === "retatrutide" ? "Retatrutide 40mg" : "Research supply"}
+            {product.id === "glp-3-rt" ? "GLP-3 RT 40mg" : "Research supply"}
           </div>
           <div className="trust-pill">Tracked UK dispatch</div>
           <div className="trust-pill">UK bank transfer checkout</div>
@@ -401,7 +401,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
           </Link>
         ) : null}
 
-        {product.id === "retatrutide" ? (
+        {product.id === "glp-3-rt" ? (
           <a
             href={SUPPORT_WHATSAPP_URL}
             target="_blank"
@@ -458,10 +458,10 @@ export function ProductBuyBox({ product }: { product: Product }) {
           information page or contact support before checkout.
         </div>
 
-        {product.id === "retatrutide" ? (
+        {product.id === "glp-3-rt" ? (
           <div className="mt-4 rounded-xl2 border border-line bg-white p-4">
             <div className="text-sm font-extrabold text-ink">
-              Retatrutide order support
+              GLP-3 RT order support
             </div>
 
             <p className="mt-2 text-sm leading-6 text-muted">

@@ -411,10 +411,10 @@ export default function ResearchPeptidesUK() {
                 </Link>
                 , and{" "}
                 <Link
-                  href="/retatrutide-research-peptide"
+                  href="/glp-3-rt"
                   className="font-semibold text-ink hover:text-accent"
                 >
-                  retatrutide research peptide
+                  GLP-3 RT research material
                 </Link>
                 .
               </p>

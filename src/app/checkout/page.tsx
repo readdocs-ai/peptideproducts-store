@@ -18,12 +18,12 @@ const CHECKOUT_REUSE_WINDOW_MS = 20 * 60 * 1000;
 const RESEARCH_DECLARATION_VERSION = "research-use-v1";
 
 const ENQUIRY_ONLY_PRODUCT_IDS = new Set([
-  "reta-research-compound-10mg-vial",
-  "reta-research-compound-20mg-vial",
-  "reta-research-compound-40mg-vial",
-  "retatrutide-research-compound-10mg-vial",
-  "retatrutide-research-compound-20mg-vial",
-  "retatrutide-research-compound-40mg-vial",
+  "glp-3-rt-10mg-vial",
+  "glp-3-rt-20mg-vial",
+  "glp-3-rt-40mg-vial",
+  "glp-3-rt-10mg-research-vial",
+  "glp-3-rt-20mg-research-vial",
+  "glp-3-rt-40mg-research-vial",
 ]);
 
 const COUNTRY_OPTIONS = [

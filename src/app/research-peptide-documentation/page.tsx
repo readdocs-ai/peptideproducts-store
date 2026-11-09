@@ -49,8 +49,8 @@ const faqs = [
     a: "Test report availability varies by product line. Where a report is available, Peptide Products links it from the quality information page or relevant product pathways.",
   },
   {
-    q: "What is the main Retatrutide product pathway?",
-    a: "The Retatrutide product page is the main product destination, supported by the Retatrutide research hub, UK guide, price guide, and supplier-checklist pages.",
+    q: "What is the main GLP-3 RT product pathway?",
+    a: "The GLP-3 RT product page is the main product destination, supported by the GLP-3 RT research hub, UK guide, price guide, and supplier-checklist pages.",
   },
   {
     q: "Are Peptide Products items supplied for medical use?",
@@ -59,8 +59,8 @@ const faqs = [
 ] as const;
 
 const pathways = [
-  { href: "/product/retatrutide", title: "Retatrutide product", copy: "Main product page for the lead Retatrutide line." },
-  { href: "/retatrutide", title: "Retatrutide hub", copy: "Central research-use-only Retatrutide information page." },
+  { href: "/shop", title: "GLP-3 RT product", copy: "Main product page for the lead GLP-3 RT line." },
+  { href: "/glp-3-rt", title: "GLP-3 RT hub", copy: "Central research-use-only GLP-3 RT information page." },
   { href: "/quality-assurance", title: "Quality information", copy: "Available test reports and quality support links." },
   { href: "/shipping", title: "Shipping information", copy: "Dispatch, delivery, tracking, and order timing details." },
   { href: "/faq", title: "FAQ", copy: "Ordering, payment, documentation, and support questions." },
@@ -85,7 +85,7 @@ export default function ResearchPeptideDocumentationPage() {
         "research peptide documentation",
         "peptide test reports",
         "research-use-only peptides",
-        "Retatrutide research product information",
+        "GLP-3 RT research product information",
       ],
     },
     {
@@ -128,7 +128,7 @@ export default function ResearchPeptideDocumentationPage() {
             <div className="mt-5 flex flex-wrap gap-2">
               <span className="trust-pill">Research use only</span>
               <span className="trust-pill">Available test reports</span>
-              <span className="trust-pill">Retatrutide pathway</span>
+              <span className="trust-pill">GLP-3 RT pathway</span>
               <span className="trust-pill">UK support</span>
             </div>
           </section>

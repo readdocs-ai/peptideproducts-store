@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     "",
     "/shop",
-
+    "/glp-3-rt",
     "/about",
     "/quality-assurance",
     "/research-peptide-documentation",
@@ -22,10 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms",
     "/privacy",
     "/disclaimer",
-
     "/buy-peptides-uk",
     "/where-to-buy-peptides-uk",
-
     "/research-peptides",
     "/research-peptides-uk",
     "/peptides-uk",
@@ -35,34 +33,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/buy-research-peptides-uk",
     "/laboratory-peptide-compounds",
     "/peptide-products",
-
     "/antioxidant-peptides",
     "/regenerative-peptides",
     "/nootropic-peptides",
-
-    
-    
-
-    "/retatrutide",
-    "/reta",
-    "/retatrutide-uk",
-    "/buy-retatrutide-uk",
-    "/retatrutide-price-uk",
-    "/retatrutide-research-peptide",
-    "/what-is-retatrutide",
-    "/retatrutide-for-sale-uk",
-    "/retatrutide-40mg-uk",
-    "/retatrutide-uk-pen",
-    "/reta-peptide-buy",
-    "/peptide-pens-uk",
     "/tr40-peptide-uk",
-    "/retatrutide-supplier-checklist",
-
     "/tirzepatide-uk",
     "/buy-tirzepatide-uk",
     "/tirzepatide-price-uk",
     "/where-to-buy-tirzepatide-uk",
-
     "/ghk-cu-uk",
     "/bpc-157-uk",
     "/tb-500-uk",
@@ -71,8 +49,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/selank-uk",
     "/semax-uk",
     "/melanotan-uk",
-    "/glutathione-uk",
-  ];
+    "/glutathione-uk"
+];
 
   const staticRoutes = staticPages.map((path) => {
     let priority = 0.7;
@@ -85,19 +63,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority = 0.96;
       changeFrequency = "daily";
     } else if (
-      path === "/retatrutide" ||
-      path === "/reta" ||
-      path === "/retatrutide-uk" ||
-      path === "/buy-retatrutide-uk" ||
-      path === "/retatrutide-price-uk" ||
-      path === "/retatrutide-research-peptide" ||
-      path === "/what-is-retatrutide" ||
-      path === "/retatrutide-for-sale-uk" ||
-      path === "/retatrutide-40mg-uk" ||
-      path === "/retatrutide-uk-pen" ||
-      path === "/reta-peptide-buy" ||
-      path === "/peptide-pens-uk" ||
-      path === "/retatrutide-supplier-checklist"
+      path === "/glp-3-rt" ||
+      path === "/glp-3-rt" ||
+      path === "/glp-3-rt" ||
+      path === "/glp-3-rt" ||
+      path === "/glp-3-rt" ||
+      path === "/glp-3-rt" ||
+      path === "/glp-3-rt" ||
+      path === "/glp-3-rt" ||
+      path === "/glp-3-rt" ||
+      path === "/shop" ||
+      path === "/glp-3-rt" ||
+      path === "/shop" ||
+      path === "/glp-3-rt"
     ) {
       priority = 0.94;
       changeFrequency = "daily";
@@ -158,13 +136,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   const highPriorityProductIds = new Set([
-    "retatrutide",
-    "reta-research-compound-10mg-vial",
-    "reta-research-compound-20mg-vial",
-    "reta-research-compound-40mg-vial",
-    "retatrutide-research-compound-10mg-vial",
-    "retatrutide-research-compound-20mg-vial",
-    "retatrutide-research-compound-40mg-vial",
+    "glp-3-rt",
+    "glp-3-rt-10mg-vial",
+    "glp-3-rt-20mg-vial",
+    "glp-3-rt-40mg-vial",
+    "glp-3-rt-10mg-research-vial",
+    "glp-3-rt-20mg-research-vial",
+    "glp-3-rt-40mg-research-vial",
   ]);
 
   const productRoutes = products.map((product) => {
@@ -176,7 +154,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: isHighPriorityProduct
         ? ("daily" as const)
         : ("weekly" as const),
-      priority: product.id === "retatrutide" ? 0.95 : isHighPriorityProduct ? 0.92 : 0.86,
+      priority: product.id === "glp-3-rt" ? 0.95 : isHighPriorityProduct ? 0.92 : 0.86,
     };
   });
 

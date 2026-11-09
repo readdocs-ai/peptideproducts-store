@@ -6,7 +6,7 @@ import { Container } from "@/components/Container";
 export const metadata: Metadata = {
   title: "Peptides UK | Research Peptide Supplier UK",
   description:
-    "Peptides UK supplier for laboratory research compounds including Retatrutide, Tirzepatide, GHK-CU, and BPC-157. Secure checkout, UK dispatch, and research-use-only supply.",
+    "Peptides UK supplier for laboratory research compounds including GLP-3 RT, Tirzepatide, GHK-CU, and BPC-157. Secure checkout, UK dispatch, and research-use-only supply.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/peptides-uk",
   },
@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 
 const products = [
   {
-    name: "Retatrutide",
-    href: "/product/retatrutide",
-    copy: "View Retatrutide product details, current availability, and ordering information.",
+    name: "GLP-3 RT",
+    href: "/shop",
+    copy: "View GLP-3 RT product details, current availability, and ordering information.",
   },
   {
     name: "Tirzepatide",
@@ -78,8 +78,8 @@ export default function Page() {
 
             <p className="mt-4 text-base leading-8 text-muted">
               The catalogue includes products such as{" "}
-              <Link href="/product/retatrutide" className="font-semibold text-ink hover:text-accent">
-                Retatrutide
+              <Link href="/shop" className="font-semibold text-ink hover:text-accent">
+                GLP-3 RT
               </Link>
               ,{" "}
               <Link href="/product/tirzepatide-tr15-15mg" className="font-semibold text-ink hover:text-accent">
@@ -228,10 +228,10 @@ export default function Page() {
               </h2>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                <Link href="/retatrutide-uk" className="surface-card p-5">
-                  <div className="font-extrabold text-ink">Retatrutide UK</div>
+                <Link href="/glp-3-rt" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">GLP-3 RT UK</div>
                   <p className="mt-2 text-sm text-muted">
-                    View Retatrutide availability and product information.
+                    View GLP-3 RT availability and product information.
                   </p>
                 </Link>
 
@@ -303,8 +303,8 @@ export default function Page() {
     Where to buy Tirzepatide UK
   </Link>
 
-  <Link href="/retatrutide-uk" className="surface-card p-5">
-    Retatrutide UK
+  <Link href="/glp-3-rt" className="surface-card p-5">
+    GLP-3 RT UK
   </Link>
 </div>
     </div>

@@ -7,16 +7,16 @@ import { brand } from "@/theme/brand";
 import { products } from "@/data/products";
 
 export const metadata: Metadata = {
-  title: "Retatrutide 40mg UK | Research Peptides & Lab Compounds",
+  title: "GLP-3 RT 40mg UK | Research Peptides & Lab Compounds",
   description:
-    "Retatrutide 40mg Pen and research-use-only laboratory compounds. Clear pricing, secure card checkout, selected test reports and tracked UK dispatch.",
+    "GLP-3 RT research vials and research-use-only laboratory compounds. Clear pricing, UK ordering information, selected test reports and tracked UK dispatch.",
   alternates: { canonical: "https://www.peptideproducts.co.uk" },
   openGraph: {
     type: "website",
     locale: "en_GB",
-    title: "Retatrutide 40mg UK | Peptide Products",
+    title: "GLP-3 RT 40mg UK | Peptide Products",
     description:
-      "Flagship Retatrutide 40mg research peptide pen with a wider laboratory research catalogue and tracked UK dispatch.",
+      "GLP-3 RT research vials with a wider laboratory research catalogue and tracked UK dispatch.",
     url: "https://www.peptideproducts.co.uk",
     siteName: "Peptide Products",
     images: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         url: "https://www.peptideproducts.co.uk/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Peptide Products Retatrutide 40mg research catalogue",
+        alt: "Peptide Products GLP-3 RT 40mg research catalogue",
       },
     ],
   },
@@ -37,7 +37,7 @@ function getProduct(id: string) {
 const categoryLinks = [
   {
     title: "Metabolic research",
-    copy: "Retatrutide, Tirzepatide and related research compounds.",
+    copy: "GLP-3 RT, Tirzepatide and related research compounds.",
     href: "/metabolic-research-compounds",
   },
   {
@@ -51,23 +51,23 @@ const categoryLinks = [
     href: "/antioxidant-peptides",
   },
   {
-    title: "Peptide pens UK",
-    copy: "Pre-filled research pen presentations from current catalogue lines.",
-    href: "/peptide-pens-uk",
+    title: "Research materials UK",
+    copy: "Vial presentations and laboratory research compounds.",
+    href: "/shop",
   },
 ] as const;
 
 export default function Home() {
-  const retatrutide = getProduct("retatrutide");
-  const synexaGlow = getProduct("synexa-glow-ghk-cu-70mg-pen");
-  const synexaReta = getProduct("synexa-retatrutide-40mg");
+  const retatrutide = getProduct("glp-3-rt-40mg-vial");
+  const synexaGlow = getProduct("ghk-cu-50mg");
+  const synexaReta = getProduct("glp-3-rt-20mg-vial");
 
   const newProducts = [
-    "synexa-glow-ghk-cu-70mg-pen",
-    "alloya-glutathione-500mg-pen",
-    "alluvi-nad-1000mg-pen-set",
-    "alloya-mots-c-40mg-pen",
-    "alloya-tesamorelin-20mg-pen",
+    "bpc-157-5mg",
+    "glutathione-500mg",
+    "nad-500mg",
+    "selank-sk5-5mg",
+    "tirzepatide-tr10-10mg",
   ]
     .map(getProduct)
     .filter(Boolean) as typeof products;
@@ -109,12 +109,12 @@ export default function Home() {
                 <h1 className="mt-5 max-w-3xl text-[2.75rem] font-black leading-[0.98] tracking-[-0.055em] text-slate-950 sm:text-5xl lg:text-[4rem]">
                   Research peptides,
                   <span className="block bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 bg-clip-text text-transparent">
-                    pens and vials.
+                    vials and compounds.
                   </span>
                 </h1>
 
                 <p className="mt-5 max-w-xl text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8">
-                  Explore the flagship Retatrutide 40mg pen alongside a growing research-use-only catalogue with clear UK pricing, current stock information, selected independent test reports and secure card checkout.
+                  Explore the GLP-3 RT research vials alongside a growing research-use-only catalogue with clear UK pricing, current stock information, selected independent test reports and UK ordering information.
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-3">
@@ -136,7 +136,7 @@ export default function Home() {
                   {[
                     ["Research", "Use only"],
                     ["Free UK", "Delivery"],
-                    ["Secure", "Card checkout"],
+                    ["Secure", "UK ordering"],
                     ["Selected", "Test reports"],
                   ].map(([value, label]) => (
                     <div key={label} className="rounded-2xl border border-slate-200 bg-white/90 p-4 shadow-sm">
@@ -150,8 +150,8 @@ export default function Home() {
               <div className="relative z-10 rounded-[2rem] border border-blue-100 bg-white/90 p-4 shadow-[0_30px_80px_rgba(37,99,235,0.14)] backdrop-blur sm:p-5">
                 <div className="grid gap-4 sm:grid-cols-2">
                   {[
-                    { product: retatrutide, href: "/product/retatrutide", eyebrow: "Alluvi Retatrutide", accent: "text-blue-700" },
-                    { product: synexaReta, href: "/product/synexa-retatrutide-40mg", eyebrow: "Synexa Retatrutide", accent: "text-amber-700" },
+                    { product: retatrutide, href: "/product/glp-3-rt-40mg-vial", eyebrow: "GLP-3 RT 40mg", accent: "text-blue-700" },
+                    { product: synexaReta, href: "/product/glp-3-rt-20mg-vial", eyebrow: "GLP-3 RT 20mg", accent: "text-amber-700" },
                   ].map(({ product, href, eyebrow, accent }) =>
                     product ? (
                       <Link
@@ -164,7 +164,7 @@ export default function Home() {
                             src={product.image}
                             alt={product.imageAlt || product.name}
                             fill
-                            priority={href === "/product/retatrutide"}
+                            priority={href === "/shop"}
                             sizes="(min-width: 1024px) 27vw, (min-width: 640px) 45vw, 92vw"
                             className="object-contain p-5 transition duration-500 group-hover:scale-[1.025]"
                           />
@@ -174,7 +174,7 @@ export default function Home() {
                           <div className="mt-1 text-lg font-black leading-tight text-slate-950">{product.name}</div>
                           <div className="mt-3 flex items-center justify-between gap-3">
                             <span className="text-sm font-black text-slate-950">£{product.priceGBP.toFixed(2)}</span>
-                            <span className="rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-black text-emerald-700">In stock</span>
+                            <span className="rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-black text-emerald-700">{product.enquiryOnly ? "Enquiry only" : product.stockStatus === "in_stock" ? "In stock" : "Out of stock"}</span>
                           </div>
                         </div>
                       </Link>
@@ -185,7 +185,7 @@ export default function Home() {
                 <div className="mt-4 grid grid-cols-3 gap-3">
                   {[
                     synexaGlow,
-                    getProduct("alloya-mots-c-40mg-pen"),
+                    getProduct("nad-500mg"),
                     getProduct("bpc-157-5mg"),
                   ].map((product) =>
                     product ? (
@@ -248,7 +248,7 @@ export default function Home() {
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-blue-700">New and current stock</p>
                 <h2 className="mt-2 text-3xl font-black tracking-[-0.04em] text-slate-950 sm:text-4xl">Latest research products.</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">A mix of new pre-filled pens and current research formats, with live pricing and stock status taken directly from the catalogue.</p>
+                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">A mix of new vials and laboratory research formats, with live pricing and stock status taken directly from the catalogue.</p>
               </div>
               <Link href="/shop" className="text-sm font-black text-blue-700 hover:text-blue-900">Browse the full shop →</Link>
             </div>
@@ -275,7 +275,7 @@ export default function Home() {
                     <h3 className="mt-2 min-h-[44px] text-base font-black leading-tight text-slate-950">{product.name}</h3>
                     <div className="mt-3 flex items-center justify-between gap-3">
                       <span className="text-lg font-black text-slate-950">£{product.priceGBP.toFixed(2)}</span>
-                      <span className="text-[11px] font-black text-emerald-700">In stock</span>
+                      <span className="text-[11px] font-black text-emerald-700">{product.enquiryOnly ? "Enquiry only" : product.stockStatus === "in_stock" ? "In stock" : "Out of stock"}</span>
                     </div>
                   </div>
                 </Link>
@@ -302,8 +302,8 @@ export default function Home() {
                 <div className="grid h-full gap-5 sm:grid-cols-[1fr_0.8fr] sm:items-center">
                   <div className="relative aspect-[0.72/1] max-h-[330px] overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white shadow-xl">
                     <Image
-                      src="/docs/coa/alluvi-retatrutide-40mg-janoshik-163216.png"
-                      alt="Janoshik test report for Alluvi Retatrutide 40mg, test 163216"
+                      src="/docs/previews/bpc-157-5mg.jpg"
+                      alt="BPC-157 5mg certificate of analysis"
                       fill
                       sizes="(min-width: 1024px) 28vw, 50vw"
                       className="object-contain p-2"
@@ -311,16 +311,16 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="rounded-[1.25rem] border border-emerald-200 bg-emerald-50 p-5">
-                      <div className="text-[11px] font-black uppercase tracking-[0.18em] text-emerald-700">Verified example</div>
-                      <div className="mt-2 text-xl font-black text-slate-950">Alluvi Retatrutide 40mg</div>
-                      <div className="mt-2 text-sm leading-6 text-slate-600">Janoshik Test #163216 · Batch AR1739JAT</div>
+                      <div className="text-[11px] font-black uppercase tracking-[0.18em] text-emerald-700">Published certificate</div>
+                      <div className="mt-2 text-xl font-black text-slate-950">BPC-157 5mg</div>
+                      <div className="mt-2 text-sm leading-6 text-slate-600">Manufacturer certificate · Batch BYH20260204-01</div>
                       <a
-                        href="https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ"
+                        href="/docs/coa/bpc-157-5mg.pdf"
                         target="_blank"
                         rel="noreferrer"
                         className="mt-4 inline-flex text-sm font-black text-blue-700 hover:text-blue-900"
                       >
-                        Verify on Janoshik →
+                        View certificate →
                       </a>
                     </div>
                     <p className="mt-4 text-xs leading-6 text-slate-500">Report availability varies by product. The quality page lists the certificates currently published by Peptide Products.</p>
@@ -340,7 +340,7 @@ export default function Home() {
               </div>
               <div className="grid gap-4 text-sm leading-7 text-slate-600 sm:grid-cols-2">
                 <p>
-                  Peptide Products lists research-use-only peptide pens, vials and laboratory compounds with current stock, pack information and UK pricing. Start with the <Link href="/product/retatrutide" className="font-black text-blue-700">Retatrutide 40mg product page</Link> or explore the wider <Link href="/research-peptides-uk" className="font-black text-blue-700">UK research peptide catalogue</Link>.
+                  Peptide Products lists research-use-only peptide vials and laboratory compounds with current stock, pack information and UK pricing. Start with the <Link href="/shop" className="font-black text-blue-700">GLP-3 RT 40mg product page</Link> or explore the wider <Link href="/research-peptides-uk" className="font-black text-blue-700">UK research peptide catalogue</Link>.
                 </p>
                 <p>
                   For product documentation, independent reports and ordering information, use the <Link href="/quality-assurance" className="font-black text-blue-700">quality assurance page</Link>, <Link href="/shipping" className="font-black text-blue-700">UK shipping information</Link> and <Link href="/contact" className="font-black text-blue-700">customer support</Link> before purchase.
@@ -355,7 +355,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-between gap-5">
               <div>
                 <div className="text-xs font-black uppercase tracking-[0.2em] text-cyan-200">Current catalogue</div>
-                <div className="mt-1 text-2xl font-black tracking-[-0.03em]">Pens, vials and laboratory research compounds.</div>
+                <div className="mt-1 text-2xl font-black tracking-[-0.03em]">Vials and laboratory research compounds.</div>
               </div>
               <Link href="/shop" className="inline-flex rounded-2xl bg-white px-6 py-3.5 text-sm font-black text-blue-800 shadow-lg transition hover:-translate-y-0.5">Browse all products →</Link>
             </div>

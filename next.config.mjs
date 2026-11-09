@@ -1,7 +1,9 @@
+import complianceRedirects from "./compliance-redirects.json" with { type: "json" };
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
     return [
+      ...complianceRedirects,
       // Search Console cleanup: malformed legacy URLs discovered by Google.
       {
         source: "/shipping-Shipping",
@@ -20,7 +22,7 @@ const nextConfig = {
       },
       {
         source: '/retatrutide-uk"',
-        destination: "/retatrutide-uk",
+        destination: "/glp-3-rt",
         permanent: true,
       },
       {
@@ -92,7 +94,7 @@ const nextConfig = {
 
       {
         source: "/where-to-buy-retatrutide-uk",
-        destination: "/buy-retatrutide-uk",
+        destination: "/glp-3-rt",
         permanent: true,
       },
 
@@ -100,32 +102,32 @@ const nextConfig = {
       // Consolidate previous Alluvi URLs into the established /product/retatrutide SEO URL.
       {
         source: "/product/alluvi-retatrutide-40mg",
-        destination: "/product/retatrutide",
+        destination: "/shop",
         permanent: true,
       },
       {
         source: "/alluvi-retatrutide",
-        destination: "/product/retatrutide",
+        destination: "/shop",
         permanent: true,
       },
       {
         source: "/alluvi-retatrutide-40mg",
-        destination: "/product/retatrutide",
+        destination: "/shop",
         permanent: true,
       },
       {
         source: "/buy-alluvi-retatrutide-uk",
-        destination: "/product/retatrutide",
+        destination: "/shop",
         permanent: true,
       },
       {
         source: "/alluvi-retatrutide-review",
-        destination: "/product/retatrutide",
+        destination: "/shop",
         permanent: true,
       },
       {
         source: "/where-to-buy-alluvi-retatrutide",
-        destination: "/product/retatrutide",
+        destination: "/shop",
         permanent: true,
       },
 

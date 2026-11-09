@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 
 const productLinks = [
   {
-    name: "Retatrutide",
-    href: "/product/retatrutide",
-    copy: "View Retatrutide product details, availability, and ordering options.",
+    name: "GLP-3 RT",
+    href: "/shop",
+    copy: "View GLP-3 RT product details, availability, and ordering options.",
   },
   {
     name: "Tirzepatide",

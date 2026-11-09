@@ -61,8 +61,8 @@ const faqItems = [
 const categoryCards = [
   {
     title: "Metabolic research peptides",
-    copy: "Research-use-only peptide products such as Retatrutide and related catalogue pages where buyers can review strength, pack information, stock status, and ordering support.",
-    href: "/product/retatrutide",
+    copy: "Research-use-only peptide products such as GLP-3 RT and related catalogue pages where buyers can review strength, pack information, stock status, and ordering support.",
+    href: "/shop",
   },
   {
     title: "Antioxidant research compounds",
@@ -83,9 +83,9 @@ const categoryCards = [
 
 const productPathLinks = [
   {
-    title: "Retatrutide 40mg research product",
-    copy: "View the main Retatrutide product page for current pricing, pack information, stock status, quality information, and checkout options.",
-    href: "/product/retatrutide",
+    title: "GLP-3 RT 40mg research product",
+    copy: "View the main GLP-3 RT product page for current pricing, pack information, stock status, quality information, and checkout options.",
+    href: "/shop",
   },
   {
     title: "GHK-CU products",

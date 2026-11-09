@@ -48,7 +48,7 @@ export default function ReviewsPage() {
   },
   {
     name: "Jeanette R., UK",
-    text: "I was very skeptical ordering this from a company I’d never heard of and sending £125 upfront via BACS! But I can not fault anything! The retatrutide arrived as promised, well packaged and sealed! And a lot cheaper than my previous supplier! Will be definitely using again! 5 star service! Thank you from Jen",
+    text: "I was very skeptical ordering this from a company I’d never heard of and sending £125 upfront via BACS! But I can not fault anything! The glp-3-rt arrived as promised, well packaged and sealed! And a lot cheaper than my previous supplier! Will be definitely using again! 5 star service! Thank you from Jen",
   },
   {
     name: "Mo MacPherson, UK",
@@ -358,9 +358,9 @@ delivery, packaging, communication, and support from Peptide Products UK. Custom
               </h2>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <Link href="/product/retatrutide" className="surface-card p-5">
+                <Link href="/shop" className="surface-card p-5">
                   <div className="font-extrabold text-ink">
-                    Retatrutide product
+                    GLP-3 RT product
                   </div>
 
                   <p className="mt-2 text-sm text-muted">

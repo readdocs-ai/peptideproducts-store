@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 
 const productLinks = [
   {
-    name: "Retatrutide",
-    href: "/product/retatrutide",
-    copy: "View Retatrutide product details, current availability, and ordering options.",
+    name: "GLP-3 RT",
+    href: "/shop",
+    copy: "View GLP-3 RT product details, current availability, and ordering options.",
   },
   {
     name: "Tirzepatide",
@@ -263,8 +263,8 @@ export default function Page() {
     Where to buy Tirzepatide UK
   </Link>
 
-  <Link href="/retatrutide-uk" className="surface-card p-5">
-    Retatrutide UK
+  <Link href="/glp-3-rt" className="surface-card p-5">
+    GLP-3 RT UK
   </Link>
 </div>
     </div>

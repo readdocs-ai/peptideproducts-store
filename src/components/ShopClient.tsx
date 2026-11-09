@@ -24,18 +24,18 @@ export function ShopClient() {
                 Research catalogue
               </p>
               <h1 className="mt-3 text-[2.35rem] font-black leading-[0.98] tracking-[-0.045em] sm:mt-4 sm:text-5xl md:text-6xl">
-                Retatrutide first. A complete research catalogue behind it.
+                GLP-3 RT first. A complete research catalogue behind it.
               </h1>
               <p className="mt-4 max-w-2xl text-[15px] leading-7 text-white/70 sm:mt-5 sm:text-base sm:leading-8 md:text-lg">
-                Start with our flagship Retatrutide 40mg Pen presentation, then compare the wider research-use-only range with clear pricing, stock and documentation.
+                Explore GLP-3 RT research vials, then compare the wider research-use-only range with clear pricing, stock and documentation.
               </p>
             </div>
 
             <Link
-              href="/product/retatrutide"
+              href="/glp-3-rt"
               className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-white sm:w-auto px-6 py-3.5 text-sm font-black text-slate-950 shadow-xl transition hover:-translate-y-0.5"
             >
-              View Retatrutide 40mg
+              View GLP-3 RT vials
             </Link>
           </div>
         </Container>
