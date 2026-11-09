@@ -76,3 +76,6 @@ try {
  assert.equal((await fetch(base+"/api/checkout",{method:"POST",body:"{}",headers:{"Content-Type":"application/json"}})).status,401);
  console.log("PASS: 20 authenticated product pages, four catalogue pages, all legacy redirects, CAS/purity/storage/COA details, company footer, product image assets, no stale product links, unique sitemap, retired/enquiry-only checkout rejection and existing vial item names.");
 } finally { await db?.quit(); server.kill(); redis.kill(); }
+
+// Unstorage owns additional Redis connections; this disposable test process is finished.
+process.exit(0);
