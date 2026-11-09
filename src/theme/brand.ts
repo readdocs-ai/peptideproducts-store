@@ -2,7 +2,7 @@ export const brand = {
   name: "Peptide Products",
   tagline: "Premium UK research peptide supplier",
   description:
-    "UK supplier of research peptides and laboratory compounds. Explore antioxidant, regenerative, hydration, and retatrutide-related products with secure checkout and documentation available on selected lines.",
+    "UK supplier of research peptides and laboratory compounds. Explore antioxidant, regenerative, hydration, and glp-3-rt-related products with secure checkout and documentation available on selected lines.",
   domain: "peptideproducts.co.uk",
   phone: "07459 676630",
   wholesale: "Wholesale enquiries welcome",

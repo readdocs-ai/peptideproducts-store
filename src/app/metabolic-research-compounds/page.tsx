@@ -8,14 +8,14 @@ const pageUrl = "https://www.peptideproducts.co.uk/metabolic-research-compounds"
 export const metadata: Metadata = {
   title: "Metabolic Research Compounds UK",
   description:
-    "Browse metabolic research compounds in the UK, including Retatrutide, Tirzepatide, NAD and related laboratory research-use-only products.",
+    "Browse metabolic research compounds in the UK, including GLP-3 RT, Tirzepatide, NAD and related laboratory research-use-only products.",
   alternates: {
     canonical: pageUrl,
   },
   openGraph: {
     title: "Metabolic Research Compounds UK",
     description:
-      "Browse metabolic research compounds in the UK, including Retatrutide, Tirzepatide, NAD and related laboratory research-use-only products.",
+      "Browse metabolic research compounds in the UK, including GLP-3 RT, Tirzepatide, NAD and related laboratory research-use-only products.",
     url: pageUrl,
     siteName: "Peptide Products",
   },
@@ -23,16 +23,16 @@ export const metadata: Metadata = {
 
 const products = [
   {
-    "name": "Retatrutide 40mg",
-    "href": "/product/retatrutide",
+    "name": "GLP-3 RT research vials",
+    "href": "/glp-3-rt",
     "role": "Primary metabolic research product and main commercial page.",
-    "copy": "Open the main Retatrutide product page for current price, stock, product image, test report, and checkout."
+    "copy": "Open the main GLP-3 RT product page for current price, stock, product image, test report, and checkout."
   },
   {
-    "name": "Retatrutide information hub",
-    "href": "/retatrutide",
-    "role": "Main informational support page for Retatrutide searches.",
-    "copy": "Read the main Retatrutide hub covering UK information, product links, price guidance, and research-use wording."
+    "name": "GLP-3 RT information hub",
+    "href": "/glp-3-rt",
+    "role": "Main informational support page for GLP-3 RT searches.",
+    "copy": "Read the main GLP-3 RT hub covering UK information, product links, price guidance, and research-use wording."
   },
   {
     "name": "Tirzepatide TR10 10mg",
@@ -62,8 +62,8 @@ const products = [
 
 const guidanceCards = [
   {
-    "title": "Retatrutide priority",
-    "copy": "Retatrutide is kept as the leading internal-link target from this category, with supporting content that sends users toward the main product page."
+    "title": "GLP-3 RT priority",
+    "copy": "GLP-3 RT is kept as the leading internal-link target from this category, with supporting content that sends users toward the main product page."
   },
   {
     "title": "Clear product roles",
@@ -78,23 +78,23 @@ const guidanceCards = [
 const faqs = [
   {
     "q": "Which metabolic product is the main Peptide Products listing?",
-    "a": "Retatrutide 40mg is the priority metabolic research product page and should be used to check current product details, price, stock status, and documentation."
+    "a": "GLP-3 RT research vials is the priority metabolic research product page and should be used to check current product details, price, stock status, and documentation."
   },
   {
-    "q": "Why are there multiple Retatrutide pages?",
-    "a": "The Retatrutide pages cover different customer needs, including the product listing, general information, price guidance, supplier information, and research-use context."
+    "q": "Why are there multiple GLP-3 RT pages?",
+    "a": "The GLP-3 RT pages cover different customer needs, including the product listing, general information, price guidance, supplier information, and research-use context."
   },
   {
     "q": "Are metabolic research compounds supplied for human use?",
     "a": "No. Products are supplied strictly for laboratory, analytical, and scientific research use only and are not intended for human or veterinary use."
   },
   {
-    "q": "Can customers compare Retatrutide with Tirzepatide products?",
-    "a": "Yes. The category page links to Retatrutide, Tirzepatide TR10, Tirzepatide TR15, NAD, and related pages so customers can compare catalogue information before ordering."
+    "q": "Can customers compare GLP-3 RT with Tirzepatide products?",
+    "a": "Yes. The category page links to GLP-3 RT, Tirzepatide TR10, Tirzepatide TR15, NAD, and related pages so customers can compare catalogue information before ordering."
   },
   {
-    "q": "Where should Retatrutide buyers go first?",
-    "a": "Customers looking for the current Retatrutide listing should start with the Retatrutide 40mg product page, then review price, quality, delivery, and FAQ pages if needed."
+    "q": "Where should GLP-3 RT buyers go first?",
+    "a": "Customers looking for the current GLP-3 RT listing should start with the GLP-3 RT research vials product page, then review price, quality, delivery, and FAQ pages if needed."
   }
 ] as const;
 
@@ -124,7 +124,7 @@ export default function Page() {
     name: "Metabolic research compounds UK",
     url: pageUrl,
     description:
-      "UK metabolic research compounds hub for Retatrutide, Tirzepatide, NAD, Melanotan MT-2 and related research-use-only products.",
+      "UK metabolic research compounds hub for GLP-3 RT, Tirzepatide, NAD, Melanotan MT-2 and related research-use-only products.",
     isPartOf: {
       "@type": "WebSite",
       name: "Peptide Products",
@@ -173,7 +173,7 @@ export default function Page() {
             </h1>
 
             <p className="mt-5 max-w-3xl text-base leading-8 text-muted">
-              Explore metabolic research compounds supplied for laboratory, analytical, and scientific research-use-only environments in the UK. This category gives Retatrutide clear priority while also connecting related metabolic product pages such as Tirzepatide, NAD, Melanotan MT-2, and ML-10.
+              Explore metabolic research compounds supplied for laboratory, analytical, and scientific research-use-only environments in the UK. This category gives GLP-3 RT clear priority while also connecting related metabolic product pages such as Tirzepatide, NAD, Melanotan MT-2, and ML-10.
             </p>
 
             <p className="mt-4 max-w-3xl text-base leading-8 text-muted">
@@ -189,10 +189,10 @@ export default function Page() {
               </Link>
 
               <Link
-                href="/product/retatrutide"
+                href="/shop"
                 className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
               >
-                View Retatrutide 40mg
+                View GLP-3 RT research vials
               </Link>
 
               <Link
@@ -208,7 +208,7 @@ export default function Page() {
                 Compare metabolic research product pages
               </h2>
               <p className="mt-4 text-sm leading-7 text-muted">
-                This comparison table helps customers and search engines understand the role of each metabolic product page. Retatrutide remains the primary commercial product, with supporting pages built around related research-use-only catalogue items.
+                This comparison table helps customers and search engines understand the role of each metabolic product page. GLP-3 RT remains the primary commercial product, with supporting pages built around related research-use-only catalogue items.
               </p>
               <div className="mt-6 overflow-hidden rounded-xl2 border border-line">
                 <table className="w-full text-left text-sm">
@@ -250,7 +250,7 @@ export default function Page() {
                 Metabolic research product hub
               </h2>
               <p className="mt-4 text-sm leading-7 text-muted">
-                Use this hub to move from the wider metabolic research catalogue into specific product pages, Retatrutide guidance, quality information, and ordering support. Each linked page provides a distinct type of information without repeating the same content.
+                Use this hub to move from the wider metabolic research catalogue into specific product pages, GLP-3 RT guidance, quality information, and ordering support. Each linked page provides a distinct type of information without repeating the same content.
               </p>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 {products.map((item) => (

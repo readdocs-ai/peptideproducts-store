@@ -18,7 +18,7 @@ export function ProductCard({
   const informationOnly = Boolean(p.informationOnly);
   const purchaseRestricted = enquiryOnly || informationOnly;
   const hasTestReport = Boolean(p.coa);
-  const isFlagship = p.id === "retatrutide";
+  const isFlagship = p.id === "glp-3-rt";
 
   return (
     <article
@@ -31,7 +31,7 @@ export function ProductCard({
     >
       {isFlagship ? (
         <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between bg-[#0b1220] px-4 py-2.5 text-[10px] font-black uppercase tracking-[0.2em] text-white">
-          <span>Flagship Retatrutide</span>
+          <span>Flagship GLP-3 RT</span>
           <span className="text-[#f2cf80]">40mg Pen</span>
         </div>
       ) : null}
@@ -87,12 +87,12 @@ export function ProductCard({
 
       <div className="flex flex-1 flex-col p-4 sm:p-6">
         <div className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
-          {isFlagship ? "Retatrutide research peptide pen" : p.subtitle}
+          {isFlagship ? "GLP-3 RT research peptide pen" : p.subtitle}
         </div>
 
         <Link href={`/product/${p.id}`} className="mt-2 block">
           <h2 className="text-xl font-black sm:text-[1.35rem] leading-tight tracking-[-0.03em] text-slate-950 transition group-hover:text-blue-700">
-            {isFlagship ? "Retatrutide 40mg Pen" : p.name}
+            {isFlagship ? "GLP-3 RT 40mg Pen" : p.name}
           </h2>
         </Link>
 
@@ -143,7 +143,7 @@ export function ProductCard({
                   : "bg-blue-700 hover:bg-blue-800")
               }
             >
-              {isFlagship ? "View Retatrutide" : "View product"}
+              {isFlagship ? "View GLP-3 RT" : "View product"}
             </Link>
             <button
               type="button"

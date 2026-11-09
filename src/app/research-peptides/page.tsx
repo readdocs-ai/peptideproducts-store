@@ -7,19 +7,19 @@ import { Container } from "@/components/Container";
 export const metadata: Metadata = {
   title: "Research Peptides UK | Research-Use-Only Peptides",
   description:
-    "Research peptides UK information from Peptide Products. Browse research-use-only peptides including Retatrutide, Tirzepatide, Melanotan MT-2, Selank, BPC-157, GHK-CU, NAD, and Glutathione.",
+    "Research peptides UK information from Peptide Products. Browse research-use-only peptides including GLP-3 RT, Tirzepatide, Melanotan MT-2, Selank, BPC-157, GHK-CU, NAD, and Glutathione.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/research-peptides",
   },
   openGraph: {
     title: "Research Peptides UK | Research-Use-Only Peptides",
     description:
-      "Browse research-use-only peptides including Retatrutide, Tirzepatide, Melanotan MT-2, Selank, BPC-157, GHK-CU, NAD, and Glutathione.",
+      "Browse research-use-only peptides including GLP-3 RT, Tirzepatide, Melanotan MT-2, Selank, BPC-157, GHK-CU, NAD, and Glutathione.",
     url: "https://www.peptideproducts.co.uk/research-peptides",
     siteName: "Peptide Products",
     images: [
       {
-        url: "https://www.peptideproducts.co.uk/products/retatrutide-40mg-uk.jpg",
+        url: "https://www.peptideproducts.co.uk/products/glp-3-rt-40mg-uk.jpg",
         width: 1200,
         height: 900,
         alt: "Research peptides UK product range",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Research Peptides UK | Research-Use-Only Peptides",
     description:
       "Research-use-only peptide information and product links for UK research customers.",
-    images: ["https://www.peptideproducts.co.uk/products/retatrutide-40mg-uk.jpg"],
+    images: ["https://www.peptideproducts.co.uk/products/glp-3-rt-40mg-uk.jpg"],
   },
 };
 
@@ -39,8 +39,8 @@ const categoryCards = [
   {
     title: "Metabolic research peptides",
     copy:
-      "Browse Retatrutide, Tirzepatide, Melanotan MT-2, Selank, NAD, and related research-use-only product lines.",
-    image: "/products/reta single box.png",
+      "Browse GLP-3 RT, Tirzepatide, Melanotan MT-2, Selank, NAD, and related research-use-only product lines.",
+    image: "/products/glp-3-rt single box.png",
     href: "/shop",
   },
   {
@@ -61,11 +61,11 @@ const categoryCards = [
 
 const featuredProducts = [
   {
-    title: "Retatrutide 40mg",
+    title: "GLP-3 RT 40mg",
     copy:
-      "Retatrutide 40mg research peptide pen with product image, stock status, price, ordering information, and test report.",
-    image: "/products/reta single box.png",
-    href: "/product/retatrutide",
+      "GLP-3 RT research vial with product image, stock status, price, ordering information, and test report.",
+    image: "/products/glp-3-rt single box.png",
+    href: "/shop",
     label: "Best seller",
   },
   {
@@ -112,24 +112,24 @@ const featuredProducts = [
 
 const retatrutideLinks = [
   {
-    title: "Buy Retatrutide UK",
-    copy: "View Retatrutide 40mg buying information, stock, price, and ordering options.",
-    href: "/buy-retatrutide-uk",
+    title: "Buy GLP-3 RT UK",
+    copy: "View GLP-3 RT 40mg buying information, stock, price, and ordering options.",
+    href: "/glp-3-rt",
   },
   {
-    title: "Retatrutide price UK",
-    copy: "Check Retatrutide price guidance and what to review before ordering.",
-    href: "/retatrutide-price-uk",
+    title: "GLP-3 RT price UK",
+    copy: "Check GLP-3 RT price guidance and what to review before ordering.",
+    href: "/glp-3-rt",
   },
   {
-    title: "What is Retatrutide?",
-    copy: "Read a research-use overview of Retatrutide and receptor pathway context.",
-    href: "/what-is-retatrutide",
+    title: "What is GLP-3 RT?",
+    copy: "Read a research-use overview of GLP-3 RT and receptor pathway context.",
+    href: "/glp-3-rt",
   },
   {
-    title: "Retatrutide research peptide",
-    copy: "Review Retatrutide research peptide information and research-use restrictions.",
-    href: "/retatrutide-research-peptide",
+    title: "GLP-3 RT research peptide",
+    copy: "Review GLP-3 RT research peptide information and research-use restrictions.",
+    href: "/glp-3-rt",
   },
 ] as const;
 
@@ -165,7 +165,7 @@ const faqItems = [
   {
     question: "Which research peptides are available?",
     answer:
-      "Current product lines include Retatrutide, Tirzepatide, Melanotan MT-2, Selank, BPC-157, GHK-CU, NAD, Glutathione, and related research-use-only compounds.",
+      "Current product lines include GLP-3 RT, Tirzepatide, Melanotan MT-2, Selank, BPC-157, GHK-CU, NAD, Glutathione, and related research-use-only compounds.",
   },
   {
     question: "Can I view test reports before ordering?",
@@ -253,7 +253,7 @@ export default function ResearchPeptidesPage() {
 
                 <p className="mt-5 max-w-2xl text-base leading-8 text-muted md:text-lg">
                   Browse current research-use-only peptide products from Peptide
-                  Products, including Retatrutide, Tirzepatide, Melanotan MT-2,
+                  Products, including GLP-3 RT, Tirzepatide, Melanotan MT-2,
                   Selank, BPC-157, GHK-CU, NAD, Glutathione, and related
                   laboratory research compounds.
                 </p>
@@ -273,10 +273,10 @@ export default function ResearchPeptidesPage() {
                   </Link>
 
                   <Link
-                    href="/product/retatrutide"
+                    href="/shop"
                     className="rounded-xl2 border border-line bg-white px-6 py-3 text-sm font-extrabold text-ink shadow-soft hover:bg-panel"
                   >
-                    View Retatrutide
+                    View GLP-3 RT
                   </Link>
 
                   <Link
@@ -298,7 +298,7 @@ export default function ResearchPeptidesPage() {
               <div className="overflow-hidden rounded-xl3 border border-line bg-white p-4 shadow-soft md:p-5">
                 <div className="grid h-[330px] grid-cols-2 gap-3 md:h-[470px] md:grid-cols-3">
                   {featuredProducts.map((product) => {
-                    const featured = product.title === "Retatrutide 40mg";
+                    const featured = product.title === "GLP-3 RT 40mg";
 
                     return (
                       <Link
@@ -531,25 +531,25 @@ export default function ResearchPeptidesPage() {
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
                 <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-accent">
-                  Retatrutide hub
+                  GLP-3 RT hub
                 </div>
 
                 <h2 className="mt-3 text-3xl font-extrabold tracking-tight">
-                  Retatrutide research information
+                  GLP-3 RT research information
                 </h2>
 
                 <p className="mt-2 max-w-2xl text-sm leading-7 text-muted">
-                  Retatrutide is the main product line in the current research
+                  GLP-3 RT is the main product line in the current research
                   peptide range. These pages help customers review availability,
                   price, product information, and research-use context.
                 </p>
               </div>
 
               <Link
-                href="/product/retatrutide"
+                href="/shop"
                 className="rounded-xl2 bg-accent px-5 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
               >
-                View Retatrutide product →
+                View GLP-3 RT product →
               </Link>
             </div>
 

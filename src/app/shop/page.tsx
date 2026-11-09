@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Peptide Products",
     images: [
       {
-        url: "https://www.peptideproducts.co.uk/products/retatrutide-40mg-uk.jpg",
+        url: "https://www.peptideproducts.co.uk/products/glp-3-rt-40mg-vial.webp",
         width: 1200,
         height: 900,
         alt: "Peptide Products research peptide catalogue",

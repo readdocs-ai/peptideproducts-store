@@ -1,0 +1,49 @@
+{
+  "originalCommit": "4c718a989333f20e64fbf3d69278d7f56a3c993a",
+  "retiredPens": [
+    "retatrutide",
+    "alluvi-tirzepatide-40mg-pen",
+    "synexa-retatrutide-40mg",
+    "alloya-glutathione-500mg-pen",
+    "alluvi-nad-1000mg-pen-set",
+    "alloya-mots-c-40mg-pen",
+    "alloya-pt-141-10mg-pen",
+    "alloya-mt2-10mg-pen",
+    "alloya-tesamorelin-20mg-pen",
+    "synexa-glow-ghk-cu-70mg-pen",
+    "alluvi-glow-ghk-cu-pen-set",
+    "alluvi-bpc157-tb500-40mg-pen"
+  ],
+  "vialSlugs": {
+    "reta-research-compound-10mg-vial": "glp-3-rt-10mg-vial",
+    "reta-research-compound-20mg-vial": "glp-3-rt-20mg-vial",
+    "reta-research-compound-40mg-vial": "glp-3-rt-40mg-vial",
+    "retatrutide-research-compound-10mg-vial": "glp-3-rt-10mg-research-vial",
+    "retatrutide-research-compound-20mg-vial": "glp-3-rt-20mg-research-vial",
+    "retatrutide-research-compound-40mg-vial": "glp-3-rt-40mg-research-vial"
+  },
+  "retiredHubs": [
+    "/reta-peptide-buy",
+    "/retatrutide-uk-pen",
+    "/retatrutide",
+    "/alluvi-retatrutide",
+    "/buy-alluvi-retatrutide-uk",
+    "/retatrutide-price-uk",
+    "/where-to-buy-alluvi-retatrutide",
+    "/reta",
+    "/retatrutide-supplier-checklist",
+    "/alluvi-retatrutide-40mg",
+    "/alluvi-retatrutide-review",
+    "/peptide-pens-uk",
+    "/where-to-buy-retatrutide-uk",
+    "/retatrutide-for-sale-uk",
+    "/retatrutide-uk",
+    "/buy-retatrutide-uk",
+    "/retatrutide-research-peptide",
+    "/what-is-retatrutide",
+    "/retatrutide-40mg-uk"
+  ],
+  "identityPending": [
+    "ml-10-10mg"
+  ]
+}

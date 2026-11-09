@@ -267,10 +267,10 @@ export default function Page() {
               </h2>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                <Link href="/retatrutide-uk" className="surface-card p-5">
-                  <div className="font-extrabold text-ink">Retatrutide UK</div>
+                <Link href="/glp-3-rt" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">GLP-3 RT UK</div>
                   <p className="mt-2 text-sm text-muted">
-                    View related Retatrutide product access and information.
+                    View related GLP-3 RT product access and information.
                   </p>
                 </Link>
 

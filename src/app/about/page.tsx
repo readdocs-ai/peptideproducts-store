@@ -79,7 +79,7 @@ export default function AboutPage() {
               </h1>
 
               <p className="mt-5 max-w-3xl text-sm leading-7 text-muted md:text-base">
-                Peptide Products is a UK-based supplier of laboratory research compounds and reference materials for analytical and scientific research use only, with Retatrutide as the lead product line in the current catalogue.
+                Peptide Products is a UK-based supplier of laboratory research compounds and reference materials for analytical and scientific research use only, with GLP-3 RT as the lead product line in the current catalogue.
               </p>
 
               <p className="mt-4 max-w-3xl text-sm leading-7 text-muted md:text-base">
@@ -120,7 +120,7 @@ export default function AboutPage() {
               </h2>
 
               <p className="mt-3 text-sm leading-7 text-muted">
-                The catalogue includes laboratory research compounds, peptide research products, and related support supplies, with dedicated pages for Retatrutide, Tirzepatide, BPC-157, GHK-CU, NAD, Glutathione, Selank, Melanotan MT-2, and support products. Product pages are
+                The catalogue includes laboratory research compounds, peptide research products, and related support supplies, with dedicated pages for GLP-3 RT, Tirzepatide, BPC-157, GHK-CU, NAD, Glutathione, Selank, Melanotan MT-2, and support products. Product pages are
                 designed to show pack size, price, stock status, product images,
                 quick facts, and available documentation where provided.
               </p>
@@ -152,20 +152,20 @@ export default function AboutPage() {
                 Key catalogue pathways
               </h2>
               <p className="mt-3 text-sm leading-7 text-muted">
-                The site is organised so customers can move easily between product details, pricing, UK availability, supplier information, quality documentation, and research context. The Retatrutide product page remains the main destination for current product details and checkout.
+                The site is organised so customers can move easily between product details, pricing, UK availability, supplier information, quality documentation, and research context. The GLP-3 RT product page remains the main destination for current product details and checkout.
               </p>
               <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                <Link href="/product/retatrutide" className="surface-card p-5">
-                  <div className="font-extrabold text-ink">Retatrutide product</div>
+                <Link href="/shop" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">GLP-3 RT product</div>
                   <p className="mt-2 text-sm text-muted">Main listing for product details, price, checkout and available test report.</p>
                 </Link>
-                <Link href="/retatrutide" className="surface-card p-5">
-                  <div className="font-extrabold text-ink">Retatrutide hub</div>
-                  <p className="mt-2 text-sm text-muted">Central research-use-only Retatrutide information pathway.</p>
+                <Link href="/glp-3-rt" className="surface-card p-5">
+                  <div className="font-extrabold text-ink">GLP-3 RT hub</div>
+                  <p className="mt-2 text-sm text-muted">Central research-use-only GLP-3 RT information pathway.</p>
                 </Link>
                 <Link href="/metabolic-research-compounds" className="surface-card p-5">
                   <div className="font-extrabold text-ink">Metabolic category</div>
-                  <p className="mt-2 text-sm text-muted">Compare Retatrutide, Tirzepatide, NAD and related product lines.</p>
+                  <p className="mt-2 text-sm text-muted">Compare GLP-3 RT, Tirzepatide, NAD and related product lines.</p>
                 </Link>
                 <Link href="/quality-assurance" className="surface-card p-5">
                   <div className="font-extrabold text-ink">Quality information</div>

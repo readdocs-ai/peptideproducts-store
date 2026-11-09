@@ -13,12 +13,12 @@ const UK_SHIPPING_FEE_GBP = 0;
 const WHATSAPP_NUMBER = SUPPORT_WHATSAPP_NUMBER;
 
 const ENQUIRY_ONLY_PRODUCT_IDS = new Set([
-  "reta-research-compound-10mg-vial",
-  "reta-research-compound-20mg-vial",
-  "reta-research-compound-40mg-vial",
-  "retatrutide-research-compound-10mg-vial",
-  "retatrutide-research-compound-20mg-vial",
-  "retatrutide-research-compound-40mg-vial",
+  "glp-3-rt-10mg-vial",
+  "glp-3-rt-20mg-vial",
+  "glp-3-rt-40mg-vial",
+  "glp-3-rt-10mg-research-vial",
+  "glp-3-rt-20mg-research-vial",
+  "glp-3-rt-40mg-research-vial",
 ]);
 
 const COUNTRY_OPTIONS = [
@@ -133,15 +133,15 @@ export default function CartPage() {
                 </h2>
 
                 <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
-                  Add a research-use-only product to continue. Retatrutide 40mg, peptide pens UK, and other laboratory research products can be reviewed before checkout.
+                  Add a research-use-only product to continue. Research vials and other laboratory compounds can be reviewed before checkout.
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Link
-                    href="/product/retatrutide"
+                    href="/shop"
                     className="inline-flex rounded-xl2 bg-accent px-6 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
                   >
-                    View Retatrutide 40mg
+                    View GLP-3 RT 40mg
                   </Link>
                   <Link
                     href="/shop"

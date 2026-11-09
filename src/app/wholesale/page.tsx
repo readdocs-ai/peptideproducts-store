@@ -374,7 +374,7 @@ export default function Wholesale() {
                       className="mt-2 w-full rounded-xl2 border border-line bg-white px-4 py-3 text-sm"
                       value={products}
                       onChange={(e) => setProducts(e.target.value)}
-                      placeholder="e.g. Retatrutide, Tirzepatide, NAD, GHK-CU"
+                      placeholder="e.g. GLP-3 RT, Tirzepatide, NAD, GHK-CU"
                     />
                   </div>
 

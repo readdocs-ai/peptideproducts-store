@@ -21,7 +21,7 @@ const categories = [
   {
     name: "Metabolic research compounds",
     href: "/metabolic-research-compounds",
-    copy: "Explore metabolic pathway research materials including Retatrutide and Tirzepatide.",
+    copy: "Explore metabolic pathway research materials including GLP-3 RT and Tirzepatide.",
   },
   {
     name: "Regenerative compounds",
@@ -37,8 +37,8 @@ const categories = [
 
 const popularProducts = [
   {
-    name: "Retatrutide",
-    href: "/product/retatrutide",
+    name: "GLP-3 RT",
+    href: "/shop",
     copy: "View product details, stock availability, and ordering options.",
   },
   {

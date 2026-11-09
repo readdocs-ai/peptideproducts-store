@@ -1,6 +1,6 @@
 "use client";
 
-import { Product } from "@/data/products";
+import { products, Product } from "@/data/products";
 
 export type CartItem = { productId: string; qty: number };
 export type CartEventDetail = { productId?: string; qty?: number; added?: boolean };
@@ -18,7 +18,7 @@ export function readCart(): CartItem[] {
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
-    return parsed.filter((x) => x && typeof x.productId === "string" && typeof x.qty === "number");
+    return parsed.filter((x) => x && typeof x.productId === "string" && typeof x.qty === "number" && products.some((p) => p.id === x.productId && !p.enquiryOnly && !p.informationOnly && p.stockStatus === "in_stock"));
   } catch {
     return [];
   }

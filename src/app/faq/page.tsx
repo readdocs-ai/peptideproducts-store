@@ -6,7 +6,7 @@ import { Container } from "@/components/Container";
 export const metadata: Metadata = {
   title: "FAQ | Ordering, Delivery & Test Reports",
   description:
-    "Frequently asked questions about Peptide Products UK including research-use-only products, Retatrutide ordering, payment methods, UK delivery, tracking, documentation, returns and support.",
+    "Frequently asked questions about Peptide Products UK including research-use-only products, GLP-3 RT ordering, payment methods, UK delivery, tracking, documentation, returns and support.",
   alternates: {
     canonical: "https://www.peptideproducts.co.uk/faq",
   },
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 const faqs = [
 
   {
-    question: "Where can I find the Retatrutide product page?",
+    question: "Where can I find the GLP-3 RT product page?",
     answer:
-      "The main Retatrutide product listing is available at /product/retatrutide. It contains current product images, stock status, pricing, checkout options, and the available test report link.",
+      "The main GLP-3 RT product listing is available at /product/glp-3-rt. It contains current product images, stock status, pricing, checkout options, and the available test report link.",
   },
   {
     question: "Where can I review product documentation?",

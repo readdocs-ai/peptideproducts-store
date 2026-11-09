@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   keywords: [
     "research peptides UK",
     "laboratory compounds UK",
-    "retatrutide UK",
+    "glp-3-rt UK",
     "BPC-157 UK",
     "GHK-CU UK",
     "research peptide supplier",
@@ -100,7 +100,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       areaServed: [{ "@type": "Country", name: "United Kingdom" }],
       knowsAbout: [
         "research peptides UK",
-        "Retatrutide research peptide",
+        "GLP-3 RT research peptide",
         "laboratory research compounds",
         "peptide test reports",
         "research-use-only product documentation",
@@ -127,7 +127,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       publisher: { "@id": `${siteUrl}/#organization` },
       about: [
         "research peptides",
-        "Retatrutide research product information",
+        "GLP-3 RT research product information",
         "laboratory research compounds",
         "peptide quality information",
       ],

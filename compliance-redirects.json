@@ -1,0 +1,282 @@
+[
+  {
+    "source": "/product/reta-research-compound-10mg-vial",
+    "destination": "/product/glp-3-rt-10mg-vial",
+    "permanent": true
+  },
+  {
+    "source": "/product/reta-research-compound-20mg-vial",
+    "destination": "/product/glp-3-rt-20mg-vial",
+    "permanent": true
+  },
+  {
+    "source": "/product/reta-research-compound-40mg-vial",
+    "destination": "/product/glp-3-rt-40mg-vial",
+    "permanent": true
+  },
+  {
+    "source": "/product/retatrutide-research-compound-10mg-vial",
+    "destination": "/product/glp-3-rt-10mg-research-vial",
+    "permanent": true
+  },
+  {
+    "source": "/product/retatrutide-research-compound-20mg-vial",
+    "destination": "/product/glp-3-rt-20mg-research-vial",
+    "permanent": true
+  },
+  {
+    "source": "/product/retatrutide-research-compound-40mg-vial",
+    "destination": "/product/glp-3-rt-40mg-research-vial",
+    "permanent": true
+  },
+  {
+    "source": "/product/retatrutide",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/product/alluvi-tirzepatide-40mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/product/synexa-retatrutide-40mg",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/product/alloya-glutathione-500mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/product/alluvi-nad-1000mg-pen-set",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/product/alloya-mots-c-40mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/product/alloya-pt-141-10mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/product/alloya-mt2-10mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/product/alloya-tesamorelin-20mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/product/synexa-glow-ghk-cu-70mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/product/alluvi-glow-ghk-cu-pen-set",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/product/alluvi-bpc157-tb500-40mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/reta-peptide-buy",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/retatrutide-uk-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/retatrutide",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/alluvi-retatrutide",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/buy-alluvi-retatrutide-uk",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/retatrutide-price-uk",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/where-to-buy-alluvi-retatrutide",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/reta",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/retatrutide-supplier-checklist",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/alluvi-retatrutide-40mg",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/alluvi-retatrutide-review",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/peptide-pens-uk",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/where-to-buy-retatrutide-uk",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/retatrutide-for-sale-uk",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/retatrutide-uk",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/buy-retatrutide-uk",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/retatrutide-research-peptide",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/what-is-retatrutide",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/retatrutide-40mg-uk",
+    "destination": "/glp-3-rt",
+    "permanent": true
+  },
+  {
+    "source": "/product/ml-10-10mg",
+    "destination": "/shop",
+    "permanent": false
+  },
+  {
+    "source": "/shop/reta-research-compound-10mg-vial",
+    "destination": "/product/glp-3-rt-10mg-vial",
+    "permanent": true
+  },
+  {
+    "source": "/shop/reta-research-compound-20mg-vial",
+    "destination": "/product/glp-3-rt-20mg-vial",
+    "permanent": true
+  },
+  {
+    "source": "/shop/reta-research-compound-40mg-vial",
+    "destination": "/product/glp-3-rt-40mg-vial",
+    "permanent": true
+  },
+  {
+    "source": "/shop/retatrutide-research-compound-10mg-vial",
+    "destination": "/product/glp-3-rt-10mg-research-vial",
+    "permanent": true
+  },
+  {
+    "source": "/shop/retatrutide-research-compound-20mg-vial",
+    "destination": "/product/glp-3-rt-20mg-research-vial",
+    "permanent": true
+  },
+  {
+    "source": "/shop/retatrutide-research-compound-40mg-vial",
+    "destination": "/product/glp-3-rt-40mg-research-vial",
+    "permanent": true
+  },
+  {
+    "source": "/shop/retatrutide",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/shop/alluvi-tirzepatide-40mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/shop/synexa-retatrutide-40mg",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/shop/alloya-glutathione-500mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/shop/alluvi-nad-1000mg-pen-set",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/shop/alloya-mots-c-40mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/shop/alloya-pt-141-10mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/shop/alloya-mt2-10mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/shop/alloya-tesamorelin-20mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/shop/synexa-glow-ghk-cu-70mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/shop/alluvi-glow-ghk-cu-pen-set",
+    "destination": "/shop",
+    "permanent": true
+  },
+  {
+    "source": "/shop/alluvi-bpc157-tb500-40mg-pen",
+    "destination": "/shop",
+    "permanent": true
+  }
+]
