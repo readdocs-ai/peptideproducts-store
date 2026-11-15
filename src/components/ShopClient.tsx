@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { Fragment } from "react";
+import { BlingSkincareSection } from "@/components/BlingSkincareSection";
 import { Container } from "@/components/Container";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
@@ -13,6 +15,7 @@ const categoryLinks = [
 ] as const;
 
 export function ShopClient() {
+  const skincarePosition = Math.max(1, Math.ceil(products.length / 2));
   return (
     <main>
       <section className="relative overflow-hidden border-b border-slate-200 bg-[#0b1220] py-9 text-white sm:py-12 md:py-16">
@@ -68,8 +71,11 @@ export function ShopClient() {
           </div>
 
           <div className="mt-7 grid gap-5 sm:mt-8 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4">
-            {products.map((p) => (
-              <ProductCard key={p.id} p={p} imageOverride={p.image} />
+            {products.map((p, index) => (
+              <Fragment key={p.id}>
+                <ProductCard p={p} imageOverride={p.image} />
+                {index + 1 === skincarePosition && <BlingSkincareSection />}
+              </Fragment>
             ))}
           </div>
         </section>

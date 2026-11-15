@@ -86,7 +86,7 @@ export function Footer() {
               <Logo />
             </div>
             <p className="mt-5 max-w-lg text-sm leading-7 text-white/70">
-              UK-based supplier of laboratory research compounds. Products are
+              UK-based supplier of laboratory research compounds. Research products are
               supplied strictly for laboratory, analytical and scientific research
               use only.
             </p>
