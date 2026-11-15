@@ -1,4 +1,4 @@
-export const ACCESS_POLICY_VERSION = "2026-11-06";
+export const ACCESS_POLICY_VERSION = "2026-11-15";
 
 export function safeReturnTo(value: unknown): string {
   if (typeof value !== "string" || !value.startsWith("/") || value.startsWith("//") || /[\\\r\n]/.test(value)) return "/";
