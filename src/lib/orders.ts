@@ -9,7 +9,7 @@ export type StoredOrderItem = {
 };
 
 export type OrderStatus = "pending" | "paid" | "shipped" | "cancelled";
-export type PaymentMethod = "bank_transfer" | "crypto" | "card";
+export type PaymentMethod = "bank_transfer" | "crypto" | "card" | "manual";
 export type RoyalMailStatus = "not_sent" | "sending" | "sent" | "error";
 
 export type StoredShippingAddress = {

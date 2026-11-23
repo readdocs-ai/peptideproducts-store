@@ -27,7 +27,7 @@ assert(contact.includes('447459676630'),'New support number missing');
 const scan=['components/Header.tsx','app/order-status/page.tsx','app/order-success/page.tsx','app/product/[id]/ui.tsx','app/cart/page.tsx','app/wholesale/page.tsx','app/checkout/page.tsx','lib/email.ts'];
 for(const f of scan) {
  const code=read('src/'+f);
- assert(code.includes('SUPPORT_WHATSAPP_NUMBER'),`WhatsApp source not centralized in ${f}`);
+ assert((code.includes('SUPPORT_WHATSAPP_NUMBER') || code.includes('supportWhatsAppHref')),`WhatsApp source not centralized in ${f}`);
  assert(!code.includes('447429098887'),`Old support number in ${f}`);
 }
 console.log('PASS: 2 original reports retained; 9 new report links; product gallery and price; 3 photos; WhatsApp contact links.');

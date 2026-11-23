@@ -80,7 +80,7 @@ function OrderSuccessContent() {
 
         <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-ink">Check your payment status</h1>
         <p className="mt-4 text-sm leading-7 text-muted">
-          This page relates to a previous payment checkout. Please check your order status to confirm whether payment was received. Current orders use UK bank transfer, with instructions provided after ordering.
+          This page relates to a previous payment checkout. Please check your order status to confirm whether payment was received. For a new order request, message us on WhatsApp with your reference to confirm stock and discuss payment options.
         </p>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-3">

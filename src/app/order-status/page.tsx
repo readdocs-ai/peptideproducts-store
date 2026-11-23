@@ -1,6 +1,6 @@
 "use client";
 
-import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
+import { ORDER_REQUEST_NEXT_STEP, orderRequestWhatsAppHref, SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
@@ -10,7 +10,7 @@ import { Container } from "@/components/Container";
 type LookupOrder = {
   id: string;
   status: "pending" | "paid" | "shipped";
-  paymentMethod: "bank_transfer" | "crypto" | "card";
+  paymentMethod: "bank_transfer" | "crypto" | "card" | "manual";
   total: number;
   createdAt: string;
   paidAt: string | null;
@@ -49,12 +49,14 @@ function formatGBP(value: number) {
 }
 
 function getPaymentMethodLabel(paymentMethod: LookupOrder["paymentMethod"]) {
+  if (paymentMethod === "manual") return "Discuss on WhatsApp";
   if (paymentMethod === "bank_transfer") return "Bank Transfer";
   if (paymentMethod === "crypto") return "Legacy alternative payment";
   return "Card";
 }
 
-function getStatusLabel(status: LookupOrder["status"]) {
+function getStatusLabel({ status, paymentMethod }: LookupOrder) {
+  if (status === "pending" && paymentMethod === "manual") return "Order request received";
   if (status === "pending") return "Awaiting payment confirmation";
   if (status === "paid") return "Payment received — preparing order";
   return "Shipped";
@@ -62,6 +64,7 @@ function getStatusLabel(status: LookupOrder["status"]) {
 
 function getStatusHelp(order: LookupOrder) {
   if (order.status === "pending") {
+    if (order.paymentMethod === "manual") return ORDER_REQUEST_NEXT_STEP;
     if (order.paymentMethod === "bank_transfer") {
       return "We have received your order and are waiting for the bank transfer to be confirmed. Please use your order number as the payment reference.";
     }
@@ -150,7 +153,7 @@ export default function OrderStatusPage() {
             <h1 className="text-3xl font-extrabold tracking-tight text-ink">Order Status</h1>
             <p className="mt-2 text-sm leading-6 text-muted">
               Enter your order number and email address to check the latest status.
-              Payment confirmation may take a short time to appear after checkout.
+              Enter your reference and the email address used when you submitted your order.
             </p>
 
             <form onSubmit={handleLookup} className="mt-8 grid gap-5">
@@ -207,7 +210,7 @@ export default function OrderStatusPage() {
                       getStatusBadgeClass(order.status)
                     }
                   >
-                    {getStatusLabel(order.status)}
+                    {getStatusLabel(order)}
                   </div>
                 </div>
 
@@ -221,7 +224,7 @@ export default function OrderStatusPage() {
                   </div>
                   <div>
                     <span className="font-extrabold text-ink">Status:</span>{" "}
-                    {getStatusLabel(order.status)}
+                    {getStatusLabel(order)}
                   </div>
                   <div>
                     <span className="font-extrabold text-ink">Payment method:</span>{" "}
@@ -272,7 +275,7 @@ export default function OrderStatusPage() {
                   </p>
 
                   <a
-                    href={whatsappOrderHref}
+                    href={order.paymentMethod === "manual" && order.status === "pending" ? orderRequestWhatsAppHref(order.id) : whatsappOrderHref}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-4 inline-flex items-center gap-2 rounded-xl2 bg-emerald-700 px-4 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-emerald-800"

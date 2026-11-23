@@ -1,6 +1,6 @@
 "use client";
 
-import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
+import { ORDER_REQUEST_NEXT_STEP, orderRequestWhatsAppHref, supportWhatsAppHref } from "@/lib/supportWhatsApp";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -8,14 +8,11 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { products } from "@/data/products";
-import { formatGBP, readCart } from "@/lib/cart";
+import { clearCart, formatGBP, readCart, type CartItem } from "@/lib/cart";
 import type { StoredOrderItem } from "@/lib/orders";
 
 const UK_SHIPPING_FEE_GBP = 0;
-const WHATSAPP_NUMBER = SUPPORT_WHATSAPP_NUMBER;
 const CHECKOUT_DETAILS_KEY = "pp_checkout_details_v2";
-const CHECKOUT_ATTEMPT_KEY = "pp_checkout_attempt_v1";
-const CHECKOUT_REUSE_WINDOW_MS = 20 * 60 * 1000;
 const RESEARCH_DECLARATION_VERSION = "research-use-v1";
 
 const ENQUIRY_ONLY_PRODUCT_IDS = new Set([
@@ -42,17 +39,6 @@ type OrderApiResponse = {
   ok?: boolean;
   error?: string;
   orderId?: string;
-  bank?: { accountName: string; sortCode: string; accountNumber: string };
-  subtotal?: number;
-  shipping?: number;
-  total?: number;
-};
-
-type SavedCheckoutAttempt = {
-  fingerprint: string;
-  checkoutUrl: string;
-  orderId: string;
-  createdAt: number;
 };
 
 type SavedCheckoutDetails = {
@@ -84,23 +70,12 @@ function isUkCountry(country: string) {
   return country.trim().toUpperCase() === "GB";
 }
 
-function getHelpHref(country: string, total: number) {
-  const selectedCountry =
-    COUNTRY_OPTIONS.find((option) => option.value === country)?.label || country;
-
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    `Hi Peptide Products, I need help completing a bank transfer. My order total is ${formatGBP(
-      total
-    )} and my shipping country is ${selectedCountry}.`
-  )}`;
-}
-
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return <label className="block text-sm font-extrabold text-ink">{children}</label>;
 }
 
 export default function Checkout() {
-  const cart = useMemo(() => readCart(), []);
+  const [cart, setCart] = useState<CartItem[]>([]);
   const productMap = useMemo(() => new Map(products.map((product) => [product.id, product])), []);
 
   const orderItems = useMemo(() => {
@@ -155,15 +130,13 @@ export default function Checkout() {
   const [country, setCountry] = useState("GB");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [paymentCancelled, setPaymentCancelled] = useState(false);
+  const [orderReference, setOrderReference] = useState<string | null>(null);
   const [detailsLoaded, setDetailsLoaded] = useState(false);
   const [website, setWebsite] = useState("");
 
   useEffect(() => {
+    setCart(readCart());
     try {
-      const params = new URLSearchParams(window.location.search);
-      setPaymentCancelled(params.get("payment") === "cancelled");
-
       const raw = window.localStorage.getItem(CHECKOUT_DETAILS_KEY);
       if (raw) {
         const saved = JSON.parse(raw) as SavedCheckoutDetails;
@@ -234,20 +207,17 @@ export default function Checkout() {
     country.trim().length === 2;
 
   const canSubmit =
-    !submitting && !hasEnquiryOnlyItems && orderItems.length > 0 && total > 0 && researchUseAccepted;
+    !submitting && !orderReference && !hasEnquiryOnlyItems && orderItems.length > 0 && total > 0 && researchUseAccepted;
 
   async function placeOrder() {
     if (!formValid) {
-      setError("Please complete the required contact and delivery fields before continuing to payment.");
+      setError("Please complete the required contact and delivery fields before submitting your request.");
       return;
     }
     if (!canSubmit) return;
 
     setSubmitting(true);
     setError(null);
-    // Do not allow a previous order's payment instructions to appear as this order.
-    try { window.sessionStorage.removeItem("pp_bank_order_confirmation"); } catch { /* Storage may be unavailable. */ }
-
     try {
       const payload = {
         name: name.trim(),
@@ -269,7 +239,7 @@ export default function Checkout() {
         website,
       };
 
-      const response = await fetch("/api/checkout", {
+      const response = await fetch("/api/order-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -277,16 +247,21 @@ export default function Checkout() {
 
       const data = (await response.json()) as OrderApiResponse;
 
-      if (!response.ok || !data.ok || !data.orderId || !data.bank) {
-        setError(data.error || "We could not place your order. Please contact us if this continues.");
+      if (!response.ok || !data.ok || !data.orderId) {
+        setError(data.error || "We could not save your order request. Please try again or message us for help.");
         return;
       }
-      window.sessionStorage.setItem("pp_bank_order_confirmation", JSON.stringify({
-        orderId: data.orderId, customerEmail: email.trim(), total: data.total, bank: data.bank,
-      }));
-      window.location.assign("/bank-transfer-confirmation");
+
+      setOrderReference(data.orderId);
+      try {
+        clearCart();
+        window.localStorage.removeItem(CHECKOUT_DETAILS_KEY);
+        window.sessionStorage.removeItem("pp_bank_order_confirmation");
+      } catch {
+        // The saved request is shown even if browser storage is unavailable.
+      }
     } catch {
-      setError("We could not confirm whether your order was received. Please check your email and order status, or contact us, before trying again. This helps avoid duplicate orders.");
+      setError("We could not submit your order request. Please check your connection and try again.");
     } finally {
       setSubmitting(false);
     }
@@ -297,9 +272,25 @@ export default function Checkout() {
       <Header />
       <main className="py-5 sm:py-8 lg:py-10">
         <Container>
+          {orderReference ? (
+            <section role="status" className="mx-auto max-w-2xl rounded-[1.5rem] border border-line bg-white p-6 shadow-soft sm:p-8">
+              <h1 className="text-3xl font-extrabold tracking-tight text-ink">Order request received</h1>
+              <p className="mt-4 text-sm leading-7 text-muted">Your reference is <strong className="text-ink">{orderReference}</strong>. No payment was taken and stock is subject to confirmation.</p>
+              <p className="mt-3 text-sm leading-7 text-ink">{ORDER_REQUEST_NEXT_STEP}</p>
+              <a
+                href={orderRequestWhatsAppHref(orderReference)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 rounded-xl2 bg-emerald-700 px-5 py-3 text-sm font-extrabold text-white hover:bg-emerald-800"
+              >
+                <WhatsAppIcon /> Message us on WhatsApp
+              </a>
+              <Link href="/order-status" className="mt-5 block text-sm font-bold text-accent hover:underline">Check order status</Link>
+            </section>
+          ) : (
           <div className="mx-auto max-w-6xl">
             <div className="rounded-[1.5rem] border border-line bg-white p-4 shadow-soft sm:p-6 lg:p-8">
-              <div className="eyebrow">Bank transfer checkout</div>
+              <div className="eyebrow">Order request</div>
               <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden">
                 <label htmlFor="website">Website</label>
                 <input
@@ -313,16 +304,16 @@ export default function Checkout() {
                 />
               </div>
               <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl lg:text-4xl">
-                Place your order, then pay by UK bank transfer.
+                Request your order
               </h1>
               <p className="mt-3 max-w-3xl text-sm leading-7 text-muted sm:text-base">
-                Complete your details to receive an order number and bank transfer instructions. No payment is taken when you place your order.
+                Enter your details and submit your request. We’ll give you an order reference to use when you message us on WhatsApp about stock and payment options.
               </p>
 
               <div className="mt-5 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">1. Enter delivery details</div>
-                <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">2. Place your order</div>
-                <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">3. Transfer using your order reference</div>
+                <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">2. Submit your request</div>
+                <div className="rounded-xl2 border border-line bg-panel px-4 py-3 text-sm font-semibold text-ink">3. Message us on WhatsApp</div>
               </div>
             </div>
 
@@ -333,15 +324,6 @@ export default function Checkout() {
               </p>
             </div>
 
-            {paymentCancelled ? (
-              <div className="mt-5 rounded-[1.25rem] border border-amber-300 bg-amber-50 p-4 sm:p-5">
-                <div className="text-base font-extrabold text-amber-950">Your previous payment was not completed</div>
-                <p className="mt-2 text-sm leading-6 text-amber-900">
-                  Your basket and delivery details have been kept. Review them below and place your order using UK bank transfer. No money is taken when you place an order.
-                </p>
-              </div>
-            ) : null}
-
             {hasEnquiryOnlyItems ? (
               <div className="mt-5 rounded-[1.25rem] border border-amber-300 bg-amber-50 p-5">
                 <div className="text-lg font-extrabold text-amber-950">Availability confirmation required</div>
@@ -349,7 +331,7 @@ export default function Checkout() {
                   One or more products in this basket require availability confirmation before checkout.
                 </p>
                 <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi Peptide Products, I need to confirm availability before ordering.")}`}
+                  href={supportWhatsAppHref("Hi Peptide Products, I need to confirm availability before ordering.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center gap-2 rounded-xl2 bg-emerald-700 px-4 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-emerald-800"
@@ -511,7 +493,7 @@ export default function Checkout() {
                   </label>
 
                   <section className="rounded-[1.5rem] border-2 border-slate-300 bg-slate-50 p-4 sm:p-6">
-                    <div className="text-xs font-extrabold uppercase tracking-[0.16em] text-slate-700">Required before payment</div>
+                    <div className="text-xs font-extrabold uppercase tracking-[0.16em] text-slate-700">Required before submitting</div>
                     <h2 className="mt-2 text-xl font-extrabold text-ink">Research Use Declaration</h2>
                     <p className="mt-3 text-sm leading-6 text-muted">
                       Products supplied by Peptide Products are intended solely for laboratory, analytical and scientific research purposes. They are not supplied for human consumption, self-administration, therapeutic use or the treatment of any medical condition.
@@ -524,33 +506,28 @@ export default function Checkout() {
                         className="mt-1 h-5 w-5 shrink-0"
                       />
                       <span className="text-sm font-bold leading-6 text-ink">
-                        I confirm that the products I am purchasing are intended solely for laboratory, analytical or scientific research purposes, and I understand and agree to the restrictions above.
+                        I confirm that the products I am requesting are intended solely for laboratory, analytical or scientific research purposes, and I understand and agree to the restrictions above.
                       </span>
                     </label>
                     <p className="mt-3 text-xs leading-5 text-muted">
-                      This declaration must be accepted before placing your order. Acceptance is recorded with the order for compliance purposes.
+                      This declaration must be accepted before placing your order. Acceptance is recorded with the request for compliance purposes.
                     </p>
                   </section>
 
                   <section className="rounded-[1.5rem] border-2 border-blue-200 bg-blue-50 p-4 sm:p-6">
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <div>
-                        <div className="text-xs font-extrabold uppercase tracking-[0.16em] text-blue-700">Payment</div>
-                        <h2 className="mt-2 text-xl font-extrabold text-blue-950">UK bank transfer</h2>
-                      </div>
-                      <span className="rounded-full bg-white px-3 py-1 text-xs font-extrabold text-blue-700">No card details required</span>
-                    </div>
+                    <h2 className="text-xl font-extrabold text-blue-950">Submit your order request</h2>
                     <p className="mt-3 text-sm leading-6 text-blue-900">
-                   Place your order to receive the bank details and your unique payment reference. Your order will remain awaiting payment until your bank transfer has been verified. </p>
+                      You’ll receive an order reference to use when you contact us on WhatsApp. No payment is taken online.
+                    </p>
 
                     {!researchUseAccepted ? (
                       <div className="mt-4 rounded-xl2 border border-amber-200 bg-amber-50 p-3 text-sm font-semibold text-amber-900">
-                        Please accept the Research Use Declaration above to place your order.
+                        Please accept the Research Use Declaration above to submit your request.
                       </div>
                     ) : null}
 
                     {error ? (
-                      <div className="mt-4 rounded-xl2 border border-red-200 bg-red-50 p-3 text-sm font-semibold text-red-700">{error}</div>
+                      <div role="alert" className="mt-4 rounded-xl2 border border-red-200 bg-red-50 p-3 text-sm font-semibold text-red-700">{error}</div>
                     ) : null}
 
                     <button
@@ -562,10 +539,10 @@ export default function Checkout() {
                         (canSubmit ? "bg-accent hover:bg-accent/90" : "cursor-not-allowed bg-accent/40")
                       }
                     >
-                      {submitting ? "Placing your order..." : `Place order — ${formatGBP(total)}`}
+                      {submitting ? "Submitting request…" : "Submit order request"}
                     </button>
                     <p className="mt-3 text-center text-xs leading-5 text-blue-800">
-                      No payment is taken now. Bank details are displayed after the order is placed.
+                      Stock is confirmed when you contact us on WhatsApp.
                     </p>
                   </section>
                 </div>
@@ -594,25 +571,25 @@ export default function Checkout() {
                     <div className="flex justify-between"><span>Subtotal</span><span className="font-extrabold text-ink">{formatGBP(subtotal)}</span></div>
                     <div className="flex justify-between"><span>Shipping</span><span className="font-extrabold text-ink">{shipping === 0 ? "Free" : formatGBP(shipping)}</span></div>
                     <div className="my-1 h-px bg-line" />
-                    <div className="flex justify-between text-lg"><span className="font-extrabold text-ink">Total</span><span className="font-extrabold text-ink">{formatGBP(total)}</span></div>
+                    <div className="flex justify-between text-lg"><span className="font-extrabold text-ink">Estimated total</span><span className="font-extrabold text-ink">{formatGBP(total)}</span></div>
                   </div>
 
                   <div className="mt-5 grid gap-2 text-xs font-semibold text-muted">
-                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">UK bank transfer only</div>
-                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">Bank details displayed after ordering</div>
-                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">Order confirmation emailed after ordering</div>
+                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">No online payment</div>
+                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">Confirm stock and payment options on WhatsApp</div>
+                    <div className="rounded-xl2 border border-line bg-panel px-3 py-3">Order reference provided after submitting</div>
                   </div>
 
                   <div className="mt-5 rounded-xl2 border border-emerald-200 bg-emerald-50 p-4">
-                    <div className="text-sm font-extrabold text-emerald-950">Having trouble paying?</div>
-                    <p className="mt-1 text-xs leading-5 text-emerald-800">Message us if you need help with your bank transfer.</p>
+                    <div className="text-sm font-extrabold text-emerald-950">Need help with your request?</div>
+                    <p className="mt-1 text-xs leading-5 text-emerald-800">Message us if you have questions about stock or delivery.</p>
                     <a
-                      href={getHelpHref(country, total)}
+                      href={supportWhatsAppHref("Hi Peptide Products, I have a question about my order request.")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl2 bg-emerald-700 px-4 py-3 text-sm font-extrabold text-white hover:bg-emerald-800"
                     >
-                      <WhatsAppIcon /> Payment help on WhatsApp
+                      <WhatsAppIcon /> Ask us on WhatsApp
                     </a>
                   </div>
                 </aside>
@@ -624,6 +601,7 @@ export default function Checkout() {
               <Link href="/shop" className="font-extrabold text-ink hover:underline">Continue shopping</Link>
             </div>
           </div>
+          )}
         </Container>
       </main>
       <Footer />

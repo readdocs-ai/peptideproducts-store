@@ -195,7 +195,7 @@ export default async function ProductPage({ params }: Props) {
       },
       {
         q: "How does ordering work?",
-        a: "Add an in-stock product to your cart, review your order and enter your delivery details. Bank-transfer instructions are provided after ordering, and order updates are sent by email.",
+        a: "Add an available product to your basket and submit an order request. Message us on WhatsApp with your reference to confirm stock and discuss payment options.",
       },
     ]
   : [
@@ -213,7 +213,7 @@ export default async function ProductPage({ params }: Props) {
         q: "How is ordering handled?",
         a: p.enquiryOnly
           ? "Online purchasing is not currently enabled for this product. Use the product enquiry option to contact Peptide Products about availability and product information."
-          : "Add the product to your cart, enter your delivery details and place your order to receive UK bank-transfer instructions.",
+          : "Add the product to your basket, enter your delivery details and submit an order request. Then message us on WhatsApp with your reference.",
       },
       {
         q: "Do you provide delivery?",
@@ -533,7 +533,7 @@ const shippingDetails = [
                     ["Presentation", "Alluvi"],
                     ["Stock", "In stock in the UK"],
                     ["Availability", "Current UK stock shown live"],
-                    ["Checkout", "UK bank transfer"],
+                    ["Checkout", "Order request"],
                     ["Intended listing", "Laboratory research use only"],
                   ].map(([label, value]) => (
                     <div key={label} className="border-b border-line p-4 even:bg-panel sm:[&:nth-last-child(-n+2)]:border-b-0">
@@ -577,10 +577,10 @@ const shippingDetails = [
 
             <div className="mt-4 grid gap-3 text-sm text-muted md:grid-cols-2 xl:grid-cols-4">
               <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                UK bank transfer checkout
+                Order requests online
               </div>
               <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                UK bank transfer checkout available
+                No online payment
               </div>
               <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                 Free UK delivery / Royal Mail Tracked 24
@@ -597,7 +597,7 @@ const shippingDetails = [
                 Secure checkout
               </div>
               <p className="mt-2 text-sm leading-6 text-muted">
-                UK bank transfer checkout is currently available. Payment instructions are provided after an order is placed.
+                Submit an order request, then message us on WhatsApp to confirm stock and discuss payment options.
               </p>
             </div>
 
@@ -677,10 +677,10 @@ const shippingDetails = [
 
               <div className="mt-5 grid gap-3 text-sm text-muted">
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                  UK bank transfer checkout
+                  Order requests online
                 </div>
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                  UK bank transfer checkout available
+                  No online payment
                 </div>
                 <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                   Free UK delivery / Royal Mail Tracked 24

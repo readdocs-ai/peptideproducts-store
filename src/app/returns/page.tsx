@@ -109,7 +109,7 @@ export default function ReturnsPage() {
               </h2>
 
               <p className="mt-3 text-sm leading-7 text-muted">
-                Orders are processed after the bank transfer has been received and verified.
+                Orders are processed after payment has been verified.
               </p>
 
               <p className="mt-3 text-sm leading-7 text-muted">

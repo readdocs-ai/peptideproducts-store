@@ -1,4 +1,5 @@
-import { SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
+import type { PaymentMethod } from "@/lib/orders";
+import { ORDER_REQUEST_NEXT_STEP, orderRequestWhatsAppHref, SUPPORT_WHATSAPP_NUMBER } from "@/lib/supportWhatsApp";
 import { Resend } from "resend";
 
 export function getResend() {
@@ -45,8 +46,6 @@ type EmailOrderItem = {
   qty: number;
   priceGBP: number;
 };
-
-type PaymentMethod = "bank_transfer" | "crypto" | "card";
 
 type EmailShippingAddress = {
   line1: string;
@@ -275,12 +274,14 @@ function renderResearchUseNotice() {
 }
 
 function getPaymentMethodLabel(paymentMethod: PaymentMethod) {
+  if (paymentMethod === "manual") return "Discuss on WhatsApp";
   if (paymentMethod === "bank_transfer") return "Bank Transfer";
   if (paymentMethod === "crypto") return "Cryptocurrency";
   return "Card";
 }
 
 function getPaymentStatusText(paymentMethod: PaymentMethod) {
+  if (paymentMethod === "manual") return "No payment taken";
   if (paymentMethod === "bank_transfer") {
     return "Awaiting bank transfer payment";
   }
@@ -393,6 +394,8 @@ function getPaymentInstructionsHtml(
 ) {
   const safeOrderId = escapeHtml(orderId);
 
+  if (paymentMethod === "manual") return `<p>${ORDER_REQUEST_NEXT_STEP}</p>`;
+
   if (paymentMethod === "bank_transfer") {
     return `
       <div style="background:#fff7ed;border:2px solid #fb923c;border-radius:18px;padding:18px;margin-top:18px;">
@@ -498,6 +501,7 @@ function getPaymentInstructionsText(
   paymentMethod: PaymentMethod,
   totalGBP: number,
 ) {
+  if (paymentMethod === "manual") return `${ORDER_REQUEST_NEXT_STEP} ${orderRequestWhatsAppHref(orderId)}`;
   if (paymentMethod === "bank_transfer") {
     return [
       "Payment still required",
@@ -550,6 +554,7 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
   }
   const resend = getResend();
 
+  const isOrderRequest = params.paymentMethod === "manual";
   const totals = getOrderTotals(params);
   const totalsHtml = renderOrderTotals(totals);
   const itemsHtml = renderItems(params.items);
@@ -562,14 +567,14 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
   const researchUseNoticeHtml = renderResearchUseNotice();
 
   const orderStatusUrl = getOrderStatusUrl(params.orderId, params.customerEmail);
-  const whatsappUrl = getWhatsAppHref(params.orderId);
+  const whatsappUrl = isOrderRequest ? orderRequestWhatsAppHref(params.orderId) : getWhatsAppHref(params.orderId);
   const safeOrderId = escapeHtml(params.orderId);
 
   const customerText = [
     `Peptide Products order ${params.orderId}`,
     "",
     `Hello ${params.customerName},`,
-    "Your order has been received and saved successfully.",
+    isOrderRequest ? "Your order request has been received. No payment was taken." : "Your order has been received and saved successfully.",
     `Order number: ${params.orderId}`,
     `Payment status: ${getPaymentStatusText(params.paymentMethod)}`,
     `Contact telephone: ${params.customerPhone || "Not provided"}`,
@@ -601,7 +606,7 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
     .join("\n");
 
   const adminText = [
-    `New order received: ${params.orderId}`,
+    `New ${isOrderRequest ? "order request" : "order"} received: ${params.orderId}`,
     `Customer: ${params.customerName}`,
     `Email: ${params.customerEmail}`,
     `Contact telephone: ${params.customerPhone || "Not provided"}`,
@@ -619,13 +624,13 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
     <div style="font-family:Arial,sans-serif;background:#f3f4f6;padding:24px;color:#111827;">
       <div style="max-width:680px;margin:0 auto;background:#ffffff;border-radius:22px;border:1px solid #e5e7eb;overflow:hidden;">
         <div style="background:#111827;color:#ffffff;padding:20px 24px;">
-          <h1 style="margin:0;font-size:24px;">Thank you for your order</h1>
+          <h1 style="margin:0;font-size:24px;">${isOrderRequest ? "Order request received" : "Thank you for your order"}</h1>
           <p style="margin:8px 0 0 0;color:#d1d5db;">Peptide Products</p>
         </div>
 
         <div style="padding:24px;">
           <p style="margin-top:0;">Hello ${escapeHtml(params.customerName)},</p>
-<p>Your order has been received and saved successfully.</p>
+<p>${isOrderRequest ? "Your order request has been received. No payment was taken." : "Your order has been received and saved successfully."}</p>
 
 <p style="color:#4b5563;">
   Please keep this email for your records. If you need to check progress later,
@@ -646,7 +651,7 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
 
           <div style="display:block;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:18px;padding:18px;margin:18px 0;">
             <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.12em;color:#047857;font-weight:800;">
-              Amount due
+              ${isOrderRequest ? "Estimated total" : "Amount due"}
             </div>
             <div style="font-size:30px;font-weight:800;color:#064e3b;margin-top:6px;">
               ${formatGBP(totals.totalGBP)}
@@ -751,8 +756,9 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
     resend.emails.send({
       from: "Peptide Products <info@peptideproducts.co.uk>",
       to: params.customerEmail,
-      subject:
-        params.paymentMethod === "bank_transfer"
+      subject: isOrderRequest
+        ? `Order request received: ${params.orderId} | Peptide Products`
+        : params.paymentMethod === "bank_transfer"
           ? `Payment required for order ${params.orderId} | Peptide Products`
           : `Order ${params.orderId} confirmed | Peptide Products`,
       replyTo: SUPPORT_EMAIL,
@@ -762,7 +768,7 @@ export async function sendOrderEmails(params: SendOrderEmailsParams) {
     resend.emails.send({
       from: "Peptide Products <info@peptideproducts.co.uk>",
       to: isPreview ? testInbox! : "info@peptideproducts.co.uk",
-      subject: `${isPreview ? "[PREVIEW TEST] " : ""}New order received: ${params.orderId}`,
+      subject: `${isPreview ? "[PREVIEW TEST] " : ""}New ${isOrderRequest ? "order request" : "order"} received: ${params.orderId}`,
       replyTo: params.customerEmail,
       html: adminHtml,
       text: adminText,
