@@ -49,8 +49,7 @@ export default function Disclaimer() {
               </h2>
 
               <div className="mt-4 rounded-xl2 border border-line bg-panel p-5 text-sm leading-7 text-muted">
-                <div className="font-extrabold text-ink">Peptide Products Ltd</div>
-                <div>Company No: 17073416</div>
+                <div className="font-extrabold text-ink">{brand.name}</div>
                 <div>Email: {brand.supportEmail}</div>
                 <div>Phone: {brand.phone}</div>
                 <div className="mt-2 font-semibold text-ink">

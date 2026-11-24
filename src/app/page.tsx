@@ -60,11 +60,8 @@ const categoryLinks = [
 
 export default function Home() {
   const retatrutide = getProduct("retatrutide");
-  const synexaGlow = getProduct("synexa-glow-ghk-cu-70mg-pen");
-  const synexaReta = getProduct("synexa-retatrutide-40mg");
 
   const newProducts = [
-    "synexa-glow-ghk-cu-70mg-pen",
     "alloya-glutathione-500mg-pen",
     "alluvi-nad-1000mg-pen-set",
     "alloya-mots-c-40mg-pen",
@@ -149,10 +146,9 @@ export default function Home() {
               </div>
 
               <div className="relative z-10 rounded-[2rem] border border-blue-100 bg-white/90 p-4 shadow-[0_30px_80px_rgba(37,99,235,0.14)] backdrop-blur sm:p-5">
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-4">
                   {[
                     { product: retatrutide, href: "/product/retatrutide", eyebrow: "Alluvi Retatrutide", accent: "text-blue-700" },
-                    { product: synexaReta, href: "/product/synexa-retatrutide-40mg", eyebrow: "Synexa Retatrutide", accent: "text-amber-700" },
                   ].map(({ product, href, eyebrow, accent }) =>
                     product ? (
                       <Link
@@ -166,7 +162,7 @@ export default function Home() {
                             alt={product.imageAlt || product.name}
                             fill
                             priority={href === "/product/retatrutide"}
-                            sizes="(min-width: 1024px) 27vw, (min-width: 640px) 45vw, 92vw"
+                            sizes="(min-width: 1024px) 48vw, 92vw"
                             className="object-contain p-5 transition duration-500 group-hover:scale-[1.025]"
                           />
                         </div>
@@ -183,9 +179,8 @@ export default function Home() {
                   )}
                 </div>
 
-                <div className="mt-4 grid grid-cols-3 gap-3">
+                <div className="mt-4 grid grid-cols-2 gap-3">
                   {[
-                    synexaGlow,
                     getProduct("alloya-mots-c-40mg-pen"),
                     getProduct("bpc-157-5mg"),
                   ].map((product) =>

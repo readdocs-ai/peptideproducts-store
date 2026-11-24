@@ -120,8 +120,6 @@ export default async function ProductPage({ params }: Props) {
 
  const isRetatrutidePen = p.id === "retatrutide";
  const isFlagshipRetatrutide = p.id === "retatrutide";
- const isSynexaGlow = p.id === "synexa-glow-ghk-cu-70mg-pen";
- const isSynexaRetatrutide = p.id === "synexa-retatrutide-40mg";
  const faqs = p.informationOnly
   ? [
       {
@@ -139,44 +137,6 @@ export default async function ProductPage({ params }: Props) {
       {
         q: "Does this page provide delivery or ordering information?",
         a: "No. Delivery and ordering information does not apply because this product is not offered for sale through Peptide Products.",
-      },
-    ]
-  : isSynexaRetatrutide
-  ? [
-      {
-        q: "What is Synexa Retatrutide 40mg RapidPen?",
-        a: "Synexa Retatrutide 40mg RapidPen is a pre-filled 40mg Retatrutide research peptide presentation supplied in original Synexa branded packaging.",
-      },
-      {
-        q: "Is Synexa Retatrutide 40mg in stock in the UK?",
-        a: "Yes. The live product listing currently shows Synexa Retatrutide 40mg RapidPen in stock at £125 for UK research supply.",
-      },
-      {
-        q: "How does Synexa Retatrutide compare with the Alluvi Retatrutide 40mg pen?",
-        a: "Both are separate Retatrutide 40mg research pen presentations. Each listing keeps its own brand, product images, stock status, documentation and checkout route so customers can compare the available formats.",
-      },
-      {
-        q: "Is Synexa Retatrutide supplied for human use?",
-        a: "No. Peptide Products supplies Synexa Retatrutide strictly for laboratory, analytical and scientific research use only and does not provide human dosing or administration guidance.",
-      },
-    ]
-  : isSynexaGlow
-  ? [
-      {
-        q: "What is Synexa Glow GHK-CU 70mg?",
-        a: "Synexa Glow GHK-CU 70mg is a multi-compound research product containing GHK-CU 50mg, BPC-157 10mg and TB-500 10mg in a pre-filled pen format.",
-      },
-      {
-        q: "How much compound does the Synexa Glow pen contain?",
-        a: "The manufacturer packaging declares 70mg total content: GHK-CU 50mg, BPC-157 10mg and TB-500 10mg.",
-      },
-      {
-        q: "Is Synexa Glow supplied for human use?",
-        a: "No. Peptide Products supplies this item strictly for laboratory, analytical and educational research use only. It is not supplied for human consumption or administration.",
-      },
-      {
-        q: "Does Synexa Glow have an independent test report on this listing?",
-        a: "No product-specific independent test report is currently represented on this listing. Where documentation becomes available, it will be shown only when it matches the listed product and batch.",
       },
     ]
   : isRetatrutidePen

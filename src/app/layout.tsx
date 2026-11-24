@@ -72,7 +72,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "@type": "Organization",
       "@id": `${siteUrl}/#organization`,
       name: brand.name,
-      legalName: "Peptide Products Ltd",
       url: siteUrl,
       logo: `${siteUrl}/favicon.svg`,
       image: defaultOg,

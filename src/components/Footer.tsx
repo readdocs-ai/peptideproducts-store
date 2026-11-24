@@ -90,8 +90,8 @@ export function Footer() {
               use only.
             </p>
             <div className="mt-5 space-y-1 text-sm text-white/70">
-              <div className="font-bold text-white">Peptide Products Ltd</div>
-              <div>Company No. 17073416 · United Kingdom</div>
+              <div className="font-bold text-white">{brand.name}</div>
+              <div>United Kingdom</div>
               <a href={`mailto:${brand.supportEmail}`} className="block hover:text-white">
                 {brand.supportEmail}
               </a>

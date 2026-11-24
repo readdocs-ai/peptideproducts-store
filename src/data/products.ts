@@ -135,48 +135,6 @@ export const products: Product[] = [
   },
 
   {
-    id: "synexa-retatrutide-40mg",
-    name: "Synexa Retatrutide 40mg RapidPen®",
-    imageAlt: "Synexa Retatrutide 40mg RapidPen research peptide pen in original Synexa packaging",
-    brandName: "Synexa",
-    availabilityLabel: "In stock",
-    badge: "Featured",
-    subtitle: "Retatrutide 40mg research peptide pen · Synexa RapidPen® presentation",
-    category: "Metabolic",
-    priceGBP: 125,
-    pack: "1 pre-filled pen x 40mg total",
-    image: "/products/synexa-retatrutide-40mg-hero.webp",
-    gallery: [
-      "/products/synexa-retatrutide-40mg-hero.webp",
-      "/products/synexa-retatrutide-40mg-gallery-front-side-back.webp",
-      "/products/synexa-retatrutide-40mg-gallery-angle.webp",
-      "/products/synexa-retatrutide-40mg-gallery-back.webp",
-    ],
-    coa: "/docs/coa/synexa-retatrutide-rapidpen-janoshik-215083.png",
-    coaPreview: "/docs/coa/synexa-retatrutide-rapidpen-janoshik-215083.png",
-    quickFacts: [
-      "Retatrutide 40mg",
-      "Synexa RapidPen® presentation",
-      "In stock",
-      "Research use only",
-    ],
-    highlights: [
-      "Synexa-branded Retatrutide 40mg research pen",
-      "Single pre-filled RapidPen® research format",
-      "Back in stock and available for secure online checkout",
-      "Featured Synexa Retatrutide 40mg presentation for UK laboratory research procurement",
-    ],
-    actives: ["Retatrutide 40mg"],
-    intendedUse: [
-      "Laboratory research",
-      "Analytical review",
-      "Controlled scientific study",
-    ],
-    notes: "In stock and available to order online. For research use only. Not for human or veterinary use.",
-    stockStatus: "in_stock",
-  },
-
-  {
     id: "alloya-glutathione-500mg-pen",
     imageAlt: "Alloya Health Care Glutathione 500mg pen in gold product packaging",
     name: "Alloya Glutathione 500mg Pen",
@@ -336,50 +294,6 @@ export const products: Product[] = [
     stockStatus: "in_stock",
   },
 
-
-  {
-    id: "synexa-glow-ghk-cu-70mg-pen",
-    name: "Synexa Glow GHK-CU 70mg Pen",
-    brandName: "Synexa",
-    availabilityLabel: "In stock",
-    badge: "New",
-    subtitle: "GHK-CU 50mg, BPC-157 10mg and TB-500 10mg research pen · Synexa presentation",
-    category: "Regenerative",
-    priceGBP: 130,
-    pack: "1 pre-filled research pen x 70mg total",
-    image: "/products/synexa-glow-ghk-cu-70mg-hero.webp",
-    gallery: [
-      "/products/synexa-glow-ghk-cu-70mg-hero.webp",
-      "/products/synexa-glow-ghk-cu-70mg-box-front.webp",
-      "/products/synexa-glow-ghk-cu-70mg-box-back.webp",
-      "/products/synexa-glow-ghk-cu-70mg-detail.webp",
-    ],
-    imageAlt: "Synexa Glow GHK-CU 70mg pre-filled research pen in original product packaging",
-    quickFacts: [
-      "70mg total",
-      "GHK-CU 50mg",
-      "BPC-157 10mg",
-      "TB-500 10mg",
-    ],
-    highlights: [
-      "Synexa Glow GHK-CU 70mg research presentation",
-      "Combined GHK-CU 50mg, BPC-157 10mg and TB-500 10mg formulation",
-      "Single pre-filled research pen supplied in original Synexa branded packaging",
-      "In stock and available for secure online checkout",
-    ],
-    actives: [
-      "GHK-CU 50mg",
-      "BPC-157 10mg",
-      "TB-500 10mg",
-    ],
-    intendedUse: [
-      "Laboratory research",
-      "Analytical review",
-      "Controlled scientific study",
-    ],
-    notes: "Supplied strictly for laboratory, analytical and educational research use only. Not for human consumption or administration.",
-    stockStatus: "in_stock",
-  },
 
   {
     id: "alluvi-glow-ghk-cu-pen-set",

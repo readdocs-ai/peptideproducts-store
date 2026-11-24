@@ -52,12 +52,6 @@ const pillars = [
 
 const uploadedDocuments = [
   {
-    title: "Synexa Retatrutide RapidPen — batch SY13055",
-    href: "/docs/coa/synexa-retatrutide-rapidpen-janoshik-215083.png",
-    preview: "/docs/coa/synexa-retatrutide-rapidpen-janoshik-215083.png",
-    source: "Janoshik · Test #215083 · Batch SY13055 · Reported purity 99.847%",
-  },
-  {
     title: "Alluvi Retatrutide 40mg — original report #163216",
     href: "https://verify.janoshik.com/tests/163216-ALLUVI_RETATRUTIDE_40MG_KIT_TU3SQLQB9ZDQ",
     preview: "/docs/coa/alluvi-retatrutide-40mg-janoshik-163216.png",
