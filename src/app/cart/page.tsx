@@ -107,10 +107,10 @@ export default function CartPage() {
               <div>
                 <div className="eyebrow">Cart & checkout</div>
                 <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-ink md:text-4xl">
-                  Review your order request
+                  Review your order before payment.
                 </h1>
                 <p className="mt-2 max-w-3xl text-sm leading-7 text-muted">
-                  Check your basket, then continue to submit an order request. We’ll confirm stock and discuss payment options on WhatsApp.
+                  Check your products, quantities and delivery country, then continue to checkout to place your order and receive bank-transfer instructions.
                 </p>
               </div>
 
@@ -156,8 +156,8 @@ export default function CartPage() {
               <aside className="rounded-[1.75rem] border border-line bg-white p-6 shadow-soft">
                 <div className="text-sm font-extrabold text-ink">Order confidence</div>
                 <div className="mt-4 grid gap-2 text-sm text-muted">
-                  <div className="rounded-xl2 border border-line bg-panel px-4 py-3">No online payment</div>
-                  <div className="rounded-xl2 border border-line bg-panel px-4 py-3">Confirm stock and payment options on WhatsApp</div>
+                  <div className="rounded-xl2 border border-line bg-panel px-4 py-3">UK bank transfer checkout</div>
+                  <div className="rounded-xl2 border border-line bg-panel px-4 py-3">Bank details provided after ordering</div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">Free UK shipping where available</div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">Order updates sent by email</div>
                 </div>
@@ -277,11 +277,11 @@ export default function CartPage() {
                   />
                   <ConfidenceCard
                     title="Checkout next"
-                    copy="Submit your order request and use the reference to contact us on WhatsApp."
+                    copy="Continue to checkout to place your order. Payment instructions will be shown before you complete payment."
                   />
                   <ConfidenceCard
                     title="Order updates"
-                    copy="Keep your order reference for follow-up."
+                    copy="Order confirmations and updates are sent by email after checkout."
                   />
                 </div>
 
@@ -363,7 +363,7 @@ export default function CartPage() {
                     href="/checkout"
                     className="mt-5 inline-flex w-full justify-center rounded-xl2 bg-accent px-4 py-3 text-sm font-extrabold text-white shadow-soft hover:bg-accent/90"
                   >
-                    Continue to order request
+                    Continue to secure checkout
                   </Link>
                 )}
 
@@ -371,7 +371,7 @@ export default function CartPage() {
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                     {hasEnquiryOnlyItems
                       ? "Contact support to confirm availability before ordering"
-                      : "You’ll receive a reference to use when messaging us on WhatsApp."}
+                      : "Place your order to receive UK bank-transfer instructions."}
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
                     Free UK delivery — Royal Mail Tracked 24
@@ -380,7 +380,7 @@ export default function CartPage() {
                     Tracked dispatch and order status updates
                   </div>
                   <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-                    No online payment
+                    Payment by UK bank transfer
                   </div>
                 </div>
 
@@ -388,8 +388,8 @@ export default function CartPage() {
                   <div className="text-sm font-extrabold text-ink">What happens next?</div>
                   <div className="mt-3 grid gap-2 text-sm text-muted">
                     <div>1. Continue to checkout and enter delivery details</div>
-                    <div>2. Submit a request to get your reference</div>
-                    <div>3. Message us on WhatsApp to confirm stock and discuss payment options</div>
+                    <div>2. Place your order and receive bank details</div>
+                    <div>3. Make your bank transfer using your order reference</div>
                   </div>
                 </div>
 
@@ -403,7 +403,7 @@ export default function CartPage() {
             </Link>
             {rows.length > 0 ? (
               <Link href="/checkout" className="font-extrabold text-ink hover:underline">
-                Continue to order request
+                Continue to checkout →
               </Link>
             ) : null}
           </div>

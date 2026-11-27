@@ -82,7 +82,7 @@ export default function Privacy() {
                 </h2>
 
                 <p className="mt-3 text-sm leading-7 text-muted">
-                  The website accepts order requests. We discuss stock and payment options with you when you contact us on WhatsApp. We retain order references and payment status to administer purchases.
+                  Current orders are paid by UK bank transfer. We provide payment instructions after an order is placed. We retain order references and payment status to administer purchases.
                 </p>
 
                 <p className="mt-3 text-sm leading-7 text-muted">

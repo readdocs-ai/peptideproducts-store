@@ -114,7 +114,7 @@ export default function Page() {
                     Secure checkout
                   </div>
                   <p className="mt-2 text-sm text-muted">
-                    After submitting your order request, message us on WhatsApp to confirm stock and discuss payment options.
+                    Payment is by UK bank transfer. Bank details are provided after ordering.
                   </p>
                 </div>
 

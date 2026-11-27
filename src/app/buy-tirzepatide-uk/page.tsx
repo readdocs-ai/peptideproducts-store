@@ -56,7 +56,7 @@ export default function Page() {
             <div className="mt-5 flex flex-wrap gap-2">
               <span className="trust-pill">UK-based supplier</span>
               <span className="trust-pill">Tracked delivery available</span>
-              <span className="trust-pill">Order requests online</span>
+              <span className="trust-pill">UK bank transfer checkout</span>
               <span className="trust-pill">Laboratory research use only</span>
             </div>
 
@@ -138,7 +138,7 @@ export default function Page() {
                     Secure checkout
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted">
-                    After submitting your order request, message us on WhatsApp to confirm stock and discuss payment options.
+                    Payment is by UK bank transfer. Bank details are provided after ordering.
                   </p>
                 </div>
 
@@ -187,7 +187,7 @@ export default function Page() {
                     Secure checkout
                   </div>
                   <p className="mt-2 text-sm text-muted">
-                    After submitting your order request, message us on WhatsApp to confirm stock and discuss payment options.
+                    Payment is by UK bank transfer. Bank details are provided after ordering.
                   </p>
                 </div>
 

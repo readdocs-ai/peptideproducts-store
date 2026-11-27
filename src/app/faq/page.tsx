@@ -38,12 +38,12 @@ const faqs = [
   {
     question: "How do I place an order?",
     answer:
-      "Add products to your basket, enter your delivery details and submit an order request. Use your reference to message us on WhatsApp.",
+      "Add products to your cart, review your order and enter your delivery details. Place the order to receive bank-transfer instructions and use your order number as the payment reference.",
   },
   {
     question: "What payment methods do you accept?",
     answer:
-      "No payment is taken on the website. After submitting a request, message us on WhatsApp with your reference to confirm stock and discuss payment options.",
+      "We currently accept UK bank transfer. After placing an order, you will see the bank details and receive payment instructions by email. Please use your order number as the payment reference.",
   },
   
  
@@ -138,7 +138,7 @@ product supply.
               <div className="mt-5 flex flex-wrap gap-2">
                 <span className="trust-pill">Research use only</span>
                 <span className="trust-pill">Tracked UK dispatch</span>
-                <span className="trust-pill">Order requests online</span>
+                <span className="trust-pill">UK bank transfer checkout</span>
                 <span className="trust-pill">Order instructions by email</span>
               </div>
             </section>

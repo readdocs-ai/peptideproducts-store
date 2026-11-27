@@ -244,7 +244,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
           <div className="mt-5 grid gap-3 border-t border-white/10 pt-5 text-sm sm:grid-cols-3">
             <div><div className="font-extrabold">Tracked dispatch</div><div className="mt-1 text-xs leading-5 text-white/55">Order updates provided</div></div>
             <div><div className="font-extrabold">Free UK delivery</div><div className="mt-1 text-xs leading-5 text-white/55">Royal Mail Tracked 24</div></div>
-            <div><div className="font-extrabold">Order requests online</div><div className="mt-1 text-xs leading-5 text-white/55">Confirm stock and payment options on WhatsApp</div></div>
+            <div><div className="font-extrabold">UK bank transfer checkout</div><div className="mt-1 text-xs leading-5 text-white/55">Bank details provided after ordering</div></div>
           </div>
         </div>
       </aside>
@@ -288,7 +288,7 @@ export function ProductBuyBox({ product }: { product: Product }) {
             {product.id === "retatrutide" ? "Retatrutide 40mg" : "Research supply"}
           </div>
           <div className="trust-pill">Tracked UK dispatch</div>
-          <div className="trust-pill">Order requests online</div>
+          <div className="trust-pill">UK bank transfer checkout</div>
           {hasTestReport ? (
             <div className="premium-badge">Test report available</div>
           ) : null}
@@ -416,10 +416,10 @@ export function ProductBuyBox({ product }: { product: Product }) {
           <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
             {orderByEnquiry
               ? "Contact support to confirm availability before ordering"
-              : "Submit your order request, then message us on WhatsApp to confirm stock and discuss payment options."}
+              : "Continue to checkout to place your order and receive bank-transfer instructions."}
           </div>
           <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
-            Order requests online
+            UK bank transfer checkout
           </div>
           <div className="rounded-xl2 border border-line bg-panel px-4 py-3">
             Free UK delivery / Royal Mail Tracked 24

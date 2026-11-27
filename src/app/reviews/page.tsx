@@ -321,11 +321,11 @@ delivery, packaging, communication, and support from Peptide Products UK. Custom
 
                <div className="rounded-xl2 border border-line bg-panel p-4">
   <div className="text-sm font-extrabold text-ink">
-    Order requests online
+    Bank transfer checkout
   </div>
 
   <p className="mt-2 text-sm leading-6 text-muted">
-    Submit an order request, then message us on WhatsApp to confirm stock and discuss payment options.
+    UK bank transfer is available, with order updates sent by email after payment confirmation.
   </p>
 </div>
 

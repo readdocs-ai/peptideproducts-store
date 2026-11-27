@@ -191,7 +191,7 @@ export default function AboutPage() {
                   </h3>
 
                   <p className="mt-2 text-sm leading-7 text-muted">
-                    Submit an order request online, then contact us on WhatsApp to confirm stock and discuss payment options.
+                    Checkout is available by UK bank transfer. Payment instructions are provided after ordering.
                   </p>
                 </div>
 

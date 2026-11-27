@@ -162,7 +162,7 @@ export default function Page() {
 
               <p className="mt-4 text-sm leading-7 text-muted">
                 Customers can browse the catalogue, open individual product
-                pages, add products to cart, and submit an order request online. Use your reference to message us on WhatsApp about stock and payment options.
+                pages, add products to cart, and place an order online. Payment is by UK bank transfer. Bank details and a unique order reference are provided after checkout.
               </p>
 
               <p className="mt-4 text-sm leading-7 text-muted">
@@ -182,7 +182,7 @@ export default function Page() {
                     Secure checkout
                   </div>
                   <p className="mt-2 text-sm leading-6 text-muted">
-                    After submitting your order request, message us on WhatsApp to confirm stock and discuss payment options.
+                    Payment is by UK bank transfer. Bank details are provided after ordering.
                   </p>
                 </div>
 

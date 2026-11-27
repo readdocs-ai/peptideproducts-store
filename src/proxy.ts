@@ -16,7 +16,7 @@ export function proxy(req: NextRequest) {
     if (path === "/cart" || path.startsWith("/cart/") || path === "/checkout" || path.startsWith("/checkout/")) {
       return NextResponse.redirect(new URL("/ordering-paused", req.url), 307);
     }
-    if (req.method === "POST" && path === "/api/order-request") {
+    if (req.method === "POST" && (path === "/api/checkout" || path === "/api/order")) {
       return NextResponse.json({ ok: false, error: "New orders are temporarily suspended for maintenance." }, { status: 503, headers: { "Cache-Control": "no-store", "Retry-After": "3600" } });
     }
   }
